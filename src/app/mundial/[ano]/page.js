@@ -7,7 +7,6 @@ import Image from 'next/image';
 export default function MundialPage({ params }) {
   // Nota: Dependiendo de tu configuración de enrutamiento en Next.js (App Router),
   // podrías desestructurar 'params' aquí. Por ejemplo: const { anoMundial } = params;
-  // O usar valores simulados para pruebas locales. Ajusta estas dos variables según tu arquitectura:
   const anoMundial = params?.anoMundial || "2022"; 
   const idioma = "es"; // Puede alternarse dinámicamente entre 'es' y 'en'
 
@@ -304,9 +303,9 @@ export default function MundialPage({ params }) {
           <p style={subtitleStyle}>📍 {t.sede}: <span style={sedeHighlightStyle}>{mundial.anfitrion}</span></p>
         </div>
 
-        {/* BLOQUE SUPERIOR: Póster y Tarjeta Estadísticas */}
-        <div style={topGridStyle}>
-          <div style={imageWrapperStyle}>
+        {/* BLOQUE SUPERIOR OPTIMIZADO (Póster y Tarjeta Estadísticas) */}
+        <div style={topGridStyle} className="top-grid-responsivo">
+          <div style={imageWrapperStyle} className="poster-contenedor">
             <Image 
               src={imgPoster} 
               alt={`Póster Oficial ${anoMundial}`}
@@ -341,9 +340,9 @@ export default function MundialPage({ params }) {
         <section style={{ marginBottom: '45px' }}>
           <h2 style={seccionTitleStyle}>{t.tituloCuriosidades}</h2>
           <div style={accentLineStyle}></div>
-          <div style={curiosidadesGridTresPorDosStyle}>
+          <div style={curiosidadesGridTresPorDosStyle} className="curiosidades-grid">
             {mundial.curiosidades.slice(0, 6).map((curiosidad, index) => (
-              <div key={index} style={curiosidadCardStyle}>
+              <div key={index} style={curiosidadCardStyle} className="curiosidad-card">
                 <div style={curiosidadNumeroStyle}>0{index + 1}</div>
                 <p style={curiosidadTextoStyle}>{curiosidad}</p>
               </div>
@@ -355,7 +354,7 @@ export default function MundialPage({ params }) {
         <section style={{ marginBottom: '40px' }}>
           <h2 style={seccionTitleStyle}>{t.tituloGaleria}</h2>
           <div style={accentLineStyle}></div>
-          <div style={galeriaGridCuatroPorDosStyle}>
+          <div style={galeriaGridCuatroPorDosStyle} className="galeria-grid">
             {galeriaUrls.slice(0, 8).map((imgUrl, idx) => (
               <div 
                 key={idx} 
@@ -384,7 +383,6 @@ export default function MundialPage({ params }) {
       {indexModal !== null && (
         <div style={modalLightboxStyle} onClick={() => setIndexModal(null)}>
           
-          {/* Renderizado condicional: Flecha izquierda sólo si no es la primera imagen */}
           {indexModal > 0 && (
             <button 
               style={flechaNavegacionIzquierdaStyle} 
@@ -397,7 +395,7 @@ export default function MundialPage({ params }) {
 
           <div style={modalContenedorStyle} onClick={(e) => e.stopPropagation()}>
             <button style={closeModalBtn} onClick={() => setIndexModal(null)}>✕</button>
-            <div style={{ position: 'relative', width: '85vw', height: '80vh', maxWidth: '900px', maxHeight: '650px' }}>
+            <div style={{ position: 'relative', width: '90vw', height: '70vh', maxWidth: '900px', maxHeight: '650px' }}>
               <Image 
                 src={galeriaUrls[indexModal]} 
                 alt="Visualización ampliada" 
@@ -408,7 +406,6 @@ export default function MundialPage({ params }) {
             </div>
           </div>
 
-          {/* Renderizado condicional: Flecha derecha sólo si no es la última imagen */}
           {indexModal < galeriaUrls.length - 1 && (
             <button 
               style={flechaNavegacionDerechaStyle} 
@@ -421,29 +418,71 @@ export default function MundialPage({ params }) {
         </div>
       )}
 
-      {/* Estilos CSS Dinámicos / Globales */}
+      {/* ⚡ MEDIA QUERIES SOLUCIÓN RESPONSIVA GLOBAL ⚡ */}
       <style jsx global>{`
         .foto-galeria:hover { transform: scale(1.08); }
         .contenedor-galeria-item:hover .overlay-galeria { opacity: 1 !important; }
         .btn-flotante:hover { transform: scale(1.04); background-color: #f8fafc !important; }
         .flecha-modal:hover { background-color: rgba(255, 255, 255, 0.25) !important; transform: scale(1.1); }
+        
+        /* Modificaciones para Tablets y Móviles Grandes (< 900px) */
+        @media (max-width: 900px) {
+          .top-grid-responsivo {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+          }
+          .poster-contenedor {
+            height: 380px !important;
+          }
+          .galeria-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .btn-flotante {
+            position: relative !important;
+            top: 0 !important;
+            right: 0 !important;
+            margin-bottom: 20px !important;
+            display: inline-flex !important;
+          }
+        }
+
+        /* Modificaciones para Celulares (< 600px) */
+        @media (max-width: 600px) {
+          .poster-contenedor {
+            height: 300px !important;
+          }
+          .curiosidades-grid {
+            grid-template-columns: 1fr !important;
+            gap: 15px !important;
+          }
+          .curiosidad-card {
+            padding: 16px !important;
+          }
+          .flecha-modal {
+            width: 45px !important;
+            height: 45px !important;
+            font-size: 2rem !important;
+          }
+        }
       `}</style>
     </main>
   );
 }
 
-// ---- ARQUITECTURA DE ESTILOS PREMIUM (CSS-in-JS) ----
-const mainContainerStyle = { backgroundColor: '#f8fafc', minHeight: '100vh', padding: '140px 20px 50px 20px', fontFamily: 'system-ui, -apple-system, sans-serif' };
+// ---- ARQUITECTURA DE ESTILOS PREMIUM CORREGIDOS (CSS-in-JS) ----
+const mainContainerStyle = { backgroundColor: '#f8fafc', minHeight: '100vh', padding: '100px 20px 50px 20px', fontFamily: 'system-ui, -apple-system, sans-serif' };
 const wrapperStyle = { maxWidth: '1140px', margin: '0 auto' };
 const backLinkFlotanteStyle = { position: 'fixed', top: '95px', right: '40px', color: '#0a192f', textDecoration: 'none', fontWeight: '700', fontSize: '0.88rem', display: 'inline-flex', alignItems: 'center', backgroundColor: '#ffffff', padding: '10px 18px', borderRadius: '30px', boxShadow: '0 4px 12px rgba(0,0,0,0.08)', transition: 'transform 0.2s ease, background-color 0.2s ease', zIndex: 90 };
 const flechaIconStyle = { marginRight: '6px', fontSize: '1.05rem' };
 const headerContainerStyle = { marginBottom: '35px' };
-const titleStyle = { fontSize: '2.4rem', fontWeight: '800', color: '#0a192f', marginBottom: '8px', letterSpacing: '-0.03em' };
+const titleStyle = { fontSize: '2.2rem', fontWeight: '800', color: '#0a192f', marginBottom: '8px', letterSpacing: '-0.03em' };
 const subtitleStyle = { fontSize: '1.05rem', color: '#64748b', fontWeight: '500' };
 const sedeHighlightStyle = { color: '#0f172a', fontWeight: '700' };
+
 const topGridStyle = { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '35px', marginBottom: '45px' };
 const imageWrapperStyle = { position: 'relative', height: '480px', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 10px 25px rgba(0,0,0,0.05)' };
-const statsCardStyle = { backgroundColor: '#ffffff', borderRadius: '16px', padding: '30px', boxShadow: '0 10px 25px rgba(0,0,0,0.02)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', border: '1px solid #edf2f7' };
+
+const statsCardStyle = { backgroundColor: '#ffffff', borderRadius: '16px', padding: '25px', boxShadow: '0 10px 25px rgba(0,0,0,0.02)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', border: '1px solid #edf2f7' };
 const statsTitleStyle = { fontSize: '1.35rem', fontWeight: '700', color: '#0a192f', marginBottom: '12px' };
 const dividerStyle = { height: '3px', backgroundColor: '#3b82f6', width: '50px', borderRadius: '2px', marginBottom: '15px' };
 const statRowStyle = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '11px 0', borderBottom: '1px dashed #e2e8f0' };
@@ -470,15 +509,15 @@ const errorContainerStyle = { display: 'flex', flexDirection: 'column', justifyC
 const btnVolverStyle = { padding: '10px 20px', backgroundColor: '#3b82f6', color: '#fff', textDecoration: 'none', borderRadius: '8px', fontWeight: '600' };
 
 const flechaNavegacionIzquierdaStyle = {
-  position: 'absolute', left: '40px', backgroundColor: 'rgba(255, 255, 255, 0.12)', border: 'none',
-  color: '#ffffff', fontSize: '3.5rem', width: '60px', height: '60px', borderRadius: '50%',
+  position: 'absolute', left: '20px', backgroundColor: 'rgba(255, 255, 255, 0.12)', border: 'none',
+  color: '#ffffff', fontSize: '3rem', width: '50px', height: '50px', borderRadius: '50%',
   cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center',
   userSelect: 'none', transition: 'all 0.2s ease', outline: 'none', zIndex: 1010, paddingBottom: '7px'
 };
 
 const flechaNavegacionDerechaStyle = {
-  position: 'absolute', right: '40px', backgroundColor: 'rgba(255, 255, 255, 0.12)', border: 'none',
-  color: '#ffffff', fontSize: '3.5rem', width: '60px', height: '60px', borderRadius: '50%',
+  position: 'absolute', right: '20px', backgroundColor: 'rgba(255, 255, 255, 0.12)', border: 'none',
+  color: '#ffffff', fontSize: '3rem', width: '50px', height: '50px', borderRadius: '50%',
   cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center',
   userSelect: 'none', transition: 'all 0.2s ease', outline: 'none', zIndex: 1010, paddingBottom: '7px'
 };

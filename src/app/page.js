@@ -20,7 +20,7 @@ export default function HomePage() {
         { titulo: "Momentos Inolvidables", subtitulo: "Goles y hazañas grabadas en la memoria colectiva." }
       ],
       origenGloria: "El Camino a la Gloria",
-      resumenTexto: "La Copa Mundial de la FIFA nació en 1930 tras la audaz visión de Jules Rimet, celebrando su primera edición en las tierras orientales de Uruguay. Lo que comenzó como una competencia de trece naciones invitadas se ha transformado en el fenómeno cultural y deportivo más grande del planeta.",
+      resumenTexto: "La Copa Mundial de la FIFA nació in 1930 tras la audaz visión de Jules Rimet, celebrando su primera edición en las tierras orientales de Uruguay. Lo que comenzó como una competencia de trece naciones invitadas se ha transformado en el fenómeno cultural y deportivo más grande del planeta.",
       capitulosTitulo: "Ediciones de la Copa Mundial de la FIFA",
       capitulosSub: "Explora la historia interactiva seleccionando una época del fútbol:",
       eras: {
@@ -117,15 +117,14 @@ export default function HomePage() {
       }
     },
     {
-  id: "noticia-5",
-  img: "/Neymar_lesion.jpg",
-  titulos: { es: "Neymar enciende las alarmas en Brasil", en: "Neymar sparks injury alarm in Brazil" },
-  resumen: {
-    es: "El astro brasileño sufrió una fuerte torcedura en el tobillo derecho durante el último entrenamiento y es duda para los próximos encuentros de la Verdeamarela.",
-    en: "The Brazilian star suffered a severe right ankle sprain during the latest training session and is a major doubt for upcoming Verdeamarela matches."
-  }
-}
-
+      id: "noticia-5",
+      img: "/Neymar_lesion.jpg",
+      titulos: { es: "Neymar enciende las alarmas en Brasil", en: "Neymar sparks injury alarm in Brazil" },
+      resumen: {
+        es: "El astro brasileño sufrió una fuerte torcedura en el tobillo derecho durante el último entrenamiento y es duda para los próximos encuentros de la Verdeamarela.",
+        en: "The Brazilian star suffered a severe right ankle sprain during the latest training session and is a major doubt for upcoming Verdeamarela matches."
+      }
+    }
   ]);
 
   // ==========================================
@@ -199,7 +198,7 @@ export default function HomePage() {
     return () => clearInterval(temporizador);
   }, [indiceActual]);
 
-  // Efecto automático para el carrusel superior de noticias destacados (Rota cada 4 segundos)
+  // Efecto automático para el carrusel superior de noticias destacados (Rota cada 6 segundos)
   useEffect(() => {
     const tempNoticias = setInterval(() => {
       setIndiceNoticia((prev) => (prev === noticias.length - 1 ? 0 : prev + 1));
@@ -209,7 +208,7 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* 1. CORREGIDO: RECUADRO FIJO (STICKY HEADER) CON ALTA CAPA VISUAL (Z-INDEX) */}
+      {/* 1. CORREGIDO: RECUADRO FIJO (STICKY HEADER) */}
       <div style={stickyNewsBarContainer}>
         <div style={stickyNewsTitleBox}>
           <span>{t.noticiasTitulo}</span>
@@ -339,6 +338,10 @@ export default function HomePage() {
                 }}
                 onMouseEnter={() => setTarjetaHover(pres.id)}
                 onMouseLeave={() => setTarjetaHover(null)}
+                // FIX PROBLEMA 3 MÓVIL: Permite alternar la vuelta con toques limpios en el celular
+                onClick={() => {
+                  setTarjetaHover(prev => prev === pres.id ? null : pres.id);
+                }}
               >
                 <div 
                   style={{
@@ -381,7 +384,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECCIÓN ESTADIOS MUNDIALISTAS EMBLEMÁTICOS (ESTRUCTURA DE INTERACCIÓN FLIP CARD 4x2) */}
+      {/* SECCIÓN ESTADIOS MUNDIALISTAS EMBLEMÁTICOS */}
       <section style={estadiosSectionStyle}>
         <div style={{ maxWidth: '1350px', margin: '0 auto' }}>
           <h2 style={{ ...tituloSeccionStyle, textAlign: 'center', marginBottom: '10px' }}>{t.estadiosTitulo}</h2>
@@ -399,6 +402,10 @@ export default function HomePage() {
                 }}
                 onMouseEnter={() => setEstadioHover(estadio.id)}
                 onMouseLeave={() => setEstadioHover(null)}
+                // FIX PROBLEMA 3 MÓVIL: Alterna la vuelta con toques limpios en pantallas táctiles
+                onClick={() => {
+                  setEstadioHover(prev => prev === estadio.id ? null : estadio.id);
+                }}
               >
                 <div
                   style={{
@@ -489,10 +496,6 @@ const divisorBackStyle = { width: '35px', height: '2.5px', backgroundColor: '#f1
 const listaHitosStyle = { paddingLeft: '15px', margin: 0, display: 'flex', flexDirection: 'column', gap: '14px' };
 const itemHitoStyle = { fontSize: '0.88rem', lineHeight: '1.5', color: '#cbd5e1' };
 
-// =========================================================================
-// 💡 SOLUCIÓN AQUÍ: Se aumentó zIndex a 9999 y se configuró top en 55px 
-// para que baje pegado a tu menú oscuro y no se meta debajo del carrusel.
-// =========================================================================
 const stickyNewsBarContainer = { 
   position: 'sticky', 
   top: '55px', 

@@ -197,6 +197,7 @@ export default function DetalleNoticiaPage() {
       
       {/* 🏆 RECUADRO SUPERIOR CONFIGURADO CON SECCIONES TOTALMENTE BILINGÜES */}
       <div 
+        className="recuadro-superior-fijo"
         style={{
           ...recuadroSuperiorFijoContainer,
           opacity: mostrarCabecera ? 1 : 0,
@@ -204,7 +205,7 @@ export default function DetalleNoticiaPage() {
           transform: mostrarCabecera ? 'translateY(0)' : 'translateY(-15px)'
         }}
       >
-        <div style={gridInternoRecuadroStyle}>
+        <div style={gridInternoRecuadroStyle} className="grid-interno-recuadro">
           
           {/* Bloque Izquierdo: Partidos */}
           <div style={seccionPartidosFijoStyle}>
@@ -221,12 +222,12 @@ export default function DetalleNoticiaPage() {
                     <div style={filaEquiposMatchStyle}>
                       <div style={bloqueEquipoMatchStyle}>
                         <img src={`https://flagcdn.com/w40/${obtenerBandera(partido.e1)}.png`} alt="E1" style={banderaMatchStyle} />
-                        <span style={nombreEquipoMatchStyle}>{traducirEquipo(partido.e1, idioma)}</span>
+                        <span style={nombreEquipoMatchStyle} className="nombre-equipo-match">{traducirEquipo(partido.e1, idioma)}</span>
                       </div>
                       <span style={vsTextoEstilo}>VS</span>
                       <div style={bloqueEquipoMatchStyle}>
                         <img src={`https://flagcdn.com/w40/${obtenerBandera(partido.e2)}.png`} alt="E2" style={banderaMatchStyle} />
-                        <span style={nombreEquipoMatchStyle}>{traducirEquipo(partido.e2, idioma)}</span>
+                        <span style={nombreEquipoMatchStyle} className="nombre-equipo-match">{traducirEquipo(partido.e2, idioma)}</span>
                       </div>
                     </div>
                     <div style={infoLugarMatchStyle}>🕒 {partido.hora} | 🏟️ {partido.estadio}</div>
@@ -254,7 +255,7 @@ export default function DetalleNoticiaPage() {
                 <thead>
                   <tr style={thMiniRowEstilo}>
                     <th style={{ ...thMiniEstilo, textAlign: 'center' }}>#</th>
-                    <th style={thMiniEstilo}>{idioma === 'es' ? 'Equipo' : 'Team'}</th>
+                    <th style={{ ...thMiniEstilo, textAlign: 'left' }}>{idioma === 'es' ? 'Equipo' : 'Team'}</th>
                     <th style={{ ...thMiniEstilo, textAlign: 'center' }}>PJ</th>
                     <th style={{ ...thMiniEstilo, textAlign: 'center' }}>PTS</th>
                   </tr>
@@ -263,9 +264,9 @@ export default function DetalleNoticiaPage() {
                   {tablaPosicionesData[grupoActivoCarrusel].lineas.map((linea, lIdx) => (
                     <tr key={lIdx} style={trMiniEstilo}>
                       <td style={{ ...tdMiniEstilo, textAlign: 'center', fontWeight: 'bold', color: '#e74c3c' }}>{linea.posicion}</td>
-                      <td style={{ ...tdMiniEstilo, display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '600' }}>
+                      <td style={{ ...tdMiniEstilo, display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '600', textAlign: 'left' }}>
                         <img src={`https://flagcdn.com/w20/${linea.b}.png`} alt="bandera" style={miniBanderaTablaStyle} />
-                        {traducirEquipo(linea.equipo, idioma)}
+                        <span className="nombre-equipo-tabla">{traducirEquipo(linea.equipo, idioma)}</span>
                       </td>
                       <td style={{ ...tdMiniEstilo, textAlign: 'center' }}>{linea.pj}</td>
                       <td style={{ ...tdMiniEstilo, textAlign: 'center', fontWeight: 'bold', color: '#0a192f' }}>{linea.pts}</td>
@@ -296,32 +297,32 @@ export default function DetalleNoticiaPage() {
       </div>
 
       {/* 📰 CUERPO DEL ARTÍCULO */}
-      <div style={cardStyle}>
-        <div style={headerNoticiaStyle}>
+      <div style={cardStyle} className="cuerpo-articulo-card">
+        <div style={headerNoticiaStyle} className="header-noticia">
           <span style={tagStyle}>🔴 {idioma === 'es' ? 'MUNDIAL 2026' : 'WORLD CUP 2026'}</span>
           <span style={autorStyle}>⏱️ {textoNoticia.tiempoLectura} | ✍️ {textoNoticia.autor}</span>
         </div>
         
-        <h1 style={tituloStyle}>{textoNoticia.titulo}</h1>
-        <h2 style={subtituloStyle}>{textoNoticia.subtitulo}</h2>
+        <h1 style={tituloStyle} className="noticia-titulo">{textoNoticia.titulo}</h1>
+        <h2 style={subtituloStyle} className="noticia-subtitulo">{textoNoticia.subtitulo}</h2>
         
         <div style={contenedorImagenStyle}>
           <img src={objetoNoticia.imagen} alt={textoNoticia.titulo} style={imagenStyle} />
         </div>
         
         <div style={lineaDecorativaStyle}></div>
-        <p style={contenidoTextoStyle}>{textoNoticia.contenido}</p>
+        <p style={contenidoTextoStyle} className="contenido-texto">{textoNoticia.contenido}</p>
 
         {sugerenciasAleatorias.length > 0 && (
           <>
             <hr style={separadorSugerenciasStyle} />
-            <div style={gridSugerenciasStyle}>
+            <div style={gridSugerenciasStyle} className="grid-sugerencias">
               {sugerenciasAleatorias.map((id) => (
                 <Link key={id} href={`/noticias/${id}`} style={enlaceSugerenciaStyle}>
-                  <div style={miniCardSugerenciaStyle}>
-                    <img src={noticiasDetalle[id].imagen} alt="Mini" style={miniImgSugerenciaStyle} />
+                  <div style={miniCardSugerenciaStyle} className="mini-card-sugerencia">
+                    <img src={noticiasDetalle[id].imagen} alt="Mini" style={miniImgSugerenciaStyle} className="mini-img-sugerencia" />
                     <div>
-                      <h4 style={miniTituloSugerenciaStyle}>{noticiasDetalle[id][idioma].titulo}</h4>
+                      <h4 style={miniTituloSugerenciaStyle} className="mini-titulo-sugerencia">{noticiasDetalle[id][idioma].titulo}</h4>
                       <span style={miniEnlaceTextoStyle}>{idioma === 'es' ? 'Leer artículo →' : 'Read article →'}</span>
                     </div>
                   </div>
@@ -337,14 +338,76 @@ export default function DetalleNoticiaPage() {
           </Link>
         </div>
       </div>
+
+      {/* ⚡ MEDIA QUERIES GLOBALES EN INLINE STYLE JSX ⚡ */}
+      <style jsx global>{`
+        /* Adaptaciones para Tablets y Laptops Pequeñas (< 992px) */
+        @media (max-width: 992px) {
+          .recuadro-superior-fijo {
+            position: relative !important;
+            top: 0 !important;
+            margin-bottom: 20px !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08) !important;
+          }
+          .grid-interno-recuadro {
+            grid-template-columns: 1fr !important;
+            gap: 15px !important;
+          }
+          .cuerpo-articulo-card {
+            margin-top: 20px !important;
+            padding: 25px 20px !important;
+          }
+        }
+
+        /* Adaptaciones para Smartphones (< 640px) */
+        @media (max-width: 640px) {
+          .noticia-titulo {
+            font-size: 1.55rem !important;
+            line-height: 1.3 !important;
+          }
+          .noticia-subtitulo {
+            font-size: 1.02rem !important;
+          }
+          .header-noticia {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 6px !important;
+          }
+          .nombre-equipo-match, .nombre-equipo-tabla {
+            font-size: 0.75rem !important;
+            max-width: 65px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+          .grid-sugerencias {
+            grid-template-columns: 1fr !important;
+          }
+          .mini-card-sugerencia {
+            flex-direction: row !important;
+            align-items: center !important;
+          }
+          .mini-img-sugerencia {
+            width: 85px !important;
+            height: 65px !important;
+          }
+          .mini-titulo-sugerencia {
+            font-size: 0.85rem !important;
+          }
+          .contenido-texto {
+            font-size: 0.98rem !important;
+            text-align: left !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
 
 // ==========================================
-// ESTILOS AJUSTADOS AL PIXEL
+// ESTILOS AJUSTADOS AL PIXEL (MANTENIENDO TU PALETA PREMIUM)
 // ==========================================
-const containerStyle = { minHeight: '100vh', backgroundColor: '#f4f6f9', padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxSizing: 'border-box' };
+const containerStyle = { minHeight: '100vh', backgroundColor: '#f4f6f9', padding: '20px 10px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxSizing: 'border-box' };
 const recuadroSuperiorFijoContainer = { position: 'fixed', top: '64px', left: '0', width: '100%', backgroundColor: '#0a192f', borderBottom: '4px solid #f1c40f', zIndex: '999', padding: '12px 20px', boxSizing: 'border-box', boxShadow: '0 6px 20px rgba(0,0,0,0.15)', transition: 'opacity 0.35s ease, transform 0.35s ease, visibility 0.35s' };
 const gridInternoRecuadroStyle = { maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' };
 const encabezadoSubModuloStyle = { display: 'flex', alignItems: 'center', gap: '6px', color: '#ffffff', fontSize: '0.75rem', fontWeight: '800', letterSpacing: '0.5px', textTransform: 'uppercase', marginBottom: '6px', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '4px' };
@@ -369,7 +432,9 @@ const thMiniEstilo = { padding: '2px 4px', color: '#718096', fontWeight: '700' }
 const trMiniEstilo = { borderBottom: '1px solid #f1f5f9' };
 const tdMiniEstilo = { padding: '3px 4px', color: '#2d3748' };
 const miniBanderaTablaStyle = { width: '15px', height: '10px', objectFit: 'cover', borderRadius: '1px', border: '1px solid #cbd5e0' };
-const cardStyle = { backgroundColor: '#ffffff', padding: '35px', borderRadius: '12px', maxWidth: '900px', width: '100%', boxShadow: '0 8px 25px rgba(0,0,0,0.04)', boxSizing: 'border-box', marginTop: '260px' };
+
+// Cambiamos a mt estático superior por herencia móvil y max-width controlado
+const cardStyle = { backgroundColor: '#ffffff', padding: '35px', borderRadius: '12px', maxWidth: '900px', width: '100%', boxShadow: '0 8px 25px rgba(0,0,0,0.04)', boxSizing: 'border-box', marginTop: '250px' };
 const headerNoticiaStyle = { display: 'flex', justifyContent: 'space-between', marginBottom: '12px' };
 const tagStyle = { color: '#e74c3c', fontWeight: 'bold', fontSize: '0.8rem' };
 const autorStyle = { color: '#718096', fontSize: '0.8rem' };
@@ -381,7 +446,7 @@ const lineaDecorativaStyle = { width: '70px', height: '4px', backgroundColor: '#
 const contenidoTextoStyle = { fontSize: '1.05rem', color: '#2d3748', lineHeight: '1.75', marginBottom: '25px', textAlign: 'justify' };
 const btnVolverStyle = { display: 'inline-block', backgroundColor: '#0a192f', color: '#ffffff', padding: '10px 22px', borderRadius: '5px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.95rem' };
 const separadorSugerenciasStyle = { border: '0', height: '1px', backgroundColor: '#e2e8f0', margin: '35px 0 25px 0' };
-const gridSugerenciasStyle = { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '15px' };
+const gridSugerenciasStyle = { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '15px' };
 const enlaceSugerenciaStyle = { textDecoration: 'none', color: 'inherit' };
 const miniCardSugerenciaStyle = { display: 'flex', gap: '12px', backgroundColor: '#f8fafc', padding: '12px', borderRadius: '6px', border: '1px solid #e2e8f0' };
 const miniImgSugerenciaStyle = { width: '110px', height: '75px', objectFit: 'cover', borderRadius: '4px' };
