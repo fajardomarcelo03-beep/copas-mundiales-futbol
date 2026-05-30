@@ -1,18 +1,14 @@
-// src/app/mundial/[ano]/page.js
 'use client';
 
 import { useState, useEffect, use } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 // Importamos la base de datos unificada optimizada
-import { datosMundiales } from './datosMundiales'; 
-
+import { datosMundiales } from '@/app/mundial/[ano]/datosMundiales';
 export default function MundialPage({ params }) {
   // 1. CAPTURA SEGURA Y EXCLUSIVA DE LA URL DINÁMICA
   const asyncParams = use(params);
-  const anoMundial = asyncParams?.ano; 
-  
-  // Estado para controlar el cambio bilingüe dinámico ('es' o 'en')
+  const anoMundial = asyncParams?.ano;
   const [idioma, setIdioma] = useState("es"); 
 
   // Estados globales de la UI para el Lightbox / Galería
