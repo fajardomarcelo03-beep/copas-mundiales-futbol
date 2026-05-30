@@ -3,6 +3,7 @@
 import { useState, useEffect, use } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation'; // Capturador de parámetros de URL integrado
 // Importamos la base de datos unificada optimizada
 import { datosMundiales } from '@/app/mundial/[ano]/datosMundiales';
 
@@ -10,7 +11,20 @@ export default function MundialPage({ params }) {
   // 1. CAPTURA SEGURA Y EXCLUSIVA DE LA URL DINÁMICA
   const asyncParams = use(params);
   const anoMundial = asyncParams?.ano;
-  const [idioma, setIdioma] = useState("es"); 
+
+  // Interceptamos el parámetro de idioma de la URL (?lang=en o ?lang=es)
+  const searchParams = useSearchParams();
+  const langParam = searchParams.get('lang');
+
+  // Inicializamos el estado directamente evaluando el parámetro de la URL
+  const [idioma, setIdioma] = useState(langParam === "en" ? "en" : "es"); 
+
+  // Sincroniza dinámicamente el estado si el parámetro de la URL cambia en caliente
+  useEffect(() => {
+    if (langParam === 'en' || langParam === 'es') {
+      setIdioma(langParam);
+    }
+  }, [langParam]);
 
   // Estados globales de la UI para el Lightbox / Galería
   const [indexModal, setIndexModal] = useState(null);
