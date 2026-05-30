@@ -55,12 +55,59 @@ export default function HeaderContextLayout({ children }) {
         </div>
       </header>
 
-      {/* 💡 SOLUCIÓN AQUÍ: Se ajustó el padding-top a 68px (altura exacta del header). 
-        Tu barra de noticias fija (sticky) se acoplará perfectamente justo debajo.
-      */}
-      <div style={{ paddingTop: '68px' }}>
+      {/* Contenedor del contenido */}
+      <div className="main-content-wrapper" style={{ paddingTop: '68px' }}>
         {children}
       </div>
+
+      {/* ⚡ SOLUCIÓN RESPONSIVA PARA LA BARRA DE NOTICIAS Y ELEMENTOS DE LA LANDING ⚡ */}
+      <style jsx global>{`
+        /* Buscamos el contenedor amarillo de noticias de tu page.js de forma dinámica */
+        div[style*="background-color: rgb(241, 196, 15)"], 
+        div[style*="background-color: #f1c40f"],
+        .barra-noticias {
+          display: flex !important;
+          transition: all 0.3s ease;
+        }
+
+        /* Reglas exclusivas para pantallas de Celulares (< 768px) */
+        @media (max-width: 768px) {
+          /* 1. Forzamos a que la barra amarilla pase de fila horizontal a bloque vertical */
+          div[style*="background-color: rgb(241, 196, 15)"], 
+          div[style*="background-color: #f1c40f"] {
+            flex-direction: column !important;
+            height: auto !important;
+            padding: 12px 15px !important;
+            gap: 10px !important;
+            text-align: center !important;
+          }
+
+          /* 2. Ajustamos los textos internos (Título de la noticia y descripción) */
+          div[style*="background-color: rgb(241, 196, 15)"] h2,
+          div[style*="background-color: #f1c40f"] h2,
+          div[style*="background-color: rgb(241, 196, 15)"] h3,
+          div[style*="background-color: #f1c40f"] h3 {
+            font-size: 0.95rem !important;
+            margin: 0 !important;
+            white-space: normal !important;
+          }
+
+          div[style*="background-color: rgb(241, 196, 15)"] div,
+          div[style*="background-color: #f1c40f"] div {
+            font-size: 0.85rem !important;
+            white-space: normal !important;
+            line-height: 1.4 !important;
+          }
+
+          /* 3. Ajustamos el botón o enlace "Leer más" para que se centre en móviles */
+          div[style*="background-color: rgb(241, 196, 15)"] a,
+          div[style*="background-color: #f1c40f"] a {
+            display: inline-block !important;
+            margin-top: 5px !important;
+            font-size: 0.85rem !important;
+          }
+        }
+      `}</style>
 
     </IdiomaContext.Provider>
   );
@@ -74,11 +121,11 @@ const headerStyle = {
   right: 0, 
   backgroundColor: '#0a192f', 
   color: '#ffffff', 
-  padding: '12px 20px', // Reducido un poco para mayor balance en móviles
+  padding: '12px 20px', 
   boxShadow: '0 4px 20px rgba(0,0,0,0.15)', 
   zIndex: 10000, 
   fontFamily: 'system-ui, -apple-system, sans-serif',
-  height: '44px', // Altura fija controlada
+  height: '44px', 
   display: 'flex',
   alignItems: 'center'
 };
@@ -100,12 +147,11 @@ const logoStyle = {
   alignItems: 'center', 
   gap: '8px',
   overflow: 'hidden',
-  flexRoll: 1
+  flexGrow: 1
 };
 
-// Controla que el texto largo no desborde en pantallas pequeñas
 const textoTituloResponsivoStyle = {
-  fontSize: 'clamp(0.78rem, 3.5vw, 1rem)', // Se autoajusta mágicamente según el tamaño de la pantalla
+  fontSize: 'clamp(0.78rem, 3.5vw, 1rem)', 
   whiteSpace: 'nowrap',
   overflow: 'hidden',
   textOverflow: 'ellipsis'
