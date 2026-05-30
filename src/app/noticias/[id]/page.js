@@ -321,7 +321,7 @@ export default function DetalleNoticiaPage() {
                 <Link key={id} href={`/noticias/${id}`} style={enlaceSugerenciaStyle}>
                   <div style={miniCardSugerenciaStyle} className="mini-card-sugerencia">
                     <img src={noticiasDetalle[id].imagen} alt="Mini" style={miniImgSugerenciaStyle} className="mini-img-sugerencia" />
-                    <div>
+                    <div style={{ minWidth: 0, flex: 1 }}>
                       <h4 style={miniTituloSugerenciaStyle} className="mini-titulo-sugerencia">{noticiasDetalle[id][idioma].titulo}</h4>
                       <span style={miniEnlaceTextoStyle}>{idioma === 'es' ? 'Leer artículo →' : 'Read article →'}</span>
                     </div>
@@ -382,17 +382,24 @@ export default function DetalleNoticiaPage() {
           }
           .grid-sugerencias {
             grid-template-columns: 1fr !important;
+            width: 100% !important;
           }
           .mini-card-sugerencia {
             flex-direction: row !important;
             align-items: center !important;
+            padding: 10px !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
           }
           .mini-img-sugerencia {
             width: 85px !important;
             height: 65px !important;
+            flex-shrink: 0 !important;
           }
           .mini-titulo-sugerencia {
             font-size: 0.85rem !important;
+            white-space: normal !important;
+            word-break: break-word !important;
           }
           .contenido-texto {
             font-size: 0.98rem !important;
