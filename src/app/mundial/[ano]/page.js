@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 // Importamos la base de datos unificada optimizada
 import { datosMundiales } from '@/app/mundial/[ano]/datosMundiales';
+
 export default function MundialPage({ params }) {
   // 1. CAPTURA SEGURA Y EXCLUSIVA DE LA URL DINÁMICA
   const asyncParams = use(params);
@@ -93,21 +94,6 @@ export default function MundialPage({ params }) {
 
   return (
     <main style={mainContainerStyle}>
-      {/* Botones interactivos para alternar el idioma de forma fluida */}
-      <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', marginBottom: '20px', maxWidth: '1140px', margin: '0 auto 20px auto' }}>
-        <button 
-          onClick={() => setIdioma("es")} 
-          style={{ padding: '8px 16px', cursor: 'pointer', fontSize: '0.85rem', fontWeight: '700', backgroundColor: idioma === 'es' ? '#3b82f6' : '#e2e8f0', color: idioma === 'es' ? '#fff' : '#334155', border: 'none', borderRadius: '8px', transition: 'all 0.2s' }}
-        >
-          ESPAÑOL
-        </button>
-        <button 
-          onClick={() => setIdioma("en")} 
-          style={{ padding: '8px 16px', cursor: 'pointer', fontSize: '0.85rem', fontWeight: '700', backgroundColor: idioma === 'en' ? '#3b82f6' : '#e2e8f0', color: idioma === 'en' ? '#fff' : '#334155', border: 'none', borderRadius: '8px', transition: 'all 0.2s' }}
-        >
-          ENGLISH
-        </button>
-      </div>
 
       <Link href="/" style={backLinkFlotanteStyle} className="btn-flotante">
         <span style={flechaIconStyle}>←</span> {t.volver}
