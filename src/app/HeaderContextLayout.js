@@ -62,9 +62,11 @@ export default function HeaderContextLayout({ children }) {
 
       {/* ⚡ SOLUCIÓN RESPONSIVA PARA LA BARRA DE NOTICIAS Y ELEMENTOS DE LA LANDING ⚡ */}
       <style jsx global>{`
-        /* Buscamos el contenedor amarillo de noticias de tu page.js de forma dinámica */
-        div[style*="background-color: rgb(241, 196, 15)"], 
-        div[style*="background-color: #f1c40f"],
+        /* Selector robusto multivariante para asegurar la captura del contenedor amarillo */
+        div[style*="background-color"][style*="f1c40f"],
+        div[style*="background-color"][style*="f1d413"],
+        div[style*="background-color"][style*="241, 196, 15"],
+        div[style*="background-color"][style*="241,296,15"],
         .barra-noticias {
           display: flex !important;
           transition: all 0.3s ease;
@@ -72,39 +74,62 @@ export default function HeaderContextLayout({ children }) {
 
         /* Reglas exclusivas para pantallas de Celulares (< 768px) */
         @media (max-width: 768px) {
-          /* 1. Forzamos a que la barra amarilla pase de fila horizontal a bloque vertical */
-          div[style*="background-color: rgb(241, 196, 15)"], 
-          div[style*="background-color: #f1c40f"] {
+          /* 1. Forzamos a que la barra amarilla pase de fila horizontal a bloque vertical y tome medidas adaptables */
+          div[style*="background-color"][style*="f1c40f"],
+          div[style*="background-color"][style*="f1d413"],
+          div[style*="background-color"][style*="241, 196, 15"],
+          div[style*="background-color"][style*="241,296,15"] {
             flex-direction: column !important;
             height: auto !important;
-            padding: 12px 15px !important;
-            gap: 10px !important;
+            min-height: unset !important;
+            max-height: unset !important;
+            padding: 14px 16px !important;
+            gap: 12px !important;
             text-align: center !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
           }
 
           /* 2. Ajustamos los textos internos (Título de la noticia y descripción) */
-          div[style*="background-color: rgb(241, 196, 15)"] h2,
-          div[style*="background-color: #f1c40f"] h2,
-          div[style*="background-color: rgb(241, 196, 15)"] h3,
-          div[style*="background-color: #f1c40f"] h3 {
+          div[style*="background-color"] h2,
+          div[style*="background-color"] h3,
+          div[style*="background-color"] p,
+          div[style*="background-color"] span {
             font-size: 0.95rem !important;
             margin: 0 !important;
             white-space: normal !important;
+            overflow: visible !important;
+            text-overflow: unset !important;
+            max-width: 100% !important;
           }
 
-          div[style*="background-color: rgb(241, 196, 15)"] div,
-          div[style*="background-color: #f1c40f"] div {
-            font-size: 0.85rem !important;
+          div[style*="background-color"] div {
+            font-size: 0.88rem !important;
             white-space: normal !important;
             line-height: 1.4 !important;
+            overflow: visible !important;
+            max-width: 100% !important;
           }
 
-          /* 3. Ajustamos el botón o enlace "Leer más" para que se centre en móviles */
-          div[style*="background-color: rgb(241, 196, 15)"] a,
-          div[style*="background-color: #f1c40f"] a {
-            display: inline-block !important;
-            margin-top: 5px !important;
+          /* Forzamos que los contenedores hijos del Flex hereden un ancho responsivo */
+          div[style*="background-color"] > div {
+            width: 100% !important;
+            display: block !important;
+          }
+
+          /* 3. Ajustamos el botón o enlace "Leer más" para que sea visible, grande y centrado en móviles */
+          div[style*="background-color"] a {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            margin: 4px auto 0 auto !important;
             font-size: 0.85rem !important;
+            padding: 8px 16px !important;
+            width: auto !important;
+            min-width: 120px !important;
+            white-space: nowrap !important;
           }
         }
       `}</style>
