@@ -591,30 +591,40 @@ export const datosMundiales = {
   },
   "2022": {
     es: {
-      anfitrion: "Catar", campeon: "Argentina", subcampeon: "Francia", 
-      goles: "172", partidos: "64", botaOro: "Kylian Mbappé (8 goles)", 
-      equipos: "32 selecciones", balonOro: "Lionel Messi (Argentina)",
-      desc: "El primer mundial en territorio árabe nos regaló una de las mejores finales de todos los tiempos. Lionel Messi lideró de manera brillante a la albiceleste hacia su tercera estrella en una batalla épica decidida en penaltis contra Francia.", 
+      anfitrion: "Qatar",
+      campeon: "Argentina",
+      subcampeon: "Francia",
+      goles: "172",
+      partidos: "64",
+      botaOro: "Kylian Mbappé (8 goles)",
+      equipos: "32 equipos",
+      balonOro: "Lionel Messi (Argentina)",
+      desc: "La primera Copa Mundial en el mundo árabe ofreció lo que es ampliamente reconocido como una de las mayores finales de la historia, culminando con la consagración de Lionel Messi.",
       curiosidades: [
-        "Fue la primera edición que se disputó en los meses de invierno debido al clima extremo.",
-        "Lionel Messi se convirtió en el futbolista con más partidos jugados (26) en la historia.",
-        "Kylian Mbappé anotó un hat-trick en la final, algo que no sucedía desde 1966.",
-        "Marruecos conmovió al planeta al ser el primer equipo africano en clasificar a semifinales."
+        "Fue la primera Copa del Mundo que se trasladó a los meses de invierno (noviembre/diciembre) debido a las extremas temperaturas de la región.",
+        "Lionel Messi se convirtió oficialmente en el jugador con más partidos disputados en la historia de los Mundiales.",
+        "Kylian Mbappé anotó un 'hat-trick' en la final, una hazaña que no se lograba en el partido decisivo desde 1966.",
+        "Marruecos sorprendió al mundo al convertirse en la primera nación africana en llegar a las semifinales de un Mundial."
       ]
     },
     en: {
-      anfitrion: "Qatar", campeon: "Argentina", subcampeon: "France", 
-      goles: "172", partidos: "64", botaOro: "Kylian Mbappé (8 goals)", 
-      equipos: "32 teams", balonOro: "Lionel Messi (Argentina)",
-      desc: "The first World Cup in the Arab world delivered what is widely recognized as the greatest final ever. Lionel Messi masterfully guided Argentina to their third star after an epic penalty shootout win against France.", 
+      anfitrion: "Qatar",
+      campeon: "Argentina",
+      subcampeon: "France",
+      goles: "172",
+      partidos: "64",
+      botaOro: "Kylian Mbappé (8 goals)",
+      equipos: "32 teams",
+      balonOro: "Lionel Messi (Argentina)",
+      desc: "The first World Cup in the Arab world delivered what is widely recognized as one of the greatest finals in history, culminating in Lionel Messi's crowning moment.",
       curiosidades: [
-        "It was the first World Cup to be moved to the winter months (November/December) to avoid extreme desert heat.",
-        "Lionel Messi officially became the most capped player in World Cup history by making his 26th appearance.",
-        "Kylian Mbappé scored a hat-trick in the final, a feat not accomplished in the title match since England 1966.",
-        "Morocco stunned the world by becoming the first African nation to reach the semi-finals of a World Cup."
+        "It was the first World Cup to be moved to the winter months (November/December) due to the region's extreme heat.",
+        "Lionel Messi officially became the most capped player in World Cup history during the tournament.",
+        "Kylian Mbappé scored a hat-trick in the final, a feat not accomplished in the showpiece match since 1966.",
+        "Morocco stunned the world by becoming the first African nation to reach the semifinals of a World Cup."
       ]
     },
-    img: "/Azteca.jpg", 
+    img: "/Azteca.jpg",
     galeria: ["/Azteca.jpg", "/Estadio_final.jpg", "/Selecciones.jpg", "/Sedes.jpg"]
   }
 };
