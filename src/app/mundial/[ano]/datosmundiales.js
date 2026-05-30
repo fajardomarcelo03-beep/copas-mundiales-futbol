@@ -38,7 +38,7 @@ export const datosMundiales = {
       curiosidades: [
         "Fue el primer mundial donde se disputó una fase de clasificación previa para poder participar.",
         "Uruguay, el campeón defensor, se negó a viajar en protesta por el masivo boicot europeo de 1930.",
-        "Por primera vez en la historia, un partido mundialista tuvo que definirse en una prórroga.",
+        "Por primera vez en la history, un partido mundialista tuvo que definirse en una prórroga.",
         "Egipto se convirtió en la primera selección del continente africano en participar en un mundial."
       ]
     },
@@ -94,7 +94,7 @@ export const datosMundiales = {
       curiosidades: [
         "No se disputó una final tradicional por eliminación directa, sino un cuadrangular final.",
         "La selección de la India se retiró debido a que la FIFA no les permitió competir descalzos.",
-        "Alcides Ghiggia acuñó: 'Solo tres personas silenciaron el Maracaná: el Papa, Frank Sinatra y yo'.",
+        "Alcides Ghiggia acuñó: 'Solo tres personas silenciaron el Maracaná: el Pope, Frank Sinatra y yo'.",
         "Estados Unidos dio la sorpresa de la época al vencer 1-0 a la poderosa selección de Inglaterra."
       ]
     },
@@ -146,7 +146,7 @@ export const datosMundiales = {
       anfitrion: "Suecia", campeon: "Brasil", subcampeon: "Suecia", 
       goles: "126", partidos: "35", botaOro: "Just Fontaine (13 goles)", 
       equipos: "16 selecciones", balonOro: "Didi (Brasil)",
-      desc: "El torneo que vio nacer la leyenda del rey Pelé con apenas 17 años de edad. Guiada por el joven astro y el regate indescifrable de Garrincha, la selección de Brasil deslumbró al continent europeo y consiguió su primer título mundial.", 
+      desc: "El torneo que vio nacer la leyenda del rey Pelé con apenas 17 años de edad. Guiada por el joven astro y el regate indescifrable de Garrincha, la selección de Brasil deslumbró al continente europeo y consiguió su primer título mundial.", 
       curiosidades: [
         "Just Fontaine estableció el récord aún vigente de más goles anotados en un solo mundial (13).",
         "Pelé se convirtió en el jugador más joven de la historia en anotar en una final.",
@@ -342,7 +342,7 @@ export const datosMundiales = {
       anfitrion: "México", campeon: "Argentina", subcampeon: "Alemania Federal", 
       goles: "132", partidos: "52", botaOro: "Gary Lineker (6 goles)", 
       equipos: "24 selecciones", balonOro: "Diego Maradona (Argentina)",
-      desc: "México asumió la organización de emergencia y se convirtió en el lienzo de la obra cumbre de Diego Armando Maradona. El 'Diez' firmó el torneo individual más dominante de la historia, llevando a la albiceleste a su segunda estrella.", 
+      desc: "México asumió la organización de emergencia y se convirtió en el lienzo de la obra cumbre de Diego Armando Armando Maradona. El 'Diez' firmó el torneo individual más dominante de la historia, llevando a la albiceleste a su segunda estrella.", 
       curiosidades: [
         "Diego Maradona anotó 'La Mano de Dios' y 'El Gol del Siglo' con cuatro minutos de diferencia ante Inglaterra.",
         "México se convirtió en el primer país de la historia en organizar dos Copas del Mundo.",
@@ -412,7 +412,7 @@ export const datosMundiales = {
       equipos: "24 teams", balonOro: "Romário (Brazil)",
       desc: "The tournament shattered all attendance records across massive American stadiums. Romário and Roberto Baggio dragged their respective teams to a final that, for the first time ever, was decided by a penalty shootout after a 0-0 draw.", 
       curiosidades: [
-        "The final came down to an iconic and heartbreaking moment when Roberto Baggio blasted his penalty over the bar.",
+        "The final game down to an iconic and heartbreaking moment when Roberto Baggio blasted his penalty over the bar.",
         "Russia's Oleg Salenko set an individual record by scoring five goals in a single game against Cameroon.",
         "Diego Maradona tested positive for ephedrine after the Nigeria match and was thrown out of the tournament.",
         "FIFA introduced 3 points for a win instead of 2 to incentivize attacking play."
