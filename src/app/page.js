@@ -20,7 +20,7 @@ export default function HomePage() {
         { titulo: "Momentos Inolvidables", subtitulo: "Goles y hazañas grabadas en la memoria colectiva." }
       ],
       origenGloria: "El Camino a la Gloria",
-      resumenTexto: "La Copa Mundial de la FIFA nació in 1930 tras la audaz visión de Jules Rimet, celebrando su primera edición en las tierras orientales de Uruguay. Lo que comenzó como una competencia de trece naciones invitadas se ha transformado en el fenómeno cultural y deportivo más grande del planeta.",
+      resumenTexto: "La Copa Mundial de la FIFA nació en 1930 tras la audaz visión de Jules Rimet, celebrando su primera edición en las tierras orientales de Uruguay. Lo que comenzó como una competencia de trece naciones invitadas se ha transformado en el fenómeno cultural y deportivo más grande del planeta.",
       capitulosTitulo: "Ediciones de la Copa Mundial de la FIFA",
       capitulosSub: "Explora la historia interactiva seleccionando una época del fútbol:",
       eras: {
@@ -176,7 +176,7 @@ export default function HomePage() {
     { id: 5, nombre: "Stade France", foto: "/Stade_france.jpg", info: { construccion: "1998", capacidad: "80,698", ciudad: { es: "Saint-Denis", en: "Saint-Denis" }, final: { es: "Francia 3-0 Brasil (1998)", en: "France 3-0 Brazil (1998)" } } },
     { id: 6, nombre: "Lusail", foto: "/Lusail.jpg", info: { construccion: "2021", capacidad: "88,966", ciudad: { es: "Lusail", en: "Lusail" }, final: { es: "Argentina 3(4)-(2)3 Francia (2022)", en: "Argentina 3(4)-(2)3 France (2022)" } } },
     { id: 7, nombre: "Olympiastadion Berlin", foto: "/Olympiastadion.jpg", info: { construccion: "1936", capacidad: "74,475", ciudad: { es: "Berlín", en: "Berlin" }, final: { es: "Italia 1(5)-(3)1 Francia (2006)", en: "Italy 1(5)-(3)1 France (2006)" } } },
-    { id: 8, nombre: "Rose Bowl", foto: "/RoseBowl.jpg", info: { construccion: "1922", capacidad: "92,542", ciudad: { es: "Pasadena", en: "Pasadena" }, final: { es: "Brasil 0(3)-(2)0 Italia (1994)", en: "Brazil 0(3)-(2)0 Italy (1994)" } } }
+    { id: 8, nombre: "Rose Bowl", foto: "/RoseBowl.jpg", info: { construccion: "1922", capacidad: "92,542", ciudad: { es: "Pasadena", en: "Pasadena" }, final: { es: "Brasil 0(3)-(2)0 Italia (1994)", en: "Brasil 0(3)-(2)0 Italy (1994)" } } }
   ];
 
   // ESTADOS Y HOOKS INTERACTIVOS
@@ -208,7 +208,7 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* 1. CORREGIDO: RECUADRO FIJO (STICKY HEADER) */}
+      {/* 1. CORREGIDO: RECUADRO FIJO (STICKY HEADER) SIN SUPERPOSICIÓN */}
       <div style={stickyNewsBarContainer}>
         <div style={stickyNewsTitleBox}>
           <span>{t.noticiasTitulo}</span>
@@ -227,7 +227,7 @@ export default function HomePage() {
               <strong style={{ color: '#f1c40f' }}>{noticias[indiceNoticia].titulos[idioma]} : </strong>
               <span>{noticias[indiceNoticia].resumen[idioma]}</span>
             </div>
-            <Link href={`/noticias/${noticias[indiceNoticia].id}?lang=${idioma}`} style={stickyNewsLinkStyle}>
+            <Link href={`/noticias/${noticias[indiceNoticia].id}?lang=${idioma}`} style={{...stickyNewsLinkStyle, zIndex: 10000}}>
               {t.leerMas}
             </Link>
           </div>
@@ -338,7 +338,6 @@ export default function HomePage() {
                 }}
                 onMouseEnter={() => setTarjetaHover(pres.id)}
                 onMouseLeave={() => setTarjetaHover(null)}
-                // FIX PROBLEMA 3 MÓVIL: Permite alternar la vuelta con toques limpios en el celular
                 onClick={() => {
                   setTarjetaHover(prev => prev === pres.id ? null : pres.id);
                 }}
@@ -402,7 +401,6 @@ export default function HomePage() {
                 }}
                 onMouseEnter={() => setEstadioHover(estadio.id)}
                 onMouseLeave={() => setEstadioHover(null)}
-                // FIX PROBLEMA 3 MÓVIL: Alterna la vuelta con toques limpios en pantallas táctiles
                 onClick={() => {
                   setEstadioHover(prev => prev === estadio.id ? null : estadio.id);
                 }}
@@ -498,7 +496,7 @@ const itemHitoStyle = { fontSize: '0.88rem', lineHeight: '1.5', color: '#cbd5e1'
 
 const stickyNewsBarContainer = { 
   position: 'sticky', 
-  top: '55px', 
+  top: '0px', 
   zIndex: 9999, 
   width: '100%', 
   height: '65px', 
