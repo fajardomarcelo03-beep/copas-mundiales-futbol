@@ -242,7 +242,7 @@ export const datosMundiales = {
       anfitrion: "Mexico", campeon: "Brazil", subcampeon: "Italy", 
       goles: "95", partidos: "32", botaOro: "Gerd Müller (10 goals)", 
       equipos: "16 teams", balonOro: "Pelé (Brazil)",
-      desc: "Widely considered the greatest World Cup in history. The 1970 Brazilian squad mesmerized the world with total attacking football, allowing Pelé to sign off his World Cup career with a third title at the Estadio Azteca.", 
+      desc: "Widely considered the greatest World Cup in history. The 1970 Brazilian squad mirrored the world with total attacking football, allowing Pelé to sign off his World Cup career with a third title at the Estadio Azteca.", 
       curiosidades: [
         "Yellow and red cards were introduced for the first time, though no player was actually sent off during the tournament.",
         "It was the first World Cup that allowed tactical substitutions during matches (two per team).",
@@ -407,14 +407,9 @@ export const datosMundiales = {
       ]
     },
     en: {
-      anfitrion: "United States", 
-      campeon: "Brazil", 
-      subcampeon: "Italy", 
-      goles: "141", 
-      partidos: "52", 
-      botaOro: "O. Salenko & H. Stoichkov (6)", 
-      equipos: "24 teams", 
-      balonOro: "Romário (Brazil)",
+      anfitrion: "United States", campeon: "Brazil", subcampeon: "Italy", 
+      goles: "141", partidos: "52", botaOro: "O. Salenko & H. Stoichkov (6)", 
+      equipos: "24 teams", balonOro: "Romário (Brazil)",
       desc: "The tournament shattered all attendance records across massive American stadiums. Romário and Roberto Baggio dragged their respective teams to a final that, for the first time ever, was decided by a penalty shootout after a 0-0 draw.", 
       curiosidades: [
         "The final came down to an iconic and heartbreaking moment when Roberto Baggio blasted his penalty over the bar.",
