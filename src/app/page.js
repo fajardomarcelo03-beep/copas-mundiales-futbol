@@ -173,7 +173,7 @@ export default function HomePage() {
     { id: 2, nombre: "Maracaná", foto: "/Maracana.jpg", info: { construccion: "1950", capacidad: "78,838", ciudad: { es: "Río de Janeiro", en: "Rio de Janeiro" }, final: { es: "Uruguay 2-1 Brasil (1950) / Alemania 1-0 Argentina (2014)", en: "Uruguay 2-1 Brazil (1950) / Germany 1-0 Argentina (2014)" } } },
     { id: 3, nombre: "Wembley", foto: "/Wembley.jpg", info: { construccion: "1923 (Reconstruido 2007)", capacidad: "90,000", ciudad: { es: "Londres", en: "London" }, final: { es: "Inglaterra 4-2 Alemania Occidental (1966)", en: "England 4-2 West Germany (1966)" } } },
     { id: 4, nombre: "Centenario", foto: "/Centenario.jpg", info: { construccion: "1930", capacidad: "60,235", ciudad: { es: "Montevideo", en: "Montevideo" }, final: { es: "Uruguay 4-2 Argentina (1930)", en: "Uruguay 4-2 Argentina (1930)" } } },
-    { id: 5, nombre: "Stade France", foto: "/Stade_france.jpg", info: { construccion: "1998", capacidad: "80,698", ciudad: { es: "Saint-Denis", en: "Saint-Denis" }, final: { es: "Francia 3-0 Brasil (1998)", en: "France 3-0 Brazil (1998)" } } },
+    { id: 5, nombre: "Stade France", foto: "/Stade_france.jpg", info: { construccion: "1998", capacidad: "80,698", ciudad: { es: "Saint-Denis", en: "Saint-Denis" }, final: { es: "Francia 3-0 Brasil (1998)", en: "France 3-0 Brasil (1998)" } } },
     { id: 6, nombre: "Lusail", foto: "/Lusail.jpg", info: { construccion: "2021", capacidad: "88,966", ciudad: { es: "Lusail", en: "Lusail" }, final: { es: "Argentina 3(4)-(2)3 Francia (2022)", en: "Argentina 3(4)-(2)3 France (2022)" } } },
     { id: 7, nombre: "Olympiastadion Berlin", foto: "/Olympiastadion.jpg", info: { construccion: "1936", capacidad: "74,475", ciudad: { es: "Berlín", en: "Berlin" }, final: { es: "Italia 1(5)-(3)1 Francia (2006)", en: "Italy 1(5)-(3)1 France (2006)" } } },
     { id: 8, nombre: "Rose Bowl", foto: "/RoseBowl.jpg", info: { construccion: "1922", capacidad: "92,542", ciudad: { es: "Pasadena", en: "Pasadena" }, final: { es: "Brasil 0(3)-(2)0 Italia (1994)", en: "Brasil 0(3)-(2)0 Italy (1994)" } } }
@@ -338,8 +338,11 @@ export default function HomePage() {
                 }}
                 onMouseEnter={() => setTarjetaHover(pres.id)}
                 onMouseLeave={() => setTarjetaHover(null)}
-                onClick={() => {
-                  setTarjetaHover(prev => prev === pres.id ? null : pres.id);
+                onTouchStart={() => setTarjetaHover(prev => prev === pres.id ? null : pres.id)}
+                onClick={(e) => {
+                  if (e.pointerType === 'mouse') {
+                    setTarjetaHover(prev => prev === pres.id ? null : pres.id);
+                  }
                 }}
               >
                 <div 
@@ -401,8 +404,11 @@ export default function HomePage() {
                 }}
                 onMouseEnter={() => setEstadioHover(estadio.id)}
                 onMouseLeave={() => setEstadioHover(null)}
-                onClick={() => {
-                  setEstadioHover(prev => prev === estadio.id ? null : estadio.id);
+                onTouchStart={() => setEstadioHover(prev => prev === estadio.id ? null : estadio.id)}
+                onClick={(e) => {
+                  if (e.pointerType === 'mouse') {
+                    setEstadioHover(prev => prev === estadio.id ? null : estadio.id);
+                  }
                 }}
               >
                 <div
