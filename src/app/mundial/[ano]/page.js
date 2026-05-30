@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 export default function MundialPage({ params }) {
-  // Nota: Dependiendo de tu configuración de enrutamiento en Next.js (App Router),
-  // podrías desestructurar 'params' aquí. Por ejemplo: const { anoMundial } = params;
-  const anoMundial = params?.anoMundial || "2022"; 
+  // 1. CAPTURA SEGURA Y EXCLUSIVA DE LA URL DINÁMICA (Sin fallback estático "2022" para evitar bloqueos)
+  const asyncParams = use(params);
+  const anoMundial = asyncParams?.ano; 
   const idioma = "es"; // Puede alternarse dinámicamente entre 'es' y 'en'
 
   // Estados globales de la UI
@@ -20,7 +20,7 @@ export default function MundialPage({ params }) {
         anfitrion: "Corea del Sur / Japón", campeon: "Brasil", subcampeon: "Alemania", 
         goles: "161", partidos: "64", botaOro: "Ronaldo (8 goles)", 
         equipos: "32 selecciones", balonOro: "Oliver Kahn (Alemania)",
-        desc: "La histórica primera Copa del Mundo en suelo asiático y coorganizada por dos naciones. Corea-Japón 2002 estuvo plagada de sorpresas mayúsculas desde el silbatazo inicial, incluyendo la eliminación prematura de potencias como Francia y Argentina, y el polémico avance del anfitrión surcoreano hasta semifinales. El torneo significó la redención absoluta del astro brasileño Ronaldo. La gran final en Yokohama enfrentó a los dos máximos colosos de la historia, donde Brasil derrotó 2-0 a Alemania para coronar su ansiado e invicto 'Pentacampeonato'.", 
+        desc: "La histórica primera Copa del Mundo en suelo asiático y coorganizada por dos naciones. Corea-Japón 2002 estuvo plagada de sorpresas mayúsculas desde el silbatazo inicial, incluyendo la eliminación prematura de potencias como Francia y Argentina, y el polémico avance del anfitrión surcoreano hasta semifinales. El torneo significó la redención absoluta del astro brasileño Ronaldo. La gran final en Yokohama enfrentó a los dos máximos colosos de la historia, donde Brasil derrotó 2-0 a Alemania para coronar su ansiado e invicto 'Pentacentenario'.", 
         curiosidades: [
           "El guardameta alemán Oliver Kahn hizo historia al convertirse en el primer y único portero en ganar el premio al Balón de Oro como mejor jugador del torneo.",
           "El delantero turco Hakan Şükür anotó el gol más rápido en la historia de los mundiales, batiendo la portería de Corea del Sur a los 11 segundos de haber iniciado el partido.",
@@ -148,7 +148,7 @@ export default function MundialPage({ params }) {
         anfitrion: "Rusia", campeon: "Francia", subcampeon: "Croacia", 
         goles: "169", partidos: "64", botaOro: "Harry Kane (6 goles)", 
         equipos: "32 selecciones", balonOro: "Luka Modrić (Croacia)",
-        desc: "La Copa de la revolución tecnológica y la consagración de la verticalidad francesa. Rusia 2018 marcó un antes y un después en el arbitraje con la introducción oficial del VAR, modificando la dinámica del juego y elevando la cantidad de penaltis concedidos. El certamen vio la heroica travesía de Croacia, que encadenó prórrogas extenuantes guiada por un excelso Luka Modrić. La final en el Estadio Luzhnikí de Moscú ofreció un espectáculo ofensivo inusual; la pegada letal, velocidad y solidez de Francia terminaron imponiéndose 4-2 para otorgar a 'Les Bleus' su segunda estrella mundial.", 
+        desc: "La Copa de la revolución tecnológica y la consagración de la verticalidad francesa. Rusia 2018 marcó un antes y un después en el arbitraje con la introducción oficial del VAR, modificando la dinámica del juego y elevando la cantidad de penaltis concedidos. El certamen vio la heroica travesía de Croacia, que encadenó prórrogas extenuantes guiada por un excelso Luka Modrić. La final en el Estadio Luzhnikí de Moscú deparó un espectáculo ofensivo inusual; la pegada letal, velocidad y solidez de Francia terminaron imponiéndose 4-2 para otorgar a 'Les Bleus' su segunda estrella mundial.", 
         curiosidades: [
           "Fue el primer mundial de fútbol de la historia en implementar oficialmente el sistema de videoarbitraje (VAR), revisando jugadas decisivas en tiempo real.",
           "El guardameta egipcio Essam El-Hadary rompió un récord histórico de longevidad al disputar el torneo y atajar un penalti a la edad de 45 años y 161 días.",
@@ -229,22 +229,26 @@ export default function MundialPage({ params }) {
     }
   };
 
+  // CONTROL INTERNO ASÍNCRONO ANTES DE PROCESAR UI
+  if (!anoMundial) return <div style={mainContainerStyle}>Cargando Enciclopedia Histórica...</div>;
+
   const t = textosInterface[idioma] || textosInterface["es"];
   const mundialSeleccionado = datosMundiales[anoMundial];
 
-  // Estructura Fallback para mundiales que aún no tengan datos definidos
+  // Estructura Fallback Dinámica para mundiales antiguos (1930 - 1998)
   const mundial = mundialSeleccionado ? mundialSeleccionado[idioma] : {
-    anfitrion: idioma === "es" ? "País Sede" : "Host Country",
-    campeon: idioma === "es" ? "Por definir" : "TBD",
+    anfitrion: idioma === "es" ? "Por mapear" : "TBD",
+    campeon: idioma === "es" ? "Información histórica" : "Historical data",
     subcampeon: idioma === "es" ? "Por definir" : "TBD",
     goles: "--", partidos: "--", 
-    botaOro: idioma === "es" ? "Por registrar" : "To register", 
-    equipos: idioma === "es" ? "Por registrar" : "To register", 
+    botaOro: idioma === "es" ? "Ver base central" : "Check logs", 
+    equipos: idioma === "es" ? "Múltiples sedes" : "Multiple teams", 
     balonOro: idioma === "es" ? "Por registrar" : "To register",
-    desc: idioma === "es" ? "Información detallada en proceso de carga." : "Detailed information currently loading.",
-    curiosidades: Array(6).fill(idioma === "es" ? "Dato histórico en proceso de redacción." : "Historical data in drafting process.")
+    desc: idioma === "es" ? `Información detallada del Mundial ${anoMundial} en proceso de carga.` : `Detailed information for ${anoMundial} World Cup currently loading.`,
+    curiosidades: Array(6).fill(idioma === "es" ? "Dato histórico en proceso de redacción y verificación." : "Historical data in drafting process.")
   };
 
+  // Modificación dinámica: Evita heredar fotos fijas de un año moderno si se busca uno clásico
   const galeriaUrls = mundialSeleccionado ? mundialSeleccionado.galeria : Array(8).fill("/Mundial1930.jpeg");
   const imgPoster = mundialSeleccionado ? mundialSeleccionado.img : "/Mundial1930.jpeg";
 
@@ -276,7 +280,7 @@ export default function MundialPage({ params }) {
     }
   };
 
-  // CONTROL DE ERROR: Años fuera de rango histórico lógico
+  // CONTROL DE ERROR RÍGIDO: Años fuera del rango global del fútbol internacional
   if (!mundialSeleccionado && (parseInt(anoMundial) < 1930 || parseInt(anoMundial) > 2026)) {
     return (
       <div style={errorContainerStyle}>
@@ -287,7 +291,6 @@ export default function MundialPage({ params }) {
     );
   }
 
-  // RETORNO DE LA INTERFAZ DE USUARIO (JSX)
   return (
     <main style={mainContainerStyle}>
       <Link href="/" style={backLinkFlotanteStyle} className="btn-flotante">
@@ -303,7 +306,7 @@ export default function MundialPage({ params }) {
           <p style={subtitleStyle}>📍 {t.sede}: <span style={sedeHighlightStyle}>{mundial.anfitrion}</span></p>
         </div>
 
-        {/* BLOQUE SUPERIOR OPTIMIZADO (Póster y Tarjeta Estadísticas) */}
+        {/* BLOQUE SUPERIOR (Póster y Tarjeta Estadísticas) */}
         <div style={topGridStyle} className="top-grid-responsivo">
           <div style={imageWrapperStyle} className="poster-contenedor">
             <Image 
@@ -329,7 +332,7 @@ export default function MundialPage({ params }) {
           </div>
         </div>
 
-        {/* RESUMEN CRÓNICA DE LA EDICIÓN */}
+        {/* RESUMEN CRÓNICA DE LA EDICIÓN - CORREGIDO: style={wideSectionCardStyle} */}
         <section style={wideSectionCardStyle}>
           <h2 style={seccionTitleStyle}>{t.tituloCronica}</h2>
           <div style={accentLineStyle}></div>
@@ -418,70 +421,42 @@ export default function MundialPage({ params }) {
         </div>
       )}
 
-      {/* ⚡ MEDIA QUERIES SOLUCIÓN RESPONSIVA GLOBAL ⚡ */}
+      {/* ⚡ MEDIA QUERIES RESPONSIVAS ⚡ */}
       <style jsx global>{`
         .foto-galeria:hover { transform: scale(1.08); }
         .contenedor-galeria-item:hover .overlay-galeria { opacity: 1 !important; }
         .btn-flotante:hover { transform: scale(1.04); background-color: #f8fafc !important; }
         .flecha-modal:hover { background-color: rgba(255, 255, 255, 0.25) !important; transform: scale(1.1); }
         
-        /* Modificaciones para Tablets y Móviles Grandes (< 900px) */
         @media (max-width: 900px) {
-          .top-grid-responsivo {
-            grid-template-columns: 1fr !important;
-            gap: 20px !important;
-          }
-          .poster-contenedor {
-            height: 380px !important;
-          }
-          .galeria-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-          .btn-flotante {
-            position: relative !important;
-            top: 0 !important;
-            right: 0 !important;
-            margin-bottom: 20px !important;
-            display: inline-flex !important;
-          }
+          .top-grid-responsivo { grid-template-columns: 1fr !important; gap: 20px !important; }
+          .poster-contenedor { height: 380px !important; }
+          .galeria-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .btn-flotante { position: relative !important; top: 0 !important; right: 0 !important; margin-bottom: 25px !important; display: inline-flex !important; }
         }
 
-        /* Modificaciones para Celulares (< 600px) */
         @media (max-width: 600px) {
-          .poster-contenedor {
-            height: 300px !important;
-          }
-          .curiosidades-grid {
-            grid-template-columns: 1fr !important;
-            gap: 15px !important;
-          }
-          .curiosidad-card {
-            padding: 16px !important;
-          }
-          .flecha-modal {
-            width: 45px !important;
-            height: 45px !important;
-            font-size: 2rem !important;
-          }
+          .poster-contenedor { height: 300px !important; }
+          .curiosidades-grid { grid-template-columns: 1fr !important; gap: 15px !important; }
+          .curiosidad-card { padding: 16px !important; }
+          .flecha-modal { width: 45px !important; height: 45px !important; font-size: 2rem !important; }
         }
       `}</style>
     </main>
   );
 }
 
-// ---- ARQUITECTURA DE ESTILOS PREMIUM CORREGIDOS (CSS-in-JS) ----
-const mainContainerStyle = { backgroundColor: '#f8fafc', minHeight: '100vh', padding: '100px 20px 50px 20px', fontFamily: 'system-ui, -apple-system, sans-serif' };
+// ---- ARQUITECTURA DE ESTILOS PREMIUM (CSS-in-JS) ----
+const mainContainerStyle = { backgroundColor: '#f8fafc', minHeight: '100vh', padding: '120px 20px 50px 20px', fontFamily: 'system-ui, -apple-system, sans-serif' };
 const wrapperStyle = { maxWidth: '1140px', margin: '0 auto' };
-const backLinkFlotanteStyle = { position: 'fixed', top: '95px', right: '40px', color: '#0a192f', textDecoration: 'none', fontWeight: '700', fontSize: '0.88rem', display: 'inline-flex', alignItems: 'center', backgroundColor: '#ffffff', padding: '10px 18px', borderRadius: '30px', boxShadow: '0 4px 12px rgba(0,0,0,0.08)', transition: 'transform 0.2s ease, background-color 0.2s ease', zIndex: 90 };
+const backLinkFlotanteStyle = { position: 'fixed', top: '30px', right: '40px', color: '#0a192f', textDecoration: 'none', fontWeight: '700', fontSize: '0.88rem', display: 'inline-flex', alignItems: 'center', backgroundColor: '#ffffff', padding: '10px 18px', borderRadius: '30px', boxShadow: '0 4px 12px rgba(0,0,0,0.08)', transition: 'transform 0.2s ease, background-color 0.2s ease', zIndex: 200 };
 const flechaIconStyle = { marginRight: '6px', fontSize: '1.05rem' };
 const headerContainerStyle = { marginBottom: '35px' };
 const titleStyle = { fontSize: '2.2rem', fontWeight: '800', color: '#0a192f', marginBottom: '8px', letterSpacing: '-0.03em' };
 const subtitleStyle = { fontSize: '1.05rem', color: '#64748b', fontWeight: '500' };
 const sedeHighlightStyle = { color: '#0f172a', fontWeight: '700' };
-
 const topGridStyle = { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '35px', marginBottom: '45px' };
 const imageWrapperStyle = { position: 'relative', height: '480px', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 10px 25px rgba(0,0,0,0.05)' };
-
 const statsCardStyle = { backgroundColor: '#ffffff', borderRadius: '16px', padding: '25px', boxShadow: '0 10px 25px rgba(0,0,0,0.02)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', border: '1px solid #edf2f7' };
 const statsTitleStyle = { fontSize: '1.35rem', fontWeight: '700', color: '#0a192f', marginBottom: '12px' };
 const dividerStyle = { height: '3px', backgroundColor: '#3b82f6', width: '50px', borderRadius: '2px', marginBottom: '15px' };
@@ -502,22 +477,10 @@ const curiosidadTextoStyle = { fontSize: '0.95rem', color: '#334155', lineHeight
 const galeriaGridCuatroPorDosStyle = { display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' };
 const galeriaItemStyle = { position: 'relative', height: '150px', borderRadius: '12px', overflow: 'hidden', cursor: 'pointer', boxShadow: '0 4px 12px rgba(0,0,0,0.03)' };
 const galeriaOverlayStyle = { position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(10, 25, 47, 0.7)', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#ffffff', fontSize: '0.85rem', fontWeight: '600', opacity: 0, transition: 'opacity 0.3s ease', backdropFilter: 'blur(3px)' };
-const modalLightboxStyle = { position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'rgba(10, 25, 47, 0.92)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 1000, backdropFilter: 'blur(6px)' };
+const modalLightboxStyle = { position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'rgba(10, 25, 47, 0.92)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 2000, backdropFilter: 'blur(6px)' };
 const modalContenedorStyle = { position: 'relative', backgroundColor: 'transparent', padding: '10px', borderRadius: '12px' };
 const closeModalBtn = { position: 'absolute', top: '-45px', right: '0px', backgroundColor: 'transparent', border: 'none', color: '#ffffff', fontSize: '1.5rem', cursor: 'pointer', outline: 'none' };
 const errorContainerStyle = { display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', backgroundColor: '#f8fafc', fontFamily: 'sans-serif', gap: '15px' };
 const btnVolverStyle = { padding: '10px 20px', backgroundColor: '#3b82f6', color: '#fff', textDecoration: 'none', borderRadius: '8px', fontWeight: '600' };
-
-const flechaNavegacionIzquierdaStyle = {
-  position: 'absolute', left: '20px', backgroundColor: 'rgba(255, 255, 255, 0.12)', border: 'none',
-  color: '#ffffff', fontSize: '3rem', width: '50px', height: '50px', borderRadius: '50%',
-  cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center',
-  userSelect: 'none', transition: 'all 0.2s ease', outline: 'none', zIndex: 1010, paddingBottom: '7px'
-};
-
-const flechaNavegacionDerechaStyle = {
-  position: 'absolute', right: '20px', backgroundColor: 'rgba(255, 255, 255, 0.12)', border: 'none',
-  color: '#ffffff', fontSize: '3rem', width: '50px', height: '50px', borderRadius: '50%',
-  cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center',
-  userSelect: 'none', transition: 'all 0.2s ease', outline: 'none', zIndex: 1010, paddingBottom: '7px'
-};
+const flechaNavegacionIzquierdaStyle = { position: 'absolute', left: '20px', backgroundColor: 'rgba(255, 255, 255, 0.12)', border: 'none', color: '#ffffff', fontSize: '3rem', width: '50px', height: '50px', borderRadius: '50%', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', userSelect: 'none', transition: 'all 0.2s ease', outline: 'none', zIndex: 2010, paddingBottom: '7px' };
+const flechaNavegacionDerechaStyle = { position: 'absolute', right: '20px', backgroundColor: 'rgba(255, 255, 255, 0.12)', border: 'none', color: '#ffffff', fontSize: '3rem', width: '50px', height: '50px', borderRadius: '50%', cursor: 'pointer', display: 'flex', justifyContent: 'center', alignItems: 'center', userSelect: 'none', transition: 'all 0.2s ease', outline: 'none', zIndex: 2010, paddingBottom: '7px' };
