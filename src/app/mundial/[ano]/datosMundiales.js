@@ -26,8 +26,8 @@ export const datosMundiales = {
         "Héctor Castro won the World Cup for Uruguay despite missing his right forearm."
       ]
     },
-    img: "/Estadio_final.jpg",
-    galeria: ["/Estadio_final.jpg", "/Selecciones.jpg", "/Sedes.jpg", "/Azteca.jpg"]
+    img: "/Mundial_30_7.jpg",
+    galeria: ["/Mundial_30_1.jpeg", "/Mundial_30_2.jpeg", "/Mundial_30_3.jpg", "/Mundial_30_4.jpg", "/Mundial_30_5.jpg", "/Mundial_30_6.jpg", "/Mundial_30_7.jpg", "/Mundial_30_8.jpeg"]
   },
   "1934": {
     es: {
@@ -54,8 +54,8 @@ export const datosMundiales = {
         "Egypt became the first team from the African continent to play in a World Cup."
       ]
     },
-    img: "/Sedes.jpg",
-    galeria: ["/Sedes.jpg", "/Estadio_final.jpg", "/Selecciones.jpg", "/Azteca.jpg"]
+    img: "/Mundial_34_5.jpg",
+    galeria: ["/Mundial_34.jpg", "/Mundial_34_1.jpg", "/Mundial_34_2.jpg", "/Mundial_34_3.jpg", "/Mundial_34_4.jpg", "/Mundial_34_5.jpg", "/Mundial_34_6.jpg", "/Mundial_34_7.jpg"]
   },
   "1938": {
     es: {
@@ -82,8 +82,8 @@ export const datosMundiales = {
         "Italy wore a controversial all-black alternative kit in their match against hosts France."
       ]
     },
-    img: "/Selecciones.jpg",
-    galeria: ["/Selecciones.jpg", "/Sedes.jpg", "/Estadio_final.jpg", "/Azteca.jpg"]
+    img: "/Mundial_38_2.jpg",
+    galeria: ["/Mundial_38.jpg", "/Mundial_38_1.jpg", "/Mundial_38_2.jpg", "/Mundial_38_3.jpg", "/Mundial_38_4.jpg", "/Mundial_38_5.jpg", "/Mundial_38_6.jpg", "/Mundial_38_7.jpg"]
   },
   "1950": {
     es: {
@@ -110,8 +110,8 @@ export const datosMundiales = {
         "The United States pulled off a massive upset by defeating a powerful England squad 1-0."
       ]
     },
-    img: "/Estadio_final.jpg",
-    galeria: ["/Estadio_final.jpg", "/Azteca.jpg", "/Selecciones.jpg", "/Sedes.jpg"]
+    img: "/Mundial_50.jpg",
+    galeria: ["/Mundial_50.jpg", "/Mundial_50_1.jpg", "/Mundial_50_2.jpg", "/Mundial_50_3.jpg", "/Mundial_50_4.jpg", "/Mundial_50_5.jpg", "/Mundial_50_6.jpg", "/Mundial_50_7.jpg"]
   },
   "1954": {
     es: {
@@ -138,8 +138,8 @@ export const datosMundiales = {
         "It was the first World Cup to be broadcast live on international television."
       ]
     },
-    img: "/Sedes.jpg",
-    galeria: ["/Sedes.jpg", "/Selecciones.jpg", "/Estadio_final.jpg", "/Azteca.jpg"]
+    img: "/Mundial_54.jpg",
+    galeria: ["/Mundial_54.jpg", "/Mundial_54_1.jpg", "/Mundial_54_2.jpg", "/Mundial_54_3.jpg", "/Mundial_54_4.jpg", "/Mundial_54_5.jpg", "/Mundial_54_6.jpg", "/Mundial_54_7.jpg"]
   },
   "1958": {
     es: {
@@ -166,8 +166,8 @@ export const datosMundiales = {
         "The first goalless draw (0-0) in tournament history happened between Brazil and England."
       ]
     },
-    img: "/Selecciones.jpg",
-    galeria: ["/Selecciones.jpg", "/Azteca.jpg", "/Sedes.jpg", "/Estadio_final.jpg"]
+    img: "/Mundial_58.jpg",
+    galeria: ["/Mundial_58.jpg", "/Mundial_58_1.jpg", "/Mundial_58_2.jpg", "/Mundial_58_3.jpg", "/Mundial_58_4.jpg", "/Mundial_58_5.jpg", "/Mundial_58_6.jpg", "/Mundial_58_7.jpg"]
   },
   "1962": {
     es: {
@@ -194,8 +194,8 @@ export const datosMundiales = {
         "Six different players tied for the top scorer award with just 4 goals each."
       ]
     },
-    img: "/Azteca.jpg",
-    galeria: ["/Azteca.jpg", "/Estadio_final.jpg", "/Sedes.jpg", "/Selecciones.jpg"]
+    img: "/Mundial_62.jpg",
+    galeria: ["/Mundial_62.jpg", "/Mundial_62_1.jpg", "/Mundial_62_2.jpg", "/Mundial_62_3.jpg", "/Mundial_62_4.jpg", "/Mundial_62_5.jpg", "/Mundial_62_6.jpg", "/Mundial_62_7.jpg"]
   },
   "1966": {
     es: {
@@ -222,8 +222,8 @@ export const datosMundiales = {
         "It was the first World Cup to feature an official mascot: a cartoon lion named Willie."
       ]
     },
-    img: "/Estadio_final.jpg",
-    galeria: ["/Estadio_final.jpg", "/Selecciones.jpg", "/Sedes.jpg", "/Azteca.jpg"]
+    img: "/Mundial_66_1.jpg",
+    galeria: ["/Mundial_66.jpg", "/Mundial_66_1.jpg", "/Mundial_66_2.jpg", "/Mundial_66_3.jpg", "/Mundial_66_4.jpg", "/Mundial_66_5.jpg", "/Mundial_66_6.jpg", "/Mundial_66_7.jpg"]
   },
   "1970": {
     es: {
@@ -250,8 +250,8 @@ export const datosMundiales = {
         "Brazil kept the Jules Rimet trophy permanently after becoming the first nation to win three World Cups."
       ]
     },
-    img: "/Azteca.jpg",
-    galeria: ["/Azteca.jpg", "/Sedes.jpg", "/Estadio_final.jpg", "/Selecciones.jpg"]
+    img: "/Mundial_70_6.jpg",
+    galeria: ["/Mundial_70.jpg", "/Mundial_70_1.jpg", "/Mundial_70_2.jpg", "/Mundial_70_3.jpg", "/Mundial_70_4.jpg", "/Mundial_70_5.jpg", "/Mundial_70_6.jpg", "/Mundial_70_7.jpg"]
   },
   "1974": {
     es: {
@@ -278,8 +278,8 @@ export const datosMundiales = {
         "Zaire's defender Mwepu Ilunga famously ran out of the wall and kicked the ball away before Brazil could take a free kick."
       ]
     },
-    img: "/Sedes.jpg",
-    galeria: ["/Sedes.jpg", "/Selecciones.jpg", "/Estadio_final.jpg", "/Azteca.jpg"]
+    img: "/Mundial_74_3.jpg",
+    galeria: ["/Mundial_74.jpg", "/Mundial_74_1.jpg", "/Mundial_74_2.jpg", "/Mundial_74_3.jpg", "/Mundial_74_4.jpg", "/Mundial_74_5.jpg", "/Mundial_74_6.jpg", "/Mundial_74_7.jpg"]
   },
   "1978": {
     es: {
@@ -306,8 +306,8 @@ export const datosMundiales = {
         "Argentina secured their place in the final following a heavily controversial 6-0 win over Peru."
       ]
     },
-    img: "/Selecciones.jpg",
-    galeria: ["/Selecciones.jpg", "/Azteca.jpg", "/Sedes.jpg", "/Estadio_final.jpg"]
+    img: "/Mundial_78_1.jpg",
+    galeria: ["/Mundial_78.jpg", "/Mundial_78_1.jpg", "/Mundial_78_2.jpg", "/Mundial_78_3.jpg", "/Mundial_78_4.jpg", "/Mundial_78_5.jpg", "/Mundial_78_6.jpg", "/Mundial_78_7.jpg"]
   },
   "1982": {
     es: {
@@ -334,8 +334,8 @@ export const datosMundiales = {
         "West Germany and Austria played out a mutually beneficial 1-0 win, prompting FIFA to synchronize final group games."
       ]
     },
-    img: "/Sedes.jpg",
-    galeria: ["/Sedes.jpg", "/Estadio_final.jpg", "/Selecciones.jpg", "/Azteca.jpg"]
+    img: "/Mundial_82_6.jpg",
+    galeria: ["/Mundial_82.jpg", "/Mundial_82_1.jpg", "/Mundial_82_2.jpg", "/Mundial_82_3.jpg", "/Mundial_82_4.jpg", "/Mundial_82_5.jpg", "/Mundial_82_6.jpg", "/Mundial_82_7.jpg"]
   },
   "1986": {
     es: {
@@ -362,8 +362,8 @@ export const datosMundiales = {
         "Uruguay's José Batista received the fastest red card in tournament history, sent off just 56 seconds into a game."
       ]
     },
-    img: "/Azteca.jpg",
-    galeria: ["/Azteca.jpg", "/Selecciones.jpg", "/Estadio_final.jpg", "/Sedes.jpg"]
+    img: "/Mundial_86_6.jpg",
+    galeria: ["/Mundial_86.jpg", "/Mundial_86_1.jpg", "/Mundial_86_2.jpg", "/Mundial_86_3.jpg", "/Mundial_86_4.jpg", "/Mundial_86_5.jpg", "/Mundial_86_6.jpg", "/Mundial_86_7.jpg"]
   },
   "1990": {
     es: {
@@ -390,8 +390,8 @@ export const datosMundiales = {
         "Pedro Monzón and Gustavo Dezotti became the first players ever to be sent off in a World Cup final match."
       ]
     },
-    img: "/Selecciones.jpg",
-    galeria: ["/Selecciones.jpg", "/Sedes.jpg", "/Azteca.jpg", "/Estadio_final.jpg"]
+    img: "/Mundial_90_5.jpg",
+    galeria: ["/Mundial_90.jpg", "/Mundial_90_1.jpg", "/Mundial_90_2.jpg", "/Mundial_90_3.jpg", "/Mundial_90_4.jpg", "/Mundial_90_5.jpg", "/Mundial_90_6.jpg", "/Mundial_90_7.jpg"]
   },
   "1994": {
     es: {
@@ -418,8 +418,8 @@ export const datosMundiales = {
         "FIFA introduced 3 points for a win instead of 2 to incentivize attacking play."
       ]
     },
-    img: "/Estadio_final.jpg",
-    galeria: ["/Estadio_final.jpg", "/Azteca.jpg", "/Sedes.jpg", "/Selecciones.jpg"]
+    img: "/Mundial_94.jpg",
+    galeria: ["/Mundial_94.jpg", "/Mundial_94_1.jpg", "/Mundial_94_2.jpg", "/Mundial_94_3.jpg", "/Mundial_94_4.jpg", "/Mundial_94_5.jpg", "/Mundial_94_6.jpg", "/Mundial_94_7.jpg"]
   },
   "1998": {
     es: {
@@ -446,8 +446,8 @@ export const datosMundiales = {
         "French defender Laurent Blanc kissed goalkeeper Fabien Barthez's bald head before every game for good luck."
       ]
     },
-    img: "/Selecciones.jpg",
-    galeria: ["/Selecciones.jpg", "/Sedes.jpg", "/Estadio_final.jpg", "/Azteca.jpg"]
+    img: "/Mundial_98.jpg",
+    galeria: ["/Mundial_98.jpg", "/Mundial_98_1.jpg", "/Mundial_98_2.jpg", "/Mundial_98_3.jpg", "/Mundial_98_4.jpg", "/Mundial_98_5.jpg", "/Mundial_98_6.jpg", "/Mundial_98_7.jpg"]
   },
   "2002": {
     es: {
@@ -474,8 +474,8 @@ export const datosMundiales = {
         "Ronaldo debuted a bizarre half-shaved haircut in the knockout rounds to distract media attention from his injury."
       ]
     },
-    img: "/Sedes.jpg",
-    galeria: ["/Sedes.jpg", "/Azteca.jpg", "/Selecciones.jpg", "/Estadio_final.jpg"]
+    img: "/Mundial_02_5.jpg",
+    galeria: ["/Mundial_02.jpg", "/Mundial_02_1.jpg", "/Mundial_02_2.jpg", "/Mundial_02_3.jpg", "/Mundial_02_4.jpg", "/Mundial_02_5.jpg", "/Mundial_02_6.jpg", "/Mundial_02_7.jpg"]
   },
   "2006": {
     es: {
@@ -502,8 +502,8 @@ export const datosMundiales = {
         "Switzerland was knocked out in the Round of 16 without conceding a single goal during regular play."
       ]
     },
-    img: "/Selecciones.jpg",
-    galeria: ["/Selecciones.jpg", "/Estadio_final.jpg", "/Sedes.jpg", "/Azteca.jpg"]
+    img: "/Mundial_06.jpg",
+    galeria: ["/Mundial_06.jpg", "/Mundial_06_1.jpg", "/Mundial_06_2.jpg", "/Mundial_06_3.jpg", "/Mundial_06_4.jpg", "/Mundial_06_5.jpg", "/Mundial_06_6.jpg", "/Mundial_06_7.jpg"]
   },
   "2010": {
     es: {
@@ -530,8 +530,8 @@ export const datosMundiales = {
         "The aggressive final between Spain and the Netherlands set a record with 14 yellow cards shown."
       ]
     },
-    img: "/Sedes.jpg",
-    galeria: ["/Sedes.jpg", "/Selecciones.jpg", "/Azteca.jpg", "/Estadio_final.jpg"]
+    img: "/Mundial_10.jpg",
+    galeria: ["/Mundial_10.jpg", "/Mundial_10_1.jpg", "/Mundial_10_2.jpg", "/Mundial_10_3.jpg", "/Mundial_10_4.jpg", "/Mundial_10_5.jpg", "/Mundial_10_6.jpg", "/Mundial_10_7.jpg"]
   },
   "2014": {
     es: {
@@ -558,8 +558,8 @@ export const datosMundiales = {
         "Costa Rica achieved their greatest-ever run, winning a group of former champions and reaching the quarter-finals unbeaten."
       ]
     },
-    img: "/Estadio_final.jpg",
-    galeria: ["/Estadio_final.jpg", "/Sedes.jpg", "/Selecciones.jpg", "/Azteca.jpg"]
+    img: "/Mundial_14.jpg",
+    galeria: ["/Mundial_14.jpg", "/Mundial_14_1.jpg", "/Mundial_14_2.jpg", "/Mundial_14_3.jpg", "/Mundial_14_4.jpg", "/Mundial_14_5.jpg", "/Mundial_14_6.jpg", "/Mundial_14_7.jpg"]
   },
   "2018": {
     es: {
@@ -586,8 +586,8 @@ export const datosMundiales = {
         "The 'Fair Play' tiebreaker rule (based on cards) was used for the first time to separate teams in a group."
       ]
     },
-    img: "/Selecciones.jpg",
-    galeria: ["/Selecciones.jpg", "/Azteca.jpg", "/Estadio_final.jpg", "/Sedes.jpg"]
+    img: "/Mundial_18.jpg",
+    galeria: ["/Mundial_18.jpg", "/Mundial_18_1.jpg", "/Mundial_18_2.jpg", "/Mundial_18_3.jpg", "/Mundial_18_4.jpg", "/Mundial_18_5.jpg", "/Mundial_18_6.jpg", "/Mundial_18_7.jpg"]
   },
   "2022": {
     es: {
@@ -624,7 +624,7 @@ export const datosMundiales = {
         "Morocco stunned the world by becoming the first African nation to reach the semifinals of a World Cup."
       ]
     },
-    img: "/Azteca.jpg",
-    galeria: ["/Azteca.jpg", "/Estadio_final.jpg", "/Selecciones.jpg", "/Sedes.jpg"]
+    img: "/Mundial_22.jpg",
+    galeria: ["/Mundial_22.jpg", "/Mundial_22_1.jpg", "/Mundial_22_2.jpg", "/Mundial_22_3.jpg", "/Mundial_22_4.jpg", "/Mundial_22_5.jpg", "/Mundial_22_6.jpg", "/Mundial_22_7.jpg"]
   }
 };
