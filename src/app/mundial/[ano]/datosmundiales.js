@@ -146,7 +146,7 @@ export const datosMundiales = {
       anfitrion: "Suecia", campeon: "Brasil", subcampeon: "Suecia", 
       goles: "126", partidos: "35", botaOro: "Just Fontaine (13 goles)", 
       equipos: "16 selecciones", balonOro: "Didi (Brasil)",
-      desc: "El torneo que vio nacer la leyenda del rey Pelé con apenas 17 años de edad. Guiada por el joven astro y el regate indescifrable de Garrincha, la selección de Brasil deslumbró al continente europeo y consiguió su primer título mundial.", 
+      desc: "El torneo que vio nacer la leyenda del rey Pelé con apenas 17 años de edad. Guiada por el joven astro y el regate indescifrable de Garrincha, la selección de Brasil deslumbró al continent europeo y consiguió su primer título mundial.", 
       curiosidades: [
         "Just Fontaine estableció el récord aún vigente de más goles anotados en un solo mundial (13).",
         "Pelé se convirtió en el jugador más joven de la historia en anotar en una final.",
@@ -188,9 +188,9 @@ export const datosMundiales = {
       equipos: "16 teams", balonOro: "Garrincha (Brazil)",
       desc: "Despite suffering a devastating earthquake beforehand, Chile organized a memorable tournament. It featured an intensely physical style of play where Brazil defended their title without an injured Pelé, thanks to an outstanding Garrincha.", 
       curiosidades: [
-        "Pelé suffered a severe muscle injury in the second match, forcing Garrincha to take full leadership.",
-        "The match between Chile and Italy was dubbed 'The Battle of Santiago' due to violent tackles and police intervention.",
-        "Colombia's Marcos Coll scored the only Olympic goal (directly from a corner) in history against the USSR's Lev Yashin.",
+        "Pelé suffered a muscle injury in the second match, forcing Garrincha to take full leadership.",
+        "The match between Chile and Italy was dubbed 'The Battle of Santiago' due to violent tackles.",
+        "Colombia's Marcos Coll scored the only Olympic goal in history against the USSR's Lev Yashin.",
         "Six different players tied for the top scorer award with just 4 goals each."
       ]
     },
@@ -274,7 +274,7 @@ export const datosMundiales = {
       curiosidades: [
         "The current FIFA World Cup Trophy, designed by Italian sculptor Silvio Gazzaniga, was introduced.",
         "Chile's Carlos Caszely made history by receiving the first straight red card shown in World Cup history.",
-        "West Germany and East Germany played each other in the group stage, with the East winning 1-0 in a historic match.",
+        "West Germany and East Germany played each other in the group stage, with the East winning 1-0.",
         "Zaire's defender Mwepu Ilunga famously ran out of the wall and kicked the ball away before Brazil could take a free kick."
       ]
     },
@@ -300,8 +300,8 @@ export const datosMundiales = {
       equipos: "16 teams", balonOro: "Mario Kempes (Argentina)",
       desc: "Staged during a highly complex domestic political situation, Argentina hosted its first World Cup. César Luis Menotti's men triumphed in a dramatic extra-time final against the Netherlands, led by an extraordinary Mario Kempes.", 
       curiosidades: [
-        "France had to wear green-and-white striped jerseys from local club Kimberley due to a kit clash with Hungary.",
-        "Johan Cruyff chose not to attend, later revealing it was due to a kidnapping attempt on his family in Barcelona.",
+        "France had to wear green-and-white striped jerseys from local club Kimberley due to a kit clash.",
+        "Johan Cruyff chose not to attend, later revealing it was due to a kidnapping attempt on his family.",
         "The final kick-off was delayed because Argentina complained about a plaster cast on René van de Kerkhof's wrist.",
         "Argentina secured their place in the final following a heavily controversial 6-0 win over Peru."
       ]
@@ -328,10 +328,10 @@ export const datosMundiales = {
       equipos: "24 teams", balonOro: "Paolo Rossi (Italy)",
       desc: "The first expanded tournament featuring 24 nations turned into a festival of incredible football. Italy overcame a sluggish start to unleash a lethal Paolo Rossi, clinching their third title at the Santiago Bernabéu.", 
       curiosidades: [
-        "Northern Ireland's Norman Whiteside broke Pelé's record as the youngest player to debut at a World Cup (17 years, 41 days).",
+        "Northern Ireland's Norman Whiteside broke Pelé's record as the youngest player to debut (17 years, 41 days).",
         "The president of the Kuwaiti FA walked onto the pitch and successfully convinced the referee to disallow a goal scored by France.",
-        "Hungary recorded the biggest win in World Cup history by defeating El Salvador 10-1 in Elche.",
-        "West Germany and Austria played out a mutually beneficial 1-0 win, prompting FIFA to synchronize final group games later on."
+        "Hungary recorded the biggest win in World Cup history by defeating El Salvador 10-1.",
+        "West Germany and Austria played out a mutually beneficial 1-0 win, prompting FIFA to synchronize final group games."
       ]
     },
     img: "/Sedes.jpg",
@@ -358,7 +358,7 @@ export const datosMundiales = {
       curiosidades: [
         "Diego Maradona scored both 'The Hand of God' and the 'Goal of the Century' just four minutes apart against England.",
         "Mexico became the first nation in history to host the FIFA World Cup on two separate occasions.",
-        "The famous stadium crowd coordination known as 'The Wave' was popularized globally during this tournament.",
+        "The famous stadium crowd coordination known as 'The Wave' was popularized globally.",
         "Uruguay's José Batista received the fastest red card in tournament history, sent off just 56 seconds into a game."
       ]
     },
@@ -407,9 +407,14 @@ export const datosMundiales = {
       ]
     },
     en: {
-      anfitrion: "United States", campeon: "Brazil", subcampeon: "Italy", 
-      goles: "141", partidos: "52", botaOro: "O. Salenko & H. Stoichkov (6)", 
-      equipos: "24 teams", balonOro: "Romário (Brazil)",
+      anfitrion: "United States", 
+      campeon: "Brazil", 
+      subcampeon: "Italy", 
+      goles: "141", 
+      partidos: "52", 
+      botaOro: "O. Salenko & H. Stoichkov (6)", 
+      equipos: "24 teams", 
+      balonOro: "Romário (Brazil)",
       desc: "The tournament shattered all attendance records across massive American stadiums. Romário and Roberto Baggio dragged their respective teams to a final that, for the first time ever, was decided by a penalty shootout after a 0-0 draw.", 
       curiosidades: [
         "The final came down to an iconic and heartbreaking moment when Roberto Baggio blasted his penalty over the bar.",
