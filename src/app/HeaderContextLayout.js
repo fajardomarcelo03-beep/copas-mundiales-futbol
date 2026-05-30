@@ -83,7 +83,7 @@ export default function HeaderContextLayout({ children }) {
             height: auto !important;
             min-height: unset !important;
             max-height: unset !important;
-            padding: 14px 16px !important;
+            padding: 15px !important;
             gap: 12px !important;
             text-align: center !important;
             align-items: center !important;
@@ -92,31 +92,46 @@ export default function HeaderContextLayout({ children }) {
             box-sizing: border-box !important;
           }
 
-          /* 2. Ajustamos los textos internos (Título de la noticia y descripción) */
+          /* 2. Rompemos las limitaciones de espacio de cualquier sub-contenedor interno para que el texto baje */
+          div[style*="background-color"][style*="f1"] div,
+          div[style*="background-color"][style*="241"] div,
+          div[style*="background-color"][style*="f1"] span,
+          div[style*="background-color"][style*="241"] span {
+            width: auto !important;
+            max-width: 100% !important;
+            height: auto !important;
+            max-height: unset !important;
+            overflow: visible !important;
+            white-space: normal !important; /* Fuerza a que el texto salte de línea si es largo */
+            text-overflow: unset !important;
+            display: inline-block !important;
+          }
+
+          /* Ajustamos los textos internos (Título de la noticia, p, h2, h3 y descripción) */
           div[style*="background-color"] h2,
           div[style*="background-color"] h3,
           div[style*="background-color"] p,
           div[style*="background-color"] span {
             font-size: 0.95rem !important;
-            margin: 0 !important;
+            margin: 5px 0 !important;
             white-space: normal !important;
             overflow: visible !important;
             text-overflow: unset !important;
             max-width: 100% !important;
-          }
-
-          div[style*="background-color"] div {
-            font-size: 0.88rem !important;
-            white-space: normal !important;
             line-height: 1.4 !important;
-            overflow: visible !important;
-            max-width: 100% !important;
           }
 
-          /* Forzamos que los contenedores hijos del Flex hereden un ancho responsivo */
+          /* Forzamos que los contenedores hijos del Flex hereden un ancho responsivo total */
           div[style*="background-color"] > div {
             width: 100% !important;
             display: block !important;
+          }
+
+          /* Evitamos que listados o elementos simulando carrusel restrinjan el ancho del bloque */
+          div[style*="background-color"] ul,
+          div[style*="background-color"] li {
+            white-space: normal !important;
+            width: 100% !important;
           }
 
           /* 3. Ajustamos el botón o enlace "Leer más" para que sea visible, grande y centrado en móviles */
@@ -124,12 +139,16 @@ export default function HeaderContextLayout({ children }) {
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
-            margin: 4px auto 0 auto !important;
+            margin: 6px auto 0 auto !important;
             font-size: 0.85rem !important;
             padding: 8px 16px !important;
             width: auto !important;
             min-width: 120px !important;
             white-space: nowrap !important;
+            background-color: #000000 !important;
+            color: #ffffff !important;
+            border-radius: 4px !important;
+            text-decoration: none !important;
           }
         }
       `}</style>
