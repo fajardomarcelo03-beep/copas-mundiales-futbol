@@ -186,6 +186,9 @@ export default function HomePage() {
   const [tarjetaHover, setTarjetaHover] = useState(null);
   const [estadioHover, setEstadioHover] = useState(null);
 
+  // FILTRO ESTRATÉGICO: Corta las últimas 5 noticias y las reversa para colocar la más nueva primero
+  const ultimasNoticias = noticias.slice(-5).reverse();
+
   const mundialesFiltrados = todosLosMundiales.filter(m => m.era === eraActiva);
   const esEraDeCinco = eraActiva === 'pioneros' || eraActiva === 'moderna';
 
@@ -198,39 +201,41 @@ export default function HomePage() {
     return () => clearInterval(temporizador);
   }, [indiceActual]);
 
-  // Efecto automático para el carrusel superior de noticias destacados (Rota cada 6 segundos)
+  // Efecto automático para el carrusel superior (Vinculado dinámicamente a la longitud de ultimasNoticias)
   useEffect(() => {
     const tempNoticias = setInterval(() => {
-      setIndiceNoticia((prev) => (prev === noticias.length - 1 ? 0 : prev + 1));
+      setIndiceNoticia((prev) => (prev === ultimasNoticias.length - 1 ? 0 : prev + 1));
     }, 6000);
     return () => clearInterval(tempNoticias);
-  }, [indiceNoticia]);
+  }, [indiceNoticia, ultimasNoticias.length]);
 
   return (
     <div>
-      {/* 1. CORREGIDO: RECUADRO FIJO (STICKY HEADER) SIN SUPERPOSICIÓN */}
+      {/* 1. RECUADRO FIJO (STICKY HEADER) CON FILTRO OPTIMIZADO A LAS 5 ÚLTIMAS */}
       <div style={stickyNewsBarContainer}>
         <div style={stickyNewsTitleBox}>
           <span>{t.noticiasTitulo}</span>
         </div>
         <div style={stickyNewsCarouselWrapper}>
-          <div style={stickyNewsSlideStyle}>
-            <div style={stickyNewsImageContainer}>
-              <Image 
-                src={noticias[indiceNoticia].img} 
-                alt="Noticia Mundial 2026" 
-                fill 
-                style={{ objectFit: 'cover' }} 
-              />
+          {ultimasNoticias.length > 0 && (
+            <div style={stickyNewsSlideStyle}>
+              <div style={stickyNewsImageContainer}>
+                <Image 
+                  src={ultimasNoticias[indiceNoticia]?.img} 
+                  alt="Noticia Mundial 2026" 
+                  fill 
+                  style={{ objectFit: 'cover' }} 
+                />
+              </div>
+              <div style={stickyNewsTextContent}>
+                <strong style={{ color: '#f1c40f' }}>{ultimasNoticias[indiceNoticia]?.titulos[idioma]} : </strong>
+                <span>{ultimasNoticias[indiceNoticia]?.resumen[idioma]}</span>
+              </div>
+              <Link href={`/noticias/${ultimasNoticias[indiceNoticia]?.id}?lang=${idioma}`} style={{...stickyNewsLinkStyle, zIndex: 10000}}>
+                {t.leerMas}
+              </Link>
             </div>
-            <div style={stickyNewsTextContent}>
-              <strong style={{ color: '#f1c40f' }}>{noticias[indiceNoticia].titulos[idioma]} : </strong>
-              <span>{noticias[indiceNoticia].resumen[idioma]}</span>
-            </div>
-            <Link href={`/noticias/${noticias[indiceNoticia].id}?lang=${idioma}`} style={{...stickyNewsLinkStyle, zIndex: 10000}}>
-              {t.leerMas}
-            </Link>
-          </div>
+          )}
         </div>
       </div>
 
