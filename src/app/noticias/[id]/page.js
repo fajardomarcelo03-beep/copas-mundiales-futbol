@@ -179,7 +179,7 @@ export default function DetalleNoticiaPage() {
     "noticia-3": { 
       imagen: "/Selecciones.jpg", 
       es: { 
-        titulo: "La Revolución de 2026: Un Hito Histórico en las Copas Mundiales", 
+        titulo: "Formato Y calendario Oficial de la Copa del Mundo 2026", 
         subtitulo: "Conoce a detalle la transformación del formato de competición y el cronograma definitivo de la fase final.", 
         contenido: (
           <div style={{ fontSize: '1.05rem', lineHeight: '1.75', color: '#2d3748' }}>
@@ -256,7 +256,7 @@ export default function DetalleNoticiaPage() {
         tiempoLectura: "5 min" 
       }, 
       en: { 
-        titulo: "The 2026 Revolution: A Historical Milestone in World Cup History", 
+        titulo: "**Official Format and Schedule of the 2026 FIFA World Cup",
         subtitulo: "An in-depth look at the structural competition upgrade and the definitive knockout phase schedule.", 
         contenido: (
           <div style={{ fontSize: '1.05rem', lineHeight: '1.75', color: '#2d3748' }}>
