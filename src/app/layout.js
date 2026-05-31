@@ -1,5 +1,7 @@
 import './globals.css';
 import HeaderContextLayout from './HeaderContextLayout';
+// 📈 NUMERAL 2: Importación oficial del componente de analíticas de Vercel
+import { Analytics } from '@vercel/analytics/react';
 
 // 🌐 METADATOS OFICIALES PARA SEO (Procesados en el Servidor)
 export const metadata = {
@@ -14,6 +16,9 @@ export default function RootLayout({ children }) {
         <HeaderContextLayout>
           {children}
         </HeaderContextLayout>
+        
+        {/* 📈 NUMERAL 2: Renderizado del componente para registrar tráfico global */}
+        <Analytics />
       </body>
     </html>
   );
