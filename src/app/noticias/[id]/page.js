@@ -12,14 +12,19 @@ import { noticiasData } from '../../data/noticiasData';
 function obtenerBandera(codigo) {
   const flags = {
     'ECU': 'ec', 'QAT': 'qa', 'SEN': 'sn', 'NED': 'nl',
-    'ENG': 'gb-eng', 'IRN': 'ir', 'USA': 'us', 'WAL': 'gb-wls',
+    'ENG': 'gb', 'IRN': 'ir', 'USA': 'us', 'WAL': 'gb',
     'ARG': 'ar', 'KSA': 'sa', 'MEX': 'mx', 'POL': 'pl',
     'FRA': 'fr', 'AUS': 'au', 'DEN': 'dk', 'TUN': 'tn',
     'ESP': 'es', 'CRC': 'cr', 'GER': 'de', 'JPN': 'jp',
     'BEL': 'be', 'CAN': 'ca', 'MAR': 'ma', 'CRO': 'hr',
     'BRA': 'br', 'SRB': 'rs', 'SUI': 'ch', 'CMR': 'cm',
     'POR': 'pt', 'GHA': 'gh', 'URU': 'uy', 'KOR': 'kr',
-    'RSA': 'za', 'ITA': 'it', 'COL': 'co', 'CHL': 'cl'
+    'RSA': 'za', 'ITA': 'it', 'COL': 'co', 'CHL': 'cl',
+    'BIH': 'ba', 'HAI': 'ht', 'SCO': 'gb', 'PAR': 'py',
+    'TUR': 'tr', 'CW': 'cw',  'CIV': 'ci', 'SWE': 'se',
+    'EGY': 'eg', 'NZL': 'nz', 'CPV': 'cv', 'IRQ': 'iq',
+    'NOR': 'no', 'ALG': 'dz', 'AUT': 'at', 'JOR': 'jo',
+    'COD': 'cd', 'UZB': 'uz', 'PAN': 'pa'
   };
   return flags[codigo] || 'un';
 }
@@ -35,7 +40,12 @@ function traducirEquipo(codigo, idioma) {
       'BEL': 'Bélgica', 'CAN': 'Canadá', 'MAR': 'Marruecos', 'CRO': 'Croacia',
       'BRA': 'Brasil', 'SRB': 'Serbia', 'SUI': 'Suiza', 'CMR': 'Camerún',
       'POR': 'Portugal', 'GHA': 'Ghana', 'URU': 'Uruguay', 'KOR': 'Corea del Sur',
-      'RSA': 'Sudáfrica', 'ITA': 'Italia', 'COL': 'Colombia', 'CHL': 'Chile'
+      'RSA': 'Sudáfrica', 'ITA': 'Italia', 'COL': 'Colombia', 'CHL': 'Chile',
+      'BIH': 'Bosnia y Herzegovina', 'HAI': 'Haití', 'SCO': 'Escocia', 'PAR': 'Paraguay',
+      'TUR': 'Turquía', 'CW': 'Curazao', 'CIV': 'Costa de Marfil', 'SWE': 'Suecia',
+      'EGY': 'Egipto', 'NZL': 'Nueva Zelanda', 'CPV': 'Cabo Verde', 'IRQ': 'Irak',
+      'NOR': 'Noruega', 'ALG': 'Argelia', 'AUT': 'Austria', 'JOR': 'Jordania',
+      'COD': 'Rep. Dem. del Congo', 'UZB': 'Uzbekistán', 'PAN': 'Panamá'
     },
     en: {
       'ECU': 'Ecuador', 'QAT': 'Qatar', 'SEN': 'Senegal', 'NED': 'Netherlands',
@@ -43,10 +53,15 @@ function traducirEquipo(codigo, idioma) {
       'ARG': 'Argentina', 'KSA': 'Saudi Arabia', 'MEX': 'Mexico', 'POL': 'Poland',
       'FRA': 'France', 'AUS': 'Australia', 'DEN': 'Denmark', 'TUN': 'Tunisia',
       'ESP': 'Spain', 'CRC': 'Costa Rica', 'GER': 'Germany', 'JPN': 'Japan',
-      'BEL': 'Belgium', 'CAN': 'Canada', 'MAR': 'Morocco', 'CRO': 'Croacia',
+      'BEL': 'Belgium', 'CAN': 'Canada', 'MAR': 'Morocco', 'CRO': 'Croatia',
       'BRA': 'Brazil', 'SRB': 'Serbia', 'SUI': 'Switzerland', 'CMR': 'Cameroon',
       'POR': 'Portugal', 'GHA': 'Ghana', 'URU': 'Uruguay', 'KOR': 'South Korea',
-      'RSA': 'South Africa', 'ITA': 'Italy', 'COL': 'Colombia', 'CHL': 'Chile'
+      'RSA': 'South Africa', 'ITA': 'Italy', 'COL': 'Colombia', 'CHL': 'Chile',
+      'BIH': 'Bosnia and Herzegovina', 'HAI': 'Haiti', 'SCO': 'Scotland', 'PAR': 'Paraguay',
+      'TUR': 'Turkey', 'CW': 'Curaçao', 'CIV': 'Ivory Coast', 'SWE': 'Sweden',
+      'EGY': 'Egypt', 'NZL': 'New Zealand', 'CPV': 'Cape Verde', 'IRQ': 'Iraq',
+      'NOR': 'Norway', 'ALG': 'Algeria', 'AUT': 'Austria', 'JOR': 'Jordan',
+      'COD': 'DR Congo', 'UZB': 'Uzbekistan', 'PAN': 'Panama'
     }
   };
   return nombres[idioma]?.[codigo] || codigo;
@@ -69,6 +84,9 @@ const diasMundialData = [
   { id: "2026-06-15", esDia: "LUN", enDia: "MON", num: "15", mes: "JUN" },
   { id: "2026-06-16", esDia: "MAR", enDia: "TUE", num: "16", mes: "JUN" },
   { id: "2026-06-17", esDia: "MIE", enDia: "WED", num: "17", mes: "JUN" },
+  { id: "2026-06-18", esDia: "JUE", enDia: "THU", num: "18", mes: "JUN" },
+  { id: "2026-06-19", esDia: "VIE", enDia: "FRI", num: "19", mes: "JUN" },
+  { id: "2026-06-20", esDia: "SAB", enDia: "SAT", num: "20", mes: "JUN" },
 ];
 
 const todosLosPartidosMundial = [
@@ -81,9 +99,114 @@ const todosLosPartidosMundial = [
 ];
 
 const tablaPosicionesData = [
-  { grupo: "GRUPO A", lineas: [ { posicion: 1, equipo: "MEX", pj: 0, pts: 0, b: "mx" }, { posicion: 2, equipo: "RSA", pj: 0, pts: 0, b: "za" }, { posicion: 3, equipo: "ITA", pj: 0, pts: 0, b: "it" }, { posicion: 4, equipo: "CHL", pj: 0, pts: 0, b: "cl" } ] },
-  { grupo: "GRUPO B", lineas: [ { posicion: 1, equipo: "USA", pj: 0, pts: 0, b: "us" }, { posicion: 2, equipo: "ENG", pj: 0, pts: 0, b: "gb-eng" }, { posicion: 3, equipo: "IRN", pj: 0, pts: 0, b: "ir" }, { posicion: 4, equipo: "WAL", pj: 0, pts: 0, b: "gb-wls" } ] },
-  { grupo: "GRUPO C", lineas: [ { posicion: 1, equipo: "ARG", pj: 0, pts: 0, b: "ar" }, { posicion: 2, equipo: "KSA", pj: 0, pts: 0, b: "sa" }, { posicion: 3, equipo: "POL", pj: 0, pts: 0, b: "pl" }, { posicion: 4, equipo: "COL", pj: 0, pts: 0, b: "co" } ] }
+  { 
+    grupo: "GRUPO A", 
+    lineas: [ 
+      { posicion: 1, equipo: "MEX", pj: 0, pts: 0, b: "mx" }, 
+      { posicion: 2, equipo: "RSA", pj: 0, pts: 0, b: "za" }, 
+      { posicion: 3, equipo: "ITA", pj: 0, pts: 0, b: "it" }, 
+      { posicion: 4, equipo: "CHL", pj: 0, pts: 0, b: "cl" } 
+    ] 
+  },
+  { 
+    grupo: "GRUPO B", 
+    lineas: [ 
+      { posicion: 1, equipo: "CAN", pj: 0, pts: 0, b: "ca" }, 
+      { posicion: 2, equipo: "BIH", pj: 0, pts: 0, b: "ba" }, 
+      { posicion: 3, equipo: "QAT", pj: 0, pts: 0, b: "qa" }, 
+      { posicion: 4, equipo: "SUI", pj: 0, pts: 0, b: "ch" } 
+    ] 
+  },
+  { 
+    grupo: "GRUPO C", 
+    lineas: [ 
+      { posicion: 1, equipo: "BRA", pj: 0, pts: 0, b: "br" }, 
+      { posicion: 2, equipo: "MAR", pj: 0, pts: 0, b: "ma" }, 
+      { posicion: 3, equipo: "HAI", pj: 0, pts: 0, b: "ht" }, 
+      { posicion: 4, equipo: "SCO", pj: 0, pts: 0, b: "gb" } 
+    ] 
+  },
+  { 
+    grupo: "GRUPO D", 
+    lineas: [ 
+      { posicion: 1, equipo: "USA", pj: 0, pts: 0, b: "us" }, 
+      { posicion: 2, equipo: "PAR", pj: 0, pts: 0, b: "py" }, 
+      { posicion: 3, equipo: "AUS", pj: 0, pts: 0, b: "au" }, 
+      { posicion: 4, equipo: "TUR", pj: 0, pts: 0, b: "tr" } 
+    ] 
+  },
+  { 
+    grupo: "GRUPO E", 
+    lineas: [ 
+      { posicion: 1, equipo: "GER", pj: 0, pts: 0, b: "de" }, 
+      { posicion: 2, equipo: "CW", pj: 0, pts: 0, b: "cw" }, 
+      { posicion: 3, equipo: "CIV", pj: 0, pts: 0, b: "ci" }, 
+      { posicion: 4, equipo: "ECU", pj: 0, pts: 0, b: "ec" } 
+    ] 
+  },
+  { 
+    grupo: "GRUPO F", 
+    lineas: [ 
+      { posicion: 1, equipo: "NED", pj: 0, pts: 0, b: "nl" }, 
+      { posicion: 2, equipo: "JPN", pj: 0, pts: 0, b: "jp" }, 
+      { posicion: 3, equipo: "SWE", pj: 0, pts: 0, b: "se" }, 
+      { posicion: 4, equipo: "TUN", pj: 0, pts: 0, b: "tn" } 
+    ] 
+  },
+  { 
+    grupo: "GRUPO G", 
+    lineas: [ 
+      { posicion: 1, equipo: "BEL", pj: 0, pts: 0, b: "be" }, 
+      { posicion: 2, equipo: "EGY", pj: 0, pts: 0, b: "eg" }, 
+      { posicion: 3, equipo: "IRN", pj: 0, pts: 0, b: "ir" }, 
+      { posicion: 4, equipo: "NZL", pj: 0, pts: 0, b: "nz" } 
+    ] 
+  },
+  { 
+    grupo: "GRUPO H", 
+    lineas: [ 
+      { posicion: 1, equipo: "ESP", pj: 0, pts: 0, b: "es" }, 
+      { posicion: 2, equipo: "CPV", pj: 0, pts: 0, b: "cv" }, 
+      { posicion: 3, equipo: "KSA", pj: 0, pts: 0, b: "sa" }, 
+      { posicion: 4, equipo: "URU", pj: 0, pts: 0, b: "uy" } 
+    ] 
+  },
+  { 
+    grupo: "GRUPO I", 
+    lineas: [ 
+      { posicion: 1, equipo: "FRA", pj: 0, pts: 0, b: "fr" }, 
+      { posicion: 2, equipo: "SEN", pj: 0, pts: 0, b: "sn" }, 
+      { posicion: 3, equipo: "IRQ", pj: 0, pts: 0, b: "iq" }, 
+      { posicion: 4, equipo: "NOR", pj: 0, pts: 0, b: "no" } 
+    ] 
+  },
+  { 
+    grupo: "GRUPO J", 
+    lineas: [ 
+      { posicion: 1, equipo: "ARG", pj: 0, pts: 0, b: "ar" }, 
+      { posicion: 2, equipo: "ALG", pj: 0, pts: 0, b: "dz" }, 
+      { posicion: 3, equipo: "AUT", pj: 0, pts: 0, b: "at" }, 
+      { posicion: 4, equipo: "JOR", pj: 0, pts: 0, b: "jo" } 
+    ] 
+  },
+  { 
+    grupo: "GRUPO K", 
+    lineas: [ 
+      { posicion: 1, equipo: "POR", pj: 0, pts: 0, b: "pt" }, 
+      { posicion: 2, equipo: "COD", pj: 0, pts: 0, b: "cd" }, 
+      { posicion: 3, equipo: "UZB", pj: 0, pts: 0, b: "uz" }, 
+      { posicion: 4, equipo: "COL", pj: 0, pts: 0, b: "co" } 
+    ] 
+  },
+  { 
+    grupo: "GRUPO L", 
+    lineas: [ 
+      { posicion: 1, equipo: "ENG", pj: 0, pts: 0, b: "gb" }, 
+      { posicion: 2, equipo: "CRO", pj: 0, pts: 0, b: "hr" }, 
+      { posicion: 3, equipo: "GHA", pj: 0, pts: 0, b: "gh" }, 
+      { posicion: 4, equipo: "PAN", pj: 0, pts: 0, b: "pa" } 
+    ] 
+  }
 ];
 
 // =========================================================================
