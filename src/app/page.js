@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useIdioma } from './HeaderContextLayout';
-import { noticiasData } from '@/app/data/noticiasData';
+import { noticiasData } from './data/noticiasData';
 
 export default function HomePage() {
   const { idioma } = useIdioma();
