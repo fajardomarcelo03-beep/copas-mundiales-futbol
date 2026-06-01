@@ -42,7 +42,7 @@ function traducirEquipo(codigo, idioma) {
     en: {
       'ALG': 'Algeria', 'ARG': 'Argentina', 'AUS': 'Australia', 'AUT': 'Austria', 'BEL': 'Belgium',
       'BIH': 'Bosnia & Herz.', 'BRA': 'Brazil', 'CAN': 'Canada', 'CIV': 'Ivory Coast', 'COD': 'DR Congo',
-      'COL': 'Colombia', 'CPV': 'Cape Verde', 'CRO': 'Croacia', 'CW':  'Curaçao', 'CZE': 'Czechia',
+      'COL': 'Colombia', 'CPV': 'Cape Verde', 'CRO': 'Croatia', 'CW':  'Curaçao', 'CZE': 'Czechia',
       'EGY': 'Egypt', 'ENG': 'England', 'ESP': 'Spain', 'FRA': 'France', 'GER': 'Germany',
       'GHA': 'Ghana', 'HAI': 'Haiti', 'IRN': 'Iran', 'IRQ': 'Iraq', 'ITA': 'Italy',
       'JOR': 'Jordan', 'JPN': 'Japan', 'KOR': 'South Korea', 'KSA': 'Saudi Arabia', 'MAR': 'Morocco',
@@ -122,7 +122,7 @@ const todosLosPartidosMundial = [
   { fecha: "2026-06-25", e1: 'CW',  e2: 'CIV', hora: '04:00 PM', estadio: 'Estadio Filadelfia' },
   { fecha: "2026-06-25", e1: 'ECU', e2: 'GER', hora: '04:00 PM', estadio: 'Estadio New York' },
   { fecha: "2026-06-25", e1: 'JPN', e2: 'SWE', hora: '07:00 PM', estadio: 'Estadio Dallas' },
-  { fecha: "2026-06-25", e1: 'TUN', e2: 'NED', hora: '07:00 PM', estadio: 'Estadio Kansas City' }, // 🔧 CORREGIDO: Se removió el '!' intruso
+  { fecha: "2026-06-25", e1: 'TUN', e2: 'NED', hora: '07:00 PM', estadio: 'Estadio Kansas City' },
   { fecha: "2026-06-25", e1: 'TUR', e2: 'USA', hora: '10:00 PM', estadio: 'Estadio Los Ángeles' },
   { fecha: "2026-06-25", e1: 'PAR', e2: 'AUS', hora: '10:00 PM', estadio: 'Estadio San Francisco' },
   { fecha: "2026-06-26", e1: 'NOR', e2: 'FRA', hora: '03:00 PM', estadio: 'Estadio Boston' },
@@ -146,7 +146,7 @@ const tablaPosicionesData = [
   { grupo: "GRUPO D", lineas: [ { posicion: 1, equipo: "USA", pj: 0, pts: 0, b: "us" }, { posicion: 2, equipo: "PAR", pj: 0, pts: 0, b: "py" }, { posicion: 3, equipo: "AUS", pj: 0, pts: 0, b: "au" }, { posicion: 4, equipo: "TUR", pj: 0, pts: 0, b: "tr" } ] },
   { grupo: "GRUPO E", lineas: [ { posicion: 1, equipo: "GER", pj: 0, pts: 0, b: "de" }, { posicion: 2, equipo: "CW",  pj: 0, pts: 0, b: "cw" }, { posicion: 3, equipo: "CIV", pj: 0, pts: 0, b: "ci" }, { posicion: 4, equipo: "ECU", pj: 0, pts: 0, b: "ec" } ] },
   { grupo: "GRUPO F", lineas: [ { posicion: 1, equipo: "NED", pj: 0, pts: 0, b: "nl" }, { posicion: 2, equipo: "JPN", pj: 0, pts: 0, b: "jp" }, { posicion: 3, equipo: "SWE", pj: 0, pts: 0, b: "se" }, { posicion: 4, equipo: "TUN", pj: 0, pts: 0, b: "tn" } ] },
-  { grupo: "GRUPO G", lineas: [ { posicion: 1, equipo: "BEL", pj: 0, pts: 0, b: "be" }, { posicion: 2, equipo: "EGY", pj: 0, pts: 0, b: "eg" }, { posicion: 3, equipo: "IRN", pj: 0, pts: 0, b: "ir" }, { posicion: 4, equipo: "NZL", pj: 0, pts: 0, b: "nz" } ] },
+  { grupo: "GRUPO G", lineas: [ { posicion: 1, equipo: "BEL", pj: 0, pts: 0, b: "be" }, { posicion: 2, equipo: "EGY", pj: 0, pts: 0, b: "eg" }, { !!posicion: 3, equipo: "IRN", pj: 0, pts: 0, b: "ir" }, { posicion: 4, equipo: "NZL", pj: 0, pts: 0, b: "nz" } ] },
   { grupo: "GRUPO H", lineas: [ { posicion: 1, equipo: "ESP", pj: 0, pts: 0, b: "es" }, { posicion: 2, equipo: "CPV", pj: 0, pts: 0, b: "cv" }, { posicion: 3, equipo: "KSA", pj: 0, pts: 0, b: "sa" }, { posicion: 4, equipo: "URU", pj: 0, pts: 0, b: "uy" } ] },
   { grupo: "GRUPO I", lineas: [ { posicion: 1, equipo: "FRA", pj: 0, pts: 0, b: "fr" }, { posicion: 2, equipo: "SEN", pj: 0, pts: 0, b: "sn" }, { posicion: 3, equipo: "IRQ", pj: 0, pts: 0, b: "iq" }, { posicion: 4, equipo: "NOR", pj: 0, pts: 0, b: "no" } ] },
   { grupo: "GRUPO J", lineas: [ { posicion: 1, equipo: "ARG", pj: 0, pts: 0, b: "ar" }, { posicion: 2, equipo: "ALG", pj: 0, pts: 0, b: "dz" }, { posicion: 3, equipo: "AUT", pj: 0, pts: 0, b: "at" }, { posicion: 4, equipo: "JOR", pj: 0, pts: 0, b: "jo" } ] },
@@ -166,6 +166,9 @@ export default function DetalleNoticiaPage({ params }) {
   const [partidosFiltrados, setPartidosFiltrados] = useState([]);
   const [sugerenciasAleatorias, setSugerenciasAleatorias] = useState([]);
   
+  // 🔧 CONTROL DE VISIBILIDAD PARA EL DESVANECIMIENTO (SCROLL)
+  const [mostrarRecuadro, setMostrarRecuadro] = useState(true);
+  const ultimoScrollY = useRef(0);
   const carruselFechasRef = useRef(null);
 
   useEffect(() => {
@@ -179,6 +182,23 @@ export default function DetalleNoticiaPage({ params }) {
     const mezcladas = [...filtradas].sort(() => 0.5 - Math.random());
     setSugerenciasAleatorias(mezcladas.slice(0, 4));
   }, [id]);
+
+  // 🔧 DETECTOR DE SCROLL: Muestra al subir y desvanece al bajar
+  useEffect(() => {
+    const manejarScroll = () => {
+      const posicionActualScroll = window.scrollY;
+      
+      if (posicionActualScroll > 80 && posicionActualScroll > ultimoScrollY.current) {
+        setMostrarRecuadro(false); // Desvanece al bajar el mouse
+      } else {
+        setMostrarRecuadro(true);  // Reaparece al subir el mouse
+      }
+      ultimoScrollY.current = posicionActualScroll;
+    };
+
+    window.addEventListener('scroll', manejarScroll);
+    return () => window.removeEventListener('scroll', manejarScroll);
+  }, []);
 
   const moverCarrusel = (direccion) => {
     if (carruselFechasRef.current) {
@@ -207,8 +227,15 @@ export default function DetalleNoticiaPage({ params }) {
 
   return (
     <div style={containerStyle}>
-      {/* 📌 RECUADRO SUPERIOR FIJO */}
-      <div style={recuadroSuperiorFijoContainer} className="recuadro-superior-fijo">
+      {/* 📌 RECUADRO SUPERIOR CON DESVANECIMIENTO DINÁMICO */}
+      <div 
+        style={{
+          ...recuadroSuperiorFijoContainer,
+          transform: mostrarRecuadro ? 'translateY(0)' : 'translateY(-120%)',
+          opacity: mostrarRecuadro ? 1 : 0,
+        }} 
+        className="recuadro-superior-fijo"
+      >
         <div style={gridInternoRecuadroStyle} className="grid-interno-recuadro">
           
           {/* SECCIÓN PARTIDOS */}
@@ -217,7 +244,6 @@ export default function DetalleNoticiaPage({ params }) {
               <span style={indicadorEnVivoStyle}>🔴</span> {idioma === 'es' ? 'PARTIDOS POR FECHA' : 'MATCHES BY DATE'}
             </div>
             
-            {/* MES FIJO SUPERIOR */}
             <div style={mesFijoSuperiorStyle}>
               {idioma === 'es' ? 'JUNIO 2026' : 'JUNE 2026'}
             </div>
@@ -248,7 +274,6 @@ export default function DetalleNoticiaPage({ params }) {
                 partidosFiltrados.map((partido, idx) => (
                   <div key={idx} style={tarjetaPartidoSuperiorStyle} className="tarjeta-partido-superior">
                     
-                    {/* FILA DE EQUIPOS */}
                     <div style={filaEquiposMatchStyle}>
                       <div style={bloqueEquipoMatchStyle}>
                         <img src={`https://flagcdn.com/w80/${obtenerBandera(partido.e1)}.png`} alt="E1" style={banderaMatchStyle} />
@@ -263,7 +288,6 @@ export default function DetalleNoticiaPage({ params }) {
                       </div>
                     </div>
 
-                    {/* BLOQUE INFERIOR: DETALLES DE HORA Y ESTADIO */}
                     <div style={detallesMatchAbajoStyle}>
                       <div style={horaMatchStyle}>{partido.hora}</div>
                       <div style={infoLugarMatchStyle} className="lugar-partido-text">{partido.estadio}</div>
@@ -403,6 +427,7 @@ export default function DetalleNoticiaPage({ params }) {
         @media (max-width: 992px) {
           .recuadro-superior-fijo {
             position: relative !important; top: 0 !important;
+            transform: none !important; opacity: 1 !important;
             margin-bottom: 12px !important; padding: 10px 14px !important;
           }
           .grid-interno-recuadro { grid-template-columns: 1fr !important; gap: 12px !important; }
@@ -441,7 +466,8 @@ export default function DetalleNoticiaPage({ params }) {
 // OBJETOS DE ESTILOS
 // =========================================================================
 const containerStyle = { minHeight: '100vh', backgroundColor: '#f8fafc', padding: '12px 0px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxSizing: 'border-box' };
-const recuadroSuperiorFijoContainer = { position: 'fixed', top: '64px', left: '0', width: '100%', backgroundColor: '#0a192f', borderBottom: '4px solid #f1c40f', zIndex: '999', padding: '10px 20px', boxSizing: 'border-box', boxShadow: '0 6px 20px rgba(0,0,0,0.15)' };
+// 🔧 ADICIÓN: Se agrega la propiedad transition para lograr el efecto de desvanecimiento suave
+const recuadroSuperiorFijoContainer = { position: 'fixed', top: '64px', left: '0', width: '100%', backgroundColor: '#0a192f', borderBottom: '4px solid #f1c40f', zIndex: '999', padding: '10px 20px', boxSizing: 'border-box', boxShadow: '0 6px 20px rgba(0,0,0,0.15)', transition: 'transform 0.4s ease-in-out, opacity 0.4s ease-in-out' };
 const gridInternoRecuadroStyle = { maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' };
 const encabezadoSubModuloStyle = { display: 'flex', alignItems: 'center', gap: '6px', color: '#ffffff', fontSize: '0.72rem', fontWeight: '800', letterSpacing: '0.5px', textTransform: 'uppercase', marginBottom: '4px' };
 const indicadorEnVivoStyle = { color: '#e74c3c' };
@@ -457,7 +483,7 @@ const tarjetaPartidoSuperiorStyle = { backgroundColor: 'rgba(255,255,255,0.04)',
 const filaEquiposMatchStyle = { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', width: '100%' };
 const bloqueEquipoMatchStyle = { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3px' };
 const banderaMatchStyle = { width: '26px', height: '17px', objectFit: 'cover', borderRadius: '2px' };
-const nombreEquipoMatchStyle = { fontSize: '0.75rem', fontWeight: '#800', color: '#ffffff' };
+const nombreEquipoMatchStyle = { fontSize: '0.75rem', fontWeight: '800', color: '#ffffff' };
 const vsTextoEstilo = { fontSize: '0.6rem', color: '#cbd5e1', fontWeight: '900', opacity: 0.6 };
 const detallesMatchAbajoStyle = { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1px', width: '100%', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '5px' };
 const horaMatchStyle = { color: '#f1c40f', fontSize: '0.68rem', fontWeight: '800' };
