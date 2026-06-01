@@ -11,20 +11,16 @@ import { noticiasData } from '../../data/noticiasData';
 // =========================================================================
 function obtenerBandera(codigo) {
   const flags = {
-    'ECU': 'ec', 'QAT': 'qa', 'SEN': 'sn', 'NED': 'nl',
-    'ENG': 'gb', 'IRN': 'ir', 'USA': 'us', 'WAL': 'gb',
-    'ARG': 'ar', 'KSA': 'sa', 'MEX': 'mx', 'POL': 'pl',
-    'FRA': 'fr', 'AUS': 'au', 'DEN': 'dk', 'TUN': 'tn',
-    'ESP': 'es', 'CRC': 'cr', 'GER': 'de', 'JPN': 'jp',
-    'BEL': 'be', 'CAN': 'ca', 'MAR': 'ma', 'CRO': 'hr',
-    'BRA': 'br', 'SRB': 'rs', 'SUI': 'ch', 'CMR': 'cm',
-    'POR': 'pt', 'GHA': 'gh', 'URU': 'uy', 'KOR': 'kr',
-    'RSA': 'za', 'ITA': 'it', 'COL': 'co', 'CHL': 'cl',
-    'BIH': 'ba', 'HAI': 'ht', 'SCO': 'gb', 'PAR': 'py',
-    'TUR': 'tr', 'CW': 'cw',  'CIV': 'ci', 'SWE': 'se',
-    'EGY': 'eg', 'NZL': 'nz', 'CPV': 'cv', 'IRQ': 'iq',
-    'NOR': 'no', 'ALG': 'dz', 'AUT': 'at', 'JOR': 'jo',
-    'COD': 'cd', 'UZB': 'uz', 'PAN': 'pa'
+    'ALG': 'dz', 'ARG': 'ar', 'AUS': 'au', 'AUT': 'at', 'BEL': 'be', 
+    'BIH': 'ba', 'BRA': 'br', 'CAN': 'ca', 'CIV': 'ci', 'COD': 'cd', 
+    'COL': 'co', 'CPV': 'cv', 'CRO': 'hr', 'CW':  'cw', 'CZE': 'cz', 
+    'EGY': 'eg', 'ENG': 'gb', 'ESP': 'es', 'FRA': 'fr', 'GER': 'de', 
+    'GHA': 'gh', 'HAI': 'ht', 'IRN': 'ir', 'IRQ': 'iq', 'ITA': 'it', 
+    'JOR': 'jo', 'JPN': 'jp', 'KOR': 'kr', 'KSA': 'sa', 'MAR': 'ma', 
+    'MEX': 'mx', 'NED': 'nl', 'NOR': 'no', 'NZL': 'nz', 'PAN': 'pa', 
+    'PAR': 'py', 'POR': 'pt', 'QAT': 'qa', 'RSA': 'za', 'SCO': 'gb', 
+    'SEN': 'sn', 'SUI': 'ch', 'SWE': 'se', 'TUN': 'tn', 'TUR': 'tr', 
+    'USA': 'us', 'URU': 'uy', 'UZB': 'uz'
   };
   return flags[codigo] || 'un';
 }
@@ -37,31 +33,28 @@ function traducirEquipo(codigo, idioma) {
       'ARG': 'Argentina', 'KSA': 'Arabia Saudita', 'MEX': 'México', 'POL': 'Polonia',
       'FRA': 'Francia', 'AUS': 'Australia', 'DEN': 'Dinamarca', 'TUN': 'Túnez',
       'ESP': 'España', 'CRC': 'Costa Rica', 'GER': 'Alemania', 'JPN': 'Japón',
-      'BEL': 'Bélgica', 'CAN': 'Canadá', 'MAR': 'Marruecos', 'CRO': 'Croacia',
-      'BRA': 'Brasil', 'SRB': 'Serbia', 'SUI': 'Suiza', 'CMR': 'Camerún',
-      'POR': 'Portugal', 'GHA': 'Ghana', 'URU': 'Uruguay', 'KOR': 'Corea del Sur',
-      'RSA': 'Sudáfrica', 'ITA': 'Italia', 'COL': 'Colombia', 'CHL': 'Chile',
-      'BIH': 'Bosnia y Herzegovina', 'HAI': 'Haití', 'SCO': 'Escocia', 'PAR': 'Paraguay',
-      'TUR': 'Turquía', 'CW': 'Curazao', 'CIV': 'Costa de Marfil', 'SWE': 'Suecia',
-      'EGY': 'Egipto', 'NZL': 'Nueva Zelanda', 'CPV': 'Cabo Verde', 'IRQ': 'Irak',
-      'NOR': 'Noruega', 'ALG': 'Argelia', 'AUT': 'Austria', 'JOR': 'Jordania',
-      'COD': 'Rep. Dem. del Congo', 'UZB': 'Uzbekistán', 'PAN': 'Panamá'
+      'ALG': 'Argelia', 'ARG': 'Argentina', 'AUS': 'Australia', 'AUT': 'Austria', 'BEL': 'Bélgica',
+      'BIH': 'Bosnia y Herzegovina', 'BRA': 'Brasil', 'CAN': 'Canadá', 'CIV': 'Costa de Marfil', 'COD': 'Rep. Dem. del Congo',
+      'COL': 'Colombia', 'CPV': 'Cabo Verde', 'CRO': 'Croacia', 'CW':  'Curazao', 'CZE': 'República Checa',
+      'EGY': 'Egipto', 'ENG': 'Inglaterra', 'ESP': 'España', 'FRA': 'Francia', 'GER': 'Alemania',
+      'GHA': 'Ghana', 'HAI': 'Haití', 'IRN': 'Irán', 'IRQ': 'Irak', 'ITA': 'Italia',
+      'JOR': 'Jordania', 'JPN': 'Japón', 'KOR': 'Corea del Sur', 'KSA': 'Arabia Saudita', 'MAR': 'Marruecos',
+      'MEX': 'México', 'NED': 'Países Bajos', 'NOR': 'Noruega', 'NZL': 'Nueva Zelanda', 'PAN': 'Panamá',
+      'PAR': 'Paraguay', 'POR': 'Portugal', 'QAT': 'Catar', 'RSA': 'Sudáfrica', 'SCO': 'Escocia',
+      'SEN': 'Senegal', 'SUI': 'Suiza', 'SWE': 'Suecia', 'TUN': 'Túnez', 'TUR': 'Turquía',
+      'USA': 'EE. UU.', 'URU': 'Uruguay', 'UZB': 'Uzbekistán'
     },
     en: {
-      'ECU': 'Ecuador', 'QAT': 'Qatar', 'SEN': 'Senegal', 'NED': 'Netherlands',
-      'ENG': 'England', 'IRN': 'Iran', 'USA': 'USA', 'WAL': 'Wales',
-      'ARG': 'Argentina', 'KSA': 'Saudi Arabia', 'MEX': 'Mexico', 'POL': 'Poland',
-      'FRA': 'France', 'AUS': 'Australia', 'DEN': 'Denmark', 'TUN': 'Tunisia',
-      'ESP': 'Spain', 'CRC': 'Costa Rica', 'GER': 'Germany', 'JPN': 'Japan',
-      'BEL': 'Belgium', 'CAN': 'Canada', 'MAR': 'Morocco', 'CRO': 'Croatia',
-      'BRA': 'Brazil', 'SRB': 'Serbia', 'SUI': 'Switzerland', 'CMR': 'Cameroon',
-      'POR': 'Portugal', 'GHA': 'Ghana', 'URU': 'Uruguay', 'KOR': 'South Korea',
-      'RSA': 'South Africa', 'ITA': 'Italy', 'COL': 'Colombia', 'CHL': 'Chile',
-      'BIH': 'Bosnia and Herzegovina', 'HAI': 'Haiti', 'SCO': 'Scotland', 'PAR': 'Paraguay',
-      'TUR': 'Turkey', 'CW': 'Curaçao', 'CIV': 'Ivory Coast', 'SWE': 'Sweden',
-      'EGY': 'Egypt', 'NZL': 'New Zealand', 'CPV': 'Cape Verde', 'IRQ': 'Iraq',
-      'NOR': 'Norway', 'ALG': 'Algeria', 'AUT': 'Austria', 'JOR': 'Jordan',
-      'COD': 'DR Congo', 'UZB': 'Uzbekistan', 'PAN': 'Panama'
+      'ALG': 'Algeria', 'ARG': 'Argentina', 'AUS': 'Australia', 'AUT': 'Austria', 'BEL': 'Belgium',
+      'BIH': 'Bosnia and Herzegovina', 'BRA': 'Brazil', 'CAN': 'Canada', 'CIV': 'Ivory Coast', 'COD': 'DR Congo',
+      'COL': 'Colombia', 'CPV': 'Cape Verde', 'CRO': 'Croatia', 'CW':  'Curaçao', 'CZE': 'Czechia',
+      'EGY': 'Egypt', 'ENG': 'England', 'ESP': 'Spain', 'FRA': 'France', 'GER': 'Germany',
+      'GHA': 'Ghana', 'HAI': 'Haiti', 'IRN': 'Iran', 'IRQ': 'Iraq', 'ITA': 'Italy',
+      'JOR': 'Jordan', 'JPN': 'Japan', 'KOR': 'South Korea', 'KSA': 'Saudi Arabia', 'MAR': 'Morocco',
+      'MEX': 'Mexico', 'NED': 'Netherlands', 'NOR': 'Norway', 'NZL': 'New Zealand', 'PAN': 'Panama',
+      'PAR': 'Paraguay', 'POR': 'Portugal', 'QAT': 'Qatar', 'RSA': 'South Africa', 'SCO': 'Scotland',
+      'SEN': 'Senegal', 'SUI': 'Switzerland', 'SWE': 'Sweden', 'TUN': 'Tunisia', 'TUR': 'Turkey',
+      'USA': 'USA', 'URU': 'Uruguay', 'UZB': 'Uzbekistan'
     }
   };
   return nombres[idioma]?.[codigo] || codigo;
@@ -87,17 +80,122 @@ const diasMundialData = [
   { id: "2026-06-18", esDia: "JUE", enDia: "THU", num: "18", mes: "JUN" },
   { id: "2026-06-19", esDia: "VIE", enDia: "FRI", num: "19", mes: "JUN" },
   { id: "2026-06-20", esDia: "SAB", enDia: "SAT", num: "20", mes: "JUN" },
+  { id: "2026-06-21", esDia: "DOM", enDia: "SUN", num: "20", mes: "JUN" },
+  { id: "2026-06-22", esDia: "LUN", enDia: "MON", num: "20", mes: "JUN" },
+  { id: "2026-06-23", esDia: "MAR", enDia: "TUE", num: "20", mes: "JUN" },
+  { id: "2026-06-24", esDia: "MIE", enDia: "WED", num: "20", mes: "JUN" },
+  { id: "2026-06-25", esDia: "JUE", enDia: "THU", num: "20", mes: "JUN" },
+  { id: "2026-06-26", esDia: "VIE", enDia: "FRI", num: "20", mes: "JUN" },
+  { id: "2026-06-27", esDia: "SAB", enDia: "SAT", num: "20", mes: "JUN" }
 ];
 
 const todosLosPartidosMundial = [
-  { fecha: "2026-06-11", fase: 'GRUPOS', e1: 'MEX', e2: 'RSA', hora: '11:00 AM', estadio: 'Estadio Azteca, CDMX' },
-  { fecha: "2026-06-11", fase: 'GRUPOS', e1: 'USA', e2: 'ITA', hora: '02:00 PM', estadio: 'SoFi Stadium, LA' },
-  { fecha: "2026-06-11", fase: 'GRUPOS', e1: 'CAN', e2: 'COL', hora: '05:00 PM', estadio: 'BMO Field, Toronto' },
-  { fecha: "2026-06-12", fase: 'GRUPOS', e1: 'ARG', e2: 'KSA', hora: '01:00 PM', estadio: 'Lusail Stadium' },
-  { fecha: "2026-06-12", fase: 'GRUPOS', e1: 'FRA', e2: 'AUS', hora: '04:00 PM', estadio: 'MetLife Stadium' },
-  { fecha: "2026-06-13", fase: 'GRUPOS', e1: 'ESP', e2: 'CRC', hora: '12:00 PM', estadio: 'Hard Rock Stadium' },
+  // Jueves, 11 de junio 2026
+  { fecha: "2026-06-11", fase: 'GRUPOS', e1: 'MEX', e2: 'RSA', hora: '03:00 PM', estadio: 'Estadio Ciudad de México' },
+  { fecha: "2026-06-11", fase: 'GRUPOS', e1: 'KOR', e2: 'CZE', hora: '10:00 PM', estadio: 'Estadio Guadalajara' },
+  
+  // Viernes, 12 de junio 2026
+  { fecha: "2026-06-12", fase: 'GRUPOS', e1: 'CAN', e2: 'BIH', hora: '03:00 PM', estadio: 'Estadio Toronto' },
+  { fecha: "2026-06-12", fase: 'GRUPOS', e1: 'USA', e2: 'PAR', hora: '09:00 PM', estadio: 'Estadio Los Ángeles' },
+  
+  // Sábado, 13 de junio 2026
+  { fecha: "2026-06-13", fase: 'GRUPOS', e1: 'QAT', e2: 'SUI', hora: '03:00 PM', estadio: 'Estadio Bahía de San Francisco' },
+  { fecha: "2026-06-13", fase: 'GRUPOS', e1: 'BRA', e2: 'MAR', hora: '06:00 PM', estadio: 'Estadio Nueva York Nueva Jersey' },
+  { fecha: "2026-06-13", fase: 'GRUPOS', e1: 'HAI', e2: 'SCO', hora: '09:00 PM', estadio: 'Estadio Boston' },
+  { fecha: "2026-06-13", fase: 'GRUPOS', e1: 'AUS', e2: 'TUR', hora: '12:00 AM', estadio: 'Estadio BC Place Vancouver' },
+  
+  // Domingo, 14 de junio 2026
+  { fecha: "2026-06-14", fase: 'GRUPOS', e1: 'GER', e2: 'CW',  hora: '01:00 PM', estadio: 'Estadio Houston' },
+  { fecha: "2026-06-14", fase: 'GRUPOS', e1: 'NED', e2: 'JPN', hora: '04:00 PM', estadio: 'Estadio Dallas' },
+  { fecha: "2026-06-14", fase: 'GRUPOS', e1: 'CIV', e2: 'ECU', hora: '07:00 PM', estadio: 'Estadio Filadelfia' },
+  { fecha: "2026-06-14", fase: 'GRUPOS', e1: 'SWE', e2: 'TUN', hora: '10:00 PM', estadio: 'Estadio Monterrey' },
+  
+  // Lunes, 15 de junio 2026
+  { fecha: "2026-06-15", fase: 'GRUPOS', e1: 'ESP', e2: 'CPV', hora: '12:00 PM', estadio: 'Estadio Atlanta' },
+  { fecha: "2026-06-15", fase: 'GRUPOS', e1: 'BEL', e2: 'EGY', hora: '03:00 PM', estadio: 'Estadio Seattle' },
+  { fecha: "2026-06-15", fase: 'GRUPOS', e1: 'KSA', e2: 'URU', hora: '06:00 PM', estadio: 'Estadio Miami' },
+  { fecha: "2026-06-15", fase: 'GRUPOS', e1: 'IRN', e2: 'NZL', hora: '09:00 PM', estadio: 'Estadio Los Ángeles' },
+  
+  // Martes, 16 de junio 2026
+  { fecha: "2026-06-16", phase: 'GRUPOS', e1: 'FRA', e2: 'SEN', hora: '03:00 PM', estadio: 'Estadio Nueva York Nueva Jersey' },
+  { fecha: "2026-06-16", fase: 'GRUPOS', e1: 'IRQ', e2: 'NOR', hora: '06:00 PM', estadio: 'Estadio Boston' },
+  { fecha: "2026-06-16", fase: 'GRUPOS', e1: 'ARG', e2: 'ALG', hora: '09:00 PM', estadio: 'Estadio Kansas City' },
+  { fecha: "2026-06-16", fase: 'GRUPOS', e1: 'AUT', e2: 'JOR', hora: '12:00 AM', estadio: 'Estadio Bahía de San Francisco' },
+  
+  // Miércoles, 17 de junio 2026
+  { fecha: "2026-06-17", fase: 'GRUPOS', e1: 'POR', e2: 'COD', hora: '01:00 PM', estadio: 'Estadio Houston' },
+  { fecha: "2026-06-17", fase: 'GRUPOS', e1: 'ENG', e2: 'CRO', hora: '04:00 PM', estadio: 'Estadio Dallas' },
+  { fecha: "2026-06-17", fase: 'GRUPOS', e1: 'GHA', e2: 'PAN', hora: '07:00 PM', estadio: 'Estadio Toronto' },
+  { fecha: "2026-06-17", fase: 'GRUPOS', e1: 'UZB', e2: 'COL', hora: '10:00 PM', estadio: 'Estadio Ciudad de México' },
+  
+  // Jueves, 18 de junio 2026
+  { fecha: "2026-06-18", fase: 'GRUPOS', e1: 'CZE', e2: 'RSA', hora: '12:00 PM', estadio: 'Estadio Atlanta' },
+  { fecha: "2026-06-18", fase: 'GRUPOS', e1: 'SUI', e2: 'BIH', hora: '03:00 PM', estadio: 'Estadio Los Ángeles' },
+  { fecha: "2026-06-18", fase: 'GRUPOS', e1: 'CAN', e2: 'QAT', hora: '06:00 PM', estadio: 'Estadio BC Place Vancouver' },
+  { fecha: "2026-06-18", fase: 'GRUPOS', e1: 'MEX', e2: 'KOR', hora: '09:00 PM', estadio: 'Estadio Guadalajara' },
+  
+  // Viernes, 19 de junio 2026
+  { fecha: "2026-06-19", fase: 'GRUPOS', e1: 'USA', e2: 'AUS', hora: '03:00 PM', estadio: 'Estadio Seattle' },
+  { fecha: "2026-06-19", fase: 'GRUPOS', e1: 'SCO', e2: 'MAR', hora: '06:00 PM', estadio: 'Estadio Boston' },
+  { fecha: "2026-06-19", fase: 'GRUPOS', e1: 'BRA', e2: 'HAI', hora: '09:00 PM', estadio: 'Estadio Filadelfia' },
+  { fecha: "2026-06-19", fase: 'GRUPOS', e1: 'TUR', e2: 'PAR', hora: '12:00 AM', estadio: 'Estadio Bahía de San Francisco' },
+  
+  // Sábado, 20 de junio 2026
+  { fecha: "2026-06-20", fase: 'GRUPOS', e1: 'NED', e2: 'SWE', hora: '01:00 PM', estadio: 'Estadio Houston' },
+  { fecha: "2026-06-20", fase: 'GRUPOS', e1: 'GER', e2: 'CIV', hora: '04:00 PM', estadio: 'Estadio Toronto' },
+  { fecha: "2026-06-20", fase: 'GRUPOS', e1: 'ECU', e2: 'CW',  hora: '10:00 PM', estadio: 'Estadio Kansas City' },
+  { fecha: "2026-06-20", fase: 'GRUPOS', e1: 'TUN', e2: 'JPN', hora: '12:00 AM', estadio: 'Estadio Monterrey' },
+  
+  // Domingo, 21 de junio 2026
+  { fecha: "2026-06-21", fase: 'GRUPOS', e1: 'ESP', e2: 'KSA', hora: '12:00 PM', estadio: 'Estadio Atlanta' },
+  { fecha: "2026-06-21", fase: 'GRUPOS', e1: 'BEL', e2: 'IRN', hora: '03:00 PM', estadio: 'Estadio Los Ángeles' },
+  { fecha: "2026-06-21", fase: 'GRUPOS', e1: 'URU', e2: 'CPV', hora: '06:00 PM', estadio: 'Estadio Miami' },
+  { fecha: "2026-06-21", fase: 'GRUPOS', e1: 'NZL', e2: 'EGY', hora: '09:00 PM', estadio: 'Estadio BC Place Vancouver' },
+  
+  // Lunes, 22 de junio 2026
+  { fecha: "2026-06-22", fase: 'GRUPOS', e1: 'ARG', e2: 'AUT', hora: '01:00 PM', estadio: 'Estadio Dallas' },
+  { fecha: "2026-06-22", fase: 'GRUPOS', e1: 'FRA', e2: 'IRQ', hora: '05:00 PM', estadio: 'Estadio Filadelfia' },
+  { fecha: "2026-06-22", fase: 'GRUPOS', e1: 'NOR', e2: 'SEN', hora: '08:00 PM', estadio: 'Estadio Nueva York Nueva Jersey' },
+  { fecha: "2026-06-22", fase: 'GRUPOS', e1: 'JOR', e2: 'ALG', hora: '11:00 PM', estadio: 'Estadio Bahía de San Francisco Bay' },
+  
+  // Martes, 23 de junio 2026
+  { fecha: "2026-06-23", fase: 'GRUPOS', e1: 'POR', e2: 'UZB', hora: '01:00 PM', estadio: 'Estadio Houston' },
+  { fecha: "2026-06-23", fase: 'GRUPOS', e1: 'ENG', e2: 'GHA', hora: '04:00 PM', estadio: 'Estadio Boston' },
+  { fecha: "2026-06-23", fase: 'GRUPOS', e1: 'PAN', e2: 'CRO', hora: '07:00 PM', estadio: 'Estadio Toronto' },
+  { fecha: "2026-06-23", fase: 'GRUPOS', e1: 'COL', e2: 'COD', hora: '10:00 PM', estadio: 'Estadio Guadalajara' },
+  
+  // Miércoles, 24 de junio 2026
+  { fecha: "2026-06-24", fase: 'GRUPOS', e1: 'SUI', e2: 'CAN', hora: '03:00 PM', estadio: 'Estadio BC Place Vancouver' },
+  { fecha: "2026-06-24", fase: 'GRUPOS', e1: 'BIH', e2: 'QAT', hora: '03:00 PM', estadio: 'Estadio Seattle' },
+  { fecha: "2026-06-24", fase: 'GRUPOS', e1: 'SCO', e2: 'BRA', hora: '06:00 PM', estadio: 'Estadio Miami' },
+  { fecha: "2026-06-24", fase: 'GRUPOS', e1: 'MAR', e2: 'HAI', hora: '06:00 PM', estadio: 'Estadio Atlanta' },
+  { fecha: "2026-06-24", fase: 'GRUPOS', e1: 'CZE', e2: 'MEX', hora: '09:00 PM', estadio: 'Estadio Ciudad de México' },
+  { fecha: "2026-06-24", fase: 'GRUPOS', e1: 'RSA', e2: 'KOR', hora: '09:00 PM', estadio: 'Estadio Monterrey' },
+  
+  // Jueves, 25 de junio 2026
+  { fecha: "2026-06-25", fase: 'GRUPOS', e1: 'CW',  e2: 'CIV', hora: '04:00 PM', estadio: 'Estadio Filadelfia' },
+  { fecha: "2026-06-25", fase: 'GRUPOS', e1: 'ECU', e2: 'GER', hora: '04:00 PM', estadio: 'Estadio Nueva York Nueva Jersey' },
+  { fecha: "2026-06-25", fase: 'GRUPOS', e1: 'JPN', e2: 'SWE', hora: '07:00 PM', estadio: 'Estadio Dallas' },
+  { fecha: "2026-06-25", fase: 'GRUPOS', e1: 'TUN', e2: 'NED', hora: '07:00 PM', estadio: 'Estadio Kansas City' },
+  { fecha: "2026-06-25", fase: 'GRUPOS', e1: 'TUR', e2: 'USA', hora: '10:00 PM', estadio: 'Estadio Los Ángeles' },
+  { fecha: "2026-06-25", fase: 'GRUPOS', e1: 'PAR', e2: 'AUS', hora: '10:00 PM', estadio: 'Estadio Bahía de San Francisco' },
+  
+  // Viernes, 26 de junio 2026
+  { fecha: "2026-06-26", fase: 'GRUPOS', e1: 'NOR', e2: 'FRA', hora: '03:00 PM', estadio: 'Estadio Boston' },
+  { fecha: "2026-06-26", fase: 'GRUPOS', e1: 'SEN', e2: 'IRQ', hora: '03:00 PM', estadio: 'Estadio Toronto' },
+  { fecha: "2026-06-26", fase: 'GRUPOS', e1: 'CPV', e2: 'KSA', hora: '08:00 PM', estadio: 'Estadio Houston' },
+  { fecha: "2026-06-26", fase: 'GRUPOS', e1: 'URU', e2: 'ESP', hora: '08:00 PM', estadio: 'Estadio Guadalajara' },
+  { fecha: "2026-06-26", fase: 'GRUPOS', e1: 'EGY', e2: 'IRN', hora: '11:00 PM', estadio: 'Estadio Seattle' },
+  { fecha: "2026-06-26", fase: 'GRUPOS', e1: 'NZL', e2: 'BEL', hora: '11:00 PM', estadio: 'Estadio BC Place Vancouver' },
+  
+  // Sábado, 27 de junio 2026
+  { fecha: "2026-06-27", fase: 'GRUPOS', e1: 'PAN', e2: 'ENG', hora: '05:00 PM', estadio: 'Estadio Nueva York Nueva Jersey' },
+  { fecha: "2026-06-27", fase: 'GRUPOS', e1: 'CRO', e2: 'GHA', hora: '05:00 PM', estadio: 'Estadio Filadelfia' },
+  { fecha: "2026-06-27", fase: 'GRUPOS', e1: 'COL', e2: 'POR', hora: '07:30 PM', estadio: 'Estadio Miami' },
+  { fecha: "2026-06-27", fase: 'GRUPOS', e1: 'COD', e2: 'UZB', hora: '07:30 PM', estadio: 'Estadio Atlanta' },
+  { fecha: "2026-06-27", fase: 'GRUPOS', e1: 'ALG', e2: 'AUT', hora: '10:00 PM', estadio: 'Estadio Kansas City' },
+  { fecha: "2026-06-27", fase: 'GRUPOS', e1: 'JOR', e2: 'ARG', hora: '10:00 PM', estadio: 'Estadio Dallas' }
 ];
-
 const tablaPosicionesData = [
   { 
     grupo: "GRUPO A", 
