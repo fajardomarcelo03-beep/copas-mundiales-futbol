@@ -1,3 +1,5 @@
+/* src/app/globals.css */
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -45,5 +47,38 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+/* =========================================================================
+   Ajustes para centrado y corrección de desborde asimétrico en móviles
+   ========================================================================= */
+@media (max-width: 768px) {
+  /* 1. Asegurar rigidez horizontal en toda la jerarquía raíz */
+  html, body, main, #__next {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 2. Neutralizar desbordes causados por contenedores padres amplios */
+  div, section, header, main {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 3. Eliminar efectos de sombras y márgenes que causan el efecto de corte lateral */
+  .cuerpo-articulo-card, 
+  .mini-card-sugerencia,
+  [class*="card"], 
+  [class*="container"] {
+    box-shadow: none !important; /* Remueve los bordes negros irregulares */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 }
