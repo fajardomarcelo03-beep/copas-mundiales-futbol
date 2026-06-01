@@ -42,7 +42,7 @@ function traducirEquipo(codigo, idioma) {
     en: {
       'ALG': 'Algeria', 'ARG': 'Argentina', 'AUS': 'Australia', 'AUT': 'Austria', 'BEL': 'Belgium',
       'BIH': 'Bosnia & Herz.', 'BRA': 'Brazil', 'CAN': 'Canada', 'CIV': 'Ivory Coast', 'COD': 'DR Congo',
-      'COL': 'Colombia', 'CPV': 'Cape Verde', 'CRO': 'Croatia', 'CW':  'Curaçao', 'CZE': 'Czechia',
+      'COL': 'Colombia', 'CPV': 'Cape Verde', 'CRO': 'Croacia', 'CW':  'Curaçao', 'CZE': 'Czechia',
       'EGY': 'Egypt', 'ENG': 'England', 'ESP': 'Spain', 'FRA': 'France', 'GER': 'Germany',
       'GHA': 'Ghana', 'HAI': 'Haiti', 'IRN': 'Iran', 'IRQ': 'Iraq', 'ITA': 'Italy',
       'JOR': 'Jordan', 'JPN': 'Japan', 'KOR': 'South Korea', 'KSA': 'Saudi Arabia', 'MAR': 'Morocco',
@@ -449,17 +449,21 @@ export default function DetalleNoticiaPage({ params }) {
             overflow: hidden; text-overflow: ellipsis; width: 100%;
           }
           
-          /* 🔧 SOLUCIÓN DEFINITIVA PARA EL ENTORNO MÓVIL: Forzamos ordenación de columna simétrica */
+          /* 🔧 CORRECCIÓN MATEMÁTICA: Forzar el contenedor del Grid a no expandirse más allá del ancho móvil */
           .grid-sugerencias {
             display: flex !important;
             flex-direction: column !important;
-            gap: 16px !important;
+            gap: 12px !important;
             width: 100% !important;
-            padding: 0px !important;
-            margin: 0 auto !important;
+            max-width: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            box-sizing: border-box !important;
           }
           .mini-card-sugerencia {
             width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 auto !important;
             box-sizing: border-box !important;
           }
         }
@@ -481,7 +485,7 @@ const containerStyle = { minHeight: '100vh', backgroundColor: '#f8fafc', padding
 const recuadroSuperiorFijoContainer = { position: 'fixed', top: '64px', left: '0', width: '100%', backgroundColor: '#0a192f', borderBottom: '4px solid #f1c40f', zIndex: '999', padding: '10px 20px', boxSizing: 'border-box', boxShadow: '0 6px 20px rgba(0,0,0,0.15)', transition: 'transform 0.4s ease-in-out, opacity 0.4s ease-in-out' };
 const gridInternoRecuadroStyle = { maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' };
 const encabezadoSubModuloStyle = { display: 'flex', alignItems: 'center', gap: '6px', color: '#ffffff', fontSize: '0.72rem', fontWeight: '800', letterSpacing: '0.5px', textTransform: 'uppercase', marginBottom: '4px' };
-const indicadorEnVivoStyle = { color: '#e74c3c' };
+const indicador EnVivoStyle = { color: '#e74c3c' };
 const seccionPartidosFijoStyle = { display: 'flex', flexDirection: 'column', overflow: 'hidden' };
 const mesFijoSuperiorStyle = { color: '#f1c40f', fontSize: '0.68rem', fontWeight: '800', letterSpacing: '1px', marginBottom: '6px', paddingLeft: '2px' };
 const contenedorControladorCarruselStyle = { display: 'flex', alignItems: 'center', gap: '4px', width: '100%', marginBottom: '8px' };
@@ -528,9 +532,10 @@ const btnVolverStyle = { display: 'inline-block', backgroundColor: '#0a192f', co
 const separadorSugerenciasStyle = { border: '0', height: '1px', backgroundColor: '#e2e8f0', margin: '35px 0 25px 0' };
 
 const gridSugerenciasStyle = { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '15px' };
-const interstateLinkStyle = { textDecoration: 'none', color: 'inherit' };
-const enlaceSugerenciaStyle = { textDecoration: 'none', color: 'inherit' };
-const miniCardSugerenciaStyle = { display: 'flex', gap: '12px', backgroundColor: '#f8fafc', padding: '12px', borderRadius: '6px', border: '1px solid #e2e8f0' };
-const miniImgSugerenciaStyle = { width: '100px', height: '70px', objectFit: 'cover', borderRadius: '4px' };
+const enlaceSugerenciaStyle = { display: 'block', textDecoration: 'none', color: 'inherit', width: '100%' };
+
+// 🔧 ANCHOS LIMITADOS AL 100% PARA DETENER EL DESBORDE NEGRO LATERAL
+const miniCardSugerenciaStyle = { display: 'flex', gap: '12px', backgroundColor: '#ffffff', padding: '12px', borderRadius: '6px', border: '1px solid #e2e8f0', width: '100%', maxWidth: '100%', boxSizing: 'border-box' };
+const miniImgSugerenciaStyle = { width: '100px', height: '70px', objectFit: 'cover', borderRadius: '4px', flexShrink: 0 };
 const miniTituloSugerenciaStyle = { fontSize: '0.88rem', color: '#0a192f', margin: '0 0 4px 0', fontWeight: '700', lineHeight: '1.3' };
 const miniEnlaceTextoStyle = { fontSize: '0.8rem', color: '#f1c40f', fontWeight: '700' };
