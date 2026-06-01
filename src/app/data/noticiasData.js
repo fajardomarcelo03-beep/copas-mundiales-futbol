@@ -243,5 +243,22 @@ export const noticiasData = {
       autor: "Quito Correspondent",
       tiempoLectura: "3 min"
     }
+  },
+  "noticia-7": {
+    imagen: "/Iran.jpg",
+    es: {
+      titulo: "Irán ya tiene sus convocados para conquistar América",
+      subtitulo: "La convocatoria no estuvo exenta de polémica: la principal sorpresa fue la ausencia de Sardar Azmoun.",
+      contenido: "La convocatoria no estuvo exenta de polémica: la principal sorpresa fue la ausencia de Sardar Azmoun, considerado durante años una de las máximas figuras de la selección iraní y uno de los futbolistas más influyentes de su generación.\n\nLista definitiva de Irán para el Mundial 2026:\n\nArqueros: Alireza Beiranvand (Tractor), Hossein Hosseini (Sepahan Esfahan) y Payam Niazmand (Persépolis Teherán).\nDefensores: Daniyal Eiri (Malavan), Ehsan Hajsafi (Sepahan Esfahan), Saleh Hardani (Esteghlal Teherán), Hossein Kanaani (Persépolis Teherán), Shoja Khalilzadeh (Tractor), Milad Mohammadi (Persépolis Teherán), Ali Nemati (Foolad) y Ramin Rezaeian (Foolad).\nCentrocampistas: Rouzbeh Cheshmi (Esteghlal Teherán), Saeid Ezatolahi (Shabab Al Ahli), Mehdi Ghayedi (Al-Nasr), Saman Ghoddos (Kalba), Mohammad Ghorbani (Al Wahda), Alireza Jahanbakhsh (Dender), Mohammad Mohebi (Rostov), Amir Mohammad Razzaghinia (Esteghlal Teherán), Mehdi Torabi (Tractor) y Aria Yousefi (Sepahan Esfahan).\nDelanteros: Ali Alipour (Persépolis Teherán), Dennis Dargahi (Standard Liège), Amirhossein Hosseinzadeh (Tractor), Mehdi Taremi (Olympiacos) y Shahriar Moghanlou (Kalba).",
+      autor: "Corresponsal Teherán",
+      tiempoLectura: "3 min"
+    },
+    en: {
+      titulo: "Iran announces squad list to conquer America",
+      subtitulo: "The roster was not without controversy: the main surprise was the absence of Sardar Azmoun.",
+      contenido: "The squad announcement was not without controversy: the main surprise was the absence of Sardar Azmoun, considered for years one of the top figures of the Iranian national team and one of the most influential footballers of his generation.\n\nIran's final roster for the 2026 World Cup:\n\nGoalkeepers: Alireza Beiranvand (Tractor), Hossein Hosseini (Sepahan Esfahan), and Payam Niazmand (Persepolis Tehran).\nDefenders: Daniyal Eiri (Malavan), Ehsan Hajsafi (Sepahan Esfahan), Saleh Hardani (Esteghlal Tehran), Hossein Kanaani (Persepolis Tehran), Shoja Khalilzadeh (Tractor), Milad Mohammadi (Persepolis Tehran), Ali Nemati (Foolad), and Ramin Rezaeian (Foolad).\nMidfielders: Rouzbeh Cheshmi (Esteghlal Tehran), Saeid Ezatolahi (Shabab Al Ahli), Mehdi Ghayedi (Al-Nasr), Saman Ghoddos (Kalba), Mohammad Ghorbani (Al Wahda), Alireza Jahanbakhsh (Dender), Mohammad Mohebi (Rostov), Amir Mohammad Razzaghinia (Esteghlal Tehran), Mehdi Torabi (Tractor), and Aria Yousefi (Sepahan Esfahan).\nForwards: Ali Alipour (Persepolis Tehran), Dennis Dargahi (Standard Liège), Amirhossein Hosseinzadeh (Tractor), Mehdi Taremi (Olympiacos), and Shahriar Moghanlou (Kalba).",
+      autor: "Tehran Correspondent",
+      tiempoLectura: "3 min"
+    }
   }
 };
