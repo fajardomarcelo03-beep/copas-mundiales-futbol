@@ -120,7 +120,7 @@ export default function HomePage() {
       id: "noticia-5",
       img: "/Neymar_lesion.jpg",
       titulos: { es: "Neymar enciende las alarmas en Brasil", en: "Neymar sparks injury alarm in Brazil" },
-      resumen: {
+      resumen: { 
         es: "El astro brasileño sufrió una fuerte torcedura en el tobillo derecho durante el último entrenamiento y es duda para los próximos encuentros de la Verdeamarela.",
         en: "The Brazilian star suffered a severe right ankle sprain during the latest training session and is a major doubt for upcoming Verdeamarela matches."
       }
@@ -147,7 +147,7 @@ export default function HomePage() {
     { ano: "1990", era: "oro", anfitrion: { es: "Italia", en: "Italy" }, desc: { es: "Un torneo táctico y cerrado que culminó con la revancha de Alemania frente a Argentina.", en: "A deeply tactical, tight tournament culminating in Germany's sweet redemption against Argentina." }, img: "/Mundial1990.jpeg" },
     { ano: "1994", era: "oro", anfitrion: { es: "EE.UU.", en: "USA" }, desc: { es: "El fútbol conquista Norteamérica y se define por primera vez en penales a favor de Brasil.", en: "Football captures the North American market, concluding in the first-ever penalty shootout won by Brazil." }, img: "/Mundial1994.jpeg" },
     { ano: "1998", era: "oro", anfitrion: { es: "Francia", en: "France" }, desc: { es: "Zinedine Zidane lidera a 'Les Bleus' hacia una noche gloriosa e inolvidable en París.", en: "Zinedine Zidane masterfully guides 'Les Bleus' to a glorious and unforgettable night in Paris." }, img: "/Mundial1998.jpeg" },
-    { ano: "2002", era: "oro", anfitrion: { es: "Corea/Japón", en: "South Korea/Japan" }, desc: { es: "El primer mundial en Asia presencia la redención de Ronaldo y el pentacampeonato de Brasil.", en: "Asia's inaugural World Cup hosts Ronaldo’s iconic redemption, sealing Brazil’s fifth world title." }, img: "/Mundial2002.jpeg" },
+    { ano: "2002", era: "oro", anfitrion: { es: "Corea/Japón", en: "South Korea/Japan" }, desc: { es: "El primer mundial in Asia presencia la redención de Ronaldo y el pentacampeonato de Brasil.", en: "Asia's inaugural World Cup hosts Ronaldo’s iconic redemption, sealing Brazil’s fifth world title." }, img: "/Mundial2002.jpeg" },
     { ano: "2006", era: "moderna", anfitrion: { es: "Alemania", en: "Germany" }, desc: { es: "Italia se corona tetracampeona en una dramática final marcada por la despedida de Zidane.", en: "Italy is crowned four-time champions in a dramatic final defined by Zinedine Zidane’s farewell." }, img: "/Mundial2006.jpeg" },
     { ano: "2010", era: "moderna", anfitrion: { es: "Sudáfrica", en: "South Africa" }, desc: { es: "El 'Tiki-Taka' de España conquista el primer mundial africano con el gol histórico de Iniesta.", en: "Spain's tactical 'Tiki-Taka' conquers the first African World Cup, sealed by Iniesta's historic extra-time goal." }, img: "/Mundial2010.jpeg" },
     { ano: "2014", era: "moderna", anfitrion: { es: "Brasil", en: "Brazil" }, desc: { es: "Alemania domina suelo sudamericano marcando un histórico 7-1 al anfitrión en su ruta al título.", en: "Germany dominates on South American soil, routing the hosts 7-1 on their relentless path to the title." }, img: "/Mundial2014.jpeg" },
@@ -186,8 +186,10 @@ export default function HomePage() {
   const [tarjetaHover, setTarjetaHover] = useState(null);
   const [estadioHover, setEstadioHover] = useState(null);
 
-  // FILTRO ESTRATÉGICO CORREGIDO: Clona la base, la invierte cronológicamente y extrae estrictamente las 5 últimas noticias añadidas
-  const ultimasNoticias = [...noticias].reverse().slice(0, 5);
+  // CORRECCIÓN MATEMÁTICA: Extrae el número del ID (ej: "noticia-6" -> 6) y ordena de mayor a menor para garantizar que las 5 más nuevas salgan siempre primero.
+  const ultimasNoticias = [...noticias]
+    .sort((a, b) => parseInt(b.id.split('-')[1]) - parseInt(a.id.split('-')[1]))
+    .slice(0, 5);
 
   const mundialesFiltrados = todosLosMundiales.filter(m => m.era === eraActiva);
   const esEraDeCinco = eraActiva === 'pioneros' || eraActiva === 'moderna';
@@ -204,7 +206,7 @@ export default function HomePage() {
   // Efecto automático para el carrusel superior (Vinculado dinámicamente a la longitud de ultimasNoticias)
   useEffect(() => {
     const tempNoticias = setInterval(() => {
-      setIndiceNoticia((prev) => (prev === ultimasNoticias.length - 1 ? 0 : prev + 1));
+      setIndiceNoticia((prev) => (prev >= ultimasNoticias.length - 1 ? 0 : prev + 1));
     }, 6000);
     return () => clearInterval(tempNoticias);
   }, [indiceNoticia, ultimasNoticias.length]);
@@ -221,7 +223,7 @@ export default function HomePage() {
             <div style={stickyNewsSlideStyle}>
               <div style={stickyNewsImageContainer}>
                 <Image 
-                  src={ultimasNoticias[indiceNoticia]?.img} 
+                  src={ultimasNoticias[indiceNoticia]?.img || "/Azteca.jpg"} 
                   alt="Noticia Mundial 2026" 
                   fill 
                   style={{ objectFit: 'cover' }} 
