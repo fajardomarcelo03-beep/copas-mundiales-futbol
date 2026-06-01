@@ -7,6 +7,10 @@ import { Analytics } from '@vercel/analytics/react';
 export const metadata = {
   title: "Historia de los Campeonatos Mundiales de Fútbol | Crónicas y Noticias",
   description: "Explora la pasión eterna del fútbol desde Uruguay 1930 hasta la cobertura y análisis exclusivo rumbo al Mundial 2026.",
+  // 🔽 VERIFICACIÓN DE GOOGLE SEARCH CONSOLE INTEGRADA
+  verification: {
+    google: "EdZgljICR0ilCM-OhtUWdw9liZBFlfod44GiZRfyl6s",
+  },
 };
 
 export default function RootLayout({ children }) {
