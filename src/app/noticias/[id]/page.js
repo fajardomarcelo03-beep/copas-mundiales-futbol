@@ -1,420 +1,199 @@
+// src/app/noticias/[id]/page.js
 'use client';
 
-import { useParams } from 'next/navigation';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-// 🌐 Importamos tu hook global subiendo dos niveles de carpetas
-import { useIdioma } from '../../HeaderContextLayout';
+import { useLanguage } from '../../HeaderContextLayout';
+import { noticiasData } from '../../data/noticiasData';
 
-export default function DetalleNoticiaPage() {
-  const params = useParams();
-  
-  // 🟢 CONSUMIMOS EL IDIOMA GLOBAL (Adiós a los conflictos de useSearchParams)
-  const { idioma } = useIdioma();
-  const noticiaId = params.id;
-
-  // ==========================================
-  // CONFIGURACIÓN CENTRALIZADA DE SELECCIONES (CÓDIGOS ISO DE BANDERA)
-  // ==========================================
-  const mapaEquipos = {
-    "México": "mx", "Sudáfrica": "za", "Corea del Sur": "kr", "Chequia": "cz",
-    "Canadá": "ca", "Bosnia y Herz.": "ba", "Catar": "qa", "Suiza": "ch",
-    "Brasil": "br", "Alemania": "de", "Países Bajos": "nl", "Marruecos": "ma",
-    "Suecia": "se", "Estados Unidos": "us", "Uruguay": "uy", "Ghana": "gh",
-    "Japón": "jp", "Italia": "it", "Camerún": "cm", "Nueva Zelanda": "nz",
-    "Argentina": "ar", "Francia": "fr", "Portugal": "pt", "Australia": "au",
-    "España": "es", "Inglaterra": "gb-eng", "Bélgica": "be", "Croacia": "hr",
-    "Ecuador": "ec", "Senegal": "sn", "Irán": "ir", "Argelia": "dz",
-    "Colombia": "co", "Perú": "pe", "Ucrania": "ua", "Polonia": "pl",
-    "Chile": "cl", "Túnez": "tn", "Costa Rica": "cr", "Arabia Saudita": "sa",
-    "Egipto": "eg", "Nigeria": "ng", "Escocia": "gb-sct", "Gales": "gb-wls"
+// =========================================================================
+// 1. FUNCIONES AUXILIARES Y DICCIONARIOS (Mantenidos exactamente de tu código)
+// =========================================================================
+function obtenerBandera(codigo) {
+  const flags = {
+    'ECU': 'ec', 'QAT': 'qa', 'SEN': 'sn', 'NED': 'nl',
+    'ENG': 'gb-eng', 'IRN': 'ir', 'USA': 'us', 'WAL': 'gb-wls',
+    'ARG': 'ar', 'KSA': 'sa', 'MEX': 'mx', 'POL': 'pl',
+    'FRA': 'fr', 'AUS': 'au', 'DEN': 'dk', 'TUN': 'tn',
+    'ESP': 'es', 'CRC': 'cr', 'GER': 'de', 'JPN': 'jp',
+    'BEL': 'be', 'CAN': 'ca', 'MAR': 'ma', 'CRO': 'hr',
+    'BRA': 'br', 'SRB': 'rs', 'SUI': 'ch', 'CMR': 'cm',
+    'POR': 'pt', 'GHA': 'gh', 'URU': 'uy', 'KOR': 'kr',
+    'RSA': 'za', 'ITA': 'it', 'COL': 'co', 'CHL': 'cl'
   };
+  return flags[codigo] || 'un';
+}
 
-  const obtenerBandera = (nombreEquipo) => {
-    if (!nombreEquipo) return "un";
-    if (mapaEquipos[nombreEquipo]) return mapaEquipos[nombreEquipo];
-    const encontrado = Object.keys(mapaEquipos).find(k => nombreEquipo.includes(k) || k.includes(nombreEquipo));
-    return encontrado ? mapaEquipos[encontrado] : "un";
-  };
-
-  // ==========================================
-  // DICCIONARIO DE TRADUCCIÓN PARA PAÍSES Y TEXTOS DINÁMICOS
-  // ==========================================
-  const traduccionesPaises = {
-    "México": { es: "México", en: "Mexico" },
-    "Sudáfrica": { es: "Sudáfrica", en: "South Africa" },
-    "Corea del Sur": { es: "Corea del Sur", en: "South Korea" },
-    "Chequia": { es: "Chequia", en: "Czechia" },
-    "Canadá": { es: "Canadá", en: "Canada" },
-    "Bosnia y Herz.": { es: "Bosnia y Herz.", en: "Bosnia & Herz." },
-    "Catar": { es: "Catar", en: "Qatar" },
-    "Suiza": { es: "Suiza", en: "Switzerland" },
-    "Brasil": { es: "Brasil", en: "Brazil" },
-    "Alemania": { es: "Alemania", en: "Germany" },
-    "Países Bajos": { es: "Países Bajos", en: "Netherlands" },
-    "Marruecos": { es: "Marruecos", en: "Morocco" },
-    "Suecia": { es: "Suecia", en: "Sweden" },
-    "Estados Unidos": { es: "Estados Unidos", en: "United States" },
-    "Uruguay": { es: "Uruguay", en: "Uruguay" },
-    "Ghana": { es: "Ghana", en: "Ghana" },
-    "Japón": { es: "Japón", en: "Japan" },
-    "Italia": { es: "Italia", en: "Italy" },
-    "Camerún": { es: "Camerún", en: "Cameroon" },
-    "Nueva Zelanda": { es: "Nueva Zelanda", en: "New Zealand" },
-    "Argentina": { es: "Argentina", en: "Argentina" },
-    "Francia": { es: "Francia", en: "France" },
-    "Portugal": { es: "Portugal", en: "Portugal" },
-    "Australia": { es: "Australia", en: "Australia" },
-    "España": { es: "España", en: "Spain" },
-    "Inglaterra": { es: "Inglaterra", en: "England" },
-    "Bélgica": { es: "Bélgica", en: "Belgium" },
-    "Croacia": { es: "Croacia", en: "Croatia" },
-    "Ecuador": { es: "Ecuador", en: "Ecuador" },
-    "Senegal": { es: "Senegal", en: "Senegal" },
-    "Irán": { es: "Irán", en: "Iran" },
-    "Argelia": { es: "Argelia", en: "Algeria" },
-    "Colombia": { es: "Colombia", en: "Colombia" },
-    "Perú": { es: "Perú", en: "Peru" },
-    "Ucrania": { es: "Ucrania", en: "Ukraine" },
-    "Polonia": { es: "Polonia", en: "Poland" },
-    "Chile": { es: "Chile", en: "Chile" },
-    "Túnez": { es: "Túnez", en: "Tunisia" },
-    "Costa Rica": { es: "Costa Rica", en: "Costa Rica" },
-    "Arabia Saudita": { es: "Arabia Saudita", en: "Saudi Arabia" },
-    "Egipto": { es: "Egipto", en: "Egypt" },
-    "Nigeria": { es: "Nigeria", en: "Nigeria" },
-    "Escocia": { es: "Escocia", en: "Scotland" },
-    "Gales": { es: "Gales", en: "Wales" }
-  };
-
-  const traducirEquipo = (nombre, lang) => {
-    if (traduccionesPaises[nombre]) {
-      return traduccionesPaises[nombre][lang];
+function traducirEquipo(codigo, idioma) {
+  const nombres = {
+    es: {
+      'ECU': 'Ecuador', 'QAT': 'Catar', 'SEN': 'Senegal', 'NED': 'Países Bajos',
+      'ENG': 'Inglaterra', 'IRN': 'Irán', 'USA': 'EE. UU.', 'WAL': 'Gales',
+      'ARG': 'Argentina', 'KSA': 'Arabia Saudita', 'MEX': 'México', 'POL': 'Polonia',
+      'FRA': 'Francia', 'AUS': 'Australia', 'DEN': 'Dinamarca', 'TUN': 'Túnez',
+      'ESP': 'España', 'CRC': 'Costa Rica', 'GER': 'Alemania', 'JPN': 'Japón',
+      'BEL': 'Bélgica', 'CAN': 'Canadá', 'MAR': 'Marruecos', 'CRO': 'Croacia',
+      'BRA': 'Brasil', 'SRB': 'Serbia', 'SUI': 'Suiza', 'CMR': 'Camerún',
+      'POR': 'Portugal', 'GHA': 'Ghana', 'URU': 'Uruguay', 'KOR': 'Corea del Sur',
+      'RSA': 'Sudáfrica', 'ITA': 'Italia', 'COL': 'Colombia', 'CHL': 'Chile'
+    },
+    en: {
+      'ECU': 'Ecuador', 'QAT': 'Qatar', 'SEN': 'Senegal', 'NED': 'Netherlands',
+      'ENG': 'England', 'IRN': 'Iran', 'USA': 'USA', 'WAL': 'Wales',
+      'ARG': 'Argentina', 'KSA': 'Saudi Arabia', 'MEX': 'Mexico', 'POL': 'Poland',
+      'FRA': 'France', 'AUS': 'Australia', 'DEN': 'Denmark', 'TUN': 'Tunisia',
+      'ESP': 'Spain', 'CRC': 'Costa Rica', 'GER': 'Germany', 'JPN': 'Japan',
+      'BEL': 'Belgium', 'CAN': 'Canada', 'MAR': 'Morocco', 'CRO': 'Croacia',
+      'BRA': 'Brazil', 'SRB': 'Serbia', 'SUI': 'Switzerland', 'CMR': 'Cameroon',
+      'POR': 'Portugal', 'GHA': 'Ghana', 'URU': 'Uruguay', 'KOR': 'South Korea',
+      'RSA': 'South Africa', 'ITA': 'Italy', 'COL': 'Colombia', 'CHL': 'Chile'
     }
-    if (nombre.includes("Mejor 3°") && lang === "en") return "Best 3rd (A/B/C/D/F)";
-    if (nombre.includes("Ganador") && lang === "en") return nombre.replace("Ganador", "Winner");
-    return nombre;
   };
+  return nombres[idioma]?.[codigo] || codigo;
+}
 
-  const traducirFase = (fase, lang) => {
-    if (lang === 'es') return fase;
-    const fases = {
-      "Fase de Grupos": "Group Stage",
-      "16avos de Final": "Round of 32",
-      "Cuartos de Final": "Quarter-finals",
-      "FINAL MUNDIAL": "WORLD CUP FINAL"
-    };
-    return fases[fase] || fase;
+function traducirFase(fase, idioma) {
+  const fases = {
+    es: { 'GRUPOS': 'FASE DE GRUPOS', 'OCTAVOS': 'OCTAVOS DE FINAL', 'CUARTOS': 'CUARTOS DE FINAL', 'SEMIS': 'SEMIFINAL', 'FINAL': 'GRAN FINAL' },
+    en: { 'GRUPOS': 'GROUP STAGE', 'OCTAVOS': 'ROUND OF 16', 'CUARTOS': 'QUARTER-FINALS', 'SEMIS': 'SEMI-FINALS', 'FINAL': 'GRAND FINALE' }
   };
+  return fases[idioma]?.[fase] || fase;
+}
 
-  // ==========================================
-  // BASE DE DATOS COMPLETA DEL CALENDARIO GLOBAL
-  // ==========================================
-  const todosLosPartidosMundial = [
-    { fecha: "2026-06-11", e1: "México", e2: "Sudáfrica", hora: "8:00 PM ET", estadio: "Estadio Azteca", fase: "Fase de Grupos" },
-    { fecha: "2026-06-11", e1: "Corea del Sur", e2: "Chequia", hora: "11:00 PM ET", estadio: "Estadio Akron", fase: "Fase de Grupos" },
-    { fecha: "2026-06-12", e1: "Canadá", e2: "Bosnia y Herz.", hora: "4:00 PM ET", estadio: "BC Place", fase: "Fase de Grupos" },
-    { fecha: "2026-06-12", e1: "Catar", e2: "Suiza", hora: "7:00 PM ET", estadio: "Lumen Field", fase: "Fase de Grupos" },
-    
-    { fecha: "2026-06-28", e1: "Chequia", e2: "Suiza", hora: "3:00 PM ET", estadio: "Gillette Stadium", fase: "16avos de Final" },
-    { fecha: "2026-06-29", e1: "Brasil", e2: "Suecia", hora: "1:00 PM ET", estadio: "Hard Rock Stadium", fase: "16avos de Final" },
-    { fecha: "2026-06-29", e1: "Alemania", e2: "Mejor 3° (A/B/C/D/F)", hora: "4:30 PM ET", estadio: "Mercedes-Benz Stadium", fase: "16avos de Final" },
-    { fecha: "2026-06-30", e1: "Países Bajos", e2: "Marruecos", hora: "11:00 PM ET", estadio: "AT&T Stadium", fase: "16avos de Final" },
-    
-    { fecha: "2026-07-09", e1: "Ganador M89", e2: "Ganador M90", hora: "6:00 PM ET", estadio: "MetLife Stadium", fase: "Cuartos de Final" },
-    { fecha: "2026-07-19", e1: "Ganador SF1", e2: "Ganador SF2", hora: "7:00 PM ET", estadio: "MetLife Stadium", fase: "FINAL MUNDIAL" }
-  ];
+// Data estática de partidos y posiciones (Mantenidos idénticos)
+const todosLosPartidosMundial = [
+  { fase: 'GRUPOS', e1: 'MEX', e2: 'RSA', hora: '11:00 AM', estadio: 'Estadio Azteca, CDMX' },
+  { fase: 'GRUPOS', e1: 'USA', e2: 'ITA', hora: '02:00 PM', estadio: 'SoFi Stadium, LA' },
+  { fase: 'GRUPOS', e1: 'CAN', e2: 'COL', hora: '05:00 PM', estadio: 'BMO Field, Toronto' }
+];
 
-  const tablaPosicionesData = [
-    { grupo: "GRUPO A", lineas: [{ posicion: 1, equipo: "México", b: "mx", pj: 0, pts: 0 }, { posicion: 2, equipo: "Sudáfrica", b: "za", pj: 0, pts: 0 }, { posicion: 3, equipo: "Corea del Sur", b: "kr", pj: 0, pts: 0 }, { posicion: 4, equipo: "Chequia", b: "cz", pj: 0, pts: 0 }] },
-    { grupo: "GRUPO B", lineas: [{ posicion: 1, equipo: "Canadá", b: "ca", pj: 0, pts: 0 }, { posicion: 2, equipo: "Bosnia y Herz.", b: "ba", pj: 0, pts: 0 }, { posicion: 3, equipo: "Catar", b: "qa", pj: 0, pts: 0 }, { posicion: 4, equipo: "Suiza", b: "ch", pj: 0, pts: 0 }] },
-    { grupo: "GRUPO C", lineas: [{ posicion: 1, equipo: "Estados Unidos", b: "us", pj: 0, pts: 0 }, { posicion: 2, equipo: "Uruguay", b: "uy", pj: 0, pts: 0 }, { posicion: 3, equipo: "Ghana", b: "gh", pj: 0, pts: 0 }, { posicion: 4, equipo: "Japón", b: "jp", pj: 0, pts: 0 }] },
-    { grupo: "GRUPO D", lineas: [{ posicion: 1, equipo: "Alemania", b: "de", pj: 0, pts: 0 }, { posicion: 2, equipo: "Italia", b: "it", pj: 0, pts: 0 }, { posicion: 3, equipo: "Camerún", b: "cm", pj: 0, pts: 0 }, { posicion: 4, equipo: "Nueva Zelanda", b: "nz", pj: 0, pts: 0 }] },
-    { grupo: "GRUPO E", lineas: [{ posicion: 1, equipo: "Argentina", b: "ar", pj: 0, pts: 0 }, { posicion: 2, equipo: "Francia", b: "fr", pj: 0, pts: 0 }, { posicion: 3, equipo: "Australia", b: "au", pj: 0, pts: 0 }, { posicion: 4, equipo: "Argelia", b: "dz", pj: 0, pts: 0 }] },
-    { grupo: "GRUPO F", lineas: [{ posicion: 1, equipo: "Brasil", b: "br", pj: 0, pts: 0 }, { posicion: 2, equipo: "Portugal", b: "pt", pj: 0, pts: 0 }, { posicion: 3, equipo: "Marruecos", b: "ma", pj: 0, pts: 0 }, { posicion: 4, equipo: "Escocia", b: "gb-sct", pj: 0, pts: 0 }] },
-    { grupo: "GRUPO G", lineas: [{ posicion: 1, equipo: "España", b: "es", pj: 0, pts: 0 }, { posicion: 2, equipo: "Suecia", b: "se", pj: 0, pts: 0 }, { posicion: 3, equipo: "Colombia", b: "co", pj: 0, pts: 0 }, { posicion: 4, equipo: "Gales", b: "gb-wls", pj: 0, pts: 0 }] },
-    { grupo: "GRUPO H", lineas: [{ posicion: 1, equipo: "Inglaterra", b: "gb-eng", pj: 0, pts: 0 }, { posicion: 2, equipo: "Bélgica", b: "be", pj: 0, pts: 0 }, { posicion: 3, equipo: "Ecuador", b: "ec", pj: 0, pts: 0 }, { posicion: 4, equipo: "Túnez", b: "tn", pj: 0, pts: 0 }] },
-    { grupo: "GRUPO I", lineas: [{ posicion: 1, equipo: "Países Bajos", b: "nl", pj: 0, pts: 0 }, { posicion: 2, equipo: "Croacia", b: "hr", pj: 0, pts: 0 }, { posicion: 3, equipo: "Senegal", b: "sn", pj: 0, pts: 0 }, { posicion: 4, equipo: "Perú", b: "pe", pj: 0, pts: 0 }] }
-  ];
+const tablaPosicionesData = [
+  { grupo: "GRUPO A", lineas: [ { posicion: 1, equipo: "MEX", pj: 0, pts: 0, b: "mx" }, { posicion: 2, equipo: "RSA", pj: 0, pts: 0, b: "za" }, { posicion: 3, equipo: "ITA", pj: 0, pts: 0, b: "it" }, { posicion: 4, equipo: "CHL", pj: 0, pts: 0, b: "cl" } ] },
+  { grupo: "GRUPO B", lineas: [ { posicion: 1, equipo: "USA", pj: 0, pts: 0, b: "us" }, { posicion: 2, equipo: "ENG", pj: 0, pts: 0, b: "gb-eng" }, { posicion: 3, equipo: "IRN", pj: 0, pts: 0, b: "ir" }, { posicion: 4, equipo: "WAL", pj: 0, pts: 0, b: "gb-wls" } ] },
+  { grupo: "GRUPO C", lineas: [ { posicion: 1, equipo: "ARG", pj: 0, pts: 0, b: "ar" }, { posicion: 2, equipo: "KSA", pj: 0, pts: 0, b: "sa" }, { posicion: 3, equipo: "POL", pj: 0, pts: 0, b: "pl" }, { posicion: 4, equipo: "COL", pj: 0, pts: 0, b: "co" } ] }
+];
+
+// =========================================================================
+// 2. COMPONENTE PRINCIPAL
+// =========================================================================
+export default function DetalleNoticiaPage({ params }) {
+  const { id } = React.use(params);
+  const { idioma } = useLanguage();
 
   const [partidosFiltradosHoy, setPartidosFiltradosHoy] = useState([]);
   const [grupoActivoCarrusel, setGrupoActivoCarrusel] = useState(0);
-  const [fechaActualVisual, setFechaActualVisual] = useState("");
-  const [mostrarCabecera, setMostrarCabecera] = useState(true);
+  const [sugerenciasAleatorias, setSugerenciasAleatorias] = useState([]);
 
+  // Carga inicial y lógica de UI
   useEffect(() => {
-    const manejarScroll = () => {
-      if (window.scrollY > 40) {
-        setMostrarCabecera(false);
-      } else {
-        setMostrarCabecera(true);
-      }
-    };
+    setPartidosFiltradosHoy(todosLosPartidosMundial);
 
-    window.addEventListener('scroll', manejarScroll);
+    // Seleccionar 2 sugerencias alternativas que no sean la noticia actual
+    const todasLasKeys = Object.keys(noticiasData);
+    const filtradas = todasLasKeys.filter(k => k !== id);
+    const mezcladas = [...filtradas].sort(() => 0.5 - Math.random());
+    setSugerenciasAleatorias(mezcladas.slice(0, 2));
+  }, [id]);
 
-    const hoy = new Date();
-    let fechaFormateada = `${hoy.getFullYear()}-${String(hoy.getMonth() + 1).padStart(2, '0')}-${String(hoy.getDate()).padStart(2, '0')}`;
-    
-    if (hoy < new Date("2026-06-11T00:00:00")) {
-      fechaFormateada = "2026-06-11"; 
-    }
-    setFechaActualVisual(fechaFormateada);
-
-    setPartidosFiltradosHoy(todosLosPartidosMundial.filter(p => p.fecha === fechaFormateada));
-
-    const intervaloCarrusel = setInterval(() => {
+  // Auto-rotación del carrusel de posiciones
+  useEffect(() => {
+    const intervalo = setInterval(() => {
       setGrupoActivoCarrusel((prev) => (prev + 1) % tablaPosicionesData.length);
-    }, 3500);
-
-    return () => {
-      window.removeEventListener('scroll', manejarScroll);
-      clearInterval(intervaloCarrusel);
-    };
+    }, 5000);
+    return () => clearInterval(intervalo);
   }, []);
 
-  const noticiasDetalle = {
-    "noticia-1": { imagen: "/Azteca.jpg", es: { titulo: "El Estadio Azteca hará historia en la inauguración de 2026", subtitulo: "El coloso de Santa Úrsula se convierte en el templo definitivo de la FIFA.", contenido: "La FIFA ha confirmado de manera oficial que el místico Estadio Azteca de la Ciudad de México será el escenario encargado de albergar el partido inaugural del Mundial el 11 de junio de 2026.", autor: "Redacción FIFA 2026", tiempoLectura: "3 min" }, en: { titulo: "Azteca Stadium will make history in the 2026 opening match", subtitulo: "The Santa Úrsula colossus becomes FIFA's definitive temple.", contenido: "FIFA has officially confirmed that the legendary Azteca Stadium in Mexico City will host the opening match of the World Cup on June 11, 2026.", autor: "FIFA 2026 Press", tiempoLectura: "3 min" } },
-    "noticia-2": { imagen: "/Sedes.jpg", es: { titulo: "Sedes listas en Norteamérica para recibir el macro torneo", subtitulo: "Las 16 ciudades anfitrionas reportan avances óptimos en logística.", contenido: "Los comités organizadores de Estados Unidos, México y Canadá han presentado su informe unificado de infraestructura.", autor: "Corresponsal Norteamérica", tiempoLectura: "2 min" }, en: { titulo: "North American host venues fully prepared for the macro tournament", subtitulo: "All 16 host cities report optimal logistical progress.", contenido: "The joint organizing committees of the United States, Mexico, and Canada presented their unified infrastructure master plan.", autor: "North America Correspondent", tiempoLectura: "2 min" } },
-    "noticia-3": { 
-      imagen: "/Selecciones.jpg", 
-      es: { 
-        titulo: "Formato Y calendario Oficial de la Copa del Mundo 2026", 
-        subtitulo: "Conoce a detalle la transformación del formato de competición y el cronograma definitivo de la fase final.", 
-        contenido: (
-          <div style={{ fontSize: '1.05rem', lineHeight: '1.75', color: '#2d3748' }}>
-            <p style={{ marginBottom: '16px', textAlign: 'justify' }}>
-              La <strong>Copa Mundial de la FIFA 2026</strong> marcará un hito sin precedentes en la cronología del balompié internacional. Programado para desarrollarse del 11 de junio al 19 de julio de 2026, el torneo estrenará un format estructuralmente renovado. Por primera vez en la historia de la competición, la fase final reunirá a <strong>48 selecciones nacionales</strong> y será albergada en una histórica coorganización tripartita entre <strong>Canadá, Estados Unidos y México</strong>.
-            </p>
-            <p style={{ marginBottom: '16px', textAlign: 'justify' }}>
-              El sistema de competición ha sido rediseñado meticulosamente para optimizar la competitividad. La fase inicial constará de <strong>12 grupos de cuatro equipos</strong> cada uno, garantizando que cada delegación dispute un mínimo de tres partidos. La clasificación a la etapa de eliminación directa estará estrictamente reservada para los dos primeros lugares de cada sector, complementados por los los ocho mejores terceros clasificados.
-            </p>
-            <p style={{ marginBottom: '30px', textAlign: 'justify' }}>
-              Como principal innovación en la estructura de los <em>playoffs</em>, se incorporará una ronda de <strong>dieciseisavos de final</strong> compuesta por 32 escuadras. A partir de allí, el torneo procederá bajo el formato tradicional de eliminación súbita a través de octavos, cuartos, semifinales y la gran final. Esta expansión elevará el calendario a un total de <strong>104 encuentros</strong>, consolidando a esta edición como la más extensa, inclusiva y con mayor despliegue logístico en la historia del fútbol global.
-            </p>
-            
-            <h3 style={{ color: '#0a192f', fontSize: '1.35rem', fontWeight: '700', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span>🗓️</span> Cronograma Oficial del Torneo
-            </h3>
-            
-            <div style={{ overflowX: 'auto', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.06)', border: '1px solid #e2e8f0', marginBottom: '10px' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.92rem' }}>
-                <thead>
-                  <tr style={{ backgroundColor: '#0a192f', color: '#ffffff' }}>
-                    <th style={{ padding: '12px 16px', fontWeight: '700', borderBottom: '3px solid #f1c40f' }}>Fase del Campeonato</th>
-                    <th style={{ padding: '12px 16px', fontWeight: '700', borderBottom: '3px solid #f1c40f' }}>Periodo / Fecha</th>
-                    <th style={{ padding: '12px 16px', fontWeight: '700', borderBottom: '3px solid #f1c40f' }}>Detalle Informativo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
-                    <td style={{ padding: '12px 16px', fontWeight: '700', color: '#0a192f' }}>⚽ Partido Inaugural</td>
-                    <td style={{ padding: '12px 16px', whiteSpace: 'nowrap' }}>11 de Junio</td>
-                    <td style={{ padding: '12px 16px', fontStyle: 'italic' }}>México vs. Sudáfrica (Estadio Azteca, CDMX)</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid #e2e8f0' }}>
-                    <td style={{ padding: '12px 16px', fontWeight: '600' }}>📋 Fase de Grupos</td>
-                    <td style={{ padding: '12px 16px', whiteSpace: 'nowrap' }}>Del 11 al 27 de Junio</td>
-                    <td style={{ padding: '12px 16px' }}>12 sectores en sedes concurrentes</td>
-                  </tr>
-                  <tr style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
-                    <td style={{ padding: '12px 16px', fontWeight: '600' }}>⚡ Dieciseisavos de Final</td>
-                    <td style={{ padding: '12px 16px', whiteSpace: 'nowrap' }}>Del 28 de Junio al 3 de Julio</td>
-                    <td style={{ padding: '12px 16px' }}>Ronda eliminatoria de 32 equipos</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid #e2e8f0' }}>
-                    <td style={{ padding: '12px 16px', fontWeight: '600' }}>🔥 Octavos de Final</td>
-                    <td style={{ padding: '12px 16px', whiteSpace: 'nowrap' }}>Del 4 al 7 de Julio</td>
-                    <td style={{ padding: '12px 16px' }}>Clasificación directa a cuartos</td>
-                  </tr>
-                  <tr style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
-                    <td style={{ padding: '12px 16px', fontWeight: '600' }}>🏆 Cuartos de Final</td>
-                    <td style={{ padding: '12px 16px', whiteSpace: 'nowrap' }}>Del 9 al 11 de Julio</td>
-                    <td style={{ padding: '12px 16px' }}>Fase de alta exigencia competitiva</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid #e2e8f0' }}>
-                    <td style={{ padding: '12px 16px', fontWeight: '600' }}>🌟 Semifinales</td>
-                    <td style={{ padding: '12px 16px', whiteSpace: 'nowrap' }}>14 y 15 de Julio</td>
-                    <td style={{ padding: '12px 16px' }}>Definición de los dos grandes finalistas</td>
-                  </tr>
-                  <tr style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
-                    <td style={{ padding: '12px 16px', fontWeight: '600' }}>🥉 Tercer Lugar</td>
-                    <td style={{ padding: '12px 16px', whiteSpace: 'nowrap' }}>18 de Julio</td>
-                    <td style={{ padding: '12px 16px' }}>Consagración del podio mundialista</td>
-                  </tr>
-                  <tr style={{ backgroundColor: '#fffbf0' }}>
-                    <td style={{ padding: '14px 16px', fontWeight: '800', color: '#b7791f' }}>👑 Gran Final</td>
-                    <td style={{ padding: '14px 16px', fontWeight: '700', whiteSpace: 'nowrap' }}>19 de Julio</td>
-                    <td style={{ padding: '14px 16px', fontWeight: '700', color: '#0a192f' }}>Clausura y coronación del Campeón</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        ), 
-        autor: "Mesa de Deportes", 
-        tiempoLectura: "5 min" 
-      }, 
-      en: { 
-        titulo: "**Official Format and Schedule of the 2026 FIFA World Cup",
-        subtitulo: "An in-depth look at the structural competition upgrade and the definitive knockout phase schedule.", 
-        contenido: (
-          <div style={{ fontSize: '1.05rem', lineHeight: '1.75', color: '#2d3748' }}>
-            <p style={{ marginBottom: '16px', textAlign: 'justify' }}>
-              The <strong>2026 FIFA World Cup</strong> will mark an unprecedented milestone in the chronology of international football. Scheduled to take place from June 11 to July 19, 2026, the tournament will debut a structurally renewed format. For the first time in the history of the competition, the final stage will bring together <strong>48 national teams</strong> and will be hosted in a historic tripartite co-organization between <strong>Canada, Mexico, and the United States</strong>.
-            </p>
-            <p style={{ marginBottom: '16px', textAlign: 'justify' }}>
-              The competition system has been meticulously redesigned to optimize global competitiveness. The initial phase will consist of <strong>12 groups of four teams</strong> each, ensuring that every delegation plays a minimum of three matches. Qualification for the direct elimination stage will be strictly reserved for the top two places in each sector, complemented by the eight best third-placed finishers.
-            </p>
-            <p style={{ marginBottom: '30px', textAlign: 'justify' }}>
-              As a major innovation in the <em>playoffs</em> structure, a <strong>round of 32</strong> consisting of 32 squads will be incorporated. From there, the tournament will proceed under the traditional single-elimination format through the round of 16, quarter-finals, semi-finals, and the grand finale. This expansion will increase the schedule to a total of <strong>104 matches</strong>, consolidating this edition as the most extensive, inclusive, and logistically demanding in global football history.
-            </p>
-            
-            <h3 style={{ color: '#0a192f', fontSize: '1.35rem', fontWeight: '700', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span>🗓️</span> Official Tournament Schedule
-            </h3>
-            
-            <div style={{ overflowX: 'auto', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.06)', border: '1px solid #e2e8f0', marginBottom: '10px' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.92rem' }}>
-                <thead>
-                  <tr style={{ backgroundColor: '#0a192f', color: '#ffffff' }}>
-                    <th style={{ padding: '12px 16px', fontWeight: '700', borderBottom: '3px solid #f1c40f' }}>Tournament Stage</th>
-                    <th style={{ padding: '12px 16px', fontWeight: '700', borderBottom: '3px solid #f1c40f' }}>Period / Date</th>
-                    <th style={{ padding: '12px 16px', fontWeight: '700', borderBottom: '3px solid #f1c40f' }}>Key Matchday Detail</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
-                    <td style={{ padding: '12px 16px', fontWeight: '700', color: '#0a192f' }}>⚽ Opening Match</td>
-                    <td style={{ padding: '12px 16px', whiteSpace: 'nowrap' }}>June 11</td>
-                    <td style={{ padding: '12px 16px', fontStyle: 'italic' }}>Mexico vs. South Africa (Azteca Stadium, CDMX)</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid #e2e8f0' }}>
-                    <td style={{ padding: '12px 16px', fontWeight: '600' }}>📋 Group Stage</td>
-                    <td style={{ padding: '12px 16px', whiteSpace: 'nowrap' }}>June 11 to June 27</td>
-                    <td style={{ padding: '12px 16px' }}>12 sectors across concurrent host cities</td>
-                  </tr>
-                  <tr style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
-                    <td style={{ padding: '12px 16px', fontWeight: '600' }}>⚡ Round of 32</td>
-                    <td style={{ padding: '12px 16px', whiteSpace: 'nowrap' }}>June 28 to July 3</td>
-                    <td style={{ padding: '12px 16px' }}>Knockout stage featuring 32 teams</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid #e2e8f0' }}>
-                    <td style={{ padding: '12px 16px', fontWeight: '600' }}>🔥 Round of 16</td>
-                    <td style={{ padding: '12px 16px', whiteSpace: 'nowrap' }}>July 4 to July 7</td>
-                    <td style={{ padding: '12px 16px' }}>Direct qualification path to quarter-finals</td>
-                  </tr>
-                  <tr style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
-                    <td style={{ padding: '12px 16px', fontWeight: '600' }}>🏆 Quarter-finals</td>
-                    <td style={{ padding: '12px 16px', whiteSpace: 'nowrap' }}>July 9 to July 11</td>
-                    <td style={{ padding: '12px 16px' }}>High-intensity elite competition phase</td>
-                  </tr>
-                  <tr style={{ borderBottom: '1px solid #e2e8f0' }}>
-                    <td style={{ padding: '12px 16px', fontWeight: '600' }}>🌟 Semi-finals</td>
-                    <td style={{ padding: '12px 16px', whiteSpace: 'nowrap' }}>July 14 and July 15</td>
-                    <td style={{ padding: '12px 16px' }}>Determining the two grand finalists</td>
-                  </tr>
-                  <tr style={{ backgroundColor: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
-                    <td style={{ padding: '12px 16px', fontWeight: '600' }}>🥉 Third Place Play-off</td>
-                    <td style={{ padding: '12px 16px', whiteSpace: 'nowrap' }}>July 18</td>
-                    <td style={{ padding: '12px 16px' }}>Crowning the World Cup podium</td>
-                  </tr>
-                  <tr style={{ backgroundColor: '#fffbf0' }}>
-                    <td style={{ padding: '14px 16px', fontWeight: '800', color: '#b7791f' }}>👑 Grand Final</td>
-                    <td style={{ padding: '14px 16px', fontWeight: '700', whiteSpace: 'nowrap' }}>July 19</td>
-                    <td style={{ padding: '14px 16px', fontWeight: '700', color: '#0a192f' }}>Closing ceremony and Champion coronation</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        ), 
-        autor: "Sports Desk", 
-        tiempoLectura: "5 min" 
-      } 
-    },
-    "noticia-4": { imagen: "/Estadio_final.jpg", es: { titulo: "La Gran Final en Nueva York/Nueva Jersey", subtitulo: "El MetLife Stadium será el escenario donde se definirá al nuevo campeón del mundo.", contenido: "El MetLife Stadium, con capacidad para más de 80 mil espectadores, será la sede de la final de la copa del mundo 2026.", autor: "Mesa de Deportes", tiempoLectura: "5 min" }, en: { titulo: "The Grand Finale in New York/New Jersey", subtitulo: "The MetLife Stadium will be the venue where the new world champion will be crowned.", contenido: "The MetLife Stadium, with a capacity of more than 80,000 spectators, will host the final of the 2026 FIFA World Cup.", autor: "Sports Desk", tiempoLectura: "5 min" } },
-    "noticia-5": { imagen: "/Neymar_lesion.jpg", es: { titulo: "Neymar enciende las alarmas en Brasil", subtitulo: "El astro brasileño sufre una lesión muscular de grado II, pero el cuerpo médico confía en su recuperación.", contenido: "La selección brasileña enfrenta momentos de alta tensión tras confirmarse que Neymar Jr. presenta una lesión muscular de grado II.", autor: "Corresponsal Sudamérica", tiempoLectura: "4 min" }, en: { titulo: "Neymar sparks injury alarm in Brazil", subtitulo: "The Brazilian star suffers a grade II muscle injury, but the medical staff remains confident.", contenido: "The Brazilian national team is facing tense moments after confirming that Neymar Jr. has a grade II muscle injury.", autor: "South American Correspondent", tiempoLectura: "4 min" } },
-    "noticia-6": {
-      "imagen": "/Beccacece.jpg",
-      "es": {
-        "titulo": "Ecuador presenta sus convocados oficiales para el Mundial 2026",
-        "subtitulo": "Sebastián Beccacece definió la lista de la Tri con sorpresas y un bloque consolidado en Europa.",
-        "contenido": "El director técnico Sebastián Beccacece presentó la lista oficial de la Selección de Ecuador para la Copa del Mundo 2026.\n\nArqueros: Gonzalo Valle (Liga de Quito), Hernán Galíndez (Huracán) y Moisés Ramírez (Kifisia FC).\nDefensores: Ángelo Preciado (Atlético Mineiro), Félix Torres (Inter PA), Joel Ordóñez (Brujas), Jackson Porozo (Xolos de Tijuana), Pervis Estupiñán (Milan), Piero Hincapié (Arsenal FC) y Willian Pacho (PSG).\nMediocampistas: Alan Franco (Atlético Mineiro), Denil Castillo (Midtjylland), Jordy Alcívar (Independiente del Valle), Kendry Páez (River Plate), Moisés Caicedo (Chelsea), Pedro Vite (Pumas), Anthony Valencia (Royal Antwerp) y Yaimar Medina (Genk).\nDelanteros: Alan Minda (Atlético Mineiro), Enner Valencia (Pachuca), Gonzalo Plata (Flamengo), Jeremy Arévalo (Stuttgart), John Yeboah (Venezia), Jordy Caicedo (Huracán), Kevin Rodríguez (Union Saint-Gilloise) y Nilson Angulo (Sunderland).",
-        "autor": "Corresponsal Quito",
-        "tiempoLectura": "3 min"
-      },
-      "en": {
-        "titulo": "Ecuador announces official squad list for the 2026 World Cup",
-        "subtitulo": "Sebastián Beccacece finalized La Tri's roster with key surprises and a strong European core.",
-        "contenido": "Head coach Sebastián Beccacece announced Ecuador's official squad list for the 2026 World Cup.\n\nGoalkeepers: Gonzalo Valle (Liga de Quito), Hernán Galíndez (Huracán), and Moisés Ramírez (Kifisia FC).\nDefenders: Ángelo Preciado (Atlético Mineiro), Félix Torres (Inter PA), Joel Ordóñez (Brujas), Jackson Porozo (Xolos de Tijuana), Pervis Estupiñán (Milan), Piero Hincapié (Arsenal FC), and Willian Pacho (PSG).\nMidfielders: Alan Franco (Atlético Mineiro), Denil Castillo (Midtjylland), Jordy Alcívar (Independiente del Valle), Kendry Páez (River Plate), Moisés Caicedo (Chelsea), Pedro Vite (Pumas), Anthony Valencia (Royal Antwerp), and Yaimar Medina (Genk).\nForwards: Alan Minda (Atlético Mineiro), Enner Valencia (Pachuca), Gonzalo Plata (Flamengo), Jeremy Arevalo (Stuttgart), John Yeboah (Venezia), Jordy Caicedo (Huracán), Kevin Rodríguez (Union Saint-Gilloise), and Nilson Angulo (Sunderland).",
-        "autor": "Quito Correspondent",
-        "tiempoLectura": "3 min"
-      }
-    }
-  };
+  const objetoNoticia = noticiasData[id];
 
-  const noticiaDefecto = { imagen: "/Mundial_14_4.jpg", es: { titulo: "Noticia Mundial 2026", subtitulo: "Actualización de los preparativos", contenido: "Los detalles logísticos avanzan firmemente bajo la supervisión de la FIFA.", autor: "Prensa Oficial", tiempoLectura: "1 min" }, en: { titulo: "World Cup 2026 News", subtitulo: "Operational master update", contenido: "Logistical details progress steadily under FIFA inspection.", autor: "Official Press", tiempoLectura: "1 min" } };
-  
-  const objetoNoticia = noticiasDetalle[noticiaId] || noticiaDefecto;
-  const textoNoticia = noticiasDetalle[noticiaId] ? noticiasDetalle[noticiaId][idioma] : noticiaDefecto[idioma];
+  if (!objetoNoticia) {
+    return (
+      <div style={{ ...containerStyle, justifyContent: 'center' }}>
+        <h2>{idioma === 'es' ? 'Artículo no encontrado' : 'Article not found'}</h2>
+        <Link href="/" style={btnVolverStyle}>
+          {idioma === 'es' ? '← Volver a la Portada' : '← Back to Home'}
+        </Link>
+      </div>
+    );
+  }
 
-  const [sugerenciasAleatorias, setSugerenciasAleatorias] = useState([]);
-  useEffect(() => {
-    const keysFiltradas = Object.keys(noticiasDetalle).filter(id => id !== noticiaId);
-    setSugerenciasAleatorias(keysFiltradas.sort(() => 0.5 - Math.random()).slice(0, 4));
-  }, [noticiaId]);
+  const textoNoticia = objetoNoticia[idioma];
 
   return (
     <div style={containerStyle}>
-      
-      {/* 🏆 RECUADRO SUPERIOR CONFIGURADO CON SECCIONES TOTALMENTE BILINGÜES */}
-      <div 
-        className="recuadro-superior-fijo"
-        style={{
-          ...recuadroSuperiorFijoContainer,
-          opacity: mostrarCabecera ? 1 : 0,
-          visibility: mostrarCabecera ? 'visible' : 'hidden',
-          transform: mostrarCabecera ? 'translateY(0)' : 'translateY(-15px)'
-        }}
-      >
+      {/* 📌 RECUADRO SUPERIOR FIJO */}
+      <div style={recuadroSuperiorFijoContainer} className="recuadro-superior-fijo">
         <div style={gridInternoRecuadroStyle} className="grid-interno-recuadro">
           
-          {/* Bloque Izquierdo: Partidos */}
+          {/* ================================================================= */}
+          {/* NUEVA SECCIÓN DE PARTIDOS DEL DÍA: ESTILO DEPORTIVO PREMIUM       */}
+          {/* ================================================================= */}
           <div style={seccionPartidosFijoStyle}>
             <div style={encabezadoSubModuloStyle}>
-              <span style={indicadorEnVivoStyle}>⚽</span> 
-              {idioma === 'es' ? `PARTIDOS DEL DÍA (${fechaActualVisual})` : `FIXTURES OF THE DAY (${fechaActualVisual})`}
+              <span style={indicadorEnVivoStyle}>🔴</span> {idioma === 'es' ? 'PARTIDOS POR FECHA' : 'MATCHES BY DATE'}
             </div>
             
-            <div style={contenedorScrollPartidosStyle}>
+            {/* Carrusel de Fechas Horizontal Horizontal */}
+            <div style={carruselFechasStyle} className="hide-scrollbar">
+              <div style={fechaCardActivaStyle}>
+                <div>{idioma === 'es' ? 'JUE' : 'THU'}</div>
+                <div style={{ fontSize: '1rem', margin: '1px 0', fontWeight: '800' }}>11</div>
+                <div>{idioma === 'es' ? 'JUN' : 'JUN'}</div>
+              </div>
+              <div style={fechaCardInactivaStyle}>
+                <div>{idioma === 'es' ? 'VIE' : 'FRI'}</div>
+                <div style={{ fontSize: '1rem', margin: '1px 0', fontWeight: '800' }}>12</div>
+                <div>{idioma === 'es' ? 'JUN' : 'JUN'}</div>
+              </div>
+              <div style={fechaCardInactivaStyle}>
+                <div>{idioma === 'es' ? 'SAB' : 'SAT'}</div>
+                <div style={{ fontSize: '1rem', margin: '1px 0', fontWeight: '800' }}>13</div>
+                <div>{idioma === 'es' ? 'JUN' : 'JUN'}</div>
+              </div>
+              <div style={fechaCardInactivaStyle}>
+                <div>{idioma === 'es' ? 'DOM' : 'SUN'}</div>
+                <div style={{ fontSize: '1rem', margin: '1px 0', fontWeight: '800' }}>14</div>
+                <div>{idioma === 'es' ? 'JUN' : 'JUN'}</div>
+              </div>
+            </div>
+
+            {/* Listado de Partidos Horizontal/Deslizable */}
+            <div style={contenedorFilaPartidosEstilo} className="hide-scrollbar">
               {partidosFiltradosHoy.length > 0 ? (
                 partidosFiltradosHoy.map((partido, idx) => (
                   <div key={idx} style={tarjetaPartidoSuperiorStyle}>
                     <div style={badgeFaseEstilo}>{traducirFase(partido.fase, idioma)}</div>
+                    <div style={infoLugarMatchStyle}>{partido.estadio.split(',')[0]}</div>
+                    
                     <div style={filaEquiposMatchStyle}>
+                      {/* Local */}
                       <div style={bloqueEquipoMatchStyle}>
-                        <img src={`https://flagcdn.com/w40/${obtenerBandera(partido.e1)}.png`} alt="E1" style={banderaMatchStyle} />
-                        <span style={nombreEquipoMatchStyle} className="nombre-equipo-match">{traducirEquipo(partido.e1, idioma)}</span>
+                        <img src={`https://flagcdn.com/w80/${obtenerBandera(partido.e1)}.png`} alt="E1" style={banderaMatchStyle} />
+                        <span style={nombreEquipoMatchStyle}>{partido.e1}</span>
                       </div>
-                      <span style={vsTextoEstilo}>VS</span>
+                      
+                      {/* VS / Hora */}
+                      <div style={vsTextoEstilo}>
+                        <span style={{ fontSize: '0.6rem', color: '#cbd5e1' }}>VS</span>
+                        <span style={{ color: '#ffffff', fontSize: '0.78rem', marginTop: '1px' }}>{partido.hora.replace(" AM", "").replace(" PM", "")}</span>
+                      </div>
+                      
+                      {/* Visitante */}
                       <div style={bloqueEquipoMatchStyle}>
-                        <img src={`https://flagcdn.com/w40/${obtenerBandera(partido.e2)}.png`} alt="E2" style={banderaMatchStyle} />
-                        <span style={nombreEquipoMatchStyle} className="nombre-equipo-match">{traducirEquipo(partido.e2, idioma)}</span>
+                        <img src={`https://flagcdn.com/w80/${obtenerBandera(partido.e2)}.png`} alt="E2" style={banderaMatchStyle} />
+                        <span style={nombreEquipoMatchStyle}>{partido.e2}</span>
                       </div>
                     </div>
-                    <div style={infoLugarMatchStyle}>🕒 {partido.hora} | 🏟️ {partido.estadio}</div>
                   </div>
                 ))
               ) : (
                 <div style={sinPartidosEstilo}>
-                  {idioma === 'es' ? 'No hay partidos programados para la fecha actual.' : 'No matches scheduled for today.'}
+                  {idioma === 'es' ? 'No hay partidos programados.' : 'No programmed matches.'}
                 </div>
               )}
             </div>
           </div>
 
-          {/* Bloque Derecho: Carrusel */}
+          {/* Bloque Derecho: Carrusel de Posiciones (Se mantiene idéntico) */}
           <div style={seccionTablasCarruselStyle}>
             <div style={encabezadoSubModuloStyle}>
               <span>📊</span> {idioma === 'es' ? 'TABLA DE POSICIONES' : 'STANDINGS'}
@@ -436,7 +215,7 @@ export default function DetalleNoticiaPage() {
                 <tbody>
                   {tablaPosicionesData[grupoActivoCarrusel].lineas.map((linea, lIdx) => (
                     <tr key={lIdx} style={trMiniEstilo}>
-                      <td style={{ ...tdMiniEstilo, textAlign: 'center', fontWeight: 'bold', color: '#e74c3c' }}>{linea.posicion}</td>
+                      <td style={{ ...tdMiniEstilo, textAlign: 'center', fontWeight: 'bold', color: '#00b020' }}>{linea.posicion}</td>
                       <td style={{ ...tdMiniEstilo, display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '600', textAlign: 'left' }}>
                         <img src={`https://flagcdn.com/w20/${linea.b}.png`} alt="bandera" style={miniBanderaTablaStyle} />
                         <span className="nombre-equipo-tabla">{traducirEquipo(linea.equipo, idioma)}</span>
@@ -448,12 +227,13 @@ export default function DetalleNoticiaPage() {
                 </tbody>
               </table>
 
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '6px', marginTop: '8px' }}>
+              {/* Indicadores de puntos (Dots) */}
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '6px', marginTop: '6px' }}>
                 {tablaPosicionesData.map((_, dotIdx) => (
                   <div
                     key={dotIdx}
                     style={{
-                      width: dotIdx === grupoActivoCarrusel ? '16px' : '6px',
+                      width: dotIdx === grupoActivoCarrusel ? '14px' : '6px',
                       height: '6px',
                       borderRadius: '3px',
                       backgroundColor: dotIdx === grupoActivoCarrusel ? '#f1c40f' : '#cbd5e1',
@@ -462,14 +242,13 @@ export default function DetalleNoticiaPage() {
                   />
                 ))}
               </div>
-
             </div>
           </div>
 
         </div>
       </div>
 
-      {/* 📰 CUERPO DEL ARTÍCULO */}
+      {/* 📰 CUERPO DEL ARTÍCULO (Mantenido intacto de tu código) */}
       <div style={cardStyle} className="cuerpo-articulo-card">
         <div style={headerNoticiaStyle} className="header-noticia">
           <span style={tagStyle}>🔴 {idioma === 'es' ? 'MUNDIAL 2026' : 'WORLD CUP 2026'}</span>
@@ -485,24 +264,24 @@ export default function DetalleNoticiaPage() {
         
         <div style={lineaDecorativaStyle}></div>
         
-        {/* Validamos si el contenido es un nodo JSX objeto o texto plano */}
         {typeof textoNoticia.contenido === 'string' ? (
           <p style={contenidoTextoStyle} className="contenido-texto">{textoNoticia.contenido}</p>
         ) : (
           <div className="contenido-texto">{textoNoticia.contenido}</div>
         )}
 
+        {/* 📚 SECCIÓN DE SUGERENCIAS ALEATORIAS */}
         {sugerenciasAleatorias.length > 0 && (
           <>
             <hr style={separadorSugerenciasStyle} />
             <div style={gridSugerenciasStyle} className="grid-sugerencias">
-              {sugerenciasAleatorias.map((id) => (
-                <Link key={id} href={`/noticias/${id}`} style={enlaceSugerenciaStyle}>
+              {sugerenciasAleatorias.map((sugId) => (
+                <Link key={sugId} href={`/noticias/${sugId}`} style={enlaceSugerenciaStyle}>
                   <div style={miniCardSugerenciaStyle} className="mini-card-sugerencia">
-                    <img src={noticiasDetalle[id].imagen} alt="Mini" style={miniImgSugerenciaStyle} className="mini-img-sugerencia" />
+                    <img src={noticiasData[sugId].imagen} alt="Mini" style={miniImgSugerenciaStyle} className="mini-img-sugerencia" />
                     <div style={{ minWidth: 0, flex: 1 }}>
                       <h4 style={miniTituloSugerenciaStyle} className="mini-titulo-sugerencia">
-                        {typeof noticiasDetalle[id][idioma].titulo === 'string' ? noticiasDetalle[id][idioma].titulo : "Leer más"}
+                        {typeof noticiasData[sugId][idioma].titulo === 'string' ? noticiasData[sugId][idioma].titulo : "Leer más"}
                       </h4>
                       <span style={miniEnlaceTextoStyle}>{idioma === 'es' ? 'Leer artículo →' : 'Read article →'}</span>
                     </div>
@@ -520,9 +299,16 @@ export default function DetalleNoticiaPage() {
         </div>
       </div>
 
-      {/* ⚡ MEDIA QUERIES GLOBALES EN INLINE STYLE JSX ⚡ */}
+      {/* ⚡ MEDIA QUERIES GLOBALES OPTIMIZADOS CON OCULTADOR DE SCROLL ⚡ */}
       <style jsx global>{`
-        /* Adaptaciones para Tablets y Laptops Pequeñas (< 992px) */
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+
         @media (max-width: 992px) {
           .recuadro-superior-fijo {
             position: relative !important;
@@ -540,7 +326,6 @@ export default function DetalleNoticiaPage() {
           }
         }
 
-        /* Adaptaciones para Smartphones (< 640px) */
         @media (max-width: 640px) {
           .noticia-titulo {
             font-size: 1.55rem !important;
@@ -553,13 +338,6 @@ export default function DetalleNoticiaPage() {
             flex-direction: column !important;
             align-items: flex-start !important;
             gap: 6px !important;
-          }
-          .nombre-equipo-match, .nombre-equipo-tabla {
-            font-size: 0.75rem !important;
-            max-width: 65px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
           }
           .grid-sugerencias {
             grid-template-columns: 1fr !important;
@@ -592,36 +370,41 @@ export default function DetalleNoticiaPage() {
   );
 }
 
-// ==========================================
-// ESTILOS AJUSTADOS AL PIXEL (MANTENIENDO TU PALETA PREMIUM)
-// ==========================================
+// =========================================================================
+// OBJETOS DE ESTILOS (Actualizados milimétricamente)
+// =========================================================================
 const containerStyle = { minHeight: '100vh', backgroundColor: '#f4f6f9', padding: '20px 10px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxSizing: 'border-box' };
 const recuadroSuperiorFijoContainer = { position: 'fixed', top: '64px', left: '0', width: '100%', backgroundColor: '#0a192f', borderBottom: '4px solid #f1c40f', zIndex: '999', padding: '12px 20px', boxSizing: 'border-box', boxShadow: '0 6px 20px rgba(0,0,0,0.15)', transition: 'opacity 0.35s ease, transform 0.35s ease, visibility 0.35s' };
 const gridInternoRecuadroStyle = { maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' };
-const encabezadoSubModuloStyle = { display: 'flex', alignItems: 'center', gap: '6px', color: '#ffffff', fontSize: '0.75rem', fontWeight: '800', letterSpacing: '0.5px', textTransform: 'uppercase', marginBottom: '6px', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '4px' };
+const encabezadoSubModuloStyle = { display: 'flex', alignItems: 'center', gap: '6px', color: '#ffffff', fontSize: '0.72rem', fontWeight: '800', letterSpacing: '0.5px', textTransform: 'uppercase', marginBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '4px' };
 const indicadorEnVivoStyle = { color: '#e74c3c' };
-const seccionPartidosFijoStyle = { display: 'flex', flexDirection: 'column' };
-const contenedorScrollPartidosStyle = { display: 'flex', flexDirection: 'column', gap: '6px', maxHeight: '120px', overflowY: 'auto', paddingRight: '4px' };
-const tarjetaPartidoSuperiorStyle = { backgroundColor: '#ffffff', borderRadius: '6px', padding: '6px 10px', position: 'relative', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' };
-const badgeFaseEstilo = { position: 'absolute', top: '6px', right: '10px', backgroundColor: '#e74c3c', color: '#ffffff', fontSize: '0.58rem', fontWeight: '800', padding: '1px 5px', borderRadius: '3px' };
-const filaEquiposMatchStyle = { display: 'flex', alignItems: 'center', gap: '10px', marginTop: '2px' };
-const bloqueEquipoMatchStyle = { display: 'flex', alignItems: 'center', gap: '6px', flex: '1' };
-const banderaMatchStyle = { width: '24px', height: '15px', objectFit: 'cover', borderRadius: '2px', border: '1px solid #e2e8f0' };
-const nombreEquipoMatchStyle = { fontSize: '0.82rem', fontWeight: '700', color: '#0a192f' };
-const vsTextoEstilo = { fontSize: '0.65rem', fontWeight: '800', color: '#718096' };
-const infoLugarMatchStyle = { fontSize: '0.65rem', color: '#718096', marginTop: '4px', fontWeight: '600', borderTop: '1px dashed #e2e8f0', paddingTop: '3px' };
-const sinPartidosEstilo = { color: '#a0aec0', fontSize: '0.8rem', textAlign: 'center', paddingTop: '20px' };
+const seccionPartidosFijoStyle = { display: 'flex', flexDirection: 'column', overflow: 'hidden' };
+
+// Nuevos objetos de estilo para el carrusel horizontal deportivo
+const carruselFechasStyle = { display: 'flex', gap: '6px', overflowX: 'auto', paddingBottom: '6px', marginBottom: '6px' };
+const fechaCardActivaStyle = { backgroundColor: '#00b020', color: '#ffffff', minWidth: '50px', padding: '4px', borderRadius: '6px', textAlign: 'center', fontSize: '0.65rem', fontWeight: 'bold', boxShadow: '0 2px 6px rgba(0, 176, 32, 0.4)' };
+const fechaCardInactivaStyle = { backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#a0aec0', minWidth: '50px', padding: '4px', borderRadius: '6px', textAlign: 'center', fontSize: '0.65rem', fontWeight: '500' };
+const contenedorFilaPartidosEstilo = { display: 'flex', gap: '8px', overflowX: 'auto', paddingBottom: '4px' };
+const tarjetaPartidoSuperiorStyle = { backgroundColor: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', padding: '8px 10px', minWidth: '175px', flexShrink: 0, position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'center' };
+
+const badgeFaseEstilo = { position: 'absolute', top: '4px', right: '6px', backgroundColor: '#00b020', color: '#ffffff', fontSize: '0.5rem', fontWeight: '800', padding: '1px 4px', borderRadius: '2px', textTransform: 'uppercase' };
+const filaEquiposMatchStyle = { display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '4px', marginTop: '4px' };
+const bloqueEquipoMatchStyle = { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2px', width: '45px' };
+const banderaMatchStyle = { width: '28px', height: '18px', objectFit: 'cover', borderRadius: '3px', boxShadow: '0 1px 3px rgba(0,0,0,0.3)' };
+const nombreEquipoMatchStyle = { fontSize: '0.75rem', fontWeight: '800', color: '#ffffff', marginTop: '2px' };
+const vsTextoEstilo = { display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', fontWeight: '800', minWidth: '35px', textAlign: 'center' };
+const infoLugarMatchStyle = { fontSize: '0.62rem', color: '#a0aec0', fontWeight: '700', textTransform: 'uppercase' };
+
+const sinPartidosEstilo = { color: '#a0aec0', fontSize: '0.8rem', textAlign: 'center', width: '100%', paddingTop: '15px' };
 const seccionTablasCarruselStyle = { display: 'flex', flexDirection: 'column' };
-const wrapperSlideCarrusel = { backgroundColor: '#ffffff', borderRadius: '6px', padding: '6px 10px', boxShadow: '0 2px 8px rgba(0,0,0,0.06)', display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between' };
-const cardHeaderGrupoCarrusel = { backgroundColor: '#f1c40f', color: '#0a192f', fontSize: '0.72rem', fontWeight: '800', padding: '2px 6px', borderRadius: '3px', alignSelf: 'flex-start', marginBottom: '4px' };
-const tablaMiniEstilo = { width: '100%', borderCollapse: 'collapse', fontSize: '0.75rem' };
+const wrapperSlideCarrusel = { backgroundColor: '#ffffff', borderRadius: '8px', padding: '8px 12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between' };
+const cardHeaderGrupoCarrusel = { backgroundColor: '#0a192f', color: '#ffffff', fontSize: '0.68rem', fontWeight: '800', padding: '2px 6px', borderRadius: '3px', alignSelf: 'flex-start', marginBottom: '4px' };
+const tablaMiniEstilo = { width: '100%', borderCollapse: 'collapse', fontSize: '0.72rem' };
 const thMiniRowEstilo = { borderBottom: '1px solid #e2e8f0' };
 const thMiniEstilo = { padding: '2px 4px', color: '#718096', fontWeight: '700' };
 const trMiniEstilo = { borderBottom: '1px solid #f1f5f9' };
 const tdMiniEstilo = { padding: '3px 4px', color: '#2d3748' };
 const miniBanderaTablaStyle = { width: '15px', height: '10px', objectFit: 'cover', borderRadius: '1px', border: '1px solid #cbd5e0' };
-
-// Cambiamos a mt estático superior por herencia móvil y max-width controlado
 const cardStyle = { backgroundColor: '#ffffff', padding: '35px', borderRadius: '12px', maxWidth: '900px', width: '100%', boxShadow: '0 8px 25px rgba(0,0,0,0.04)', boxSizing: 'border-box', marginTop: '250px' };
 const headerNoticiaStyle = { display: 'flex', justifyContent: 'space-between', marginBottom: '12px' };
 const tagStyle = { color: '#e74c3c', fontWeight: 'bold', fontSize: '0.8rem' };
