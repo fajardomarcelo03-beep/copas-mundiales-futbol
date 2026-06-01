@@ -184,7 +184,7 @@ export default function DetalleNoticiaPage() {
         contenido: (
           <div style={{ fontSize: '1.05rem', lineHeight: '1.75', color: '#2d3748' }}>
             <p style={{ marginBottom: '16px', textAlign: 'justify' }}>
-              La <strong>Copa Mundial de la FIFA 2026</strong> marcará un hito sin precedentes en la cronología del balompié internacional. Programado para desarrollarse del 11 de junio al 19 de julio de 2026, el torneo estrenará un formato estructuralmente renovado. Por primera vez en la historia de la competición, la fase final reunirá a <strong>48 selecciones nacionales</strong> y será albergada en una histórica coorganización tripartita entre <strong>Canadá, Estados Unidos y México</strong>.
+              La <strong>Copa Mundial de la FIFA 2026</strong> marcará un hito sin precedentes en la cronología del balompié internacional. Programado para desarrollarse del 11 de junio al 19 de julio de 2026, el torneo estrenará un format estructuralmente renovado. Por primera vez en la historia de la competición, la fase final reunirá a <strong>48 selecciones nacionales</strong> y será albergada en una histórica coorganización tripartita entre <strong>Canadá, Estados Unidos y México</strong>.
             </p>
             <p style={{ marginBottom: '16px', textAlign: 'justify' }}>
               El sistema de competición ha sido rediseñado meticulosamente para optimizar la competitividad. La fase inicial constará de <strong>12 grupos de cuatro equipos</strong> cada uno, garantizando que cada delegación dispute un mínimo de tres partidos. La clasificación a la etapa de eliminación directa estará estrictamente reservada para los dos primeros lugares de cada sector, complementados por los los ocho mejores terceros clasificados.
@@ -334,7 +334,24 @@ export default function DetalleNoticiaPage() {
       } 
     },
     "noticia-4": { imagen: "/Estadio_final.jpg", es: { titulo: "La Gran Final en Nueva York/Nueva Jersey", subtitulo: "El MetLife Stadium será el escenario donde se definirá al nuevo campeón del mundo.", contenido: "El MetLife Stadium, con capacidad para más de 80 mil espectadores, será la sede de la final de la copa del mundo 2026.", autor: "Mesa de Deportes", tiempoLectura: "5 min" }, en: { titulo: "The Grand Finale in New York/New Jersey", subtitulo: "The MetLife Stadium will be the venue where the new world champion will be crowned.", contenido: "The MetLife Stadium, with a capacity of more than 80,000 spectators, will host the final of the 2026 FIFA World Cup.", autor: "Sports Desk", tiempoLectura: "5 min" } },
-    "noticia-5": { imagen: "/Neymar_lesion.jpg", es: { titulo: "Neymar enciende las alarmas en Brasil", subtitulo: "El astro brasileño sufre una lesión muscular de grado II, pero el cuerpo médico confía en su recuperación.", contenido: "La selección brasileña enfrenta momentos de alta tensión tras confirmarse que Neymar Jr. presenta una lesión muscular de grado II.", autor: "Corresponsal Sudamérica", tiempoLectura: "4 min" }, en: { titulo: "Neymar sparks injury alarm in Brazil", subtitulo: "The Brazilian star suffers a grade II muscle injury, but the medical staff remains confident.", contenido: "The Brazilian national team is facing tense moments after confirming that Neymar Jr. has a grade II muscle injury.", autor: "South American Correspondent", tiempoLectura: "4 min" } }
+    "noticia-5": { imagen: "/Neymar_lesion.jpg", es: { titulo: "Neymar enciende las alarmas en Brasil", subtitulo: "El astro brasileño sufre una lesión muscular de grado II, pero el cuerpo médico confía en su recuperación.", contenido: "La selección brasileña enfrenta momentos de alta tensión tras confirmarse que Neymar Jr. presenta una lesión muscular de grado II.", autor: "Corresponsal Sudamérica", tiempoLectura: "4 min" }, en: { titulo: "Neymar sparks injury alarm in Brazil", subtitulo: "The Brazilian star suffers a grade II muscle injury, but the medical staff remains confident.", contenido: "The Brazilian national team is facing tense moments after confirming that Neymar Jr. has a grade II muscle injury.", autor: "South American Correspondent", tiempoLectura: "4 min" } },
+    "noticia-6": {
+      "imagen": "/Beccacece.jpg",
+      "es": {
+        "titulo": "Ecuador presenta sus convocados oficiales para el Mundial 2026",
+        "subtitulo": "Sebastián Beccacece definió la lista de la Tri con sorpresas y un bloque consolidado en Europa.",
+        "contenido": "El director técnico Sebastián Beccacece presentó la lista oficial de la Selección de Ecuador para la Copa del Mundo 2026.\n\nArqueros: Gonzalo Valle (Liga de Quito), Hernán Galíndez (Huracán) y Moisés Ramírez (Kifisia FC).\nDefensores: Ángelo Preciado (Atlético Mineiro), Félix Torres (Inter PA), Joel Ordóñez (Brujas), Jackson Porozo (Xolos de Tijuana), Pervis Estupiñán (Milan), Piero Hincapié (Arsenal FC) y Willian Pacho (PSG).\nMediocampistas: Alan Franco (Atlético Mineiro), Denil Castillo (Midtjylland), Jordy Alcívar (Independiente del Valle), Kendry Páez (River Plate), Moisés Caicedo (Chelsea), Pedro Vite (Pumas), Anthony Valencia (Royal Antwerp) y Yaimar Medina (Genk).\nDelanteros: Alan Minda (Atlético Mineiro), Enner Valencia (Pachuca), Gonzalo Plata (Flamengo), Jeremy Arévalo (Stuttgart), John Yeboah (Venezia), Jordy Caicedo (Huracán), Kevin Rodríguez (Union Saint-Gilloise) y Nilson Angulo (Sunderland).",
+        "autor": "Corresponsal Quito",
+        "tiempoLectura": "3 min"
+      },
+      "en": {
+        "titulo": "Ecuador announces official squad list for the 2026 World Cup",
+        "subtitulo": "Sebastián Beccacece finalized La Tri's roster with key surprises and a strong European core.",
+        "contenido": "Head coach Sebastián Beccacece announced Ecuador's official squad list for the 2026 World Cup.\n\nGoalkeepers: Gonzalo Valle (Liga de Quito), Hernán Galíndez (Huracán), and Moisés Ramírez (Kifisia FC).\nDefenders: Ángelo Preciado (Atlético Mineiro), Félix Torres (Inter PA), Joel Ordóñez (Brujas), Jackson Porozo (Xolos de Tijuana), Pervis Estupiñán (Milan), Piero Hincapié (Arsenal FC), and Willian Pacho (PSG).\nMidfielders: Alan Franco (Atlético Mineiro), Denil Castillo (Midtjylland), Jordy Alcívar (Independiente del Valle), Kendry Páez (River Plate), Moisés Caicedo (Chelsea), Pedro Vite (Pumas), Anthony Valencia (Royal Antwerp), and Yaimar Medina (Genk).\nForwards: Alan Minda (Atlético Mineiro), Enner Valencia (Pachuca), Gonzalo Plata (Flamengo), Jeremy Arevalo (Stuttgart), John Yeboah (Venezia), Jordy Caicedo (Huracán), Kevin Rodríguez (Union Saint-Gilloise), and Nilson Angulo (Sunderland).",
+        "autor": "Quito Correspondent",
+        "tiempoLectura": "3 min"
+      }
+    }
   };
 
   const noticiaDefecto = { imagen: "/Mundial_14_4.jpg", es: { titulo: "Noticia Mundial 2026", subtitulo: "Actualización de los preparativos", contenido: "Los detalles logísticos avanzan firmemente bajo la supervisión de la FIFA.", autor: "Prensa Oficial", tiempoLectura: "1 min" }, en: { titulo: "World Cup 2026 News", subtitulo: "Operational master update", contenido: "Logistical details progress steadily under FIFA inspection.", autor: "Official Press", tiempoLectura: "1 min" } };
@@ -614,7 +631,7 @@ const subtituloStyle = { color: '#4a5568', fontSize: '1.1rem', marginBottom: '20
 const contenedorImagenStyle = { width: '100%', borderRadius: '8px', overflow: 'hidden', marginBottom: '20px' };
 const imagenStyle = { width: '100%', height: 'auto', maxHeight: '420px', objectFit: 'cover' };
 const lineaDecorativaStyle = { width: '70px', height: '4px', backgroundColor: '#f1c40f', marginBottom: '20px' };
-const contenidoTextoStyle = { fontSize: '1.05rem', color: '#2d3748', lineHeight: '1.75', marginBottom: '25px', textAlign: 'justify' };
+const contenidoTextoStyle = { fontSize: '1.05rem', color: '#2d3748', lineHeight: '1.75', marginBottom: '25px', textAlign: 'justify', whiteSpace: 'pre-line' };
 const btnVolverStyle = { display: 'inline-block', backgroundColor: '#0a192f', color: '#ffffff', padding: '10px 22px', borderRadius: '5px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.95rem' };
 const separadorSugerenciasStyle = { border: '0', height: '1px', backgroundColor: '#e2e8f0', margin: '35px 0 25px 0' };
 const gridSugerenciasStyle = { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '15px' };
