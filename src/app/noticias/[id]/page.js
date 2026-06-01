@@ -1,13 +1,13 @@
 // src/app/noticias/[id]/page.js
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useIdioma } from '../../HeaderContextLayout';
 import { noticiasData } from '../../data/noticiasData';
 
 // =========================================================================
-// 1. FUNCIONES AUXILIARES Y DICCIONARIOS (Mantenidos exactamente de tu código)
+// 1. FUNCIONES AUXILIARES Y DICCIONARIOS
 // =========================================================================
 function obtenerBandera(codigo) {
   const flags = {
@@ -60,10 +60,24 @@ function traducirFase(fase, idioma) {
   return fases[idioma]?.[fase] || fase;
 }
 
+// Listado de fechas disponibles para el Carrusel
+const diasMundialData = [
+  { id: "2026-06-11", esDia: "JUE", enDia: "THU", num: "11", mes: "JUN" },
+  { id: "2026-06-12", esDia: "VIE", enDia: "FRI", num: "12", mes: "JUN" },
+  { id: "2026-06-13", esDia: "SAB", enDia: "SAT", num: "13", mes: "JUN" },
+  { id: "2026-06-14", esDia: "DOM", enDia: "SUN", num: "14", mes: "JUN" },
+  { id: "2026-06-15", esDia: "LUN", enDia: "MON", num: "15", mes: "JUN" },
+  { id: "2026-06-16", esDia: "MAR", enDia: "TUE", num: "16", mes: "JUN" },
+  { id: "2026-06-17", esDia: "MIE", enDia: "WED", num: "17", mes: "JUN" },
+];
+
 const todosLosPartidosMundial = [
-  { fase: 'GRUPOS', e1: 'MEX', e2: 'RSA', hora: '11:00 AM', estadio: 'Estadio Azteca, CDMX' },
-  { fase: 'GRUPOS', e1: 'USA', e2: 'ITA', hora: '02:00 PM', estadio: 'SoFi Stadium, LA' },
-  { fase: 'GRUPOS', e1: 'CAN', e2: 'COL', hora: '05:00 PM', estadio: 'BMO Field, Toronto' }
+  { fecha: "2026-06-11", fase: 'GRUPOS', e1: 'MEX', e2: 'RSA', hora: '11:00 AM', estadio: 'Estadio Azteca, CDMX' },
+  { fecha: "2026-06-11", fase: 'GRUPOS', e1: 'USA', e2: 'ITA', hora: '02:00 PM', estadio: 'SoFi Stadium, LA' },
+  { fecha: "2026-06-11", fase: 'GRUPOS', e1: 'CAN', e2: 'COL', hora: '05:00 PM', estadio: 'BMO Field, Toronto' },
+  { fecha: "2026-06-12", fase: 'GRUPOS', e1: 'ARG', e2: 'KSA', hora: '01:00 PM', estadio: 'Lusail Stadium' },
+  { fecha: "2026-06-12", fase: 'GRUPOS', e1: 'FRA', e2: 'AUS', hora: '04:00 PM', estadio: 'MetLife Stadium' },
+  { fecha: "2026-06-13", fase: 'GRUPOS', e1: 'ESP', e2: 'CRC', hora: '12:00 PM', estadio: 'Hard Rock Stadium' },
 ];
 
 const tablaPosicionesData = [
@@ -79,25 +93,38 @@ export default function DetalleNoticiaPage({ params }) {
   const { id } = React.use(params);
   const { idioma } = useIdioma();
 
-  const [partidosFiltradosHoy, setPartidosFiltradosHoy] = useState([]);
-  const [grupoActivoCarrusel, setGrupoActivoCarrusel] = useState(0);
+  // Estados dinámicos para los filtros de Partidos y Tablas
+  const [fechaSeleccionada, setFechaSeleccionada] = useState("2026-06-11");
+  const [indiceGrupoActivo, setIndiceGrupoActivo] = useState(0);
+  const [partidosFiltrados, setPartidosFiltrados] = useState([]);
   const [sugerenciasAleatorias, setSugerenciasAleatorias] = useState([]);
+  
+  const carruselFechasRef = useRef(null);
 
+  // Filtrar los partidos cada vez que cambie la fecha seleccionada
   useEffect(() => {
-    setPartidosFiltradosHoy(todosLosPartidosMundial);
+    const filtrados = todosLosPartidosMundial.filter(p => p.fecha === fechaSeleccionada);
+    setPartidosFiltrados(filtrados);
+  }, [fechaSeleccionada]);
 
+  // Manejo de noticias sugeridas
+  useEffect(() => {
     const todasLasKeys = Object.keys(noticiasData);
     const filtradas = todasLasKeys.filter(k => k !== id);
     const mezcladas = [...filtradas].sort(() => 0.5 - Math.random());
     setSugerenciasAleatorias(mezcladas.slice(0, 2));
   }, [id]);
 
-  useEffect(() => {
-    const intervalo = setInterval(() => {
-      setGrupoActivoCarrusel((prev) => (prev + 1) % tablaPosicionesData.length);
-    }, 5000);
-    return () => clearInterval(intervalo);
-  }, []);
+  // Funciones de navegación del carrusel de fechas (Web)
+  const moverCarrusel = (direccion) => {
+    if (carruselFechasRef.current) {
+      const scrollAmount = 180; 
+      carruselFechasRef.current.scrollBy({
+        left: direccion === 'derecha' ? scrollAmount : -scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const objetoNoticia = noticiasData[id];
 
@@ -120,37 +147,56 @@ export default function DetalleNoticiaPage({ params }) {
       <div style={recuadroSuperiorFijoContainer} className="recuadro-superior-fijo">
         <div style={gridInternoRecuadroStyle} className="grid-interno-recuadro">
           
+          {/* SECCIÓN PARTIDOS */}
           <div style={seccionPartidosFijoStyle}>
             <div style={encabezadoSubModuloStyle}>
               <span style={indicadorEnVivoStyle}>🔴</span> {idioma === 'es' ? 'PARTIDOS POR FECHA' : 'MATCHES BY DATE'}
             </div>
             
-            <div style={carruselFechasStyle} className="hide-scrollbar">
-              <div style={fechaCardActivaStyle}>
-                <div>{idioma === 'es' ? 'JUE' : 'THU'}</div>
-                <div style={{ fontSize: '1rem', margin: '1px 0', fontWeight: '800' }}>11</div>
-                <div>{idioma === 'es' ? 'JUN' : 'JUN'}</div>
+            {/* Contenedor del Carrusel con Flechas */}
+            <div style={contenedorControladorCarruselStyle}>
+              <button 
+                onClick={() => moverCarrusel('izquierda')} 
+                style={flechaCarruselBtnStyle}
+                className="flecha-carrusel md-visible"
+              >
+                ‹
+              </button>
+
+              <div 
+                ref={carruselFechasRef} 
+                style={carruselFechasStyle} 
+                className="hide-scrollbar"
+              >
+                {diasMundialData.map((dia) => {
+                  const esActivo = fechaSeleccionada === dia.id;
+                  return (
+                    <div 
+                      key={dia.id}
+                      onClick={() => setFechaSeleccionada(dia.id)}
+                      style={esActivo ? fechaCardActivaStyle : fechaCardInactivaStyle}
+                    >
+                      <div>{idioma === 'es' ? dia.esDia : dia.enDia}</div>
+                      <div style={{ fontSize: '1rem', margin: '1px 0', fontWeight: '800' }}>{dia.num}</div>
+                      <div>{dia.mes}</div>
+                    </div>
+                  );
+                })}
               </div>
-              <div style={fechaCardInactivaStyle}>
-                <div>{idioma === 'es' ? 'VIE' : 'FRI'}</div>
-                <div style={{ fontSize: '1rem', margin: '1px 0', fontWeight: '800' }}>12</div>
-                <div>{idioma === 'es' ? 'JUN' : 'JUN'}</div>
-              </div>
-              <div style={fechaCardInactivaStyle}>
-                <div>{idioma === 'es' ? 'SAB' : 'SAT'}</div>
-                <div style={{ fontSize: '1rem', margin: '1px 0', fontWeight: '800' }}>13</div>
-                <div>{idioma === 'es' ? 'JUN' : 'JUN'}</div>
-              </div>
-              <div style={fechaCardInactivaStyle}>
-                <div>{idioma === 'es' ? 'DOM' : 'SUN'}</div>
-                <div style={{ fontSize: '1rem', margin: '1px 0', fontWeight: '800' }}>14</div>
-                <div>{idioma === 'es' ? 'JUN' : 'JUN'}</div>
-              </div>
+
+              <button 
+                onClick={() => moverCarrusel('derecha')} 
+                style={flechaCarruselBtnStyle}
+                className="flecha-carrusel md-visible"
+              >
+                ›
+              </button>
             </div>
 
+            {/* Listado de partidos que cambian según la fecha */}
             <div style={contenedorFilaPartidosEstilo} className="hide-scrollbar">
-              {partidosFiltradosHoy.length > 0 ? (
-                partidosFiltradosHoy.map((partido, idx) => (
+              {partidosFiltrados.length > 0 ? (
+                partidosFiltrados.map((partido, idx) => (
                   <div key={idx} style={tarjetaPartidoSuperiorStyle}>
                     <div style={badgeFaseEstilo}>{traducirFase(partido.fase, idioma)}</div>
                     <div style={infoLugarMatchStyle}>{partido.estadio.split(',')[0]}</div>
@@ -175,21 +221,53 @@ export default function DetalleNoticiaPage({ params }) {
                 ))
               ) : (
                 <div style={sinPartidosEstilo}>
-                  {idioma === 'es' ? 'No hay partidos programados.' : 'No programmed matches.'}
+                  {idioma === 'es' ? 'No hay partidos en esta fecha.' : 'No matches on this date.'}
                 </div>
               )}
             </div>
           </div>
 
+          {/* SECCIÓN TABLA DE POSICIONES */}
           <div style={seccionTablasCarruselStyle}>
             <div style={encabezadoSubModuloStyle}>
               <span>📊</span> {idioma === 'es' ? 'TABLA DE POSICIONES' : 'STANDINGS'}
             </div>
             
             <div style={wrapperSlideCarrusel}>
-              <div style={cardHeaderGrupoCarrusel}>
-                {idioma === 'es' ? tablaPosicionesData[grupoActivoCarrusel].grupo : tablaPosicionesData[grupoActivoCarrusel].grupo.replace("GRUPO", "GROUP")}
+              
+              {/* CONTROLES DE INTERCAMBIO DE GRUPOS ADAPTATIVOS */}
+              <div style={contenedorSelectorGrupoStyle}>
+                {/* Mobile Selector (Dropdown) */}
+                <select
+                  value={indiceGrupoActivo}
+                  onChange={(e) => setIndiceGrupoActivo(Number(e.target.value))}
+                  style={selectGrupoMobileStyle}
+                  className="select-grupo-mobile"
+                >
+                  {tablaPosicionesData.map((item, index) => (
+                    <option key={index} value={index}>
+                      {idioma === 'es' ? item.grupo : item.grupo.replace("GRUPO", "GROUP")}
+                    </option>
+                  ))}
+                </select>
+
+                {/* Web Selector (Tabs) */}
+                <div style={tabsGrupoWebStyle} className="tabs-grupo-web">
+                  {tablaPosicionesData.map((item, index) => {
+                    const esGrupoActivo = index === indiceGrupoActivo;
+                    return (
+                      <button
+                        key={index}
+                        onClick={() => setIndiceGrupoActivo(index)}
+                        style={esGrupoActivo ? tabBotonActivoStyle : tabBotonInactivoStyle}
+                      >
+                        {item.grupo.replace("GRUPO ", "")}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
+
               <table style={tablaMiniEstilo}>
                 <thead>
                   <tr style={thMiniRowEstilo}>
@@ -200,7 +278,7 @@ export default function DetalleNoticiaPage({ params }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {tablaPosicionesData[grupoActivoCarrusel].lineas.map((linea, lIdx) => (
+                  {tablaPosicionesData[indiceGrupoActivo].lineas.map((linea, lIdx) => (
                     <tr key={lIdx} style={trMiniEstilo}>
                       <td style={{ ...tdMiniEstilo, textAlign: 'center', fontWeight: 'bold', color: '#00b020' }}>{linea.posicion}</td>
                       <td style={{ ...tdMiniEstilo, display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '600', textAlign: 'left' }}>
@@ -213,21 +291,6 @@ export default function DetalleNoticiaPage({ params }) {
                   ))}
                 </tbody>
               </table>
-
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '6px', marginTop: '6px' }}>
-                {tablaPosicionesData.map((_, dotIdx) => (
-                  <div
-                    key={dotIdx}
-                    style={{
-                      width: dotIdx === grupoActivoCarrusel ? '14px' : '6px',
-                      height: '6px',
-                      borderRadius: '3px',
-                      backgroundColor: dotIdx === grupoActivoCarrusel ? '#f1c40f' : '#cbd5e1',
-                      transition: 'all 0.3s ease'
-                    }}
-                  />
-                ))}
-              </div>
             </div>
           </div>
 
@@ -294,6 +357,28 @@ export default function DetalleNoticiaPage({ params }) {
           scrollbar-width: none;
         }
 
+        /* Ocultar botones de flecha del carrusel en pantallas pequeñas */
+        @media (max-width: 768px) {
+          .flecha-carrusel.md-visible {
+            display: none !important;
+          }
+          .select-grupo-mobile {
+            display: block !important;
+          }
+          .tabs-grupo-web {
+            display: none !important;
+          }
+        }
+
+        @media (min-width: 769px) {
+          .select-grupo-mobile {
+            display: none !important;
+          }
+          .tabs-grupo-web {
+            display: flex !important;
+          }
+        }
+
         @media (max-width: 992px) {
           .recuadro-superior-fijo {
             position: relative !important;
@@ -356,7 +441,7 @@ export default function DetalleNoticiaPage({ params }) {
 }
 
 // =========================================================================
-// OBJETOS DE ESTILOS (Mantenidos idénticos)
+// OBJETOS DE ESTILOS (Actualizados con las nuevas características de UI)
 // =========================================================================
 const containerStyle = { minHeight: '100vh', backgroundColor: '#f4f6f9', padding: '20px 10px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxSizing: 'border-box' };
 const recuadroSuperiorFijoContainer = { position: 'fixed', top: '64px', left: '0', width: '100%', backgroundColor: '#0a192f', borderBottom: '4px solid #f1c40f', zIndex: '999', padding: '12px 20px', boxSizing: 'border-box', boxShadow: '0 6px 20px rgba(0,0,0,0.15)', transition: 'opacity 0.35s ease, transform 0.35s ease, visibility 0.35s' };
@@ -365,9 +450,12 @@ const encabezadoSubModuloStyle = { display: 'flex', alignItems: 'center', gap: '
 const indicadorEnVivoStyle = { color: '#e74c3c' };
 const seccionPartidosFijoStyle = { display: 'flex', flexDirection: 'column', overflow: 'hidden' };
 
-const carruselFechasStyle = { display: 'flex', gap: '6px', overflowX: 'auto', paddingBottom: '6px', marginBottom: '6px' };
-const fechaCardActivaStyle = { backgroundColor: '#00b020', color: '#ffffff', minWidth: '50px', padding: '4px', borderRadius: '6px', textAlign: 'center', fontSize: '0.65rem', fontWeight: 'bold', boxShadow: '0 2px 6px rgba(0, 176, 32, 0.4)' };
-const fechaCardInactivaStyle = { backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#a0aec0', minWidth: '50px', padding: '4px', borderRadius: '6px', textAlign: 'center', fontSize: '0.65rem', fontWeight: '500' };
+const contenedorControladorCarruselStyle = { display: 'flex', alignItems: 'center', gap: '4px', width: '100%' };
+const flechaCarruselBtnStyle = { backgroundColor: 'rgba(255,255,255,0.15)', color: '#ffffff', border: 'none', borderRadius: '4px', width: '22px', height: '40px', fontSize: '1.2rem', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s' };
+
+const carruselFechasStyle = { display: 'flex', gap: '6px', overflowX: 'auto', paddingBottom: '6px', marginBottom: '6px', scrollBehavior: 'smooth', width: '100%' };
+const fechaCardActivaStyle = { backgroundColor: '#00b020', color: '#ffffff', minWidth: '50px', padding: '4px', borderRadius: '6px', textAlign: 'center', fontSize: '0.65rem', fontWeight: 'bold', boxShadow: '0 2px 6px rgba(0, 176, 32, 0.4)', cursor: 'pointer' };
+const fechaCardInactivaStyle = { backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#a0aec0', minWidth: '50px', padding: '4px', borderRadius: '6px', textAlign: 'center', fontSize: '0.65rem', fontWeight: '500', cursor: 'pointer' };
 const contenedorFilaPartidosEstilo = { display: 'flex', gap: '8px', overflowX: 'auto', paddingBottom: '4px' };
 const tarjetaPartidoSuperiorStyle = { backgroundColor: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', padding: '8px 10px', minWidth: '175px', flexShrink: 0, position: 'relative', display: 'flex', flexDirection: 'column', justifyContent: 'center' };
 
@@ -382,7 +470,14 @@ const infoLugarMatchStyle = { fontSize: '0.62rem', color: '#a0aec0', fontWeight:
 const sinPartidosEstilo = { color: '#a0aec0', fontSize: '0.8rem', textAlign: 'center', width: '100%', paddingTop: '15px' };
 const seccionTablasCarruselStyle = { display: 'flex', flexDirection: 'column' };
 const wrapperSlideCarrusel = { backgroundColor: '#ffffff', borderRadius: '8px', padding: '8px 12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between' };
-const cardHeaderGrupoCarrusel = { backgroundColor: '#0a192f', color: '#ffffff', fontSize: '0.68rem', fontWeight: '800', padding: '2px 6px', borderRadius: '3px', alignSelf: 'flex-start', marginBottom: '4px' };
+
+// Estilos de los Selectores Adaptativos de Grupo
+const contenedorSelectorGrupoStyle = { marginBottom: '6px', width: '100%' };
+const selectGrupoMobileStyle = { display: 'none', width: '100%', padding: '5px 8px', fontSize: '0.75rem', fontWeight: '700', color: '#0a192f', backgroundColor: '#f4f6f9', border: '1px solid #cbd5e1', borderRadius: '4px', outline: 'none' };
+const tabsGrupoWebStyle = { display: 'flex', gap: '4px', width: '100%' };
+const tabBotonActivoStyle = { flex: 1, backgroundColor: '#0a192f', color: '#ffffff', border: 'none', padding: '3px 6px', borderRadius: '3px', fontSize: '0.65rem', fontWeight: '800', cursor: 'pointer' };
+const tabBotonInactivoStyle = { flex: 1, backgroundColor: '#f4f6f9', color: '#4a5568', border: '1px solid #e2e8f0', padding: '3px 6px', borderRadius: '3px', fontSize: '0.65rem', fontWeight: '600', cursor: 'pointer', transition: 'background 0.2s' };
+
 const tablaMiniEstilo = { width: '100%', borderCollapse: 'collapse', fontSize: '0.72rem' };
 const thMiniRowEstilo = { borderBottom: '1px solid #e2e8f0' };
 const thMiniEstilo = { padding: '2px 4px', color: '#718096', fontWeight: '700' };
