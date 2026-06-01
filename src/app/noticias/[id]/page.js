@@ -449,14 +449,14 @@ export default function DetalleNoticiaPage({ params }) {
             overflow: hidden; text-overflow: ellipsis; width: 100%;
           }
           
-          /* 🔧 CORRECCIÓN MATEMÁTICA: Forzar el contenedor del Grid a no expandirse más allá del ancho móvil */
+          /* Forzar el contenedor del Grid a no expandirse más allá del ancho móvil y romper el layout */
           .grid-sugerencias {
             display: flex !important;
             flex-direction: column !important;
             gap: 12px !important;
             width: 100% !important;
             max-width: 100% !important;
-            padding: 0 !important;
+            padding: 0 4px !important;
             margin: 0 !important;
             box-sizing: border-box !important;
           }
@@ -479,9 +479,9 @@ export default function DetalleNoticiaPage({ params }) {
 }
 
 // =========================================================================
-// OBJETOS DE ESTILOS
+// 3. OBJETOS DE ESTILOS JAVASCRIPT (INLINE STYLES)
 // =========================================================================
-const containerStyle = { minHeight: '100vh', backgroundColor: '#f8fafc', padding: '12px 0px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxSizing: 'border-box' };
+const containerStyle = { minHeight: '100vh', backgroundColor: '#f8fafc', padding: '12px 0px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxSizing: 'border-box', fontFamily: '"SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' };
 const recuadroSuperiorFijoContainer = { position: 'fixed', top: '64px', left: '0', width: '100%', backgroundColor: '#0a192f', borderBottom: '4px solid #f1c40f', zIndex: '999', padding: '10px 20px', boxSizing: 'border-box', boxShadow: '0 6px 20px rgba(0,0,0,0.15)', transition: 'transform 0.4s ease-in-out, opacity 0.4s ease-in-out' };
 const gridInternoRecuadroStyle = { maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' };
 const encabezadoSubModuloStyle = { display: 'flex', alignItems: 'center', gap: '6px', color: '#ffffff', fontSize: '0.72rem', fontWeight: '800', letterSpacing: '0.5px', textTransform: 'uppercase', marginBottom: '4px' };
@@ -534,7 +534,7 @@ const separadorSugerenciasStyle = { border: '0', height: '1px', backgroundColor:
 const gridSugerenciasStyle = { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '15px' };
 const enlaceSugerenciaStyle = { display: 'block', textDecoration: 'none', color: 'inherit', width: '100%' };
 
-// 🔧 ANCHOS LIMITADOS AL 100% PARA DETENER EL DESBORDE NEGRO LATERAL
+// 🔧 SOLUCIÓN DE ANCHOS MÓVILES RESPONSIVE Y REMOCIÓN DE FONDO SÓLIDO EXTRAÑO
 const miniCardSugerenciaStyle = { display: 'flex', gap: '12px', backgroundColor: '#ffffff', padding: '12px', borderRadius: '6px', border: '1px solid #e2e8f0', width: '100%', maxWidth: '100%', boxSizing: 'border-box' };
 const miniImgSugerenciaStyle = { width: '100px', height: '70px', objectFit: 'cover', borderRadius: '4px', flexShrink: 0 };
 const miniTituloSugerenciaStyle = { fontSize: '0.88rem', color: '#0a192f', margin: '0 0 4px 0', fontWeight: '700', lineHeight: '1.3' };
