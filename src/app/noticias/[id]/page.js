@@ -155,7 +155,7 @@ const tablaPosicionesData = [
 ];
 
 // =========================================================================
-// 2. COMPONENTE PRINCIPAL
+// 2. COMPONENTE PRINCIPAL (AISLADO Y PROTEGIDO CONTRA ESTILOS EXTERNOS)
 // =========================================================================
 export default function DetalleNoticiaPage({ params }) {
   const { id } = React.use(params);
@@ -185,7 +185,6 @@ export default function DetalleNoticiaPage({ params }) {
   useEffect(() => {
     const manejarScroll = () => {
       const posicionActualScroll = window.scrollY;
-      
       if (posicionActualScroll > 80 && posicionActualScroll > ultimoScrollY.current) {
         setMostrarRecuadro(false);
       } else {
@@ -224,7 +223,7 @@ export default function DetalleNoticiaPage({ params }) {
   const textoNoticia = objetoNoticia[idioma];
 
   return (
-    <div style={containerStyle}>
+    <div style={containerStyle} className="vista-detalle-noticia-raiz">
       {/* 📌 RECUADRO SUPERIOR */}
       <div 
         style={{
@@ -273,14 +272,14 @@ export default function DetalleNoticiaPage({ params }) {
                   <div key={idx} style={tarjetaPartidoSuperiorStyle} className="tarjeta-partido-superior">
                     
                     <div style={filaEquiposMatchStyle}>
-                      <div style={bloqueEquipoMatchStyle}>
+                      <div style={bloqueEquipoMatchStyle} className="bloque-bandera-pais-noticia">
                         <img src={`https://flagcdn.com/w80/${obtenerBandera(partido.e1)}.png`} alt="E1" style={banderaMatchStyle} />
                         <span style={nombreEquipoMatchStyle}>{partido.e1}</span>
                       </div>
                       
                       <div style={vsTextoEstilo}>VS</div>
                       
-                      <div style={bloqueEquipoMatchStyle}>
+                      <div style={bloqueEquipoMatchStyle} className="bloque-bandera-pais-noticia">
                         <img src={`https://flagcdn.com/w80/${obtenerBandera(partido.e2)}.png`} alt="E2" style={banderaMatchStyle} />
                         <span style={nombreEquipoMatchStyle}>{partido.e2}</span>
                       </div>
@@ -351,7 +350,7 @@ export default function DetalleNoticiaPage({ params }) {
                   {tablaPosicionesData[indiceGrupoActivo].lineas.map((linea, lIdx) => (
                     <tr key={lIdx} style={trMiniEstilo}>
                       <td style={{ ...tdMiniEstilo, textAlign: 'center', fontWeight: 'bold', color: '#00b020' }}>{linea.posicion}</td>
-                      <td style={{ ...tdMiniEstilo, display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '600', textAlign: 'left' }}>
+                      <td style={{ ...tdMiniEstilo, display: 'flex', alignItems: 'center', gap: '6px', fontWeight: '600', textAlign: 'left' }} className="celda-equipo-mini-tabla">
                         <img src={`https://flagcdn.com/w20/${linea.b}.png`} alt="bandera" style={miniBanderaTablaStyle} />
                         <span className="nombre-equipo-tabla">{traducirEquipo(linea.equipo, idioma)}</span>
                       </td>
@@ -381,7 +380,7 @@ export default function DetalleNoticiaPage({ params }) {
           <img src={objetoNoticia.imagen} alt="Noticia" style={imagenStyle} />
         </div>
         
-        <div style={lineaDecorativaStyle}></div>
+        <div style={lineaDecorativaStyle} className="linea-amarilla-decorativa"></div>
         
         {typeof textoNoticia.contenido === 'string' ? (
           <p style={contenidoTextoStyle} className="contenido-texto">{textoNoticia.contenido}</p>
@@ -398,11 +397,11 @@ export default function DetalleNoticiaPage({ params }) {
                 <Link key={sugId} href={`/noticias/${sugId}`} style={enlaceSugerenciaStyle}>
                   <div style={miniCardSugerenciaStyle} className="mini-card-sugerencia">
                     <img src={noticiasData[sugId].imagen} alt="Mini" style={miniImgSugerenciaStyle} className="mini-img-sugerencia" />
-                    <div style={{ minWidth: 0, flex: 1 }}>
+                    <div style={{ minWidth: 0, flex: 1 }} className="contenedor-texto-sugerencia-mini">
                       <h4 style={miniTituloSugerenciaStyle} className="mini-titulo-sugerencia">
                         {typeof noticiasData[sugId][idioma].titulo === 'string' ? noticiasData[sugId][idioma].titulo : "Leer más"}
                       </h4>
-                      <span style={miniEnlaceTextoStyle}>{idioma === 'es' ? 'Leer artículo →' : 'Read article →'}</span>
+                      <span style={miniEnlaceTextoStyle} className="enlace-sugerencia-texto-span">{idioma === 'es' ? 'Leer artículo →' : 'Read article →'}</span>
                     </div>
                   </div>
                 </Link>
@@ -418,9 +417,40 @@ export default function DetalleNoticiaPage({ params }) {
         </div>
       </div>
 
+      {/* 🛡️ AQUÍ ANULAMOS LOS ESTILOS AGRESIVOS DEL HEADER SÓLO EN ESTA PÁGINA */}
       <style jsx global>{`
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* NEUTRALIZACIÓN COMPLETA DE SELECTORES BASADOS EN COLOR AMARILLO DENTRO DE ESTE MÓDULO */
+        .vista-detalle-noticia-raiz .bloque-bandera-pais-noticia,
+        .vista-detalle-noticia-raiz .celda-equipo-mini-tabla {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          white-space: nowrap !important;
+        }
+        .vista-detalle-noticia-raiz .celda-equipo-mini-tabla {
+          flex-direction: row !important;
+        }
+        .vista-detalle-noticia-raiz .bloque-bandera-pais-noticia span,
+        .vista-detalle-noticia-raiz .celda-equipo-mini-tabla span {
+          display: inline !important;
+          width: auto !important;
+          overflow: visible !important;
+          white-space: nowrap !important;
+        }
+        .vista-detalle-noticia-raiz .linea-amarilla-decorativa {
+          display: block !important;
+          width: 50px !important;
+          height: 4px !important;
+        }
+        .vista-detalle-noticia-raiz .contenedor-texto-sugerencia-mini h4,
+        .vista-detalle-noticia-raiz .contenedor-texto-sugerencia-mini span {
+          display: block !important;
+          white-space: normal !important;
+          width: 100% !important;
+        }
 
         @media (max-width: 992px) {
           .recuadro-superior-fijo {
@@ -436,27 +466,36 @@ export default function DetalleNoticiaPage({ params }) {
           .flecha-carrusel.md-visible { display: none !important; }
           .select-grupo-mobile { display: block !important; }
           .tabs-grupo-web { display: none !important; }
+          
           .fila-partidos-scroll {
-            overflow-x: auto !important; scroll-snap-type: x mandatory;
-            padding-bottom: 4px !important; -webkit-overflow-scrolling: touch;
+            overflow-x: auto !important; 
+            scroll-snap-type: x mandatory;
+            padding-bottom: 4px !important; 
+            -webkit-overflow-scrolling: touch;
+            display: flex !important;
           }
           .tarjeta-partido-superior {
-            min-width: 145px !important; max-width: 155px !important;
-            scroll-snap-align: start; padding: 8px 6px !important;
+            min-width: 145px !important; 
+            max-width: 155px !important;
+            scroll-snap-align: start; 
+            padding: 8px 6px !important;
+            display: flex !important;
           }
           .lugar-partido-text {
-            font-size: 0.52rem !important; white-space: nowrap;
-            overflow: hidden; text-overflow: ellipsis; width: 100%;
+            font-size: 0.52rem !important; 
+            white-space: nowrap !important;
+            overflow: hidden !important; 
+            text-overflow: ellipsis !important; 
+            width: 100% !important;
           }
           
-          /* Forzar el contenedor del Grid a no expandirse más allá del ancho móvil y romper el layout */
           .grid-sugerencias {
             display: flex !important;
             flex-direction: column !important;
             gap: 12px !important;
             width: 100% !important;
             max-width: 100% !important;
-            padding: 0 4px !important;
+            padding: 0 !important;
             margin: 0 !important;
             box-sizing: border-box !important;
           }
@@ -465,6 +504,7 @@ export default function DetalleNoticiaPage({ params }) {
             max-width: 100% !important;
             margin: 0 auto !important;
             box-sizing: border-box !important;
+            display: flex !important;
           }
         }
 
@@ -481,7 +521,7 @@ export default function DetalleNoticiaPage({ params }) {
 // =========================================================================
 // 3. OBJETOS DE ESTILOS JAVASCRIPT (INLINE STYLES)
 // =========================================================================
-const containerStyle = { minHeight: '100vh', backgroundColor: '#f8fafc', padding: '12px 0px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxSizing: 'border-box', fontFamily: '"SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' };
+const containerStyle = { minHeight: '100vh', backgroundColor: '#f8fafc', padding: '12px 0px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxSizing: 'border-box' };
 const recuadroSuperiorFijoContainer = { position: 'fixed', top: '64px', left: '0', width: '100%', backgroundColor: '#0a192f', borderBottom: '4px solid #f1c40f', zIndex: '999', padding: '10px 20px', boxSizing: 'border-box', boxShadow: '0 6px 20px rgba(0,0,0,0.15)', transition: 'transform 0.4s ease-in-out, opacity 0.4s ease-in-out' };
 const gridInternoRecuadroStyle = { maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' };
 const encabezadoSubModuloStyle = { display: 'flex', alignItems: 'center', gap: '6px', color: '#ffffff', fontSize: '0.72rem', fontWeight: '800', letterSpacing: '0.5px', textTransform: 'uppercase', marginBottom: '4px' };
@@ -513,7 +553,7 @@ const tabBotonActivoStyle = { flex: 1, backgroundColor: '#0a192f', color: '#ffff
 const tabBotonInactivoStyle = { flex: 1, backgroundColor: '#f4f6f9', color: '#4a5568', border: '1px solid #e2e8f0', padding: '3px 4px', borderRadius: '3px', fontSize: '0.62rem', fontWeight: '600', cursor: 'pointer' };
 const tablaMiniEstilo = { width: '100%', borderCollapse: 'collapse', fontSize: '0.72rem' };
 const thMiniRowEstilo = { borderBottom: '1px solid #e2e8f0' };
-const thMiniEstilo = { padding: '2px 4px', color: '#718096', fontWeight: '700' };
+const thMiniEstilo = { padding: '2px 4px', color: '#718096', fontWeight: '700' }}>#</th>
 const trMiniEstilo = { borderBottom: '1px solid #f1f5f9' };
 const tdMiniEstilo = { padding: '4px 4px', color: '#2d3748' };
 const miniBanderaTablaStyle = { width: '14px', height: '9px', objectFit: 'cover', borderRadius: '1px' };
@@ -534,7 +574,6 @@ const separadorSugerenciasStyle = { border: '0', height: '1px', backgroundColor:
 const gridSugerenciasStyle = { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '15px' };
 const enlaceSugerenciaStyle = { display: 'block', textDecoration: 'none', color: 'inherit', width: '100%' };
 
-// 🔧 SOLUCIÓN DE ANCHOS MÓVILES RESPONSIVE Y REMOCIÓN DE FONDO SÓLIDO EXTRAÑO
 const miniCardSugerenciaStyle = { display: 'flex', gap: '12px', backgroundColor: '#ffffff', padding: '12px', borderRadius: '6px', border: '1px solid #e2e8f0', width: '100%', maxWidth: '100%', boxSizing: 'border-box' };
 const miniImgSugerenciaStyle = { width: '100px', height: '70px', objectFit: 'cover', borderRadius: '4px', flexShrink: 0 };
 const miniTituloSugerenciaStyle = { fontSize: '0.88rem', color: '#0a192f', margin: '0 0 4px 0', fontWeight: '700', lineHeight: '1.3' };
