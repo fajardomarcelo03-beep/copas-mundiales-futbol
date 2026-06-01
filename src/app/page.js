@@ -39,7 +39,7 @@ export default function HomePage() {
       fichaEstadio: {
         construccion: "Construcción",
         capacidad: "Capacidad",
-        ciudad: "Ciudad",
+        city: "Ciudad",
         final: "Partido Final"
       }
     },
@@ -70,7 +70,7 @@ export default function HomePage() {
       fichaEstadio: {
         construccion: "Built In",
         capacidad: "Capacity",
-        ciudad: "City",
+        city: "City",
         final: "Final Match"
       }
     }
@@ -136,7 +136,7 @@ export default function HomePage() {
     { ano: "1938", era: "pioneros", anfitrion: { es: "Francia", en: "France" }, desc: { es: "La última gran cita futbolística antes del parón mundial, consolidando dynasties épicas.", en: "The final major tournament before the global hiatus, solidifying legendary football dynasties." }, img: "/Mundial1938.jpeg" },
     { ano: "1950", era: "pioneros", anfitrion: { es: "Brasil", en: "Brazil" }, desc: { es: "El Maracanazo: la hazaña charrúa que grabó el silencio más grande en la historia.", en: "The Maracanazo: the historic Uruguayan feat that produced the greatest silence in football history." }, img: "/Mundial1950.jpeg" },
     { ano: "1954", era: "pioneros", anfitrion: { es: "Suiza", en: "Switzerland" }, desc: { es: "El Milagro de Berna: Alemania Occidental sorprende al mundo al vencer al mítico equipo de Hungría.", en: "The Miracle of Berna: West Germany stuns the world by defeating the legendary Hungarian squad." }, img: "/Mundial1954.jpeg" },
-    { ano: "1958", era: "revolucion", anfitrion: { es: "Suecia", en: "Sweden" }, desc: { es: "La irrupción mundial de un joven de 17 años llamado Pelé y el primer título de Brasil.", en: "The world stage debut of a 17-year-old phenom named Pelé, securing Brazil's first world title." }, img: "/Mundial1958.jpeg" },
+    { ano: "1958", era: "revolucion", anfitrion: { es: "Suecia", en: "Sweden" }, desc: { es: "La irrupción mundial de un young de 17 años llamado Pelé y el primer título de Brasil.", en: "The world stage debut of a 17-year-old phenom named Pelé, securing Brazil's first world title." }, img: "/Mundial1958.jpeg" },
     { ano: "1962", era: "revolucion", anfitrion: { es: "Chile", en: "Chile" }, desc: { es: "Un torneo de alta exigencia física donde Brasil revalidó su corona sin Pelé lesionado.", en: "A highly physical tournament where Brazil successfully retained their crown despite Pelé's early injury." }, img: "/Mundial1962.jpeg" },
     { ano: "1966", era: "revolucion", anfitrion: { es: "Inglaterra", en: "England" }, desc: { es: "Los creadores del fútbol moderno alzan su copa en casa rodeados de polémica.", en: "The founders of modern football lift the trophy on home soil amidst intense match controversy." }, img: "/Mundial1966.jpeg" },
     { ano: "1970", era: "revolucion", anfitrion: { es: "México", en: "Mexico" }, desc: { es: "Considerado el mejor mundial de la historia; el juego bonito de Brasil toca el cielo.", en: "Widely regarded as the greatest World Cup ever; Brazil's 'Jogo Bonito' reaches its absolute pinnacle." }, img: "/Mundial1970.jpeg" },
@@ -186,8 +186,8 @@ export default function HomePage() {
   const [tarjetaHover, setTarjetaHover] = useState(null);
   const [estadioHover, setEstadioHover] = useState(null);
 
-  // FILTRO ESTRATÉGICO: Corta las últimas 5 noticias y las reversa para colocar la más nueva primero
-  const ultimasNoticias = noticias.slice(-5).reverse();
+  // FILTRO ESTRATÉGICO CORREGIDO: Clona la base, la invierte cronológicamente y extrae estrictamente las 5 últimas noticias añadidas
+  const ultimasNoticias = [...noticias].reverse().slice(0, 5);
 
   const mundialesFiltrados = todosLosMundiales.filter(m => m.era === eraActiva);
   const esEraDeCinco = eraActiva === 'pioneros' || eraActiva === 'moderna';
@@ -445,7 +445,7 @@ export default function HomePage() {
                     <div style={fichaEstadioCuerpoStyle}>
                       <p style={itemFichaEstadioStyle}><strong>🗓️ {t.fichaEstadio.construccion}:</strong> {estadio.info.construccion}</p>
                       <p style={itemFichaEstadioStyle}><strong>🏟️ {t.fichaEstadio.capacidad}:</strong> {estadio.info.capacidad}</p>
-                      <p style={itemFichaEstadioStyle}><strong>📍 {t.fichaEstadio.ciudad}:</strong> {estadio.info.ciudad[idioma]}</p>
+                      <p style={itemFichaEstadioStyle}><strong>📍 {t.fichaEstadio.city}:</strong> {estadio.info.ciudad[idioma]}</p>
                       <p style={{ ...itemFichaEstadioStyle, color: '#f1c40f', marginTop: '4px' }}>
                         <strong>🏆 {t.fichaEstadio.final}:</strong> <span style={{ color: '#e2e8f0' }}>{estadio.info.final[idioma]}</span>
                       </p>
