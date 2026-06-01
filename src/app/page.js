@@ -21,7 +21,7 @@ export default function HomePage() {
         { titulo: "Momentos Inolvidables", subtitulo: "Goles y hazañas grabadas en la memoria colectiva." }
       ],
       origenGloria: "El Camino a la Gloria",
-      resumenTexto: "La Copa Mundial de la FIFA nació en 1930 tras la audaz visión de Jules Rimet, celebrando su primera edición en las tierras orientales de Uruguay. Lo que comenzó como una competencia de trece naciones invitadas se ha transformado en el fenómeno cultural y deportivo más grande del planeta.",
+      resumenTexto: "La Copa Mundial de la FIFA nació in 1930 tras la audaz visión de Jules Rimet, celebrando su primera edición en las tierras orientales de Uruguay. Lo que comenzó como una competencia de trece naciones invitadas se ha transformado en el fenómeno cultural y deportivo más grande del planeta.",
       capitulosTitulo: "Ediciones de la Copa Mundial de la FIFA",
       capitulosSub: "Explora la historia interactiva seleccionando una época del fútbol:",
       eras: {
@@ -78,20 +78,23 @@ export default function HomePage() {
   }[idioma];
 
   // =================================================================================
-  // 2. CONEXIÓN AUTOMÁTICA A LAS NOTICIAS CENTRALIZADAS (Adaptado a tu diseño original)
+  // 2. CONEXIÓN AUTOMÁTICA A LAS NOTICIAS CENTRALIZADAS (Mapeo Seguro Anti-Fallo)
   // =================================================================================
-  const noticias = Object.keys(noticiasData).map((key) => ({
-    id: key,
-    img: noticiasData[key].imagen,
-    titulos: {
-      es: noticiasData[key].es.titulo,
-      en: noticiasData[key].en.titulo
-    },
-    resumen: {
-      es: noticiasData[key].es.subtitulo,
-      en: noticiasData[key].en.subtitulo
-    }
-  }));
+  const noticias = Object.keys(noticiasData || {}).map((key) => {
+    const noticiaIndividual = noticiasData[key];
+    return {
+      id: key,
+      img: noticiaIndividual?.imagen || "/Carrusel1.jpg",
+      titulos: {
+        es: noticiaIndividual?.es?.titulo || "Noticia sin título",
+        en: noticiaIndividual?.en?.titulo || "Untitled News"
+      },
+      resumen: {
+        es: noticiaIndividual?.es?.subtitulo || "",
+        en: noticiaIndividual?.en?.subtitulo || ""
+      }
+    };
+  });
 
   // ==========================================
   // 3. BASE DE DATOS DE MUNDIALES HISTÓRICOS
@@ -139,7 +142,7 @@ export default function HomePage() {
     { id: 2, nombre: "Maracaná", foto: "/Maracana.jpg", info: { construccion: "1950", capacidad: "78,838", ciudad: { es: "Río de Janeiro", en: "Rio de Janeiro" }, final: { es: "Uruguay 2-1 Brasil (1950) / Alemania 1-0 Argentina (2014)", en: "Uruguay 2-1 Brazil (1950) / Germany 1-0 Argentina (2014)" } } },
     { id: 3, nombre: "Wembley", foto: "/Wembley.jpg", info: { construccion: "1923 (Reconstruido 2007)", capacidad: "90,000", ciudad: { es: "Londres", en: "London" }, final: { es: "Inglaterra 4-2 Alemania Occidental (1966)", en: "England 4-2 West Germany (1966)" } } },
     { id: 4, nombre: "Centenario", foto: "/Centenario.jpg", info: { construccion: "1930", capacidad: "60,235", ciudad: { es: "Montevideo", en: "Montevideo" }, final: { es: "Uruguay 4-2 Argentina (1930)", en: "Uruguay 4-2 Argentina (1930)" } } },
-    { id: 5, nombre: "Stade France", foto: "/Stade_france.jpg", info: { construccion: "1998", capacidad: "80,698", ciudad: { es: "Saint-Denis", en: "Saint-Denis" }, final: { es: "Francia 3-0 Brasil (1998)", en: "France 3-0 Brasil (1998)" } } },
+    { id: 5, nombre: "Stade France", foto: "/Stade_france.jpg", info: { construccion: "1998", capacidad: "80,698", ciudad: { es: "Saint-Denis", en: "Saint-Denis" }, final: { es: "Francia 3-0 Brasil (1998)", en: "Francia 3-0 Brasil (1998)" } } },
     { id: 6, nombre: "Lusail", foto: "/Lusail.jpg", info: { construccion: "2021", capacidad: "88,966", ciudad: { es: "Lusail", en: "Lusail" }, final: { es: "Argentina 3(4)-(2)3 Francia (2022)", en: "Argentina 3(4)-(2)3 France (2022)" } } },
     { id: 7, nombre: "Olympiastadion Berlin", foto: "/Olympiastadion.jpg", info: { construccion: "1936", capacidad: "74,475", ciudad: { es: "Berlín", en: "Berlin" }, final: { es: "Italia 1(5)-(3)1 Francia (2006)", en: "Italy 1(5)-(3)1 France (2006)" } } },
     { id: 8, nombre: "Rose Bowl", foto: "/RoseBowl.jpg", info: { construccion: "1922", capacidad: "92,542", ciudad: { es: "Pasadena", en: "Pasadena" }, final: { es: "Brasil 0(3)-(2)0 Italia (1994)", en: "Brasil 0(3)-(2)0 Italy (1994)" } } }
@@ -167,7 +170,7 @@ export default function HomePage() {
     return () => clearInterval(temporizador);
   }, [indiceActual]);
 
-  // Efecto automático para el carrusel superior (Sincronizado dinámicamente con la longitud de ultimasNoticias)
+  // Efecto automático para el carrusel superior
   useEffect(() => {
     if (ultimasNoticias.length === 0) return;
     const tempNoticias = setInterval(() => {
@@ -195,8 +198,8 @@ export default function HomePage() {
                 />
               </div>
               <div style={stickyNewsTextContent}>
-                <strong style={{ color: '#f1c40f' }}>{ultimasNoticias[indiceNoticia]?.titulos[idioma]} : </strong>
-                <span>{ultimasNoticias[indiceNoticia]?.resumen[idioma]}</span>
+                <strong style={{ color: '#f1c40f' }}>{ultimasNoticias[indiceNoticia]?.titulos?.[idioma]} : </strong>
+                <span>{ultimasNoticias[indiceNoticia]?.resumen?.[idioma]}</span>
               </div>
               <Link href={`/noticias/${ultimasNoticias[indiceNoticia]?.id}?lang=${idioma}`} style={{...stickyNewsLinkStyle, zIndex: 10000}}>
                 {t.leerMas}
