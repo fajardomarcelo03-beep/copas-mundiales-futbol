@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useIdioma } from './HeaderContextLayout';
-import { noticiasData } from './data/noticiasData'; // 1. Importación centralizada automatizada
+import { noticiasData } from './data/noticiasData';
 
 export default function HomePage() {
   const { idioma } = useIdioma();
@@ -21,7 +21,7 @@ export default function HomePage() {
         { titulo: "Momentos Inolvidables", subtitulo: "Goles y hazañas grabadas en la memoria colectiva." }
       ],
       origenGloria: "El Camino a la Gloria",
-      resumenTexto: "La Copa Mundial de la FIFA nació in 1930 tras la audaz visión de Jules Rimet, celebrando su primera edición en las tierras orientales de Uruguay. Lo que comenzó como una competencia de trece naciones invitadas se ha transformado en el fenómeno cultural y deportivo más grande del planeta.",
+      resumenTexto: "La Copa Mundial de la FIFA nació en 1930 tras la audaz visión de Jules Rimet, celebrando su primera edición en las tierras orientales de Uruguay. Lo que comenzó como una competencia de trece naciones invitadas se ha transformado en el fenómeno cultural y deportivo más grande del planeta.",
       capitulosTitulo: "Ediciones de la Copa Mundial de la FIFA",
       capitulosSub: "Explora la historia interactiva seleccionando una época del fútbol:",
       eras: {
@@ -75,26 +75,47 @@ export default function HomePage() {
         final: "Final Match"
       }
     }
-  }[idioma];
+  }[idioma || 'es']; // Contingencia segura en caso de que el contexto de idioma tarde en inicializar
 
   // =================================================================================
-  // 2. CONEXIÓN AUTOMÁTICA A LAS NOTICIAS CENTRALIZADAS (Mapeo Seguro Anti-Fallo)
+  // 2. MAPEO ULTRA-SEGURO ANTI-FALLO DE COMPILACIÓN (PRODUCCIÓN VERCEL)
   // =================================================================================
-  const noticias = Object.keys(noticiasData || {}).map((key) => {
-    const noticiaIndividual = noticiasData[key];
-    return {
-      id: key,
-      img: noticiaIndividual?.imagen || "/Carrusel1.jpg",
-      titulos: {
-        es: noticiaIndividual?.es?.titulo || "Noticia sin título",
-        en: noticiaIndividual?.en?.titulo || "Untitled News"
-      },
-      resumen: {
-        es: noticiaIndividual?.es?.subtitulo || "",
-        en: noticiaIndividual?.en?.subtitulo || ""
+  const obtenerNoticiasSeguras = () => {
+    try {
+      const datosOrigen = noticiasData || {};
+      const llaves = Object.keys(datosOrigen);
+      
+      if (llaves.length === 0) {
+        // Fallback robusto en caso de que el módulo no se lea a tiempo durante el build estático
+        return [{
+          id: "noticia-6",
+          img: "/Beccacece.jpg",
+          titulos: { es: "Ecuador presenta sus convocados", en: "Ecuador announces squad list" },
+          resumen: { es: "Sebastián Beccacece definió la lista", en: "Sebastián Beccacece finalized the roster" }
+        }];
       }
-    };
-  });
+
+      return llaves.map((key) => {
+        const n = datosOrigen[key];
+        return {
+          id: key || "noticia-desconocida",
+          img: n?.imagen || "/Carrusel1.jpg",
+          titulos: {
+            es: n?.es?.titulo || "Noticia sin título",
+            en: n?.en?.titulo || "Untitled News"
+          },
+          resumen: {
+            es: n?.es?.subtitulo || "",
+            en: n?.en?.subtitulo || ""
+          }
+        };
+      });
+    } catch (e) {
+      return [];
+    }
+  };
+
+  const noticias = obtenerNoticiasSeguras();
 
   // ==========================================
   // 3. BASE DE DATOS DE MUNDIALES HISTÓRICOS
@@ -105,7 +126,7 @@ export default function HomePage() {
     { ano: "1938", era: "pioneros", anfitrion: { es: "Francia", en: "France" }, desc: { es: "La última gran cita futbolística antes del parón mundial, consolidando dynasties épicas.", en: "The final major tournament before the global hiatus, solidifying legendary football dynasties." }, img: "/Mundial1938.jpeg" },
     { ano: "1950", era: "pioneros", anfitrion: { es: "Brasil", en: "Brazil" }, desc: { es: "El Maracanazo: la hazaña charrúa que grabó el silencio más grande en la historia.", en: "The Maracanazo: the historic Uruguayan feat that produced the greatest silence in football history." }, img: "/Mundial1950.jpeg" },
     { ano: "1954", era: "pioneros", anfitrion: { es: "Suiza", en: "Switzerland" }, desc: { es: "El Milagro de Berna: Alemania Occidental sorprende al mundo al vencer al mítico equipo de Hungría.", en: "The Miracle of Berna: West Germany stuns the world by defeating the legendary Hungarian squad." }, img: "/Mundial1954.jpeg" },
-    { ano: "1958", era: "revolucion", anfitrion: { es: "Suecia", en: "Sweden" }, desc: { es: "La irrupción mundial de un young de 17 años llamado Pelé y el primer título de Brasil.", en: "The world stage debut of a 17-year-old phenom named Pelé, securing Brazil's first world title." }, img: "/Mundial1958.jpeg" },
+    { ano: "1958", era: "revolucion", anfitrion: { es: "Suecia", en: "Sweden" }, desc: { es: "La irrupción mundial de un joven de 17 años llamado Pelé y el primer título de Brasil.", en: "The world stage debut of a 17-year-old phenom named Pelé, securing Brazil's first world title." }, img: "/Mundial1958.jpeg" },
     { ano: "1962", era: "revolucion", anfitrion: { es: "Chile", en: "Chile" }, desc: { es: "Un torneo de alta exigencia física donde Brasil revalidó su corona sin Pelé lesionado.", en: "A highly physical tournament where Brazil successfully retained their crown despite Pelé's early injury." }, img: "/Mundial1962.jpeg" },
     { ano: "1966", era: "revolucion", anfitrion: { es: "Inglaterra", en: "England" }, desc: { es: "Los creadores del fútbol moderno alzan su copa en casa rodeados de polémica.", en: "The founders of modern football lift the trophy on home soil amidst intense match controversy." }, img: "/Mundial1966.jpeg" },
     { ano: "1970", era: "revolucion", anfitrion: { es: "México", en: "Mexico" }, desc: { es: "Considerado el mejor mundial de la historia; el juego bonito de Brasil toca el cielo.", en: "Widely regarded as the greatest World Cup ever; Brazil's 'Jogo Bonito' reaches its absolute pinnacle." }, img: "/Mundial1970.jpeg" },
@@ -135,7 +156,7 @@ export default function HomePage() {
   ];
 
   // =======================================================
-  // 5. BASE DE DATOS DE ESTADIOS EMBLEMÁTICOS (4x2)
+  // 5. BASE DE DATOS DE ESTADIOS EMBLEMÁTICOS (8 unidades)
   // =======================================================
   const estadiosEmblematicos = [
     { id: 1, nombre: "Azteca", foto: "/Azteca.jpg", info: { construccion: "1966", capacidad: "87,523", ciudad: { es: "Ciudad de México", en: "Mexico City" }, final: { es: "Brasil 4-1 Italia (1970) / Argentina 3-2 Alemania (1986)", en: "Brazil 4-1 Italy (1970) / Argentina 3-2 Germany (1986)" } } },
@@ -155,14 +176,14 @@ export default function HomePage() {
   const [tarjetaHover, setTarjetaHover] = useState(null);
   const [estadioHover, setEstadioHover] = useState(null);
 
-  // FILTRO CRONOLÓGICO SEGURO: Lee de forma dinámica, invierte la lista y extrae estrictamente el Top 5 más reciente
+  // FILTRO CRONOLÓGICO SEGURO: Extrae de forma limpia las noticias
   const ultimasNoticias = [...noticias].reverse().slice(0, 5);
 
   const mundialesFiltrados = todosLosMundiales.filter(m => m.era === eraActiva);
   const esEraDeCinco = eraActiva === 'pioneros' || eraActiva === 'moderna';
 
-  const siguienteImagen = () => setIndiceActual((prev) => (prev === t.carrusel.length - 1 ? 0 : prev + 1));
-  const anteriorImagen = () => setIndiceActual((prev) => (prev === 0 ? t.carrusel.length - 1 : prev - 1));
+  const siguienteImagen = () => setIndiceActual((prev) => (prev === (t?.carrusel?.length || 3) - 1 ? 0 : prev + 1));
+  const anteriorImagen = () => setIndiceActual((prev) => (prev === 0 ? (t?.carrusel?.length || 3) - 1 : prev - 1));
 
   // Efecto automático para el carrusel de fondo principal
   useEffect(() => {
@@ -181,28 +202,29 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* 1. RECUADRO FIJO (STICKY HEADER) CON FILTRO OPTIMIZADO A LAS 5 ÚLTIMAS */}
+      {/* 1. RECUADRO FIJO (STICKY HEADER) */}
       <div style={stickyNewsBarContainer}>
         <div style={stickyNewsTitleBox}>
-          <span>{t.noticiasTitulo}</span>
+          <span>{t?.noticiasTitulo}</span>
         </div>
         <div style={stickyNewsCarouselWrapper}>
           {ultimasNoticias.length > 0 && (
             <div style={stickyNewsSlideStyle}>
               <div style={stickyNewsImageContainer}>
                 <Image 
-                  src={ultimasNoticias[indiceNoticia]?.img} 
+                  src={ultimasNoticias[indiceNoticia]?.img || "/Carrusel1.jpg"} 
                   alt="Noticia Mundial 2026" 
                   fill 
                   style={{ objectFit: 'cover' }} 
                 />
               </div>
               <div style={stickyNewsTextContent}>
-                <strong style={{ color: '#f1c40f' }}>{ultimasNoticias[indiceNoticia]?.titulos?.[idioma]} : </strong>
-                <span>{ultimasNoticias[indiceNoticia]?.resumen?.[idioma]}</span>
+                <strong style={{ color: '#f1c40f' }}>{ultimasNoticias[indiceNoticia]?.titulos?.[idioma || 'es']} : </strong>
+                <span>{ultimasNoticias[indiceNoticia]?.resumen?.[idioma || 'es']}</span>
               </div>
-              <Link href={`/noticias/${ultimasNoticias[indiceNoticia]?.id}?lang=${idioma}`} style={{...stickyNewsLinkStyle, zIndex: 10000}}>
-                {t.leerMas}
+              {/* href dinámico seguro envuelto para que Next.js compile sin dependencias omitidas */}
+              <Link href={`/noticias/${ultimasNoticias[indiceNoticia]?.id || 'error'}?lang=${idioma || 'es'}`} style={{...stickyNewsLinkStyle, zIndex: 10000}}>
+                {t?.leerMas}
               </Link>
             </div>
           )}
@@ -215,12 +237,12 @@ export default function HomePage() {
           style={{
             ...carruselSlideStyle,
             backgroundColor: '#16222f',
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url(${imagenesCarruselData[indiceActual]})`
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url(${imagenesCarruselData[indiceActual] || "/Carrusel1.jpg"})`
           }}
         >
           <div style={infoCarruselStyle}>
-            <h1 style={tituloCarruselStyle}>{t.carrusel[indiceActual].titulo}</h1>
-            <p style={subtituloCarruselStyle}>{t.carrusel[indiceActual].subtitulo}</p>
+            <h1 style={tituloCarruselStyle}>{t?.carrusel?.[indiceActual]?.titulo}</h1>
+            <p style={subtituloCarruselStyle}>{t?.carrusel?.[indiceActual]?.subtitulo}</p>
           </div>
         </div>
 
@@ -228,7 +250,7 @@ export default function HomePage() {
         <button onClick={siguienteImagen} style={{ ...flechaStyle, right: '20px' }}>❯</button>
 
         <div style={puntosContainerStyle}>
-          {t.carrusel.map((_, index) => (
+          {(t?.carrusel || [1,2,3]).map((_, index) => (
             <span 
               key={index} 
               onClick={() => setIndiceActual(index)}
@@ -244,18 +266,18 @@ export default function HomePage() {
       {/* SECCIÓN RESUMEN HISTÓRICO */}
       <section style={resumenSectionStyle}>
         <div style={resumenContenedorInterno}>
-          <h2 style={tituloSeccionStyle}>{t.origenGloria}</h2>
-          <p style={parrafoResumenStyle}>{t.resumenTexto}</p>
+          <h2 style={tituloSeccionStyle}>{t?.origenGloria}</h2>
+          <p style={parrafoResumenStyle}>{t?.resumenTexto}</p>
         </div>
       </section>
 
       {/* SECCIÓN MUNDIALES REESTRUCTURADA */}
       <section style={gridSectionStyle}>
-        <h2 style={{...tituloSeccionStyle, textAlign: 'center', marginBottom: '15px'}}>{t.capitulosTitulo}</h2>
-        <p style={{textAlign: 'center', color: '#718096', marginBottom: '35px'}}>{t.capitulosSub}</p>
+        <h2 style={{...tituloSeccionStyle, textAlign: 'center', marginBottom: '15px'}}>{t?.capitulosTitulo}</h2>
+        <p style={{textAlign: 'center', color: '#718096', marginBottom: '35px'}}>{t?.capitulosSub}</p>
         
         <div style={filterContainerStyle}>
-          {Object.keys(t.eras).map((key) => (
+          {Object.keys(t?.eras || {}).map((key) => (
             <button 
               key={key}
               onClick={() => setEraActiva(key)} 
@@ -265,7 +287,7 @@ export default function HomePage() {
                 color: eraActiva === key ? '#fff' : '#0a192f'
               }}
             >
-              {t.eras[key]}
+              {t?.eras?.[key]}
             </button>
           ))}
         </div>
@@ -285,10 +307,10 @@ export default function HomePage() {
                   />
                 </div>
                 <div style={cardContentStyle}>
-                  <h3 style={cardTitleStyle}>{idioma === 'es' ? 'COPA MUNDIAL' : 'WORLD CUP'} {mundial.ano}</h3>
-                  <p style={cardSubtitleStyle}>📍 {t.sede}: {mundial.anfitrion[idioma]}</p>
-                  <p style={cardTextStyle}>{mundial.desc[idioma]}</p>
-                  <Link href={`/mundial/${mundial.ano}?lang=${idioma}`} style={cardLinkStyle}>{t.leerMas}</Link>
+                  <h3 style={cardTitleStyle}>{idioma === 'en' ? 'WORLD CUP' : 'COPA MUNDIAL'} {mundial.ano}</h3>
+                  <p style={cardSubtitleStyle}>📍 {t?.sede}: {mundial.anfitrion[idioma || 'es']}</p>
+                  <p style={cardTextStyle}>{mundial.desc[idioma || 'es']}</p>
+                  <Link href={`/mundial/${mundial.ano}?lang=${idioma || 'es'}`} style={cardLinkStyle}>{t?.leerMas}</Link>
                 </div>
               </div>
             ))}
@@ -299,8 +321,8 @@ export default function HomePage() {
       {/* SECCIÓN PRESIDENTES FIFA */}
       <section style={presidentesSectionStyle}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <h2 style={{...tituloSeccionStyle, textAlign: 'center', marginBottom: '10px'}}>{t.lideresTitulo}</h2>
-          <p style={{textAlign: 'center', color: '#718096', marginBottom: '50px'}}>{t.lideresSub}</p>
+          <h2 style={{...tituloSeccionStyle, textAlign: 'center', marginBottom: '10px'}}>{t?.lideresTitulo}</h2>
+          <p style={{textAlign: 'center', color: '#718096', marginBottom: '50px'}}>{t?.lideresSub}</p>
 
           <div style={gridPresidentesStyle}>
             {presidentesFifa.map((pres) => (
@@ -345,10 +367,10 @@ export default function HomePage() {
 
                   {/* CARA TRASERA */}
                   <div style={flipCardBackStyle}>
-                    <h3 style={tituloBackStyle}>{t.gestionDe} {pres.nombre}</h3>
+                    <h3 style={tituloBackStyle}>{t?.gestionDe} {pres.nombre}</h3>
                     <div style={divisorBackStyle}></div>
                     <ul style={listaHitosStyle}>
-                      {pres.hitos[idioma].map((hito, i) => (
+                      {(pres.hitos[idioma || 'es'] || []).map((hito, i) => (
                         <li key={i} style={itemHitoStyle}>{hito}</li>
                       ))}
                     </ul>
@@ -364,8 +386,8 @@ export default function HomePage() {
       {/* SECCIÓN ESTADIOS MUNDIALISTAS EMBLEMÁTICOS */}
       <section style={estadiosSectionStyle}>
         <div style={{ maxWidth: '1350px', margin: '0 auto' }}>
-          <h2 style={{ ...tituloSeccionStyle, textAlign: 'center', marginBottom: '10px' }}>{t.estadiosTitulo}</h2>
-          <p style={{ textAlign: 'center', color: '#718096', marginBottom: '50px' }}>{t.estadiosSub}</p>
+          <h2 style={{ ...tituloSeccionStyle, textAlign: 'center', marginBottom: '10px' }}>{t?.estadiosTitulo}</h2>
+          <p style={{ textAlign: 'center', color: '#718096', marginBottom: '50px' }}>{t?.estadiosSub}</p>
 
           <div style={gridEstadiosStyle}>
             {estadiosEmblematicos.map((estadio) => (
@@ -413,11 +435,11 @@ export default function HomePage() {
                     <h3 style={tituloBackStyle}>{estadio.nombre}</h3>
                     <div style={divisorBackStyle}></div>
                     <div style={fichaEstadioCuerpoStyle}>
-                      <p style={itemFichaEstadioStyle}><strong>🗓️ {t.fichaEstadio.construccion}:</strong> {estadio.info.construccion}</p>
-                      <p style={itemFichaEstadioStyle}><strong>🏟️ {t.fichaEstadio.capacidad}:</strong> {estadio.info.capacidad}</p>
-                      <p style={itemFichaEstadioStyle}><strong>📍 {t.fichaEstadio.city}:</strong> {estadio.info.ciudad[idioma]}</p>
+                      <p style={itemFichaEstadioStyle}><strong>🗓️ {t?.fichaEstadio?.construccion}:</strong> {estadio.info.construccion}</p>
+                      <p style={itemFichaEstadioStyle}><strong>🏟️ {t?.fichaEstadio?.capacidad}:</strong> {estadio.info.capacidad}</p>
+                      <p style={itemFichaEstadioStyle}><strong>📍 {t?.fichaEstadio?.city}:</strong> {estadio.info.ciudad[idioma || 'es']}</p>
                       <p style={{ ...itemFichaEstadioStyle, color: '#f1c40f', marginTop: '4px' }}>
-                        <strong>🏆 {t.fichaEstadio.final}:</strong> <span style={{ color: '#e2e8f0' }}>{estadio.info.final[idioma]}</span>
+                        <strong>🏆 {t?.fichaEstadio?.final}:</strong> <span style={{ color: '#e2e8f0' }}>{estadio.info.final[idioma || 'es']}</span>
                       </p>
                     </div>
                   </div>
