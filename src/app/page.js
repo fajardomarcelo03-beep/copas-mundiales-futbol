@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useIdioma } from './HeaderContextLayout';
+import { noticiasData } from './data/noticiasData'; // 1. Importación centralizada automatizada
 
 export default function HomePage() {
   const { idioma } = useIdioma();
@@ -76,56 +77,21 @@ export default function HomePage() {
     }
   }[idioma];
 
-  // ==========================================
-  // 2. BASE DE DATOS DE NOTICIAS (MUNDIAL 2026)
-  // ==========================================
-  const [noticias, setNoticias] = useState([
-    {
-      id: "noticia-1",
-      img: "/Azteca.jpg",
-      titulos: { es: "Estadio Azteca hará historia", en: "Azteca Stadium will make history" },
-      resumen: { 
-        es: "El coloso de Santa Úrsula se convertirá en el primer estadio en albergar tres partidos inaugurales de Copas del Mundo.",
-        en: "The iconic venue will become the first stadium to host three opening matches in World Cup history."
-      }
+  // =================================================================================
+  // 2. CONEXIÓN AUTOMÁTICA A LAS NOTICIAS CENTRALIZADAS (Adaptado a tu diseño original)
+  // =================================================================================
+  const noticias = Object.keys(noticiasData).map((key) => ({
+    id: key,
+    img: noticiasData[key].imagen,
+    titulos: {
+      es: noticiasData[key].es.titulo,
+      en: noticiasData[key].en.titulo
     },
-    {
-      id: "noticia-2",
-      img: "/Sedes.jpg",
-      titulos: { es: "Sedes listas en Norteamérica", en: "North American venues ready" },
-      resumen: { 
-        es: "Las 16 ciudades anfitrionas en EE.UU., México y Canadá reportan avances óptimos en infraestructura y transporte.",
-        en: "The 16 host cities across the US, Mexico, and Canada report optimal progress in infrastructure and transport."
-      }
-    },
-    {
-      id: "noticia-3",
-      img: "/Selecciones.jpg",
-      titulos: { es: "Formato de 48 selecciones", en: "48-Team tournament format" },
-      resumen: { 
-        es: "El nuevo formato contará con 12 grupos de 4 equipos, garantizando un total sin precedentes de 104 partidos vibrantes.",
-        en: "The new structure features 12 groups of 4 teams, guaranteeing an unprecedented total of 104 thrilling matches."
-      }
-    },
-    {
-      id: "noticia-4",
-      img: "/Estadio_final.jpg",
-      titulos: { es: "La Gran Final en Nueva York/Nueva Jersey", en: "The Grand Finale in New York/New Jersey" },
-      resumen: { 
-        es: "El MetLife Stadium ha sido confirmado oficialmente para coronar al próximo campeón del mundo el 19 de julio de 2026.",
-        en: "MetLife Stadium has been officially confirmed to crown the next world champion on July 19, 2026."
-      }
-    },
-    {
-      id: "noticia-5",
-      img: "/Neymar_lesion.jpg",
-      titulos: { es: "Neymar enciende las alarmas en Brasil", en: "Neymar sparks injury alarm in Brazil" },
-      resumen: {
-        es: "El astro brasileño sufrió una fuerte torcedura en el tobillo derecho durante el último entrenamiento y es duda para los próximos encuentros de la Verdeamarela.",
-        en: "The Brazilian star suffered a severe right ankle sprain during the latest training session and is a major doubt for upcoming Verdeamarela matches."
-      }
+    resumen: {
+      es: noticiasData[key].es.subtitulo,
+      en: noticiasData[key].en.subtitulo
     }
-  ]);
+  }));
 
   // ==========================================
   // 3. BASE DE DATOS DE MUNDIALES HISTÓRICOS
@@ -179,14 +145,14 @@ export default function HomePage() {
     { id: 8, nombre: "Rose Bowl", foto: "/RoseBowl.jpg", info: { construccion: "1922", capacidad: "92,542", ciudad: { es: "Pasadena", en: "Pasadena" }, final: { es: "Brasil 0(3)-(2)0 Italia (1994)", en: "Brasil 0(3)-(2)0 Italy (1994)" } } }
   ];
 
-  // ESTADOS Y HOOKS INTERACTIVOS
+  // ESTADOS Y HOOKS INTERACTIVOS ORIGINALES
   const [indiceActual, setIndiceActual] = useState(0);
   const [indiceNoticia, setIndiceNoticia] = useState(0);
   const [eraActiva, setEraActiva] = useState('pioneros');
   const [tarjetaHover, setTarjetaHover] = useState(null);
   const [estadioHover, setEstadioHover] = useState(null);
 
-  // FILTRO ESTRATÉGICO CORREGIDO: Clona la base, la invierte cronológicamente y extrae estrictamente las 5 últimas noticias añadidas
+  // FILTRO CRONOLÓGICO SEGURO: Lee de forma dinámica, invierte la lista y extrae estrictamente el Top 5 más reciente
   const ultimasNoticias = [...noticias].reverse().slice(0, 5);
 
   const mundialesFiltrados = todosLosMundiales.filter(m => m.era === eraActiva);
@@ -201,10 +167,11 @@ export default function HomePage() {
     return () => clearInterval(temporizador);
   }, [indiceActual]);
 
-  // Efecto automático para el carrusel superior (Vinculado dinámicamente a la longitud de ultimasNoticias)
+  // Efecto automático para el carrusel superior (Sincronizado dinámicamente con la longitud de ultimasNoticias)
   useEffect(() => {
+    if (ultimasNoticias.length === 0) return;
     const tempNoticias = setInterval(() => {
-      setIndiceNoticia((prev) => (prev === ultimasNoticias.length - 1 ? 0 : prev + 1));
+      setIndiceNoticia((prev) => (prev >= ultimasNoticias.length - 1 ? 0 : prev + 1));
     }, 6000);
     return () => clearInterval(tempNoticias);
   }, [indiceNoticia, ultimasNoticias.length]);
@@ -461,10 +428,11 @@ export default function HomePage() {
   );
 }
 
-// Mapeo de URLs de imágenes para el fondo del carrusel
+// =========================================================================
+// ARCHIVO DE ESTILOS Y MAPEO DE COMPONENTES ORIGINALES
+// =========================================================================
 const imagenesCarruselData = ["/Carrusel1.jpg", "/Carrusel2.jpg", "/Carrusel3.webp"];
 
-// ---- ARQUITECTURA DE ESTILOS VISUALES ORIGINALES Y AMPLIADOS ----
 const carruselContainerStyle = { position: 'relative', width: '100%', height: '480px', overflow: 'hidden' };
 const carruselSlideStyle = { width: '100%', height: '100%', backgroundSize: 'cover', backgroundPosition: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', transition: 'background-image 0.5s ease-in-out' };
 const infoCarruselStyle = { textAlign: 'center', color: '#fff', padding: '0 20px' };
