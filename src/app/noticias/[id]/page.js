@@ -42,7 +42,7 @@ function traducirEquipo(codigo, idioma) {
     en: {
       'ALG': 'Algeria', 'ARG': 'Argentina', 'AUS': 'Australia', 'AUT': 'Austria', 'BEL': 'Belgium',
       'BIH': 'Bosnia & Herz.', 'BRA': 'Brazil', 'CAN': 'Canada', 'CIV': 'Ivory Coast', 'COD': 'DR Congo',
-      'COL': 'Colombia', 'CPV': 'Cape Verde', 'CRO': 'Croatia', 'CW':  'Curaçao', 'CZE': 'Czechia',
+      'COL': 'Colombia', 'CPV': 'Cape Verde', 'CRO': 'Croacia', 'CW':  'Curaçao', 'CZE': 'Czechia',
       'EGY': 'Egypt', 'ENG': 'England', 'ESP': 'Spain', 'FRA': 'France', 'GER': 'Germany',
       'GHA': 'Ghana', 'HAI': 'Haiti', 'IRN': 'Iran', 'IRQ': 'Iraq', 'ITA': 'Italy',
       'JOR': 'Jordan', 'JPN': 'Japan', 'KOR': 'South Korea', 'KSA': 'Saudi Arabia', 'MAR': 'Morocco',
@@ -122,7 +122,7 @@ const todosLosPartidosMundial = [
   { fecha: "2026-06-25", e1: 'CW',  e2: 'CIV', hora: '04:00 PM', estadio: 'Estadio Filadelfia' },
   { fecha: "2026-06-25", e1: 'ECU', e2: 'GER', hora: '04:00 PM', estadio: 'Estadio New York' },
   { fecha: "2026-06-25", e1: 'JPN', e2: 'SWE', hora: '07:00 PM', estadio: 'Estadio Dallas' },
-  { fecha: "2026-06-25", e1: 'TUN', e2: 'NED', hora: '07:00 PM', !estadio: 'Estadio Kansas City' },
+  { fecha: "2026-06-25", e1: 'TUN', e2: 'NED', hora: '07:00 PM', estadio: 'Estadio Kansas City' }, // 🔧 CORREGIDO: Se removió el '!' intruso
   { fecha: "2026-06-25", e1: 'TUR', e2: 'USA', hora: '10:00 PM', estadio: 'Estadio Los Ángeles' },
   { fecha: "2026-06-25", e1: 'PAR', e2: 'AUS', hora: '10:00 PM', estadio: 'Estadio San Francisco' },
   { fecha: "2026-06-26", e1: 'NOR', e2: 'FRA', hora: '03:00 PM', estadio: 'Estadio Boston' },
@@ -173,7 +173,6 @@ export default function DetalleNoticiaPage({ params }) {
     setPartidosFiltrados(filtrados);
   }, [fechaSeleccionada]);
 
-  // 🔧 CORRECCIÓN: Volver a tomar hasta 4 recuadros aleatorios (.slice(0, 4))
   useEffect(() => {
     const todasLasKeys = Object.keys(noticiasData);
     const filtradas = todasLasKeys.filter(k => k !== id);
@@ -368,7 +367,7 @@ export default function DetalleNoticiaPage({ params }) {
           <div className="contenido-texto">{textoNoticia.contenido}</div>
         )}
 
-        {/* SUGERENCIAS (RESTAURADO A UN MÁXIMO DE 4) */}
+        {/* SUGERENCIAS */}
         {sugerenciasAleatorias.length > 0 && (
           <>
             <hr style={separadorSugerenciasStyle} />
@@ -458,7 +457,7 @@ const tarjetaPartidoSuperiorStyle = { backgroundColor: 'rgba(255,255,255,0.04)',
 const filaEquiposMatchStyle = { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', width: '100%' };
 const bloqueEquipoMatchStyle = { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3px' };
 const banderaMatchStyle = { width: '26px', height: '17px', objectFit: 'cover', borderRadius: '2px' };
-const nombreEquipoMatchStyle = { fontSize: '0.75rem', fontWeight: '800', color: '#ffffff' };
+const nombreEquipoMatchStyle = { fontSize: '0.75rem', fontWeight: '#800', color: '#ffffff' };
 const vsTextoEstilo = { fontSize: '0.6rem', color: '#cbd5e1', fontWeight: '900', opacity: 0.6 };
 const detallesMatchAbajoStyle = { display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1px', width: '100%', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '5px' };
 const horaMatchStyle = { color: '#f1c40f', fontSize: '0.68rem', fontWeight: '800' };
