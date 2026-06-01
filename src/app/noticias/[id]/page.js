@@ -129,7 +129,7 @@ const todosLosPartidosMundial = [
   { fecha: "2026-06-26", e1: 'SEN', e2: 'IRQ', hora: '03:00 PM', estadio: 'Estadio Toronto' },
   { fecha: "2026-06-26", e1: 'CPV', e2: 'KSA', hora: '08:00 PM', estadio: 'Estadio Houston' },
   { fecha: "2026-06-26", e1: 'URU', e2: 'ESP', hora: '08:00 PM', estadio: 'Estadio Guadalajara' },
-  { fecha: "2026-06-26", e1: 'EGY', e2: 'IRN', hora: '11:00 PM', estadio: 'Estadio Seattle' },
+  { fecha: "2026-06-26", e1: 'EGY', e2: 'IRN', hora: '11:00 PM', estadio: 'Seattle' },
   { fecha: "2026-06-26", e1: 'NZL', e2: 'BEL', hora: '11:00 PM', estadio: 'Estadio Vancouver' },
   { fecha: "2026-06-27", e1: 'PAN', e2: 'ENG', hora: '05:00 PM', estadio: 'Estadio New York' },
   { fecha: "2026-06-27", e1: 'CRO', e2: 'GHA', hora: '05:00 PM', estadio: 'Estadio Filadelfia' },
@@ -142,7 +142,7 @@ const todosLosPartidosMundial = [
 const tablaPosicionesData = [
   { grupo: "GRUPO A", lineas: [ { posicion: 1, equipo: "MEX", pj: 0, pts: 0, b: "mx" }, { posicion: 2, equipo: "RSA", pj: 0, pts: 0, b: "za" }, { posicion: 3, equipo: "KOR", pj: 0, pts: 0, b: "kr" }, { posicion: 4, equipo: "CZE", pj: 0, pts: 0, b: "cz" } ] },
   { grupo: "GRUPO B", lineas: [ { posicion: 1, equipo: "CAN", pj: 0, pts: 0, b: "ca" }, { posicion: 2, equipo: "BIH", pj: 0, pts: 0, b: "ba" }, { posicion: 3, equipo: "QAT", pj: 0, pts: 0, b: "qa" }, { posicion: 4, equipo: "SUI", pj: 0, pts: 0, b: "ch" } ] },
-  { grupo: "GRUPO C", lineas: [ { posicion: 1, equipo: "BRA", pj: 0, pts: 0, b: "ma" }, { posicion: 2, equipo: "MAR", pj: 0, pts: 0, b: "ma" }, { posicion: 3, equipo: "HAI", pj: 0, pts: 0, b: "ht" }, { posicion: 4, equipo: "SCO", pj: 0, pts: 0, b: "gb" } ] },
+  { grupo: "GRUPO C", lineas: [ { posicion: 1, equipo: "BRA", pj: 0, pts: 0, b: "br" }, { posicion: 2, equipo: "MAR", pj: 0, pts: 0, b: "ma" }, { posicion: 3, equipo: "HAI", pj: 0, pts: 0, b: "ht" }, { posicion: 4, equipo: "SCO", pj: 0, pts: 0, b: "gb" } ] },
   { grupo: "GRUPO D", lineas: [ { posicion: 1, equipo: "USA", pj: 0, pts: 0, b: "us" }, { posicion: 2, equipo: "PAR", pj: 0, pts: 0, b: "py" }, { posicion: 3, equipo: "AUS", pj: 0, pts: 0, b: "au" }, { posicion: 4, equipo: "TUR", pj: 0, pts: 0, b: "tr" } ] },
   { grupo: "GRUPO E", lineas: [ { posicion: 1, equipo: "GER", pj: 0, pts: 0, b: "de" }, { posicion: 2, equipo: "CW",  pj: 0, pts: 0, b: "cw" }, { posicion: 3, equipo: "CIV", pj: 0, pts: 0, b: "ci" }, { posicion: 4, equipo: "ECU", pj: 0, pts: 0, b: "ec" } ] },
   { grupo: "GRUPO F", lineas: [ { posicion: 1, equipo: "NED", pj: 0, pts: 0, b: "nl" }, { posicion: 2, equipo: "JPN", pj: 0, pts: 0, b: "jp" }, { posicion: 3, equipo: "SWE", pj: 0, pts: 0, b: "se" }, { posicion: 4, equipo: "TUN", pj: 0, pts: 0, b: "tn" } ] },
@@ -225,7 +225,7 @@ export default function DetalleNoticiaPage({ params }) {
 
   return (
     <div style={containerStyle}>
-      {/* 📌 RECUADRO SUPERIOR CON DESVANECIMIENTO DINÁMICO */}
+      {/* 📌 RECUADRO SUPERIOR */}
       <div 
         style={{
           ...recuadroSuperiorFijoContainer,
@@ -448,6 +448,20 @@ export default function DetalleNoticiaPage({ params }) {
             font-size: 0.52rem !important; white-space: nowrap;
             overflow: hidden; text-overflow: ellipsis; width: 100%;
           }
+          
+          /* 🔧 SOLUCIÓN DEFINITIVA PARA EL ENTORNO MÓVIL: Forzamos ordenación de columna simétrica */
+          .grid-sugerencias {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 16px !important;
+            width: 100% !important;
+            padding: 0px !important;
+            margin: 0 auto !important;
+          }
+          .mini-card-sugerencia {
+            width: 100% !important;
+            box-sizing: border-box !important;
+          }
         }
 
         @media (max-width: 640px) {
@@ -512,12 +526,11 @@ const lineaDecorativaStyle = { width: '50px', height: '4px', backgroundColor: '#
 const contenidoTextoStyle = { fontSize: '1.05rem', color: '#2d3748', lineHeight: '1.75', marginBottom: '25px', textAlign: 'justify', whiteSpace: 'pre-line' };
 const btnVolverStyle = { display: 'inline-block', backgroundColor: '#0a192f', color: '#ffffff', padding: '10px 22px', borderRadius: '5px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.92rem' };
 const separadorSugerenciasStyle = { border: '0', height: '1px', backgroundColor: '#e2e8f0', margin: '35px 0 25px 0' };
+
 const gridSugerenciasStyle = { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '15px' };
-
-// 🔧 CORRECCIÓN AQUÍ: Se añade 'display: "flex"' u 'display: "block"' para que el Link de Next.js actúe correctamente como bloque dentro del grid y los recuadros se centren perfectamente en móviles.
-const enlaceSugerenciaStyle = { textDecoration: 'none', color: 'inherit', display: 'flex' };
-
-const miniCardSugerenciaStyle = { display: 'flex', gap: '12px', backgroundColor: '#f8fafc', padding: '12px', borderRadius: '6px', border: '1px solid #e2e8f0', width: '100%' };
+const interstateLinkStyle = { textDecoration: 'none', color: 'inherit' };
+const enlaceSugerenciaStyle = { textDecoration: 'none', color: 'inherit' };
+const miniCardSugerenciaStyle = { display: 'flex', gap: '12px', backgroundColor: '#f8fafc', padding: '12px', borderRadius: '6px', border: '1px solid #e2e8f0' };
 const miniImgSugerenciaStyle = { width: '100px', height: '70px', objectFit: 'cover', borderRadius: '4px' };
 const miniTituloSugerenciaStyle = { fontSize: '0.88rem', color: '#0a192f', margin: '0 0 4px 0', fontWeight: '700', lineHeight: '1.3' };
 const miniEnlaceTextoStyle = { fontSize: '0.8rem', color: '#f1c40f', fontWeight: '700' };
