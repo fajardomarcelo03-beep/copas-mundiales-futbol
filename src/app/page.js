@@ -1,9 +1,5 @@
 'use client';
 
-// Configuración de renderizado dinámico para Next.js
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,7 +9,7 @@ export default function HomePage() {
   const { idioma } = useIdioma();
 
   // ==========================================
-  // 1. DICCIONARIO DE TRADUCCIÓN
+  // 1. DICCIONARIO DE TRADUCCIÓN PROFESIONAL
   // ==========================================
   const t = {
     es: {
@@ -36,7 +32,7 @@ export default function HomePage() {
       sede: "Sede",
       leerMas: "Leer más →",
       lideresTitulo: "Presidentes de la FIFA más destacados",
-      lideresSub: "Evolución y gestión de los mandatos que marcaron el rumbo institutional:",
+      lideresSub: "Evolución y gestión de los mandatos que marcaron el rumbo institucional:",
       gestionDe: "Gestión de",
       estadiosTitulo: "Estadios Mundialistas más Emblemáticos",
       estadiosSub: "Los templos del fútbol donde se forjó la historia de las grandes finales:",
@@ -81,9 +77,9 @@ export default function HomePage() {
   }[idioma];
 
   // ==========================================
-  // 2. BASE DE DATOS DE NOTICIAS
+  // 2. BASE DE DATOS DE NOTICIAS (MUNDIAL 2026)
   // ==========================================
-  const [noticias] = useState([
+  const [noticias, setNoticias] = useState([
     {
       id: "noticia-1",
       img: "/Azteca.jpg",
@@ -124,18 +120,9 @@ export default function HomePage() {
       id: "noticia-5",
       img: "/Neymar_lesion.jpg",
       titulos: { es: "Neymar enciende las alarmas en Brasil", en: "Neymar sparks injury alarm in Brazil" },
-      resumen: { 
+      resumen: {
         es: "El astro brasileño sufrió una fuerte torcedura en el tobillo derecho durante el último entrenamiento y es duda para los próximos encuentros de la Verdeamarela.",
         en: "The Brazilian star suffered a severe right ankle sprain during the latest training session and is a major doubt for upcoming Verdeamarela matches."
-      }
-    },
-    {
-      id: "noticia-6",
-      img: "/Beccacece.jpg",
-      titulos: { es: "Beccacece sorprende en la convocatoria", en: "Beccacece surprises in national call-up" },
-      resumen: { 
-        es: "El estratega introduce cambios drásticos en la lista de convocados buscando consolidar un plantel ágil de cara a las eliminatorias del Mundial.",
-        en: "The manager introduces drastic tactical shifts in the roster, aiming to cement a highly dynamic squad for the World Cup qualifiers."
       }
     }
   ]);
@@ -178,9 +165,9 @@ export default function HomePage() {
     { id: 4, nombre: "Gianni Infantino", periodo: "2016 - Presente", foto: "/GianniInfantino.jpeg", hitos: { es: ["Introducción histórica del VAR (Video Assistant Referee) en 2018.", "Aprobación del formato ampliado a 48 equipos para el Mundial 2026.", "Logró un crecimiento financiero récord en derechos audiovisuales."], en: ["Oversaw the historic implementation of the VAR system in 2018.", "Approved the expansion of the tournament format to 48 teams for 2026.", "Achieved record financial growth through media and broadcasting rights optimization."] } }
   ];
 
-  // ==========================================
-  // 5. BASE DE DATOS DE ESTADIOS EMBLEMÁTICOS
-  // ==========================================
+  // =======================================================
+  // 5. BASE DE DATOS DE ESTADIOS EMBLEMÁTICOS (4x2)
+  // =======================================================
   const estadiosEmblematicos = [
     { id: 1, nombre: "Azteca", foto: "/Azteca.jpg", info: { construccion: "1966", capacidad: "87,523", ciudad: { es: "Ciudad de México", en: "Mexico City" }, final: { es: "Brasil 4-1 Italia (1970) / Argentina 3-2 Alemania (1986)", en: "Brazil 4-1 Italy (1970) / Argentina 3-2 Germany (1986)" } } },
     { id: 2, nombre: "Maracaná", foto: "/Maracana.jpg", info: { construccion: "1950", capacidad: "78,838", ciudad: { es: "Río de Janeiro", en: "Rio de Janeiro" }, final: { es: "Uruguay 2-1 Brasil (1950) / Alemania 1-0 Argentina (2014)", en: "Uruguay 2-1 Brazil (1950) / Germany 1-0 Argentina (2014)" } } },
@@ -192,17 +179,15 @@ export default function HomePage() {
     { id: 8, nombre: "Rose Bowl", foto: "/RoseBowl.jpg", info: { construccion: "1922", capacidad: "92,542", ciudad: { es: "Pasadena", en: "Pasadena" }, final: { es: "Brasil 0(3)-(2)0 Italia (1994)", en: "Brasil 0(3)-(2)0 Italy (1994)" } } }
   ];
 
-  // ESTADOS INTERACTIVOS
+  // ESTADOS Y HOOKS INTERACTIVOS
   const [indiceActual, setIndiceActual] = useState(0);
   const [indiceNoticia, setIndiceNoticia] = useState(0);
   const [eraActiva, setEraActiva] = useState('pioneros');
   const [tarjetaHover, setTarjetaHover] = useState(null);
   const [estadioHover, setEstadioHover] = useState(null);
 
-  // Filtrado y orden de noticias
-  const ultimasNoticias = [...noticias]
-    .sort((a, b) => parseInt(b.id.split('-')[1]) - parseInt(a.id.split('-')[1]))
-    .slice(0, 5);
+  // FILTRO ESTRATÉGICO CORREGIDO: Clona la base, la invierte cronológicamente y extrae estrictamente las 5 últimas noticias añadidas
+  const ultimasNoticias = [...noticias].reverse().slice(0, 5);
 
   const mundialesFiltrados = todosLosMundiales.filter(m => m.era === eraActiva);
   const esEraDeCinco = eraActiva === 'pioneros' || eraActiva === 'moderna';
@@ -210,22 +195,23 @@ export default function HomePage() {
   const siguienteImagen = () => setIndiceActual((prev) => (prev === t.carrusel.length - 1 ? 0 : prev + 1));
   const anteriorImagen = () => setIndiceActual((prev) => (prev === 0 ? t.carrusel.length - 1 : prev - 1));
 
-  // Efectos cíclicos automáticos
+  // Efecto automático para el carrusel de fondo principal
   useEffect(() => {
     const temporizador = setInterval(() => { siguienteImagen(); }, 5000);
     return () => clearInterval(temporizador);
   }, [indiceActual]);
 
+  // Efecto automático para el carrusel superior (Vinculado dinámicamente a la longitud de ultimasNoticias)
   useEffect(() => {
     const tempNoticias = setInterval(() => {
-      setIndiceNoticia((prev) => (prev >= ultimasNoticias.length - 1 ? 0 : prev + 1));
+      setIndiceNoticia((prev) => (prev === ultimasNoticias.length - 1 ? 0 : prev + 1));
     }, 6000);
     return () => clearInterval(tempNoticias);
   }, [indiceNoticia, ultimasNoticias.length]);
 
   return (
     <div>
-      {/* Barra superior de Noticias (Sticky) */}
+      {/* 1. RECUADRO FIJO (STICKY HEADER) CON FILTRO OPTIMIZADO A LAS 5 ÚLTIMAS */}
       <div style={stickyNewsBarContainer}>
         <div style={stickyNewsTitleBox}>
           <span>{t.noticiasTitulo}</span>
@@ -235,7 +221,7 @@ export default function HomePage() {
             <div style={stickyNewsSlideStyle}>
               <div style={stickyNewsImageContainer}>
                 <Image 
-                  src={ultimasNoticias[indiceNoticia]?.img || "/Azteca.jpg"} 
+                  src={ultimasNoticias[indiceNoticia]?.img} 
                   alt="Noticia Mundial 2026" 
                   fill 
                   style={{ objectFit: 'cover' }} 
@@ -245,7 +231,7 @@ export default function HomePage() {
                 <strong style={{ color: '#f1c40f' }}>{ultimasNoticias[indiceNoticia]?.titulos[idioma]} : </strong>
                 <span>{ultimasNoticias[indiceNoticia]?.resumen[idioma]}</span>
               </div>
-              <Link href={`/noticias/${ultimasNoticias[indiceNoticia]?.id}?lang=${idioma}`} style={stickyNewsLinkStyle}>
+              <Link href={`/noticias/${ultimasNoticias[indiceNoticia]?.id}?lang=${idioma}`} style={{...stickyNewsLinkStyle, zIndex: 10000}}>
                 {t.leerMas}
               </Link>
             </div>
@@ -253,7 +239,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Carrusel Principal */}
+      {/* SECCIÓN DEL CARRUSEL AUTOMÁTICO BILINGÜE DE BIENVENIDA */}
       <section style={carruselContainerStyle}>
         <div 
           style={{
@@ -285,7 +271,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Resumen Histórico */}
+      {/* SECCIÓN RESUMEN HISTÓRICO */}
       <section style={resumenSectionStyle}>
         <div style={resumenContenedorInterno}>
           <h2 style={tituloSeccionStyle}>{t.origenGloria}</h2>
@@ -293,7 +279,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Ediciones Mundiales con Filtros */}
+      {/* SECCIÓN MUNDIALES REESTRUCTURADA */}
       <section style={gridSectionStyle}>
         <h2 style={{...tituloSeccionStyle, textAlign: 'center', marginBottom: '15px'}}>{t.capitulosTitulo}</h2>
         <p style={{textAlign: 'center', color: '#718096', marginBottom: '35px'}}>{t.capitulosSub}</p>
@@ -340,7 +326,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Presidentes FIFA */}
+      {/* SECCIÓN PRESIDENTES FIFA */}
       <section style={presidentesSectionStyle}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <h2 style={{...tituloSeccionStyle, textAlign: 'center', marginBottom: '10px'}}>{t.lideresTitulo}</h2>
@@ -370,6 +356,7 @@ export default function HomePage() {
                     transform: tarjetaHover === pres.id ? 'rotateY(180deg)' : 'rotateY(0deg)'
                   }}
                 >
+                  {/* CARA FRONTAL */}
                   <div style={flipCardFrontStyle}>
                     <div style={fotoPresidenteContenedor}>
                       <Image 
@@ -386,6 +373,7 @@ export default function HomePage() {
                     </div>
                   </div>
 
+                  {/* CARA TRASERA */}
                   <div style={flipCardBackStyle}>
                     <h3 style={tituloBackStyle}>{t.gestionDe} {pres.nombre}</h3>
                     <div style={divisorBackStyle}></div>
@@ -395,6 +383,7 @@ export default function HomePage() {
                       ))}
                     </ul>
                   </div>
+
                 </div>
               </div>
             ))}
@@ -402,7 +391,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Estadios Emblemáticos */}
+      {/* SECCIÓN ESTADIOS MUNDIALISTAS EMBLEMÁTICOS */}
       <section style={estadiosSectionStyle}>
         <div style={{ maxWidth: '1350px', margin: '0 auto' }}>
           <h2 style={{ ...tituloSeccionStyle, textAlign: 'center', marginBottom: '10px' }}>{t.estadiosTitulo}</h2>
@@ -433,6 +422,7 @@ export default function HomePage() {
                     transform: estadioHover === estadio.id ? 'rotateY(180deg)' : 'rotateY(0deg)'
                   }}
                 >
+                  {/* FRONTAL: FOTO DEL ESTADIO */}
                   <div style={flipCardFrontStyle}>
                     <div style={{ ...fotoPresidenteContenedor, height: '270px' }}>
                       <Image
@@ -448,6 +438,7 @@ export default function HomePage() {
                     </div>
                   </div>
 
+                  {/* POSTERIOR: DATOS TÉCNICOS DETALLADOS */}
                   <div style={flipCardBackStyle}>
                     <h3 style={tituloBackStyle}>{estadio.nombre}</h3>
                     <div style={divisorBackStyle}></div>
@@ -470,11 +461,10 @@ export default function HomePage() {
   );
 }
 
-// ==========================================
-// 6. ARQUITECTURA DE ESTILOS VISUALES
-// ==========================================
+// Mapeo de URLs de imágenes para el fondo del carrusel
 const imagenesCarruselData = ["/Carrusel1.jpg", "/Carrusel2.jpg", "/Carrusel3.webp"];
 
+// ---- ARQUITECTURA DE ESTILOS VISUALES ORIGINALES Y AMPLIADOS ----
 const carruselContainerStyle = { position: 'relative', width: '100%', height: '480px', overflow: 'hidden' };
 const carruselSlideStyle = { width: '100%', height: '100%', backgroundSize: 'cover', backgroundPosition: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center', transition: 'background-image 0.5s ease-in-out' };
 const infoCarruselStyle = { textAlign: 'center', color: '#fff', padding: '0 20px' };
