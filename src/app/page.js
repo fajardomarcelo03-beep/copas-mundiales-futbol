@@ -1,5 +1,9 @@
 'use client';
 
+// Desactiva la caché agresiva de Vercel para asegurar cambios en tiempo real
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -32,7 +36,7 @@ export default function HomePage() {
       sede: "Sede",
       leerMas: "Leer más →",
       lideresTitulo: "Presidentes de la FIFA más destacados",
-      lideresSub: "Evolución y gestión de los mandatos que marcaron el rumbo institucional:",
+      lideresSub: "Evolución y gestión de los mandatos que marcaron el rumbo institutional:",
       gestionDe: "Gestión de",
       estadiosTitulo: "Estadios Mundialistas más Emblemáticos",
       estadiosSub: "Los templos del fútbol donde se forjó la historia de las grandes finales:",
@@ -77,7 +81,7 @@ export default function HomePage() {
   }[idioma];
 
   // ==========================================
-  // 2. BASE DE DATOS DE NOTICIAS (MUNDIAL 2026)
+  // 2. BASE DE DATOS DE NOTICIAS (CON NOTICIA-6)
   // ==========================================
   const [noticias, setNoticias] = useState([
     {
@@ -124,6 +128,15 @@ export default function HomePage() {
         es: "El astro brasileño sufrió una fuerte torcedura en el tobillo derecho durante el último entrenamiento y es duda para los próximos encuentros de la Verdeamarela.",
         en: "The Brazilian star suffered a severe right ankle sprain during the latest training session and is a major doubt for upcoming Verdeamarela matches."
       }
+    },
+    {
+      id: "noticia-6",
+      img: "/Beccacece.jpg",
+      titulos: { es: "Beccacece sorprende en la convocatoria", en: "Beccacece surprises in national call-up" },
+      resumen: { 
+        es: "El estratega introduce cambios drásticos en la lista de convocados buscando consolidar un plantel ágil de cara a las eliminatorias del Mundial.",
+        en: "The manager introduces drastic tactical shifts in the roster, aiming to cement a highly dynamic squad for the World Cup qualifiers."
+      }
     }
   ]);
 
@@ -147,7 +160,7 @@ export default function HomePage() {
     { ano: "1990", era: "oro", anfitrion: { es: "Italia", en: "Italy" }, desc: { es: "Un torneo táctico y cerrado que culminó con la revancha de Alemania frente a Argentina.", en: "A deeply tactical, tight tournament culminating in Germany's sweet redemption against Argentina." }, img: "/Mundial1990.jpeg" },
     { ano: "1994", era: "oro", anfitrion: { es: "EE.UU.", en: "USA" }, desc: { es: "El fútbol conquista Norteamérica y se define por primera vez en penales a favor de Brasil.", en: "Football captures the North American market, concluding in the first-ever penalty shootout won by Brazil." }, img: "/Mundial1994.jpeg" },
     { ano: "1998", era: "oro", anfitrion: { es: "Francia", en: "France" }, desc: { es: "Zinedine Zidane lidera a 'Les Bleus' hacia una noche gloriosa e inolvidable en París.", en: "Zinedine Zidane masterfully guides 'Les Bleus' to a glorious and unforgettable night in Paris." }, img: "/Mundial1998.jpeg" },
-    { ano: "2002", era: "oro", anfitrion: { es: "Corea/Japón", en: "South Korea/Japan" }, desc: { es: "El primer mundial in Asia presencia la redención de Ronaldo y el pentacampeonato de Brasil.", en: "Asia's inaugural World Cup hosts Ronaldo’s iconic redemption, sealing Brazil’s fifth world title." }, img: "/Mundial2002.jpeg" },
+    { ano: "2002", era: "oro", anfitrion: { es: "Corea/Japón", en: "South Korea/Japan" }, desc: { es: "El primer mundial en Asia presencia la redención de Ronaldo y el pentacampeonato de Brasil.", en: "Asia's inaugural World Cup hosts Ronaldo’s iconic redemption, sealing Brazil’s fifth world title." }, img: "/Mundial2002.jpeg" },
     { ano: "2006", era: "moderna", anfitrion: { es: "Alemania", en: "Germany" }, desc: { es: "Italia se corona tetracampeona en una dramática final marcada por la despedida de Zidane.", en: "Italy is crowned four-time champions in a dramatic final defined by Zinedine Zidane’s farewell." }, img: "/Mundial2006.jpeg" },
     { ano: "2010", era: "moderna", anfitrion: { es: "Sudáfrica", en: "South Africa" }, desc: { es: "El 'Tiki-Taka' de España conquista el primer mundial africano con el gol histórico de Iniesta.", en: "Spain's tactical 'Tiki-Taka' conquers the first African World Cup, sealed by Iniesta's historic extra-time goal." }, img: "/Mundial2010.jpeg" },
     { ano: "2014", era: "moderna", anfitrion: { es: "Brasil", en: "Brazil" }, desc: { es: "Alemania domina suelo sudamericano marcando un histórico 7-1 al anfitrión en su ruta al título.", en: "Germany dominates on South American soil, routing the hosts 7-1 on their relentless path to the title." }, img: "/Mundial2014.jpeg" },
@@ -186,7 +199,7 @@ export default function HomePage() {
   const [tarjetaHover, setTarjetaHover] = useState(null);
   const [estadioHover, setEstadioHover] = useState(null);
 
-  // CORRECCIÓN MATEMÁTICA: Extrae el número del ID (ej: "noticia-6" -> 6) y ordena de mayor a menor para garantizar que las 5 más nuevas salgan siempre primero.
+  // Filtra con precisión numérica las últimas 5 noticias ordenadas de forma descendente (noticia-6 irá primero)
   const ultimasNoticias = [...noticias]
     .sort((a, b) => parseInt(b.id.split('-')[1]) - parseInt(a.id.split('-')[1]))
     .slice(0, 5);
