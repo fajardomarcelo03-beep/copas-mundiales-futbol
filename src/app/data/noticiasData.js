@@ -260,5 +260,22 @@ export const noticiasData = {
       autor: "Tehran Correspondent",
       tiempoLectura: "3 min"
     }
+  },
+  "noticia-8": {
+    imagen: "/Mexico.jpg",
+    es: {
+      titulo: "México definió su lista oficial previo al Mundial 2026",
+      subtitulo: "El cuerpo técnico presentó a los 26 elegidos con una fuerte base europea y grandes sorpresas de la Liga MX.",
+      contenido: "La Selección Mexicana tiene listos a sus guerreros para la gran cita mundialista. La convocatoria destaca por consolidar a una nueva generación que brilla en el viejo continente, liderada por Santiago Giménez y Obed Vargas, además de mantener la experiencia jerárquica de Guillermo Ochoa en el arco.\n\nLista oficial de la Selección de México:\n\nPorteros: Raúl Rangel (Chivas), Carlos Acevedo (Santos) y Guillermo Ochoa (AEL Limassol/CYP).\nDefensas: Israel Reyes (América), Jorge Sánchez (PAOK/GRE), César Montes (Lokomotiv/RUS), Johan Vásquez (Genoa/ITA), Edson Álvarez (Fenerbahçe/TUR), Jesús Gallardo (Toluca) y Mateo Chávez (AZ Alkmaar/NED).\nMediocampistas: Álvaro Fidalgo (Betis/ESP), Brian Gutiérrez (Chivas), Erik Lira (Cruz Azul), Luis Romo (Chivas), Gilberto Mora (Tijuana), Luis Chávez (Dinamo Moscú/RUS), Obed Vargas (Atlético de Madrid/ESP) y Orbelín Pineda (AEK Atenas/GRE).\nDelanteros: Roberto Alvarado (Chivas), César Huerta (Anderlecht/BEL), Julián Quiñones (Al-Qadisiya/KSA), Alexis Vega (Toluca), Armando González (Chivas), Guillermo Martínez (Pumas), Santiago Gimenez (Milan/ITA) y Raúl Jiménez (Fulham/ING).",
+      autor: "Corresponsal CDMX",
+      tiempoLectura: "3 min"
+    },
+    en: {
+      titulo: "Mexico finalizes its official roster ahead of the 2026 World Cup",
+      subtitulo: "The coaching staff presented the 26 chosen players, featuring a strong European base and major Liga MX surprises.",
+      contenido: "The Mexican National Team has its warriors ready for the big World Cup event. The call-up stands out for consolidating a new generation shining in the old continent, led by Santiago Giménez and Obed Vargas, while maintaining the leadership and experience of Guillermo Ochoa in goal.\n\nMexico National Team Official Roster:\n\nGoalkeepers: Raúl Rangel (Chivas), Carlos Acevedo (Santos), and Guillermo Ochoa (AEL Limassol/CYP).\nDefenders: Israel Reyes (América), Jorge Sánchez (PAOK/GRE), César Montes (Lokomotiv/RUS), Johan Vásquez (Genoa/ITA), Edson Álvarez (Fenerbahçe/TUR), Jesús Gallardo (Toluca), and Mateo Chávez (AZ Alkmaar/NED).\nMidfielders: Álvaro Fidalgo (Betis/ESP), Brian Gutiérrez (Chivas), Erik Lira (Cruz Azul), Luis Romo (Chivas), Gilberto Mora (Tijuana), Luis Chávez (Dinamo Moscow/RUS), Obed Vargas (Atlético de Madrid/ESP), and Orbelín Pineda (AEK Athens/GRE).\nForwards: Roberto Alvarado (Chivas), César Huerta (Anderlecht/BEL), Julián Quiñones (Al-Qadisiya/KSA), Alexis Vega (Toluca), Armando González (Chivas), Guillermo Martínez (Pumas), Santiago Gimenez (Milan/ITA), and Raúl Jiménez (Fulham/ENG).",
+      autor: "CDMX Correspondent",
+      tiempoLectura: "3 min"
+    }
   }
 };
