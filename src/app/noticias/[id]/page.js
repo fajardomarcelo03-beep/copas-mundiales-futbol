@@ -80,13 +80,13 @@ const diasMundialData = [
   { id: "2026-06-18", esDia: "JUE", enDia: "THU", num: "18", mes: "JUN" },
   { id: "2026-06-19", esDia: "VIE", enDia: "FRI", num: "19", mes: "JUN" },
   { id: "2026-06-20", esDia: "SAB", enDia: "SAT", num: "20", mes: "JUN" },
-  { id: "2026-06-21", esDia: "DOM", enDia: "SUN", num: "20", mes: "JUN" },
-  { id: "2026-06-22", esDia: "LUN", enDia: "MON", num: "20", mes: "JUN" },
-  { id: "2026-06-23", esDia: "MAR", enDia: "TUE", num: "20", mes: "JUN" },
-  { id: "2026-06-24", esDia: "MIE", enDia: "WED", num: "20", mes: "JUN" },
-  { id: "2026-06-25", esDia: "JUE", enDia: "THU", num: "20", mes: "JUN" },
-  { id: "2026-06-26", esDia: "VIE", enDia: "FRI", num: "20", mes: "JUN" },
-  { id: "2026-06-27", esDia: "SAB", enDia: "SAT", num: "20", mes: "JUN" }
+  { id: "2026-06-21", esDia: "DOM", enDia: "SUN", num: "21", mes: "JUN" },
+  { id: "2026-06-22", esDia: "LUN", enDia: "MON", num: "22", mes: "JUN" },
+  { id: "2026-06-23", esDia: "MAR", enDia: "TUE", num: "23", mes: "JUN" },
+  { id: "2026-06-24", esDia: "MIE", enDia: "WED", num: "24", mes: "JUN" },
+  { id: "2026-06-25", esDia: "JUE", enDia: "THU", num: "25", mes: "JUN" },
+  { id: "2026-06-26", esDia: "VIE", enDia: "FRI", num: "26", mes: "JUN" },
+  { id: "2026-06-27", esDia: "SAB", enDia: "SAT", num: "27", mes: "JUN" }
 ];
 
 const todosLosPartidosMundial = [
