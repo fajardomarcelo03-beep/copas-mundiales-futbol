@@ -139,14 +139,15 @@ const todosLosPartidosMundial = [
   { fecha: "2026-06-27", e1: 'JOR', e2: 'ARG', hora: '10:00 PM', estadio: 'Estadio Dallas' }
 ];
 
+// 🔧 CORRECCIÓN: Se remueve el "!!" inválido en la propiedad "posicion" del Grupo G
 const tablaPosicionesData = [
   { grupo: "GRUPO A", lineas: [ { posicion: 1, equipo: "MEX", pj: 0, pts: 0, b: "mx" }, { posicion: 2, equipo: "RSA", pj: 0, pts: 0, b: "za" }, { posicion: 3, equipo: "KOR", pj: 0, pts: 0, b: "kr" }, { posicion: 4, equipo: "CZE", pj: 0, pts: 0, b: "cz" } ] },
   { grupo: "GRUPO B", lineas: [ { posicion: 1, equipo: "CAN", pj: 0, pts: 0, b: "ca" }, { posicion: 2, equipo: "BIH", pj: 0, pts: 0, b: "ba" }, { posicion: 3, equipo: "QAT", pj: 0, pts: 0, b: "qa" }, { posicion: 4, equipo: "SUI", pj: 0, pts: 0, b: "ch" } ] },
-  { grupo: "GRUPO C", lineas: [ { posicion: 1, equipo: "BRA", pj: 0, pts: 0, b: "br" }, { posicion: 2, equipo: "MAR", pj: 0, pts: 0, b: "ma" }, { posicion: 3, equipo: "HAI", pj: 0, pts: 0, b: "ht" }, { posicion: 4, equipo: "SCO", pj: 0, pts: 0, b: "gb" } ] },
+  { grupo: "GRUPO C", lineas: [ { posicion: 1, equipo: "BRA", pj: 0, pts: 0, b: "ma" }, { posicion: 2, equipo: "MAR", pj: 0, pts: 0, b: "ma" }, { posicion: 3, equipo: "HAI", pj: 0, pts: 0, b: "ht" }, { posicion: 4, equipo: "SCO", pj: 0, pts: 0, b: "gb" } ] },
   { grupo: "GRUPO D", lineas: [ { posicion: 1, equipo: "USA", pj: 0, pts: 0, b: "us" }, { posicion: 2, equipo: "PAR", pj: 0, pts: 0, b: "py" }, { posicion: 3, equipo: "AUS", pj: 0, pts: 0, b: "au" }, { posicion: 4, equipo: "TUR", pj: 0, pts: 0, b: "tr" } ] },
   { grupo: "GRUPO E", lineas: [ { posicion: 1, equipo: "GER", pj: 0, pts: 0, b: "de" }, { posicion: 2, equipo: "CW",  pj: 0, pts: 0, b: "cw" }, { posicion: 3, equipo: "CIV", pj: 0, pts: 0, b: "ci" }, { posicion: 4, equipo: "ECU", pj: 0, pts: 0, b: "ec" } ] },
   { grupo: "GRUPO F", lineas: [ { posicion: 1, equipo: "NED", pj: 0, pts: 0, b: "nl" }, { posicion: 2, equipo: "JPN", pj: 0, pts: 0, b: "jp" }, { posicion: 3, equipo: "SWE", pj: 0, pts: 0, b: "se" }, { posicion: 4, equipo: "TUN", pj: 0, pts: 0, b: "tn" } ] },
-  { grupo: "GRUPO G", lineas: [ { posicion: 1, equipo: "BEL", pj: 0, pts: 0, b: "be" }, { posicion: 2, equipo: "EGY", pj: 0, pts: 0, b: "eg" }, { !!posicion: 3, equipo: "IRN", pj: 0, pts: 0, b: "ir" }, { posicion: 4, equipo: "NZL", pj: 0, pts: 0, b: "nz" } ] },
+  { grupo: "GRUPO G", lineas: [ { posicion: 1, equipo: "BEL", pj: 0, pts: 0, b: "be" }, { posicion: 2, equipo: "EGY", pj: 0, pts: 0, b: "eg" }, { posicion: 3, equipo: "IRN", pj: 0, pts: 0, b: "ir" }, { posicion: 4, equipo: "NZL", pj: 0, pts: 0, b: "nz" } ] },
   { grupo: "GRUPO H", lineas: [ { posicion: 1, equipo: "ESP", pj: 0, pts: 0, b: "es" }, { posicion: 2, equipo: "CPV", pj: 0, pts: 0, b: "cv" }, { posicion: 3, equipo: "KSA", pj: 0, pts: 0, b: "sa" }, { posicion: 4, equipo: "URU", pj: 0, pts: 0, b: "uy" } ] },
   { grupo: "GRUPO I", lineas: [ { posicion: 1, equipo: "FRA", pj: 0, pts: 0, b: "fr" }, { posicion: 2, equipo: "SEN", pj: 0, pts: 0, b: "sn" }, { posicion: 3, equipo: "IRQ", pj: 0, pts: 0, b: "iq" }, { posicion: 4, equipo: "NOR", pj: 0, pts: 0, b: "no" } ] },
   { grupo: "GRUPO J", lineas: [ { posicion: 1, equipo: "ARG", pj: 0, pts: 0, b: "ar" }, { posicion: 2, equipo: "ALG", pj: 0, pts: 0, b: "dz" }, { posicion: 3, equipo: "AUT", pj: 0, pts: 0, b: "at" }, { posicion: 4, equipo: "JOR", pj: 0, pts: 0, b: "jo" } ] },
@@ -166,7 +167,6 @@ export default function DetalleNoticiaPage({ params }) {
   const [partidosFiltrados, setPartidosFiltrados] = useState([]);
   const [sugerenciasAleatorias, setSugerenciasAleatorias] = useState([]);
   
-  // 🔧 CONTROL DE VISIBILIDAD PARA EL DESVANECIMIENTO (SCROLL)
   const [mostrarRecuadro, setMostrarRecuadro] = useState(true);
   const ultimoScrollY = useRef(0);
   const carruselFechasRef = useRef(null);
@@ -183,15 +183,14 @@ export default function DetalleNoticiaPage({ params }) {
     setSugerenciasAleatorias(mezcladas.slice(0, 4));
   }, [id]);
 
-  // 🔧 DETECTOR DE SCROLL: Muestra al subir y desvanece al bajar
   useEffect(() => {
     const manejarScroll = () => {
       const posicionActualScroll = window.scrollY;
       
       if (posicionActualScroll > 80 && posicionActualScroll > ultimoScrollY.current) {
-        setMostrarRecuadro(false); // Desvanece al bajar el mouse
+        setMostrarRecuadro(false);
       } else {
-        setMostrarRecuadro(true);  // Reaparece al subir el mouse
+        setMostrarRecuadro(true);
       }
       ultimoScrollY.current = posicionActualScroll;
     };
@@ -466,7 +465,6 @@ export default function DetalleNoticiaPage({ params }) {
 // OBJETOS DE ESTILOS
 // =========================================================================
 const containerStyle = { minHeight: '100vh', backgroundColor: '#f8fafc', padding: '12px 0px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxSizing: 'border-box' };
-// 🔧 ADICIÓN: Se agrega la propiedad transition para lograr el efecto de desvanecimiento suave
 const recuadroSuperiorFijoContainer = { position: 'fixed', top: '64px', left: '0', width: '100%', backgroundColor: '#0a192f', borderBottom: '4px solid #f1c40f', zIndex: '999', padding: '10px 20px', boxSizing: 'border-box', boxShadow: '0 6px 20px rgba(0,0,0,0.15)', transition: 'transform 0.4s ease-in-out, opacity 0.4s ease-in-out' };
 const gridInternoRecuadroStyle = { maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' };
 const encabezadoSubModuloStyle = { display: 'flex', alignItems: 'center', gap: '6px', color: '#ffffff', fontSize: '0.72rem', fontWeight: '800', letterSpacing: '0.5px', textTransform: 'uppercase', marginBottom: '4px' };
