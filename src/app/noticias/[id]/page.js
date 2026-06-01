@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useLanguage } from '../../HeaderContextLayout';
+import { useIdioma } from '../../HeaderContextLayout';
 import { noticiasData } from '../../data/noticiasData';
 
 // =========================================================================
@@ -60,7 +60,6 @@ function traducirFase(fase, idioma) {
   return fases[idioma]?.[fase] || fase;
 }
 
-// Data estática de partidos y posiciones (Mantenidos idénticos)
 const todosLosPartidosMundial = [
   { fase: 'GRUPOS', e1: 'MEX', e2: 'RSA', hora: '11:00 AM', estadio: 'Estadio Azteca, CDMX' },
   { fase: 'GRUPOS', e1: 'USA', e2: 'ITA', hora: '02:00 PM', estadio: 'SoFi Stadium, LA' },
@@ -78,24 +77,21 @@ const tablaPosicionesData = [
 // =========================================================================
 export default function DetalleNoticiaPage({ params }) {
   const { id } = React.use(params);
-  const { idioma } = useLanguage();
+  const { idioma } = useIdioma();
 
   const [partidosFiltradosHoy, setPartidosFiltradosHoy] = useState([]);
   const [grupoActivoCarrusel, setGrupoActivoCarrusel] = useState(0);
   const [sugerenciasAleatorias, setSugerenciasAleatorias] = useState([]);
 
-  // Carga inicial y lógica de UI
   useEffect(() => {
     setPartidosFiltradosHoy(todosLosPartidosMundial);
 
-    // Seleccionar 2 sugerencias alternativas que no sean la noticia actual
     const todasLasKeys = Object.keys(noticiasData);
     const filtradas = todasLasKeys.filter(k => k !== id);
     const mezcladas = [...filtradas].sort(() => 0.5 - Math.random());
     setSugerenciasAleatorias(mezcladas.slice(0, 2));
   }, [id]);
 
-  // Auto-rotación del carrusel de posiciones
   useEffect(() => {
     const intervalo = setInterval(() => {
       setGrupoActivoCarrusel((prev) => (prev + 1) % tablaPosicionesData.length);
@@ -124,15 +120,11 @@ export default function DetalleNoticiaPage({ params }) {
       <div style={recuadroSuperiorFijoContainer} className="recuadro-superior-fijo">
         <div style={gridInternoRecuadroStyle} className="grid-interno-recuadro">
           
-          {/* ================================================================= */}
-          {/* NUEVA SECCIÓN DE PARTIDOS DEL DÍA: ESTILO DEPORTIVO PREMIUM       */}
-          {/* ================================================================= */}
           <div style={seccionPartidosFijoStyle}>
             <div style={encabezadoSubModuloStyle}>
               <span style={indicadorEnVivoStyle}>🔴</span> {idioma === 'es' ? 'PARTIDOS POR FECHA' : 'MATCHES BY DATE'}
             </div>
             
-            {/* Carrusel de Fechas Horizontal Horizontal */}
             <div style={carruselFechasStyle} className="hide-scrollbar">
               <div style={fechaCardActivaStyle}>
                 <div>{idioma === 'es' ? 'JUE' : 'THU'}</div>
@@ -156,7 +148,6 @@ export default function DetalleNoticiaPage({ params }) {
               </div>
             </div>
 
-            {/* Listado de Partidos Horizontal/Deslizable */}
             <div style={contenedorFilaPartidosEstilo} className="hide-scrollbar">
               {partidosFiltradosHoy.length > 0 ? (
                 partidosFiltradosHoy.map((partido, idx) => (
@@ -165,19 +156,16 @@ export default function DetalleNoticiaPage({ params }) {
                     <div style={infoLugarMatchStyle}>{partido.estadio.split(',')[0]}</div>
                     
                     <div style={filaEquiposMatchStyle}>
-                      {/* Local */}
                       <div style={bloqueEquipoMatchStyle}>
                         <img src={`https://flagcdn.com/w80/${obtenerBandera(partido.e1)}.png`} alt="E1" style={banderaMatchStyle} />
                         <span style={nombreEquipoMatchStyle}>{partido.e1}</span>
                       </div>
                       
-                      {/* VS / Hora */}
                       <div style={vsTextoEstilo}>
                         <span style={{ fontSize: '0.6rem', color: '#cbd5e1' }}>VS</span>
                         <span style={{ color: '#ffffff', fontSize: '0.78rem', marginTop: '1px' }}>{partido.hora.replace(" AM", "").replace(" PM", "")}</span>
                       </div>
                       
-                      {/* Visitante */}
                       <div style={bloqueEquipoMatchStyle}>
                         <img src={`https://flagcdn.com/w80/${obtenerBandera(partido.e2)}.png`} alt="E2" style={banderaMatchStyle} />
                         <span style={nombreEquipoMatchStyle}>{partido.e2}</span>
@@ -193,7 +181,6 @@ export default function DetalleNoticiaPage({ params }) {
             </div>
           </div>
 
-          {/* Bloque Derecho: Carrusel de Posiciones (Se mantiene idéntico) */}
           <div style={seccionTablasCarruselStyle}>
             <div style={encabezadoSubModuloStyle}>
               <span>📊</span> {idioma === 'es' ? 'TABLA DE POSICIONES' : 'STANDINGS'}
@@ -227,7 +214,6 @@ export default function DetalleNoticiaPage({ params }) {
                 </tbody>
               </table>
 
-              {/* Indicadores de puntos (Dots) */}
               <div style={{ display: 'flex', justifyContent: 'center', gap: '6px', marginTop: '6px' }}>
                 {tablaPosicionesData.map((_, dotIdx) => (
                   <div
@@ -248,7 +234,7 @@ export default function DetalleNoticiaPage({ params }) {
         </div>
       </div>
 
-      {/* 📰 CUERPO DEL ARTÍCULO (Mantenido intacto de tu código) */}
+      {/* 📰 CUERPO DEL ARTÍCULO */}
       <div style={cardStyle} className="cuerpo-articulo-card">
         <div style={headerNoticiaStyle} className="header-noticia">
           <span style={tagStyle}>🔴 {idioma === 'es' ? 'MUNDIAL 2026' : 'WORLD CUP 2026'}</span>
@@ -299,7 +285,6 @@ export default function DetalleNoticiaPage({ params }) {
         </div>
       </div>
 
-      {/* ⚡ MEDIA QUERIES GLOBALES OPTIMIZADOS CON OCULTADOR DE SCROLL ⚡ */}
       <style jsx global>{`
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
@@ -371,7 +356,7 @@ export default function DetalleNoticiaPage({ params }) {
 }
 
 // =========================================================================
-// OBJETOS DE ESTILOS (Actualizados milimétricamente)
+// OBJETOS DE ESTILOS (Mantenidos idénticos)
 // =========================================================================
 const containerStyle = { minHeight: '100vh', backgroundColor: '#f4f6f9', padding: '20px 10px', display: 'flex', flexDirection: 'column', alignItems: 'center', boxSizing: 'border-box' };
 const recuadroSuperiorFijoContainer = { position: 'fixed', top: '64px', left: '0', width: '100%', backgroundColor: '#0a192f', borderBottom: '4px solid #f1c40f', zIndex: '999', padding: '12px 20px', boxSizing: 'border-box', boxShadow: '0 6px 20px rgba(0,0,0,0.15)', transition: 'opacity 0.35s ease, transform 0.35s ease, visibility 0.35s' };
@@ -380,7 +365,6 @@ const encabezadoSubModuloStyle = { display: 'flex', alignItems: 'center', gap: '
 const indicadorEnVivoStyle = { color: '#e74c3c' };
 const seccionPartidosFijoStyle = { display: 'flex', flexDirection: 'column', overflow: 'hidden' };
 
-// Nuevos objetos de estilo para el carrusel horizontal deportivo
 const carruselFechasStyle = { display: 'flex', gap: '6px', overflowX: 'auto', paddingBottom: '6px', marginBottom: '6px' };
 const fechaCardActivaStyle = { backgroundColor: '#00b020', color: '#ffffff', minWidth: '50px', padding: '4px', borderRadius: '6px', textAlign: 'center', fontSize: '0.65rem', fontWeight: 'bold', boxShadow: '0 2px 6px rgba(0, 176, 32, 0.4)' };
 const fechaCardInactivaStyle = { backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', color: '#a0aec0', minWidth: '50px', padding: '4px', borderRadius: '6px', textAlign: 'center', fontSize: '0.65rem', fontWeight: '500' };
