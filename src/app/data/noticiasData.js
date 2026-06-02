@@ -8,14 +8,14 @@ export const noticiasData = {
       titulo: "El Estadio Azteca hará historia en la inauguración de 2026", 
       subtitulo: "El coloso de Santa Úrsula se convierte en el templo definitivo de la FIFA.", 
       contenido: "La FIFA ha confirmado de manera oficial que el místico Estadio Azteca de la Ciudad de México será el escenario encargado de albergar el partido inaugural del Mundial el 11 de junio de 2026.", 
-      autor: "Redacción FIFA 2026", 
+      fecha: "30 de mayo de 2026", 
       tiempoLectura: "3 min" 
     }, 
     en: { 
       titulo: "Azteca Stadium will make history in the 2026 opening match", 
       subtitulo: "The Santa Úrsula colossus becomes FIFA's definitive temple.", 
       contenido: "FIFA has officially confirmed that the legendary Azteca Stadium in Mexico City will host the opening match of the World Cup on June 11, 2026.", 
-      autor: "FIFA 2026 Press", 
+      fecha: "May 30, 2026", 
       tiempoLectura: "3 min" 
     } 
   },
@@ -25,14 +25,14 @@ export const noticiasData = {
       titulo: "Sedes listas en Norteamérica para recibir el macro torneo", 
       subtitulo: "Las 16 ciudades anfitrionas reportan avances óptimos en logística.", 
       contenido: "Los comités organizadores de Estados Unidos, México y Canadá han presentado su informe unificado de infraestructura.", 
-      autor: "Corresponsal Norteamérica", 
+      fecha: "30 de mayo de 2026", 
       tiempoLectura: "2 min" 
     }, 
     en: { 
       titulo: "North American host venues fully prepared for the macro tournament", 
       subtitulo: "All 16 host cities report optimal logistical progress.", 
       contenido: "The joint organizing committees of the United States, Mexico, and Canada presented their unified infrastructure master plan.", 
-      autor: "North America Correspondent", 
+      fecha: "May 30, 2026", 
       tiempoLectura: "2 min" 
     } 
   },
@@ -112,7 +112,7 @@ export const noticiasData = {
           </div>
         </div>
       ), 
-      autor: "Mesa de Deportes", 
+      fecha: "31 de mayo de 2026", 
       tiempoLectura: "5 min" 
     }, 
     en: { 
@@ -189,7 +189,7 @@ export const noticiasData = {
           </div>
         </div>
       ), 
-      autor: "Sports Desk", 
+      fecha: "May 31, 2026", 
       tiempoLectura: "5 min" 
     } 
   },
@@ -199,14 +199,14 @@ export const noticiasData = {
       titulo: "La Gran Final en Nueva York/Nueva Jersey", 
       subtitulo: "El MetLife Stadium será el escenario donde se definirá al nuevo campeón del mundo.", 
       contenido: "El MetLife Stadium, con capacidad para más de 80 mil espectadores, será la sede de la final de la copa del mundo 2026.", 
-      autor: "Mesa de Deportes", 
+      fecha: "31 de mayo de 2026", 
       tiempoLectura: "5 min" 
     }, 
     en: { 
       titulo: "The Grand Finale in New York/New Jersey", 
       subtitulo: "The MetLife Stadium will be the venue where the new world champion will be crowned.", 
       contenido: "The MetLife Stadium, with a capacity of more than 80,000 spectators, will host the final of the 2026 FIFA World Cup.", 
-      autor: "Sports Desk", 
+      fecha: "May 31, 2026", 
       tiempoLectura: "5 min" 
     } 
   },
@@ -216,14 +216,14 @@ export const noticiasData = {
       titulo: "Neymar enciende las alarmas en Brasil", 
       subtitulo: "El astro brasileño sufre una lesión muscular de grado II, pero el cuerpo médico confía en su recuperación.", 
       contenido: "La selección brasileña enfrenta momentos de alta tensión tras confirmarse que Neymar Jr. presenta una lesión muscular de grado II.", 
-      autor: "Corresponsal Sudamérica", 
+      fecha: "31 de mayo de 2026", 
       tiempoLectura: "4 min" 
     }, 
     en: { 
       titulo: "Neymar sparks injury alarm in Brazil", 
       subtitulo: "The Brazilian star suffers a grade II muscle injury, but the medical staff remains confident.", 
       contenido: "The Brazilian national team is facing tense moments after confirming that Neymar Jr. has a grade II muscle injury.", 
-      autor: "South American Correspondent", 
+      fecha: "May 31, 2026", 
       tiempoLectura: "4 min" 
     } 
   },
@@ -233,14 +233,14 @@ export const noticiasData = {
       titulo: "Ecuador presenta sus convocados oficiales para el Mundial 2026",
       subtitulo: "Sebastián Beccacece definió la lista de la Tri con sorpresas y un bloque consolidado en Europa.",
       contenido: "El director técnico Sebastián Beccacece presentó la lista oficial de la Selección de Ecuador para la Copa del Mundo 2026.\n\nArqueros: Gonzalo Valle (Liga de Quito), Hernán Galíndez (Huracán) y Moisés Ramírez (Kifisia FC).\nDefensores: Ángelo Preciado (Atlético Mineiro), Félix Torres (Inter PA), Joel Ordóñez (Brujas), Jackson Porozo (Xolos de Tijuana), Pervis Estupiñán (Milan), Piero Hincapié (Arsenal FC) y Willian Pacho (PSG).\nMediocampistas: Alan Franco (Atlético Mineiro), Denil Castillo (Midtjylland), Jordy Alcívar (Independiente del Valle), Kendry Páez (River Plate), Moisés Caicedo (Chelsea), Pedro Vite (Pumas), Anthony Valencia (Royal Antwerp) y Yaimar Medina (Genk).\nDelanteros: Alan Minda (Atlético Mineiro), Enner Valencia (Pachuca), Gonzalo Plata (Flamengo), Jeremy Arévalo (Stuttgart), John Yeboah (Venezia), Jordy Caicedo (Huracán), Kevin Rodríguez (Union Saint-Gilloise) y Nilson Angulo (Sunderland).",
-      autor: "Corresponsal Quito",
+      fecha: "1 de junio de 2026",
       tiempoLectura: "3 min"
     },
     en: {
       titulo: "Ecuador announces official squad list for the 2026 World Cup",
       subtitulo: "Sebastián Beccacece finalized La Tri's roster with key surprises and a strong European core.",
       contenido: "Head coach Sebastián Beccacece announced Ecuador's official squad list for the 2026 World Cup.\n\nGoalkeepers: Gonzalo Valle (Liga de Quito), Hernán Galíndez (Huracán), and Moisés Ramírez (Kifisia FC).\nDefenders: Ángelo Preciado (Atlético Mineiro), Félix Torres (Inter PA), Joel Ordóñez (Brujas), Jackson Porozo (Xolos de Tijuana), Pervis Estupiñán (Milan), Piero Hincapié (Arsenal FC), and Willian Pacho (PSG).\nMidfielders: Alan Franco (Atlético Mineiro), Denil Castillo (Midtjylland), Jordy Alcívar (Independiente del Valle), Kendry Páez (River Plate), Moisés Caicedo (Chelsea), Pedro Vite (Pumas), Anthony Valencia (Royal Antwerp), and Yaimar Medina (Genk).\nForwards: Alan Minda (Atlético Mineiro), Enner Valencia (Pachuca), Gonzalo Plata (Flamengo), Jeremy Arevalo (Stuttgart), John Yeboah (Venezia), Jordy Caicedo (Huracán), Kevin Rodríguez (Union Saint-Gilloise), and Nilson Angulo (Sunderland).",
-      autor: "Quito Correspondent",
+      fecha: "June 1, 2026",
       tiempoLectura: "3 min"
     }
   },
@@ -250,14 +250,14 @@ export const noticiasData = {
       titulo: "Irán ya tiene sus convocados para conquistar América",
       subtitulo: "La convocatoria no estuvo exenta de polémica: la principal sorpresa fue la ausencia de Sardar Azmoun.",
       contenido: "La convocatoria no estuvo exenta de polémica: la principal sorpresa fue la ausencia de Sardar Azmoun, considerado durante años una de las máximas figuras de la selección iraní y uno de los futbolistas más influyentes de su generación.\n\nLista definitiva de Irán para el Mundial 2026:\n\nArqueros: Alireza Beiranvand (Tractor), Hossein Hosseini (Sepahan Esfahan) y Payam Niazmand (Persépolis Teherán).\nDefensores: Daniyal Eiri (Malavan), Ehsan Hajsafi (Sepahan Esfahan), Saleh Hardani (Esteghlal Teherán), Hossein Kanaani (Persépolis Teherán), Shoja Khalilzadeh (Tractor), Milad Mohammadi (Persépolis Teherán), Ali Nemati (Foolad) y Ramin Rezaeian (Foolad).\nCentrocampistas: Rouzbeh Cheshmi (Esteghlal Teherán), Saeid Ezatolahi (Shabab Al Ahli), Mehdi Ghayedi (Al-Nasr), Saman Ghoddos (Kalba), Mohammad Ghorbani (Al Wahda), Alireza Jahanbakhsh (Dender), Mohammad Mohebi (Rostov), Amir Mohammad Razzaghinia (Esteghlal Teherán), Mehdi Torabi (Tractor) y Aria Yousefi (Sepahan Esfahan).\nDelanteros: Ali Alipour (Persépolis Teherán), Dennis Dargahi (Standard Liège), Amirhossein Hosseinzadeh (Tractor), Mehdi Taremi (Olympiacos) y Shahriar Moghanlou (Kalba).",
-      autor: "Corresponsal Teherán",
+      fecha: "1 de junio de 2026",
       tiempoLectura: "3 min"
     },
     en: {
       titulo: "Iran announces squad list to conquer America",
       subtitulo: "The roster was not without controversy: the main surprise was the absence of Sardar Azmoun.",
       contenido: "The squad announcement was not without controversy: the main surprise was the absence of Sardar Azmoun, considered for years one of the top figures of the Iranian national team and one of the most influential footballers of his generation.\n\nIran's final roster for the 2026 World Cup:\n\nGoalkeepers: Alireza Beiranvand (Tractor), Hossein Hosseini (Sepahan Esfahan), and Payam Niazmand (Persepolis Tehran).\nDefenders: Daniyal Eiri (Malavan), Ehsan Hajsafi (Sepahan Esfahan), Saleh Hardani (Esteghlal Tehran), Hossein Kanaani (Persepolis Tehran), Shoja Khalilzadeh (Tractor), Milad Mohammadi (Persepolis Tehran), Ali Nemati (Foolad), and Ramin Rezaeian (Foolad).\nMidfielders: Rouzbeh Cheshmi (Esteghlal Tehran), Saeid Ezatolahi (Shabab Al Ahli), Mehdi Ghayedi (Al-Nasr), Saman Ghoddos (Kalba), Mohammad Ghorbani (Al Wahda), Alireza Jahanbakhsh (Dender), Mohammad Mohebi (Rostov), Amir Mohammad Razzaghinia (Esteghlal Tehran), Mehdi Torabi (Tractor), and Aria Yousefi (Sepahan Esfahan).\nForwards: Ali Alipour (Persepolis Tehran), Dennis Dargahi (Standard Liège), Amirhossein Hosseinzadeh (Tractor), Mehdi Taremi (Olympiacos), and Shahriar Moghanlou (Kalba).",
-      autor: "Tehran Correspondent",
+      fecha: "June 1, 2026",
       tiempoLectura: "3 min"
     }
   },
@@ -267,15 +267,32 @@ export const noticiasData = {
       titulo: "México definió su lista oficial previo al Mundial 2026",
       subtitulo: "El cuerpo técnico presentó a los 26 elegidos con una fuerte base europea y grandes sorpresas de la Liga MX.",
       contenido: "La Selección Mexicana tiene listos a sus guerreros para la gran cita mundialista. La convocatoria destaca por consolidar a una nueva generación que brilla en el viejo continente, liderada por Santiago Giménez y Obed Vargas, además de mantener la experiencia jerárquica de Guillermo Ochoa en el arco.\n\nLista oficial de la Selección de México:\n\nPorteros: Raúl Rangel (Chivas), Carlos Acevedo (Santos) y Guillermo Ochoa (AEL Limassol/CYP).\nDefensas: Israel Reyes (América), Jorge Sánchez (PAOK/GRE), César Montes (Lokomotiv/RUS), Johan Vásquez (Genoa/ITA), Edson Álvarez (Fenerbahçe/TUR), Jesús Gallardo (Toluca) y Mateo Chávez (AZ Alkmaar/NED).\nMediocampistas: Álvaro Fidalgo (Betis/ESP), Brian Gutiérrez (Chivas), Erik Lira (Cruz Azul), Luis Romo (Chivas), Gilberto Mora (Tijuana), Luis Chávez (Dinamo Moscú/RUS), Obed Vargas (Atlético de Madrid/ESP) y Orbelín Pineda (AEK Atenas/GRE).\nDelanteros: Roberto Alvarado (Chivas), César Huerta (Anderlecht/BEL), Julián Quiñones (Al-Qadisiya/KSA), Alexis Vega (Toluca), Armando González (Chivas), Guillermo Martínez (Pumas), Santiago Gimenez (Milan/ITA) y Raúl Jiménez (Fulham/ING).",
-      autor: "Corresponsal CDMX",
+      fecha: "1 de junio de 2026",
       tiempoLectura: "3 min"
     },
     en: {
       titulo: "Mexico finalizes its official roster ahead of the 2026 World Cup",
       subtitulo: "The coaching staff presented the 26 chosen players, featuring a strong European base and major Liga MX surprises.",
       contenido: "The Mexican National Team has its warriors ready for the big World Cup event. The call-up stands out for consolidating a new generation shining in the old continent, led by Santiago Giménez and Obed Vargas, while maintaining the leadership and experience of Guillermo Ochoa in goal.\n\nMexico National Team Official Roster:\n\nGoalkeepers: Raúl Rangel (Chivas), Carlos Acevedo (Santos), and Guillermo Ochoa (AEL Limassol/CYP).\nDefenders: Israel Reyes (América), Jorge Sánchez (PAOK/GRE), César Montes (Lokomotiv/RUS), Johan Vásquez (Genoa/ITA), Edson Álvarez (Fenerbahçe/TUR), Jesús Gallardo (Toluca), and Mateo Chávez (AZ Alkmaar/NED).\nMidfielders: Álvaro Fidalgo (Betis/ESP), Brian Gutiérrez (Chivas), Erik Lira (Cruz Azul), Luis Romo (Chivas), Gilberto Mora (Tijuana), Luis Chávez (Dinamo Moscow/RUS), Obed Vargas (Atlético de Madrid/ESP), and Orbelín Pineda (AEK Athens/GRE).\nForwards: Roberto Alvarado (Chivas), César Huerta (Anderlecht/BEL), Julián Quiñones (Al-Qadisiya/KSA), Alexis Vega (Toluca), Armando González (Chivas), Guillermo Martínez (Pumas), Santiago Gimenez (Milan/ITA), and Raúl Jiménez (Fulham/ENG).",
-      autor: "CDMX Correspondent",
+      fecha: "June 1, 2026",
       tiempoLectura: "3 min"
+    }
+  },
+  "noticia-9": {
+    "imagen": "/Messi.jpg",
+    "es": {
+      "titulo": "Lionel Messi tuvo su primer entrenamiento con la albiceleste en Kansas",
+      "subtitulo": "El vigente campeón del mundo completó su primera práctica a puertas cerradas con la mira puesta en el debut ante Argelia.",
+      "contenido": "La Selección Argentina comenzó formalmente su preparación para la cita máxima en suelo estadounidense. El plantel comandado por Lionel Scaloni realizó su primer entrenamiento con el grupo completo de 26 futbolistas en el Compass Minerals National Performance Center, el moderno predio de alto rendimiento del Sporting Kansas City, que servirá como epicentro de sus operaciones tácticas.\n\nBajo las órdenes del cuerpo técnico, los seleccionados albicelestes llevaron a cabo una práctica suave y de carácter regenerativo, orientada a dosificar las cargas físicas debido al desgaste de la temporada. La gran atracción de la jornada fue ver a Lionel Messi encabezando la delegación, aunque el capitán alternó trabajos livianos y kinesiología debido a una fatiga acumulada en el isquiotibial izquierdo que arrastra desde sus últimos compromisos con el Inter Miami.\n\nEl cuerpo médico aprovecha estas primeras sesiones en Kansas City para evaluar con detenimiento la evolución de varias piezas clave que llegaron con molestias físicas directas de la competencia europea —como Julián Álvarez, Cristian Romero, Nahuel Molina y el arquero Emiliano Martínez—. El búnker argentino, establecido en el Hotel Origin, se mantendrá hermético mientras el grupo intensifica los trabajos tácticos de cara al debut oficial en el certamen, programado para el próximo martes 16 de junio en el GEHA Field at Arrowhead Stadium frente a la selección de Argelia.",
+      "fecha": "1 de junio de 2026",
+      "tiempoLectura": "3 min"
+    },
+    "en": {
+      "titulo": "Lionel Messi had his first training session with the Albiceleste in Kansas",
+      "subtitulo": "The reigning world champion completed its first closed-door practice with its sights set on the debut against Algeria.",
+      "contenido": "The Argentine National Team has formally begun its preparations on U.S. soil ahead of the upcoming tournament. The squad, led by manager Lionel Scaloni, carried out its first training session with the complete 26-player roster at the Compass Minerals National Performance Center, Sporting Kansas City's modern high-performance facility, which will serve as the tactical epicenter of their operations.\n\nUnder the coaching staff's supervision, the Albiceleste players underwent a light, regenerative training session aimed at managing physical workloads following a demanding club season. The main highlight of the day was seeing Lionel Messi leading the squad, although the captain alternated light drills with physical therapy due to minor hamstring fatigue carried over from his final commitments with Inter Miami.\n\nEl cuerpo médico is using these initial sessions in Kansas City to closely monitor the recovery of several key players who arrived with fitness concerns from European competition—such as Julián Álvarez, Cristian Romero, Nahuel Molina, and goalkeeper Emiliano Martínez. The Argentine camp, based at the Origin Hotel, will maintain its closed-door policy as the squad intensifies tactical strategies leading up to their official debut on Tuesday, June 16, at GEHA Field at Arrowhead Stadium against the Algerian national team.",
+      "fecha": "June 1, 2026",
+      "tiempoLectura": "3 min"
     }
   }
 };

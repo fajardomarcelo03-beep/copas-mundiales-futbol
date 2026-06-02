@@ -370,7 +370,7 @@ export default function DetalleNoticiaPage({ params }) {
       <div style={cardStyle} className="cuerpo-articulo-card">
         <div style={headerNoticiaStyle} className="header-noticia">
           <span style={tagStyle}>🔴 {idioma === 'es' ? 'MUNDIAL 2026' : 'WORLD CUP 2026'}</span>
-          <span style={autorStyle}>⏱️ {textoNoticia.tiempoLectura} | ✍️ {textoNoticia.autor}</span>
+          <span style={fechaStyle}>⏱️ {textoNoticia.tiempoLectura} | ✍️ {textoNoticia.fecha}</span>
         </div>
         
         <h1 style={tituloStyle} className="noticia-titulo">{textoNoticia.titulo}</h1>
@@ -561,7 +561,7 @@ const miniBanderaTablaStyle = { width: '14px', height: '9px', objectFit: 'cover'
 const cardStyle = { backgroundColor: '#ffffff', padding: '35px', borderRadius: '12px', maxWidth: '820px', width: '100%', boxShadow: '0 8px 24px rgba(0,0,0,0.02)', boxSizing: 'border-box', marginTop: '215px' };
 const headerNoticiaStyle = { display: 'flex', justifyContent: 'space-between', marginBottom: '12px' };
 const tagStyle = { color: '#e74c3c', fontWeight: 'bold', fontSize: '0.78rem' };
-const autorStyle = { color: '#718096', fontSize: '0.78rem' };
+const fechaStyle = { color: '#718096', fontSize: '0.78rem' };
 const tituloStyle = { color: '#0a192f', fontSize: '2.1rem', fontWeight: '800', marginBottom: '10px', lineHeight: '1.25' };
 const subtituloStyle = { color: '#4a5568', fontSize: '1.08rem', marginBottom: '20px', lineHeight: '1.45' };
 const contenedorImagenStyle = { width: '100%', borderRadius: '8px', overflow: 'hidden', marginBottom: '20px' };
