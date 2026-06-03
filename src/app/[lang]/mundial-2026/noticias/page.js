@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { use } from 'react';
-import { noticiasData } from '../../../data/noticias/mundialData';
+import { noticiasData } from '@/data/noticias/mundialData';
 
 export default function ListaNoticiasPage({ params }) {
   const { lang } = use(params);
