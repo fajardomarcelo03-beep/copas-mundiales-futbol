@@ -5,7 +5,8 @@ import { use } from 'react';
 import { noticiasMundial } from '@/data/noticias/mundialData';
 
 export default function ListaNoticiasPage({ params }) {
-  const { lang } = use(params);
+  const resolvedParams = use(params);
+  const lang = resolvedParams.lang || 'es';
   const idioma = lang === 'en' ? 'en' : 'es';
 
   return (
@@ -15,13 +16,17 @@ export default function ListaNoticiasPage({ params }) {
       </h1>
 
       <div style={{ display: 'grid', gap: '20px' }}>
-        {/* CORRECCIÓN: Iterar directamente sobre el array noticiasMundial */}
         {noticiasMundial.map((noticia) => {
           const content = noticia[idioma];
+          
+          // CORRECCIÓN: La ruta debe coincidir con la estructura de tus carpetas.
+          // Si tu carpeta de detalle es 'noticias/[id]', la ruta es /lang/noticias/id
+          const ruta = `/${lang}/noticias/${noticia.id}`;
+
           return (
             <Link 
               key={noticia.id} 
-              href={`/${lang}/mundial-2026/noticias/${noticia.id}`} 
+              href={ruta} 
               style={{ textDecoration: 'none', color: 'inherit' }}
             >
               <div style={{ 
@@ -34,8 +39,9 @@ export default function ListaNoticiasPage({ params }) {
                 alignItems: 'center'
               }}>
                 <img 
-                  src={noticia.imagen} 
-                  alt={content.titulo} 
+                  src={noticia.imagen || '/placeholder.jpg'} 
+                  alt={content?.titulo || "Noticia"} 
+                  onError={(e) => { e.target.src = '/placeholder.jpg'; }}
                   style={{ 
                     width: '100%', 
                     maxWidth: '160px', 
@@ -47,13 +53,13 @@ export default function ListaNoticiasPage({ params }) {
                 />
                 <div style={{ flex: '1 1 300px', display: 'flex', flexDirection: 'column' }}>
                   <h2 style={{ margin: '0 0 5px 0', fontSize: '1.1rem', color: '#0a192f' }}>
-                    {content.titulo}
+                    {content?.titulo}
                   </h2>
                   <p style={{ margin: '0 0 8px 0', color: '#4a5568', fontSize: '0.85rem' }}>
-                    {content.subtitulo}
+                    {content?.subtitulo}
                   </p>
                   <span style={{ fontSize: '0.7rem', color: '#718096' }}>
-                    ⏱️ {content.tiempoLectura} | 📅 {content.fecha}
+                    ⏱️ {content?.tiempoLectura} | 📅 {content?.fecha}
                   </span>
                 </div>
               </div>
