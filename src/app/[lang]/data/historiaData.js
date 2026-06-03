@@ -67,7 +67,7 @@ export const jugadoresHistoricos = [
     pais: "Brasil",
     nacimiento: "22 de septiembre de 1976",
     estado: "Edad actual: 49 años",
-    imagen: "/RonaldoNazario.jpg",
+    imagen: "/Ronaldo.jpg",
     infancia: {
       es: "Nacido en los suburbios de Río de Janeiro, jugaba descalzo en las calles empedradas de Bento Ribeiro. Su familia no tenía dinero para pagar los pasajes de autobús para que fuera a entrenar al Flamengo, por lo que tuvo que comenzar su carrera en el modesto São Cristóvão antes de irrumpir en el Cruzeiro como un ciclón indomable.",
       en: "Born in the suburbs of Rio de Janeiro, he played barefoot on the cobblestone streets of Bento Ribeiro. His family lacked bus fare for him to train at Flamengo, so he started at modest São Cristóvão before exploding at Cruzeiro like an unstoppable storm."
@@ -127,7 +127,7 @@ export const jugadoresHistoricos = [
     pais: "Portugal",
     nacimiento: "5 de febrero de 1985",
     estado: "Edad actual: 41 años",
-    imagen: "/CristianoRonaldo.jpg",
+    imagen: "/Cristiano.jpg",
     infancia: {
       es: "Nacido en Funchal, Madeira, creció en un barrio obrero en una familia con recursos muy limitados. A los 15 años, mientras jugaba en las inferiores del Sporting de Lisboa, fue diagnosticado con un problema cardíaco (corazón acelerado) que amenazó con retirarlo del fútbol; fue operado con éxito mediante láser y volvió a entrenar a los pocos días.",
       en: "Born in Funchal, Madeira, he grew up in a working-class neighborhood within a low-income family. At 15, while in Sporting Lisbon's youth ranks, he was diagnosed with a racing heart condition that threatened his football career; he underwent successful laser surgery and resumed training days later."
