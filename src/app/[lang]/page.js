@@ -8,20 +8,20 @@ import Link from 'next/link';
 export default function HomePage() {
   const { idioma } = useIdioma();
 
-  // 1. DICCIONARIO DE TRADUCCIÓN
   const t = {
     es: { noticiasTitulo: "LO ÚLTIMO DEL MUNDO DEL FÚTBOL", leerMas: "Leer más →" },
     en: { noticiasTitulo: "LATEST FROM THE FOOTBALL WORLD", leerMas: "Read more →" }
   }[idioma || 'es'];
 
-  // 2. LÓGICA DE LAS 9 MÁS RECIENTES
-  const noticiasParaMostrar = noticiasMundial
-    .sort((a, b) => new Date(b.fechaISO) - new Date(a.fechaISO))
-    .slice(0, 9);
+  // 2. LÓGICA: Tomar las 10 noticias más recientes
+  const todasLasNoticias = [...noticiasMundial]
+    .sort((a, b) => new Date(b.fechaISO) - new Date(a.fechaISO));
+  
+  const noticiaDestacada = todasLasNoticias[0];
+  const noticiasGrid = todasLasNoticias.slice(1, 10); // Toma exactamente 9 para el grid 3x3
 
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}>
-      
       <section style={{ padding: '40px 20px', backgroundColor: '#ffffff' }}>
         <div style={contenedorMaxWidthStyle}>
           
@@ -31,36 +31,37 @@ export default function HomePage() {
             </span>
           </h2>
           
+          {/* 1. NOTICIA DESTACADA */}
+          <div style={{ marginBottom: '30px' }}>
+            <div style={cardDestacadaStyle}>
+              <div style={fotoCardStyle}>
+                <div style={logoCompeticionStyle}>
+                  <Image src={noticiaDestacada.logo} alt="Logo" width={30} height={30} style={{ objectFit: 'contain' }} />
+                </div>
+                <Image src={noticiaDestacada.imagen} alt={noticiaDestacada.es.titulo} fill sizes="100vw" style={{ objectFit: 'cover' }} priority />
+              </div>
+              <div style={cardContentStyle}>
+                <h3 style={cardTitleDestacadaStyle}>{noticiaDestacada[idioma || 'es'].titulo}</h3>
+                <p style={cardTextStyle}>{noticiaDestacada[idioma || 'es'].subtitulo}</p>
+                <Link href={`/${idioma}/mundial-2026/noticias/${noticiaDestacada.id}`} style={cardLinkStyle}>{t.leerMas}</Link>
+              </div>
+            </div>
+          </div>
+
+          {/* 2. GRID 3x3 PERFECTO */}
           <div style={gridContainerStyle}>
-            {noticiasParaMostrar.map((noticia, idx) => (
-              <div key={noticia.id} style={idx === 0 ? cardDestacadaStyle : cardStyle}>
-                
+            {noticiasGrid.map((noticia) => (
+              <div key={noticia.id} style={cardStyle}>
                 <div style={fotoCardStyle}>
                   <div style={logoCompeticionStyle}>
                     <Image src={noticia.logo} alt="Logo" width={30} height={30} style={{ objectFit: 'contain' }} />
                   </div>
-
-                  <Image 
-                    src={noticia.imagen} 
-                    alt={noticia.es.titulo} 
-                    fill 
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    style={{ objectFit: 'cover' }} 
-                    priority={idx < 3} 
-                  />
+                  <Image src={noticia.imagen} alt={noticia.es.titulo} fill sizes="(max-width: 1024px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
                 </div>
-
                 <div style={cardContentStyle}>
-                  <h3 style={idx === 0 ? cardTitleDestacadaStyle : cardTitleStyle}>
-                    {noticia[idioma || 'es'].titulo}
-                  </h3>
+                  <h3 style={cardTitleStyle}>{noticia[idioma || 'es'].titulo}</h3>
                   <p style={cardTextStyle}>{noticia[idioma || 'es'].subtitulo}</p>
-                  <Link 
-                    href={`/${idioma}/mundial-2026/noticias/${noticia.id}`} 
-                    style={cardLinkStyle}
-                  >
-                    {t.leerMas}
-                  </Link>
+                  <Link href={`/${idioma}/mundial-2026/noticias/${noticia.id}`} style={cardLinkStyle}>{t.leerMas}</Link>
                 </div>
               </div>
             ))}
@@ -71,6 +72,7 @@ export default function HomePage() {
   );
 }
 
+// MANTÉN TUS ESTILOS ORIGINALES ABAJO SIN CAMBIOS
 // =========================================================================
 // ESTILOS CORREGIDOS
 // =========================================================================
