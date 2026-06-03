@@ -1,7 +1,7 @@
 'use client';
 
 import { useIdioma } from '../../../HeaderContextLayout'; // Ajusta los ../ según tu ruta
-import { noticiasLibertadores } from '@/data/libertadores/libertadoresData'; // Asegúrate que este sea el path correcto
+import { noticiasLibertadores } from '@/data/noticias/libertadoresData'; // Asegúrate que este sea el path correcto
 import Image from 'next/image';
 
 export default function LibertadoresPage() {
