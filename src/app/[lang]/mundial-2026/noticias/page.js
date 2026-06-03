@@ -1,7 +1,8 @@
 'use client';
+
 import Link from 'next/link';
 import { use } from 'react';
-import { noticiasData } from '@/data/noticias/mundialData';
+import { noticiasMundial } from '@/data/noticias/mundialData';
 
 export default function ListaNoticiasPage({ params }) {
   const { lang } = use(params);
@@ -14,18 +15,18 @@ export default function ListaNoticiasPage({ params }) {
       </h1>
 
       <div style={{ display: 'grid', gap: '20px' }}>
-        {Object.entries(noticiasData).map(([id, data]) => {
-          const content = data[idioma];
+        {/* CORRECCIÓN: Iterar directamente sobre el array noticiasMundial */}
+        {noticiasMundial.map((noticia) => {
+          const content = noticia[idioma];
           return (
             <Link 
-              key={id} 
-              href={`/${lang}/mundial-2026/noticias/${id}`} 
+              key={noticia.id} 
+              href={`/${lang}/mundial-2026/noticias/${noticia.id}`} 
               style={{ textDecoration: 'none', color: 'inherit' }}
             >
-              {/* Contenedor principal que se adapta al ancho disponible */}
               <div style={{ 
                 display: 'flex', 
-                flexWrap: 'wrap', // Esto permite que en móviles se apilen
+                flexWrap: 'wrap', 
                 gap: '15px', 
                 padding: '12px', 
                 border: '1px solid #e2e8f0', 
@@ -33,7 +34,7 @@ export default function ListaNoticiasPage({ params }) {
                 alignItems: 'center'
               }}>
                 <img 
-                  src={data.imagen} 
+                  src={noticia.imagen} 
                   alt={content.titulo} 
                   style={{ 
                     width: '100%', 
