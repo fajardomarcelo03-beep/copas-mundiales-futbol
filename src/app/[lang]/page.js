@@ -19,15 +19,15 @@ export default function HomePage() {
     en: { noticiasTitulo: "LATEST FROM THE FOOTBALL WORLD", leerMas: "Read more →" }
   }[idioma || 'es'];
 
-  // 1. COMBINAR TODAS LAS NOTICIAS
+  // 1. COMBINAR TODAS LAS NOTICIAS (Nombres corregidos aquí)
   const todasLasNoticias = [
     ...noticiasMundial,
     ...noticiasLibertadores,
     ...noticiasSudamericana,
     ...noticiasLigaPro,
     ...noticiasMLS,
-    ...noticiasLaLiga,
-    ...noticiasPremier,
+    ...noticiasLigaEspanola,
+    ...noticiasPremierLeague,
   ];
 
   // 2. ORDENAR POR FECHA Y TOMAR LAS 10 MÁS RECIENTES
@@ -52,6 +52,8 @@ export default function HomePage() {
       default: return `/${idioma}/noticias/${noticia.id}`;
     }
   };
+
+  if (!noticiaDestacada) return null; // Previene error si no hay noticias cargadas
 
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}>
