@@ -13,13 +13,14 @@ import Link from 'next/link';
 
 export default function HomePage() {
   const { idioma } = useIdioma();
+  const lang = idioma || 'es';
 
   const t = {
     es: { noticiasTitulo: "LO ÚLTIMO DEL MUNDO DEL FÚTBOL", leerMas: "Leer más →" },
     en: { noticiasTitulo: "LATEST FROM THE FOOTBALL WORLD", leerMas: "Read more →" }
-  }[idioma || 'es'];
+  }[lang];
 
-  // 1. COMBINAR TODAS LAS NOTICIAS (Nombres corregidos aquí)
+  // 1. COMBINAR Y FILTRAR NOTICIAS (Asegurando que tengan ID)
   const todasLasNoticias = [
     ...noticiasMundial,
     ...noticiasLibertadores,
@@ -28,7 +29,7 @@ export default function HomePage() {
     ...noticiasMLS,
     ...noticiasLaLiga,
     ...noticiasPremier,
-  ];
+  ].filter(n => n && n.id); 
 
   // 2. ORDENAR POR FECHA Y TOMAR LAS 10 MÁS RECIENTES
   const noticiasOrdenadas = todasLasNoticias
@@ -40,20 +41,20 @@ export default function HomePage() {
 
   // 3. GENERAR LINK DINÁMICO
   const generarLink = (noticia) => {
-    const base = `/${idioma}/competiciones`;
+    const base = `/${lang}/competiciones`;
     switch(noticia.categoria) {
-      case 'mundial': return `/${idioma}/mundial-2026/noticias/${noticia.id}`;
+      case 'mundial': return `/${lang}/mundial-2026/noticias/${noticia.id}`;
       case 'libertadores': return `${base}/libertadores/${noticia.id}`;
       case 'sudamericana': return `${base}/sudamericana/${noticia.id}`;
       case 'ligapro': return `${base}/liga-pro/${noticia.id}`;
       case 'mls': return `${base}/mls/${noticia.id}`;
       case 'liga-espanola': return `${base}/liga-espanola/${noticia.id}`;
       case 'premier-league': return `${base}/premier-league/${noticia.id}`;
-      default: return `/${idioma}/noticias/${noticia.id}`;
+      default: return `/${lang}/noticias/${noticia.id}`;
     }
   };
 
-  if (!noticiaDestacada) return null; // Previene error si no hay noticias cargadas
+  if (!noticiaDestacada) return null;
 
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}>
@@ -71,13 +72,19 @@ export default function HomePage() {
             <div style={cardDestacadaStyle}>
               <div style={fotoCardStyle}>
                 <div style={logoCompeticionStyle}>
-                  <Image src={noticiaDestacada.logo} alt="Logo" width={30} height={30} style={{ objectFit: 'contain' }} />
+                  {noticiaDestacada.logo && (
+                    <Image src={noticiaDestacada.logo} alt="Logo" width={30} height={30} style={{ objectFit: 'contain' }} />
+                  )}
                 </div>
-                <Image src={noticiaDestacada.imagen} alt={noticiaDestacada.es.titulo} fill sizes="100vw" style={{ objectFit: 'cover' }} priority />
+                <Image 
+                  src={noticiaDestacada.imagen || '/placeholder.jpg'} 
+                  alt={noticiaDestacada[lang]?.titulo || "Noticia"} 
+                  fill sizes="100vw" style={{ objectFit: 'cover' }} priority 
+                />
               </div>
               <div style={cardContentStyle}>
-                <h3 style={cardTitleDestacadaStyle}>{noticiaDestacada[idioma || 'es'].titulo}</h3>
-                <p style={cardTextStyle}>{noticiaDestacada[idioma || 'es'].subtitulo}</p>
+                <h3 style={cardTitleDestacadaStyle}>{noticiaDestacada[lang]?.titulo}</h3>
+                <p style={cardTextStyle}>{noticiaDestacada[lang]?.subtitulo}</p>
                 <Link href={generarLink(noticiaDestacada)} style={cardLinkStyle}>{t.leerMas}</Link>
               </div>
             </div>
@@ -89,13 +96,19 @@ export default function HomePage() {
               <div key={noticia.id} style={cardStyle}>
                 <div style={fotoCardStyle}>
                   <div style={logoCompeticionStyle}>
-                    <Image src={noticia.logo} alt="Logo" width={30} height={30} style={{ objectFit: 'contain' }} />
+                    {noticia.logo && <Image src={noticia.logo} alt="Logo" width={30} height={30} style={{ objectFit: 'contain' }} />}
                   </div>
-                  <Image src={noticia.imagen} alt={noticia.es.titulo} fill sizes="(max-width: 1024px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
+                  <Image 
+                    src={noticia.imagen || '/placeholder.jpg'} 
+                    alt={noticia[lang]?.titulo || "Noticia"} 
+                    fill sizes="(max-width: 1024px) 100vw, 33vw" 
+                    style={{ objectFit: 'cover' }}
+                    onError={(e) => { e.target.src = '/placeholder.jpg'; }} 
+                  />
                 </div>
                 <div style={cardContentStyle}>
-                  <h3 style={cardTitleStyle}>{noticia[idioma || 'es'].titulo}</h3>
-                  <p style={cardTextStyle}>{noticia[idioma || 'es'].subtitulo}</p>
+                  <h3 style={cardTitleStyle}>{noticia[lang]?.titulo}</h3>
+                  <p style={cardTextStyle}>{noticia[lang]?.subtitulo}</p>
                   <Link href={generarLink(noticia)} style={cardLinkStyle}>{t.leerMas}</Link>
                 </div>
               </div>
@@ -107,7 +120,7 @@ export default function HomePage() {
   );
 }
 
-// ESTILOS (MANTENIDOS IGUALES)
+// ESTILOS
 const gridContainerStyle = { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px', width: '100%' };
 const cardDestacadaStyle = { gridColumn: '1 / -1', display: 'flex', flexDirection: 'row', backgroundColor: '#ffffff', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.06)', border: '1px solid #e2e8f0', minHeight: '300px' };
 const cardStyle = { backgroundColor: '#ffffff', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.06)', display: 'flex', flexDirection: 'column', border: '1px solid #e2e8f0' };
