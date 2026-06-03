@@ -1,5 +1,5 @@
 // src/app/sitemap.js
-import { todasLasNoticias } from '../data/noticias/index';
+import { noticiasMundial } from '../data/mundialData'; 
 
 export default async function sitemap() {
   const baseUrl = 'https://copas-mundiales-futbol.vercel.app';
@@ -17,16 +17,18 @@ export default async function sitemap() {
   }));
 
   // 2. Generar dinámicamente las rutas para cada noticia
-  // 'todasLasNoticias' es un array, por lo tanto usamos .map directamente
-  const rutasNoticiasEs = todasLasNoticias.map((noticia) => ({
-    url: `${baseUrl}/es/noticias/${noticia.id}`,
+  // Aseguramos que convertimos el objeto de datos a un array si es necesario
+  const listaNoticias = Object.values(noticiasMundial);
+
+  const rutasNoticiasEs = listaNoticias.map((noticia) => ({
+    url: `${baseUrl}/es/mundial-2026/noticias/${noticia.id}`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: 0.7,
   }));
 
-  const rutasNoticiasEn = todasLasNoticias.map((noticia) => ({
-    url: `${baseUrl}/en/noticias/${noticia.id}`,
+  const rutasNoticiasEn = listaNoticias.map((noticia) => ({
+    url: `${baseUrl}/en/mundial-2026/noticias/${noticia.id}`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: 0.7,
