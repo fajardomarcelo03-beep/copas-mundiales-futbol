@@ -2,7 +2,7 @@ export const noticiasLigaPro = [
   {
     id: "ligapro-1",
     categoria: "liga-pro",
-    logo: "/logos/liga-pro.png",
+    logo: "/logo/ligapro.png",
     fechaISO: "2026-06-03",
     imagen: "/ruta-imagen.jpg",
     es: { titulo: "", subtitulo: "", contenido: "", fecha: "", tiempoLectura: "" },

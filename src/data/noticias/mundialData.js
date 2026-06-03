@@ -1,5 +1,26 @@
 export const noticiasMundial = [
   {
+    id: "noticia-11",
+    categoria: "mundial",
+    logo: "/logo/mundial.png",
+    fechaISO: "2026-06-03",
+    imagen: "/premios.jpg",
+    es: {
+      titulo: "¿Cuánto dinero recibirá cada selección en el Mundial 2026?",
+      subtitulo: "La FIFA ha destinado una bolsa de premios millonaria para las 48 selecciones participantes.",
+      contenido: "La Copa del Mundo 2026 destaca por su formato ampliado a 48 equipos y una estructura de premios muy competitiva. Cada selección participante recibe 1,5 millones de dólares para cubrir gastos de preparación. Respecto a los premios por desempeño: los equipos que no superen la fase de grupos obtendrán 9 millones de dólares. Aquellos que alcancen los dieciseisavos de final percibirán 11 millones, mientras que los que clasifiquen a octavos recibirán 15 millones. El camino hacia la gloria continúa con 19 millones para los cuartofinalistas. En la fase final, el cuarto lugar obtendrá 27 millones, el tercer puesto 29 millones, el subcampeón 33 millones y el nuevo campeón mundial se embolsará 50 millones de dólares.",
+      fecha: "3 de junio de 2026",
+      tiempoLectura: "4 min"
+    },
+    en: {
+      titulo: "How much money will each national team receive at the 2026 World Cup?",
+      subtitulo: "FIFA has allocated a significant prize pool for the 48 participating national teams.",
+      contenido: "The 2026 World Cup stands out for its expanded 48-team format and a highly competitive prize structure. Each participating team receives $1.5 million to cover preparation costs. Regarding performance-based prizes: teams that do not advance past the group stage will earn $9 million. Those reaching the Round of 32 will receive $11 million, while teams advancing to the Round of 16 will get $15 million. The path to glory continues with $19 million for quarterfinalists. In the final stage, the fourth-place team will receive $27 million, the third-place finisher $29 million, the runner-up $33 million, and the new world champion will take home $50 million.",
+      fecha: "June 3, 2026",
+      tiempoLectura: "4 min"
+    }
+},
+{
     id: "noticia-10",
     categoria: "mundial",
     logo: "/logo/mundial.png",
