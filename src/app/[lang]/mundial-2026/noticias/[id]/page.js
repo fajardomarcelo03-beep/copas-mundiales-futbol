@@ -2,15 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 import { useIdioma } from '../../../../HeaderContextLayout';
-import { mundialData } from '@/data/noticias/mundialData';
+import { noticiasMundial } from '@/data/noticias/mundialData';
 
 // =========================================================================
 // COMPONENTE DETALLE NOTICIA
 // =========================================================================
 export default function DetalleNoticiaPage({ params, searchParams }) {
-  // Resolución de parámetros asíncronos para Next.js 15+
   const resolvedParams = React.use(params);
   const resolvedSearchParams = React.use(searchParams);
   
@@ -26,14 +24,17 @@ export default function DetalleNoticiaPage({ params, searchParams }) {
     }
   }, [langQuery, idioma, setIdioma]);
 
-  useEffect(() => {
-    const todasLasKeys = Object.keys(mundialData);
-    const filtradas = todasLasKeys.filter(k => k !== id);
-    const mezcladas = [...filtradas].sort(() => 0.5 - Math.random());
-    setSugerenciasAleatorias(mezcladas.slice(0, 4));
-  }, [id]);
+  // Lógica corregida para buscar el objeto notica y generar sugerencias
+  const objetoNoticia = noticiasMundial.find(n => n.id === id);
 
-  const objetoNoticia = mundialData[id];
+  useEffect(() => {
+    if (noticiasMundial && id) {
+      // Filtramos las que no son la actual y mezclamos aleatoriamente
+      const otras = noticiasMundial.filter(n => n.id !== id);
+      const mezcladas = [...otras].sort(() => 0.5 - Math.random());
+      setSugerenciasAleatorias(mezcladas.slice(0, 4));
+    }
+  }, [id]);
 
   if (!objetoNoticia) {
     return (
@@ -101,12 +102,12 @@ export default function DetalleNoticiaPage({ params, searchParams }) {
           <>
             <hr style={separadorSugerenciasStyle} />
             <div style={gridSugerenciasStyle} className="grid-sugerencias">
-              {sugerenciasAleatorias.map((sugId) => (
-                <Link key={sugId} href={`/${idioma}/mundial-2026/noticias/${sugId}`} style={enlaceSugerenciaStyle}>
+              {sugerenciasAleatorias.map((sug) => (
+                <Link key={sug.id} href={`/${idioma}/mundial-2026/noticias/${sug.id}`} style={enlaceSugerenciaStyle}>
                   <div style={miniCardSugerenciaStyle} className="mini-card-sugerencia">
-                    <img src={mundialData[sugId].imagen} alt="Mini" style={miniImgSugerenciaStyle} />
+                    <img src={sug.imagen} alt="Mini" style={miniImgSugerenciaStyle} />
                     <div style={{ minWidth: 0, flex: 1 }}>
-                      <h4 style={miniTituloSugerenciaStyle}>{mundialData[sugId][idioma].titulo}</h4>
+                      <h4 style={miniTituloSugerenciaStyle}>{sug[idioma].titulo}</h4>
                       <span style={miniEnlaceTextoStyle}>{idioma === 'es' ? 'Leer artículo →' : 'Read article →'}</span>
                     </div>
                   </div>
@@ -125,7 +126,7 @@ export default function DetalleNoticiaPage({ params, searchParams }) {
 }
 
 // =========================================================================
-// ESTILOS
+// ESTILOS (Sin cambios)
 // =========================================================================
 const containerStyle = { minHeight: '100vh', backgroundColor: '#f8fafc', padding: '12px 10px', display: 'flex', flexDirection: 'column', alignItems: 'center' };
 const cardStyle = { backgroundColor: '#ffffff', padding: '35px', borderRadius: '12px', maxWidth: '820px', width: '100%', boxShadow: '0 8px 24px rgba(0,0,0,0.02)', marginTop: '40px' };
