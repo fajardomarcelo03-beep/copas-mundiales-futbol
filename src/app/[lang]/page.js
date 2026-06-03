@@ -6,8 +6,8 @@ import { noticiasLibertadores } from '@/data/noticias/libertadoresData';
 import { noticiasSudamericana } from '@/data/noticias/sudamericanaData';
 import { noticiasLigaPro } from '@/data/noticias/ligaProData';
 import { noticiasMLS } from '@/data/noticias/mlsData';
-import { noticiasLigaEspanola } from '@/data/noticias/laLigaData';
-import { noticiasPremierLeague } from '@/data/noticias/PremierData';
+import { noticiasLaLiga } from '@/data/noticias/laLigaData';
+import { noticiasPremier } from '@/data/noticias/PremierData';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -26,8 +26,8 @@ export default function HomePage() {
     ...noticiasSudamericana,
     ...noticiasLigaPro,
     ...noticiasMLS,
-    ...noticiasLigaEspanola,
-    ...noticiasPremierLeague,
+    ...noticiasLaLiga,
+    ...noticiasPremier,
   ];
 
   // 2. ORDENAR POR FECHA Y TOMAR LAS 10 MÁS RECIENTES
