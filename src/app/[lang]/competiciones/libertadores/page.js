@@ -1,7 +1,7 @@
 'use client';
 
 import { useIdioma } from '../../../HeaderContextLayout'; 
-import { noticiasLibertadores } from '@/data/noticias/libertadoresData'; 
+import { noticiasLibertadores } from '@/data/libertadores/libertadoresData'; 
 import Image from 'next/image';
 
 export default function LibertadoresPage() {
@@ -16,15 +16,42 @@ export default function LibertadoresPage() {
         {noticia[idioma].titulo}
       </h1>
       
+      {/* CONTENEDOR DE IMAGEN CON LOGO SUPERPUESTO */}
       <div style={{ position: 'relative', width: '100%', height: '400px', marginBottom: '20px' }}>
-        <Image src={noticia.imagen} alt={noticia[idioma].titulo} fill style={{ objectFit: 'cover', borderRadius: '8px' }} />
+        
+        {/* LOGO TORNEO */}
+        <div style={{
+          position: 'absolute',
+          top: '15px',
+          left: '15px',
+          zIndex: 10,
+          width: '45px',
+          height: '45px',
+          backgroundColor: 'rgba(255,255,255,0.9)',
+          borderRadius: '50%',
+          padding: '6px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
+        }}>
+          <Image src={noticia.logo} alt="Logo Torneo" width={30} height={30} style={{ objectFit: 'contain' }} />
+        </div>
+
+        {/* IMAGEN PRINCIPAL */}
+        <Image 
+          src={noticia.imagen} 
+          alt={noticia[idioma].titulo} 
+          fill 
+          style={{ objectFit: 'cover', borderRadius: '8px' }} 
+        />
       </div>
 
       <p style={{ fontWeight: 'bold', fontSize: '1.2rem', marginBottom: '30px' }}>
         {noticia[idioma].subtitulo}
       </p>
 
-      {/* AQUÍ ESTÁN LOS CAMBIOS DE FORMATO */}
+      {/* CONTENIDO JUSTIFICADO CON INTERLINEADO AMPLIO */}
       <div style={{ 
         textAlign: 'justify', 
         lineHeight: '1.8', 
