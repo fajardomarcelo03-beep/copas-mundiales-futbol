@@ -1,7 +1,7 @@
 'use client';
 
 import { useIdioma } from '../../../HeaderContextLayout'; 
-import { noticiasSudamericana } from '@/data/noticias/sudmericanaData'; 
+import { noticiasSudamericana } from '@/data/noticias/sudamericanaData'; 
 import Image from 'next/image';
 
 export default function SudamericanaPage() {
