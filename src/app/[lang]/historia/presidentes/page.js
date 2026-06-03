@@ -29,7 +29,7 @@ const presidentesHistoricos = [
     pais: "Francia",
     nacimiento: "1921 – 1954 (Periodo)",
     estado: "Presidente con el mandato más largo (33 años). Falleció en 1956.",
-    imagen: "/JulesRimet.jpg",
+    imagen: "/Rimet.jpg",
     infancia: {
       es: "Hijo de un tendero en una comuna rural de Francia, se mudó a París de niño y se licenció en derecho. De firmes convicciones humanistas, Rimet creía que el deporte era una herramienta infalible para unir a las clases sociales y promover la paz.",
       en: "Son of a grocery store worker in rural France, he moved to Paris as a child and earned a law degree. Guided by solid humanistic beliefs, Rimet viewed sports as an infallible tool to unite social classes and foster peace."
@@ -69,7 +69,7 @@ const presidentesHistoricos = [
     pais: "Inglaterra",
     nacimiento: "1961 – 1974 (Periodo)",
     estado: "Nombrado Presidente de Honor de la FIFA. Falleció en 1986.",
-    imagen: "/StanleyRous.jpg",
+    imagen: "/Rous.jpg",
     infancia: {
       es: "Nacido en Mutford, comenzó como profesor de educación física. Destacó como árbitro internacional de fútbol en los años 20 y 30. Su obsesión siempre fue el orden, la disciplina y la codificación exacta de las reglas para proteger el juego limpio.",
       en: "Born in Mutford, he started out as a physical education teacher. He excelled as an international football referee during the 1920s and 1930s. His obsession was always order, discipline, and the exact codification of rules to protect fair play."
