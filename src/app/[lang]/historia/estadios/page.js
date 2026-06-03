@@ -9,7 +9,7 @@ const estadiosHistoricos = [
     pais: "Brasil",
     nacimiento: "Inaugurado en 1950",
     estado: "Sede de las finales de 1950 y 2014.",
-    imagen: "/maracana.jpg",
+    imagen: "/Maracana.jpg",
     infancia: {
       es: "Construido específicamente para la Copa del Mundo de 1950, este coloso fue diseñado para ser el templo del fútbol brasileño. Su arquitectura circular y masiva buscaba acoger a la mayor cantidad de aficionados posible, convirtiéndose en el corazón palpitante del deporte en Río de Janeiro.",
       en: "Built specifically for the 1950 World Cup, this colossus was designed to be the temple of Brazilian football. Its circular, massive architecture was intended to host the largest possible number of fans, becoming the beating heart of the sport in Rio de Janeiro."
@@ -29,7 +29,7 @@ const estadiosHistoricos = [
     pais: "México",
     nacimiento: "Inaugurado en 1966",
     estado: "Único estadio con dos finales de Mundial (1970, 1986).",
-    imagen: "/azteca.jpg",
+    imagen: "/Azteca.jpg",
     infancia: {
       es: "Conocido como el 'Coloso de Santa Úrsula', fue concebido como una pieza de ingeniería monumental para el Mundial de 1970. Su estructura permitía una visibilidad perfecta desde cualquier punto, marcando una nueva era en el diseño de estadios en México.",
       en: "Known as the 'Colossus of Santa Ursula', it was conceived as a monumental piece of engineering for the 1970 World Cup. Its structure allowed perfect visibility from any point, marking a new era in stadium design in Mexico."
@@ -49,7 +49,7 @@ const estadiosHistoricos = [
     pais: "Inglaterra",
     nacimiento: "Inaugurado en 1923 (Renovado 2007)",
     estado: "Sede de la final de 1966.",
-    imagen: "/wembley.jpg",
+    imagen: "/Wembley.jpg",
     infancia: {
       es: "Considerado la 'Catedral del Fútbol', su diseño original con las icónicas 'Torres Gemelas' definió la identidad del fútbol inglés. Tras su reconstrucción, se transformó en un recinto moderno con un arco de 134 metros que domina el horizonte de Londres.",
       en: "Considered the 'Cathedral of Football', its original design with the iconic 'Twin Towers' defined the identity of English football. After its reconstruction, it transformed into a modern venue with a 134-meter arch that dominates the London skyline."
@@ -69,7 +69,7 @@ const estadiosHistoricos = [
     pais: "Uruguay",
     nacimiento: "Inaugurado en 1930",
     estado: "Sede del primer Mundial de la historia.",
-    imagen: "/centenario.jpg",
+    imagen: "/Centenario.jpg",
     infancia: {
       es: "Construido en un tiempo récord para celebrar el centenario de la Constitución uruguaya y albergar el primer Mundial de la FIFA. Es una pieza arquitectónica histórica, declarada monumento del fútbol mundial.",
       en: "Built in record time to celebrate the centenary of the Uruguayan Constitution and host the first FIFA World Cup. It is a historic architectural piece, declared a monument of world football."
@@ -89,7 +89,7 @@ const estadiosHistoricos = [
     pais: "España",
     nacimiento: "Inaugurado en 1947",
     estado: "Sede de la final de 1982.",
-    imagen: "/bernabeu.jpg",
+    imagen: "/Bernabeu.jpg",
     infancia: {
       es: "Ubicado en el corazón de Madrid, este estadio ha crecido junto a la historia del fútbol. Su arquitectura ha sido constantemente modernizada, pasando de un tazón clásico a un estadio tecnológicamente avanzado con cubierta retráctil.",
       en: "Located in the heart of Madrid, this stadium has grown alongside the history of football. Its architecture has been constantly modernized, moving from a classic bowl to a technologically advanced stadium with a retractable roof."
@@ -109,7 +109,7 @@ const estadiosHistoricos = [
     pais: "Italia",
     nacimiento: "Inaugurado en 1953",
     estado: "Sede de la final de 1990.",
-    imagen: "/olimpico.jpg",
+    imagen: "/Olimpico.jpg",
     infancia: {
       es: "Situado en el Foro Itálico de Roma, combina la herencia clásica con la funcionalidad deportiva. Ha sido el hogar de los grandes eventos en Italia, destacando por su pista de atletismo y su atmósfera imponente.",
       en: "Located in the Foro Italico in Rome, it combines classical heritage with sporting functionality. It has been the home of major events in Italy, standing out for its track and field and imposing atmosphere."
@@ -129,7 +129,7 @@ const estadiosHistoricos = [
     pais: "Qatar",
     nacimiento: "Inaugurado en 2022",
     estado: "Sede de la final de 2022.",
-    imagen: "/lusail.jpg",
+    imagen: "/Lusail.jpg",
     infancia: {
       es: "Una maravilla de la arquitectura moderna inspirada en el juego de luces y sombras de la linterna 'fanar'. Fue diseñado para ser un hito cultural y el punto central de una ciudad futurista.",
       en: "A marvel of modern architecture inspired by the interplay of light and shadow of the 'fanar' lantern. It was designed to be a cultural landmark and the centerpiece of a futuristic city."
@@ -149,7 +149,7 @@ const estadiosHistoricos = [
     pais: "Alemania",
     nacimiento: "Inaugurado en 2005",
     estado: "Sede inaugural de 2006.",
-    imagen: "/allianz.jpg",
+    imagen: "/Allianz.jpg",
     infancia: {
       es: "Un icono del diseño digital. Su fachada está compuesta por paneles inflables que pueden cambiar de color, representando una nueva generación de recintos deportivos donde la tecnología y el confort son prioridad absoluta.",
       en: "An icon of digital design. Its facade is composed of inflatable panels that can change color, representing a new generation of sports venues where technology and comfort are the absolute priority."
@@ -169,7 +169,7 @@ const estadiosHistoricos = [
     pais: "Alemania",
     nacimiento: "Inaugurado en 1974",
     estado: "Sede de la semifinal de 2006.",
-    imagen: "/signaliduna.jpg",
+    imagen: "/Signal.jpg",
     infancia: {
       es: "Construido originalmente para el Mundial de 1974, destaca por su 'Muro Amarillo', la tribuna de pie más grande de Europa. Su diseño está pensado para amplificar el sonido y la presión de la hinchada.",
       en: "Originally built for the 1974 World Cup, it stands out for its 'Yellow Wall', the largest standing terrace in Europe. Its design is intended to amplify the sound and pressure of the fans."
@@ -189,7 +189,7 @@ const estadiosHistoricos = [
     pais: "Japón",
     nacimiento: "Inaugurado en 1998",
     estado: "Sede de la final de 2002.",
-    imagen: "/nissan.jpg",
+    imagen: "/Nissan.jpg",
     infancia: {
       es: "Representa el orgullo de la ingeniería japonesa a finales del siglo XX. Un estadio polivalente que fue la joya de la corona del primer Mundial realizado en territorio asiático.",
       en: "Represents the pride of Japanese engineering at the end of the 20th century. A multi-purpose stadium that was the crown jewel of the first World Cup held on Asian soil."
