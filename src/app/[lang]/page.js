@@ -27,6 +27,21 @@ export default function HomePage() {
 
   return (
     <div style={{ backgroundColor: '#ffffff', padding: '40px 20px' }}>
+      {/* Añadimos un tag style para manejar el media query del grid 3x2 */}
+      <style jsx global>{`
+        .grid-3x2 {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+        }
+        @media (max-width: 900px) {
+          .grid-3x2 { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+          .grid-3x2 { grid-template-columns: 1fr; }
+        }
+      `}</style>
+
       {secciones.map((seccion, index) => {
         const noticiasMostradas = [...seccion.data]
           .sort((a, b) => new Date(b.fechaISO) - new Date(a.fechaISO))
@@ -38,7 +53,7 @@ export default function HomePage() {
           <section key={index} style={{ marginBottom: '60px', maxWidth: '1280px', margin: '0 auto 60px' }}>
             <h2 style={tituloSeccionStyle}>{seccion.titulo[lang]}</h2>
             
-            <div style={gridContainerStyle}>
+            <div className="grid-3x2">
               {noticiasMostradas.map((noticia) => (
                 <div key={noticia.id} style={cardStyle}>
                   <div style={fotoCardStyle}>
@@ -46,7 +61,7 @@ export default function HomePage() {
                       src={noticia.imagen || '/placeholder.jpg'} 
                       alt={noticia[lang]?.titulo || "Noticia"} 
                       fill 
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       style={{ objectFit: 'cover' }}
                       onError={(e) => { e.target.src = '/placeholder.jpg'; }} 
                     />
@@ -67,14 +82,6 @@ export default function HomePage() {
   );
 }
 
-// ESTILOS CORREGIDOS PARA VISTA ESTÁNDAR 3x2
-const gridContainerStyle = { 
-  display: 'grid', 
-  gap: '24px',
-  // Se adapta automáticamente: 3 columnas en desktop, 2 en tablets, 1 en móviles
-  gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-};
-
 const cardStyle = { 
   backgroundColor: '#ffffff', 
   borderRadius: '12px', 
@@ -82,8 +89,7 @@ const cardStyle = {
   boxShadow: '0 4px 20px rgba(0,0,0,0.06)', 
   display: 'flex', 
   flexDirection: 'column', 
-  border: '1px solid #e2e8f0',
-  transition: 'transform 0.2s'
+  border: '1px solid #e2e8f0'
 };
 
 const fotoCardStyle = { 
@@ -93,12 +99,7 @@ const fotoCardStyle = {
   aspectRatio: '16/9' 
 };
 
-const cardContentStyle = { 
-  padding: '20px', 
-  display: 'flex', 
-  flexDirection: 'column', 
-  flexGrow: 1 
-};
+const cardContentStyle = { padding: '20px', display: 'flex', flexDirection: 'column', flexGrow: 1 };
 
 const cardTitleStyle = { 
   fontSize: '1.1rem', 
