@@ -1,7 +1,7 @@
 'use client';
 
 import { useIdioma } from '../HeaderContextLayout';
-import { todasLasNoticias } from '@/data/noticias/mundialData';
+import { noticiasMundial } from '@/data/noticias/mundialData'; // CORREGIDO AQUÍ
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -14,8 +14,8 @@ export default function HomePage() {
     en: { noticiasTitulo: "LATEST FROM THE FOOTBALL WORLD", leerMas: "Read more →" }
   }[idioma || 'es'];
 
-  // 2. LÓGICA DE LAS 9 MÁS RECIENTES
-  const noticiasParaMostrar = todasLasNoticias
+  // 2. LÓGICA DE LAS 9 MÁS RECIENTES (Usando noticiasMundial)
+  const noticiasParaMostrar = noticiasMundial
     .sort((a, b) => new Date(b.fechaISO) - new Date(a.fechaISO))
     .slice(0, 9);
 
@@ -37,7 +37,6 @@ export default function HomePage() {
               <div key={noticia.id} style={idx === 0 ? cardDestacadaStyle : cardStyle}>
                 
                 <div style={fotoCardStyle}>
-                  {/* LOGO DE LA COMPETICIÓN */}
                   <div style={logoCompeticionStyle}>
                     <Image src={noticia.logo} alt="Logo" width={40} height={40} style={{ objectFit: 'contain' }} />
                   </div>
@@ -58,7 +57,8 @@ export default function HomePage() {
                   </h3>
                   <p style={cardTextStyle}>{noticia[idioma || 'es'].subtitulo}</p>
                   <Link 
-                    href={`/${idioma}/noticias/${noticia.id}`} // Ajusta tu ruta según estructura real
+                    // CORREGIDO: Ajustado a la ruta correcta de tus carpetas
+                    href={`/${idioma}/mundial-2026/noticias/${noticia.id}`} 
                     style={cardLinkStyle}
                   >
                     {t.leerMas}
@@ -74,9 +74,6 @@ export default function HomePage() {
   );
 }
 
-// =========================================================================
-// ESTILOS ACTUALIZADOS
-// =========================================================================
 const gridContainerStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
