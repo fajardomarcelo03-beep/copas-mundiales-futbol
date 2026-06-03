@@ -2,9 +2,9 @@ export const noticiasLibertadores = [
   {
     id: "libertadores-1",
     categoria: "libertadores",
-    logo: "/logos/libertadores.png",
+    logo: "/logo/libertadores.png",
     fechaISO: "2026-06-03",
-    imagen: "/ubeda-boca.jpg",
+    imagen: "/Ubeda.jpg",
     es: {
       titulo: "Claudio Ubeda deja el cargo de entrenador en Boca Juniors",
       subtitulo: "Tras una serie de resultados adversos en la Copa Libertadores, la dirigencia decidió finalizar su ciclo.",
