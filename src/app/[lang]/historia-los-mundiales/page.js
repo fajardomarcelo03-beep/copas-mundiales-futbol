@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useIdioma } from '../../../../HeaderContextLayout'; // Ajustado con ../ para subir un nivel
+import { useIdioma } from '@/app//HeaderContextLayout'; // Ajustado con ../ para subir un nivel
 
 export default function HistoriaMundialesPage() {
   const { idioma } = useIdioma();
