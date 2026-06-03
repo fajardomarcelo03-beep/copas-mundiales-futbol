@@ -1,7 +1,7 @@
 'use client';
 
 import { useIdioma } from '../HeaderContextLayout';
-import { todasLasNoticias } from '@/data/noticias';
+import { todasLasNoticias } from '@/data/noticias/mundialData';
 import Image from 'next/image';
 import Link from 'next/link';
 

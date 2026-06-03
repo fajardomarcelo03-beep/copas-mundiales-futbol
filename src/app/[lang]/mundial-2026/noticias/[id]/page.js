@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useIdioma } from '../../../../HeaderContextLayout';
-import { mundialData } from '../../../../../../data/noticias/mundialData';
+import { mundialData } from '@/data/noticias/mundialData';
 
 // =========================================================================
 // COMPONENTE DETALLE NOTICIA
