@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useIdioma } from '../../../../HeaderContextLayout';
-import { noticiasData } from '../../../../../../data/noticias/mundialData';
+import { mundialData } from '../../../../../../data/noticias/mundialData';
 
 // =========================================================================
 // COMPONENTE DETALLE NOTICIA
@@ -27,13 +27,13 @@ export default function DetalleNoticiaPage({ params, searchParams }) {
   }, [langQuery, idioma, setIdioma]);
 
   useEffect(() => {
-    const todasLasKeys = Object.keys(noticiasData);
+    const todasLasKeys = Object.keys(mundialData);
     const filtradas = todasLasKeys.filter(k => k !== id);
     const mezcladas = [...filtradas].sort(() => 0.5 - Math.random());
     setSugerenciasAleatorias(mezcladas.slice(0, 4));
   }, [id]);
 
-  const objetoNoticia = noticiasData[id];
+  const objetoNoticia = mundialData[id];
 
   if (!objetoNoticia) {
     return (
@@ -104,9 +104,9 @@ export default function DetalleNoticiaPage({ params, searchParams }) {
               {sugerenciasAleatorias.map((sugId) => (
                 <Link key={sugId} href={`/${idioma}/mundial-2026/noticias/${sugId}`} style={enlaceSugerenciaStyle}>
                   <div style={miniCardSugerenciaStyle} className="mini-card-sugerencia">
-                    <img src={noticiasData[sugId].imagen} alt="Mini" style={miniImgSugerenciaStyle} />
+                    <img src={mundialData[sugId].imagen} alt="Mini" style={miniImgSugerenciaStyle} />
                     <div style={{ minWidth: 0, flex: 1 }}>
-                      <h4 style={miniTituloSugerenciaStyle}>{noticiasData[sugId][idioma].titulo}</h4>
+                      <h4 style={miniTituloSugerenciaStyle}>{mundialData[sugId][idioma].titulo}</h4>
                       <span style={miniEnlaceTextoStyle}>{idioma === 'es' ? 'Leer artículo →' : 'Read article →'}</span>
                     </div>
                   </div>
