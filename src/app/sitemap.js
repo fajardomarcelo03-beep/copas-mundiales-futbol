@@ -1,4 +1,4 @@
-import { noticiasData } from '@/app/[lang]/data/noticiasData';
+import { noticiasData } from '@/app/data/noticias/mundialData';
 
 export default async function sitemap() {
   const baseUrl = 'https://copas-mundiales-futbol.vercel.app';

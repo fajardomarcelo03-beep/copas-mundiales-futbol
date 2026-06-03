@@ -1,7 +1,7 @@
 'use client';
 import React, { useMemo } from 'react';
 import { useIdioma } from '../../../HeaderContextLayout';
-import { resultados } from '../../data/resultadosData';
+import { resultados } from '../../../data/resultadosData';
 
 export default function PosicionesPage() {
   const { idioma } = useIdioma();
