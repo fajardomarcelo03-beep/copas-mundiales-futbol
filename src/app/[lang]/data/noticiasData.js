@@ -180,5 +180,22 @@ export const noticiasData = {
       fecha: "June 1, 2026",
       tiempoLectura: "3 min"
     }
+  },
+  "noticia-10": {
+  imagen: "/Mora.jpg",
+  es: {
+    titulo: "Gilberto Mora: el jugador más joven convocado al Mundial 2026",
+    subtitulo: "Con 17 años, la joya mexicana hace historia al ser el futbolista de menor edad en el certamen.",
+    contenido: "La FIFA confirmó oficialmente que Gilberto Mora, mediocampista de la Selección Mexicana, es el jugador más joven entre los convocados para la Copa del Mundo 2026. Con 17 años y 240 días, la promesa de los Xolos de Tijuana; y, que según rumores de la prensa internacional es pretendido por el Real Madrid de España, tiene la ilusión de debutar en el torneo mundialista que tendrá un total de 22 futbolistas menores de 20 años.",
+    fecha: "3 de junio de 2026",
+    tiempoLectura: "3 min"
+  },
+  en: {
+    titulo: "Gilberto Mora: the youngest player called up to the 2026 World Cup",
+    subtitulo: "At 17 years old, the Mexican jewel makes history as the youngest player in the tournament.",
+    contenido: "FIFA officially confirmed that Gilberto Mora, the Mexican National Team midfielder, is the youngest player among those called up for the 2026 World Cup. At 17 years and 240 days old, the Xolos de Tijuana prospect—who, according to international press rumors, is being courted by Real Madrid of Spain—hopes to make his debut in the World Cup tournament, which will feature a total of 22 players under the age of 20.",
+    fecha: "June 3, 2026",
+    tiempoLectura: "3 min"
   }
+}
 };
