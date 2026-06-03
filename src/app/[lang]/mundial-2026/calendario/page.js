@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
-import { grupos } from '../../../data/calendarioData';
-import { partidos } from '../../../data/partidosData'; 
+import { grupos } from '../../../../data/calendarioData';
+import { partidos } from '../../../../data/partidosData'; 
 import { useIdioma } from '../../../HeaderContextLayout';
 import * as Flags from 'country-flag-icons/react/3x2';
 

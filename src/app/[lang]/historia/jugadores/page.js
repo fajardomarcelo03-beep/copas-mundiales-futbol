@@ -1,6 +1,6 @@
 'use client';
 import { use } from 'react';
-import { jugadoresHistoricos } from '../../../data/historiaData';
+import { jugadoresHistoricos } from '../../../../data/historiaData';
 
 export default function JugadoresPage({ params }) {
   // Desempaquetamos los parámetros dinámicos de la URL usando la función nativa 'use' de React

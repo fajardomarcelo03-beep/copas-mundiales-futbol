@@ -1,7 +1,7 @@
 'use client';
 
 import { use } from 'react';
-import { edicionesMundialistas } from '../../../data/mundialesData';
+import { edicionesMundialistas } from '../../../../data/mundialData';
 
 export default function EdicionesPage({ params }) {
   // En Next.js 15+, params es una promesa, por eso usamos use()
