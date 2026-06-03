@@ -1,7 +1,7 @@
 'use client';
 
 import { useIdioma } from '../../../HeaderContextLayout'; 
-import { noticiasLibertadores } from '@/data/libertadores/libertadoresData'; 
+import { noticiasLibertadores } from '@/data/noticias/libertadoresData'; 
 import Image from 'next/image';
 
 export default function LibertadoresPage() {
