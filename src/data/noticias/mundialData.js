@@ -2,7 +2,7 @@ export const noticiasMundial = [
   {
     id: "noticia-10",
     categoria: "mundial",
-    logo: "/logos/mundial-2026.png",
+    logo: "/logo/mundial.png",
     fechaISO: "2026-06-03",
     imagen: "/Mora.jpg",
     es: {
@@ -23,7 +23,7 @@ export const noticiasMundial = [
   {
     id: "noticia-9",
     categoria: "mundial",
-    logo: "/logos/mundial-2026.png",
+    logo: "/logo/mundial.png",
     fechaISO: "2026-06-01",
     imagen: "/Messi.jpg",
     es: {
@@ -44,7 +44,7 @@ export const noticiasMundial = [
   {
     id: "noticia-8",
     categoria: "mundial",
-    logo: "/logos/mundial-2026.png",
+    logo: "/logo/mundial.png",
     fechaISO: "2026-06-01",
     imagen: "/Mexico.jpg",
     es: {
@@ -65,7 +65,7 @@ export const noticiasMundial = [
   {
     id: "noticia-7",
     categoria: "mundial",
-    logo: "/logos/mundial-2026.png",
+    logo: "/logo/mundial.png",
     fechaISO: "2026-06-01",
     imagen: "/Iran.jpg",
     es: {
@@ -86,7 +86,7 @@ export const noticiasMundial = [
   {
     id: "noticia-6",
     categoria: "mundial",
-    logo: "/logos/mundial-2026.png",
+    logo: "/logo/mundial.png",
     fechaISO: "2026-06-01",
     imagen: "/Beccacece.jpg",
     es: {
@@ -107,7 +107,7 @@ export const noticiasMundial = [
   {
     id: "noticia-5",
     categoria: "mundial",
-    logo: "/logos/mundial-2026.png",
+    logo: "/logo/mundial.png",
     fechaISO: "2026-05-31",
     imagen: "/Neymar_lesion.jpg",
     es: {
@@ -128,7 +128,7 @@ export const noticiasMundial = [
   {
     id: "noticia-4",
     categoria: "mundial",
-    logo: "/logos/mundial-2026.png",
+    logo: "/logo/mundial.png",
     fechaISO: "2026-05-31",
     imagen: "/Estadio_final.jpg",
     es: {
@@ -149,7 +149,7 @@ export const noticiasMundial = [
   {
     id: "noticia-3",
     categoria: "mundial",
-    logo: "/logos/mundial-2026.png",
+    logo: "/logo/mundial.png",
     fechaISO: "2026-05-31",
     imagen: "/Selecciones.jpg",
     es: {
@@ -198,7 +198,7 @@ export const noticiasMundial = [
   {
     id: "noticia-2",
     categoria: "mundial",
-    logo: "/logos/mundial-2026.png",
+    logo: "/logo/mundial.png",
     fechaISO: "2026-05-30",
     imagen: "/Sedes.jpg",
     es: {
@@ -219,7 +219,7 @@ export const noticiasMundial = [
   {
     id: "noticia-1",
     categoria: "mundial",
-    logo: "/logos/mundial-2026.png",
+    logo: "/logo/mundial.png",
     fechaISO: "2026-05-30",
     imagen: "/Azteca.jpg",
     es: {
