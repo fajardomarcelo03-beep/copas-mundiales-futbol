@@ -109,12 +109,14 @@ const subtituloStyle = { color: '#4a5568', fontSize: '1.08rem', marginBottom: '2
 // Ajuste clave: height definido y position relative para el Image con 'fill'
 const contenedorImagenStyle = { 
   width: '100%', 
-  height: '420px', 
   position: 'relative', 
   borderRadius: '8px', 
   overflow: 'hidden', 
   marginBottom: '20px',
-  backgroundColor: '#e2e8f0' // Color de fondo gris para evitar parpadeo blanco
+  backgroundColor: '#e2e8f0',
+  // Reemplazamos el height fijo de 420px por una relación de aspecto:
+  aspectRatio: '16 / 9', // Esto hace que siempre se mantenga profesional (panorámica)
+  maxHeight: '420px'
 };
 
 const lineaDecorativaStyle = { width: '50px', height: '4px', backgroundColor: '#f1c40f', marginBottom: '20px' };
