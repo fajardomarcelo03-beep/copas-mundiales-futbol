@@ -107,12 +107,13 @@ const subtituloStyle = { color: '#4a5568', fontSize: '1.08rem', marginBottom: '2
 
 const contenedorImagenStyle = { 
   width: '100%', 
-  height: '420px', 
   position: 'relative', 
   borderRadius: '8px', 
   overflow: 'hidden', 
   marginBottom: '20px',
-  backgroundColor: '#e2e8f0' 
+  backgroundColor: '#e2e8f0',
+  aspectRatio: '16 / 9', 
+  maxHeight: '420px'
 };
 
 const lineaDecorativaStyle = { width: '50px', height: '4px', backgroundColor: '#f1c40f', marginBottom: '20px' };

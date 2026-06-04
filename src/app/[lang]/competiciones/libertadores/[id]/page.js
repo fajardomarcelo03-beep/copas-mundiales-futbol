@@ -114,8 +114,7 @@ const contenedorImagenStyle = {
   overflow: 'hidden', 
   marginBottom: '20px',
   backgroundColor: '#e2e8f0',
-  // Reemplazamos el height fijo de 420px por una relación de aspecto:
-  aspectRatio: '16 / 9', // Esto hace que siempre se mantenga profesional (panorámica)
+  aspectRatio: '16 / 9', 
   maxHeight: '420px'
 };
 
