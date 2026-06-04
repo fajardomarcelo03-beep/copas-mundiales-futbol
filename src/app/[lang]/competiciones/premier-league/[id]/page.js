@@ -1,12 +1,12 @@
 'use client';
 
-import { useIdioma } from '../../../HeaderContextLayout'; 
-import { noticiasLibertadores } from '@/data/noticias/libertadoresData'; 
+import { useIdioma } from '../../../../HeaderContextLayout'; 
+import { noticiasPremier } from '@/data/noticias/PremierData'; 
 import Image from 'next/image';
 
-export default function LibertadoresPage() {
+export default function PremierPage() {
   const { idioma } = useIdioma();
-  const noticia = noticiasLibertadores[0];
+  const noticia = noticiasPremier[0];
 
   if (!noticia) return <p>Cargando...</p>;
 

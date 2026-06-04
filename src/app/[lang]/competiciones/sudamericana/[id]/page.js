@@ -1,12 +1,12 @@
 'use client';
 
-import { useIdioma } from '../../../HeaderContextLayout'; 
-import { noticiasPremier } from '@/data/noticias/PremierData'; 
+import { useIdioma } from '../../../../HeaderContextLayout'; 
+import { noticiasSudamericana } from '@/data/noticias/sudamericanaData'; 
 import Image from 'next/image';
 
-export default function PremierPage() {
+export default function SudamericanaPage() {
   const { idioma } = useIdioma();
-  const noticia = noticiasPremier[0];
+  const noticia = noticiasSudamericana[0];
 
   if (!noticia) return <p>Cargando...</p>;
 

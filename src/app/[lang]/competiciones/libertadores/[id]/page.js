@@ -1,12 +1,12 @@
 'use client';
 
-import { useIdioma } from '../../../HeaderContextLayout'; 
-import { noticiasMLS } from '@/data/noticias/mlsData'; 
+import { useIdioma } from '../../../../HeaderContextLayout'; 
+import { noticiasLibertadores } from '@/data/noticias/libertadoresData'; 
 import Image from 'next/image';
 
-export default function MLSPage() {
+export default function LibertadoresPage() {
   const { idioma } = useIdioma();
-  const noticia = noticiasMLS[0];
+  const noticia = noticiasLibertadores[0];
 
   if (!noticia) return <p>Cargando...</p>;
 

@@ -1,12 +1,12 @@
 'use client';
 
-import { useIdioma } from '../../../HeaderContextLayout'; 
-import { noticiasSudamericana } from '@/data/noticias/sudamericanaData'; 
+import { useIdioma } from '../../../../HeaderContextLayout'; 
+import { noticiasMLS } from '@/data/noticias/mlsData'; 
 import Image from 'next/image';
 
-export default function SudamericanaPage() {
+export default function MLSPage() {
   const { idioma } = useIdioma();
-  const noticia = noticiasSudamericana[0];
+  const noticia = noticiasMLS[0];
 
   if (!noticia) return <p>Cargando...</p>;
 

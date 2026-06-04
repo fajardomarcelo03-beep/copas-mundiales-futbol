@@ -33,18 +33,17 @@ export default function HomePage() {
 
   // TU FUNCIÓN ORIGINAL (SIN TOCAR)
   const generarLink = (noticia) => {
-    const base = `/${lang}/competiciones`;
-    switch(noticia.categoria) {
-      case 'mundial': return `/${lang}/mundial-2026/noticias/${noticia.id}`;
-      case 'libertadores': return `${base}/libertadores/${noticia.id}`;
-      case 'sudamericana': return `${base}/sudamericana/${noticia.id}`;
-      case 'ligapro': return `${base}/liga-pro/${noticia.id}`;
-      case 'mls': return `${base}/mls/${noticia.id}`;
-      case 'liga-espanola': return `${base}/liga-espanola/${noticia.id}`;
-      case 'premier-league': return `${base}/premier-league/${noticia.id}`;
-      default: return `/${lang}/noticias/${noticia.id}`;
-    }
-  };
+  switch(noticia.categoria) {
+    case 'mundial': return `/${lang}/mundial-2026/noticias/${noticia.id}`;
+    case 'libertadores': return `/${lang}/competiciones/libertadores/${noticia.id}`;
+    case 'sudamericana': return `/${lang}/competiciones/sudamericana/${noticia.id}`;
+    case 'ligapro': return `/${lang}/competiciones/liga-pro/${noticia.id}`;
+    case 'mls': return `/${lang}/competiciones/mls/${noticia.id}`;
+    case 'liga-espanola': return `/${lang}/competiciones/la-liga/${noticia.id}`;
+    case 'premier-league': return `/${lang}/competiciones/premier-league/${noticia.id}`;
+    default: return `/${lang}/noticias/${noticia.id}`;
+  }
+};
 
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh', padding: '40px 20px' }}>
