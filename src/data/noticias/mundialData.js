@@ -1,5 +1,26 @@
 export const noticiasMundial = [
   {
+  id: "noticia-13",
+  categoria: "mundial",
+  logo: "/logo/mundial.png",
+  fechaISO: "2026-06-04",
+  imagen: "/Mundial/CostaMarfil.jpg", 
+  es: {
+    titulo: "Costa de Marfil sorprende en Francia",
+    subtitulo: "Los 'Elefantes' consiguieron una victoria histórica frente a la vigente subcampeona del mundo.",
+    contenido: "La escuadra de los 'Elefantes' logró una importante victoria en su amistoso internacional desarrollado en Nantes frente a la vigente subcampeona del mundo, a la que derrotó por 2 a 1. Pese a presentar un equipo mixto, Costa de Marfil demostró que es un conjunto fuerte, con grandes habilidades individuales y un sólido juego colectivo.",
+    fecha: "4 de junio de 2026",
+    tiempoLectura: "2 min"
+  },
+  en: {
+    titulo: "Ivory Coast surprises in France",
+    subtitulo: "The 'Elephants' achieved a historic victory against the reigning World Cup runners-up.",
+    contenido: "The 'Elephants' squad achieved an important victory in their international friendly held in Nantes against the reigning World Cup runners-up, defeating them 2-1. Despite fielding a mixed team, Ivory Coast proved to be a strong side with great individual skills and solid collective play.",
+    fecha: "June 4, 2026",
+    tiempoLectura: "2 min"
+  }
+},
+{
   id: "noticia-12",
   categoria: "mundial",
   logo: "/logo/mundial.png",
