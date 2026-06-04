@@ -28,8 +28,8 @@ export default function DetalleLigaProPage() {
     return (
       <div style={{ ...containerStyle, justifyContent: 'center' }}>
         <h2>{idioma === 'es' ? 'Artículo no encontrado' : 'Article not found'}</h2>
-        <Link href={`/${idioma}/competiciones/ligapro`} style={btnVolverStyle}>
-          {idioma === 'es' ? '← Volver a LigaPro' : '← Back to LigaPro'}
+        <Link href={`/${idioma}`} style={btnVolverStyle}>
+          {idioma === 'es' ? '← Volver a Portada' : '← Back to Home'}
         </Link>
       </div>
     );
@@ -78,8 +78,8 @@ export default function DetalleLigaProPage() {
         )}
 
         <div style={{ marginTop: '35px', textAlign: 'center' }}>
-          <Link href={`/${idioma}/competiciones/ligapro`} style={btnVolverStyle}>
-            {idioma === 'es' ? '← Volver a LigaPro' : '← Back to LigaPro'}
+          <Link href={`/${idioma}`} style={btnVolverStyle}>
+            {idioma === 'es' ? '← Volver a Portada' : '← Back to Home'}
           </Link>
         </div>
       </div>
