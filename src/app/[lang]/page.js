@@ -40,7 +40,7 @@ export default function HomePage() {
     case 'ligapro': return `/${lang}/competiciones/liga-pro/[id]/${noticia.id}`;
     case 'mls': return `/${lang}/competiciones/mls/[id]/${noticia.id}`;
     case 'liga-espanola': return `/${lang}/competiciones/la-liga/[id]/${noticia.id}`;
-    case 'premier-league': return `/${lang}/competiciones/premier-league/[id]/${noticia.id}`;
+    case 'premier-league': return `/${lang}/competiciones/premier-league/[id]${noticia.id}`;
     default: return `/${lang}/noticias/${noticia.id}`;
   }
 };

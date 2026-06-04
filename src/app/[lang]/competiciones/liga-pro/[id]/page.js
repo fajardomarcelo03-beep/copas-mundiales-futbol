@@ -1,6 +1,6 @@
 'use client';
 
-import { useIdioma } from '../../../HeaderContextLayout'; 
+import { useIdioma } from '@/app/HeaderContextLayout'; 
 import { noticiasLigaPro } from '@/data/noticias/ligaProData'; 
 import Image from 'next/image';
 

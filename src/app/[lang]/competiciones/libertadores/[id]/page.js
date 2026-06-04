@@ -1,6 +1,6 @@
 'use client';
 
-import { useIdioma } from '../../../../HeaderContextLayout'; 
+import { useIdioma } from '@/app/HeaderContextLayout'; 
 import { noticiasLibertadores } from '@/data/noticias/libertadoresData'; 
 import Image from 'next/image';
 
