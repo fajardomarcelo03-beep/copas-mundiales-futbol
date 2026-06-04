@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useIdioma } from '../../../../HeaderContextLayout';
+import { useIdioma } from '@/app/HeaderContextLayout';
 import { noticiasMundial } from '@/data/noticias/mundialData';
 
 // =========================================================================
