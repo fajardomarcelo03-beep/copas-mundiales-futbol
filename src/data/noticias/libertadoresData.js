@@ -1,6 +1,6 @@
 export const noticiasLibertadores = [
   {
-    id: "libertadores-1",
+    id: "noticia-1",
     categoria: "libertadores",
     logo: "/logo/libertadores.png",
     fechaISO: "2026-06-03",
