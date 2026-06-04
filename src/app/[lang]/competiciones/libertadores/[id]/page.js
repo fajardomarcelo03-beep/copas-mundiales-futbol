@@ -51,14 +51,14 @@ export default function DetalleLibertadoresPage() {
         
         <div style={contenedorImagenStyle} className="contenedor-imagen-noticia">
           <Image 
-            src={objetoNoticia.imagen} 
-            alt={textoNoticia.titulo} 
-            width={820}   // Ajusta esto al ancho máximo de tu card
-            height={420}  // Ajusta esto a la altura que desees
-            priority={true} // ¡Esto es lo que mata el parpadeo!
-            style={{ ...imagenStyle }} 
-            />
-        
+          src={objetoNoticia.imagen} 
+          alt={textoNoticia.titulo} 
+          width={820}   // Ajusta esto al ancho máximo de tu card
+          height={420}  // Ajusta esto a la altura que desees
+          priority={true} // ¡Esto es lo que mata el parpadeo!
+          style={{ ...imagenStyle }} 
+          />
+        </div>
         <div style={lineaDecorativaStyle} className="linea-amarilla-decorativa"></div>
         
         {/* Renderizado de contenido */}
@@ -91,7 +91,7 @@ export default function DetalleLibertadoresPage() {
         </div>
       </div>
     </div>
-  );
+)
 }
 
 // =========================================================================
