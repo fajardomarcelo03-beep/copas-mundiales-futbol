@@ -51,12 +51,11 @@ export default function DetalleMLSPage() {
         
         <div style={contenedorImagenStyle} className="contenedor-imagen-noticia">
           <Image 
-          src={objetoNoticia.imagen} 
-          alt={textoNoticia.titulo} 
-          width={820}   // Ajusta esto al ancho máximo de tu card
-          height={420}  // Ajusta esto a la altura que desees
-          priority={true} // ¡Esto es lo que mata el parpadeo!
-          style={{ ...imagenStyle }} 
+            src={objetoNoticia.imagen} 
+            alt={textoNoticia.titulo} 
+            fill
+            priority={true}
+            style={{ objectFit: 'cover' }} 
           />
         </div>
         
@@ -105,8 +104,17 @@ const tagStyle = { color: '#e74c3c', fontWeight: 'bold', fontSize: '0.78rem' };
 const fechaStyle = { color: '#718096', fontSize: '0.78rem' };
 const tituloStyle = { color: '#0a192f', fontSize: '2.1rem', fontWeight: '800', marginBottom: '10px' };
 const subtituloStyle = { color: '#4a5568', fontSize: '1.08rem', marginBottom: '20px' };
-const contenedorImagenStyle = { width: '100%', borderRadius: '8px', overflow: 'hidden', marginBottom: '20px' };
-const imagenStyle = { width: '100%', height: 'auto', maxHeight: '420px', objectFit: 'cover' };
+
+const contenedorImagenStyle = { 
+  width: '100%', 
+  height: '420px', 
+  position: 'relative', 
+  borderRadius: '8px', 
+  overflow: 'hidden', 
+  marginBottom: '20px',
+  backgroundColor: '#e2e8f0' 
+};
+
 const lineaDecorativaStyle = { width: '50px', height: '4px', backgroundColor: '#f1c40f', marginBottom: '20px' };
 const contenidoTextoStyle = { fontSize: '1.05rem', color: '#2d3748', lineHeight: '1.75', marginBottom: '15px', textAlign: 'justify', whiteSpace: 'pre-line' };
 const btnVolverStyle = { display: 'inline-block', backgroundColor: '#0a192f', color: '#ffffff', padding: '10px 22px', borderRadius: '5px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.92rem' };
