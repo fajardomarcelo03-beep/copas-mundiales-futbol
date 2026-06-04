@@ -3,12 +3,16 @@
 import { useIdioma } from '@/app/HeaderContextLayout'; 
 import { noticiasLibertadores } from '@/data/noticias/libertadoresData'; 
 import Image from 'next/image';
+import { useParams } from 'next/navigation'; // 1. Importa useParams
 
 export default function LibertadoresPage() {
   const { idioma } = useIdioma();
-  const noticia = noticiasLibertadores[0];
+  const params = useParams(); // 2. Obtén los parámetros de la URL
+  
+  // 3. Busca la noticia cuyo ID coincida con el de la URL
+  const noticia = noticiasLibertadores.find((n) => n.id === params.id);
 
-  if (!noticia) return <p>Cargando...</p>;
+  if (!noticia) return <p>Cargando noticia...</p>;
 
   return (
     <article style={{ padding: '40px 20px', maxWidth: '800px', margin: '0 auto' }}>
@@ -51,7 +55,7 @@ export default function LibertadoresPage() {
         {noticia[idioma].subtitulo}
       </p>
 
-      {/* CONTENIDO JUSTIFICADO CON INTERLINEADO AMPLIO */}
+      {/* CONTENIDO JUSTIFICADO */}
       <div style={{ 
         textAlign: 'justify', 
         lineHeight: '1.8', 
