@@ -50,8 +50,14 @@ export default function DetalleLibertadoresPage() {
         <h2 style={subtituloStyle} className="noticia-subtitulo">{textoNoticia.subtitulo}</h2>
         
         <div style={contenedorImagenStyle} className="contenedor-imagen-noticia">
-          <img src={objetoNoticia.imagen} alt="Noticia" style={imagenStyle} />
-        </div>
+          <Image 
+            src={objetoNoticia.imagen} 
+            alt={textoNoticia.titulo} 
+            width={820}   // Ajusta esto al ancho máximo de tu card
+            height={420}  // Ajusta esto a la altura que desees
+            priority={true} // ¡Esto es lo que mata el parpadeo!
+            style={{ ...imagenStyle }} 
+            />
         
         <div style={lineaDecorativaStyle} className="linea-amarilla-decorativa"></div>
         

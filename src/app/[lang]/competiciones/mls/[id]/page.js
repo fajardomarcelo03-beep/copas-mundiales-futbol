@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useIdioma } from '@/app/HeaderContextLayout';
 import { noticiasMLS } from '@/data/noticias/mlsData';
 import { useParams } from 'next/navigation';
+import Image from 'next/image';
 
 export default function DetalleMLSPage() {
   const params = useParams();
@@ -49,7 +50,14 @@ export default function DetalleMLSPage() {
         <h2 style={subtituloStyle} className="noticia-subtitulo">{textoNoticia.subtitulo}</h2>
         
         <div style={contenedorImagenStyle} className="contenedor-imagen-noticia">
-          <img src={objetoNoticia.imagen} alt="Noticia" style={imagenStyle} />
+          <Image 
+          src={objetoNoticia.imagen} 
+          alt={textoNoticia.titulo} 
+          width={820}   // Ajusta esto al ancho máximo de tu card
+          height={420}  // Ajusta esto a la altura que desees
+          priority={true} // ¡Esto es lo que mata el parpadeo!
+          style={{ ...imagenStyle }} 
+          />
         </div>
         
         <div style={lineaDecorativaStyle} className="linea-amarilla-decorativa"></div>
