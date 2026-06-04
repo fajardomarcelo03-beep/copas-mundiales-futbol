@@ -60,7 +60,8 @@ export default function LibertadoresPage() {
         textAlign: 'justify', 
         lineHeight: '1.8', 
         fontSize: '1.1rem', 
-        color: '#333' 
+        color: '#333',
+        whiteSpace: 'pre-line' 
       }}>
         {noticia[idioma].contenido}
       </div>
