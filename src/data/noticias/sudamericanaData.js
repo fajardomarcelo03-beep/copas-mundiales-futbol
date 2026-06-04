@@ -4,7 +4,7 @@ export const noticiasSudamericana = [
   categoria: "sudamericana",
   logo: "/logo/sudamericana.png",
   fechaISO: "2026-06-04",
-  imagen: "/Sudamericana/octavos.jpg",
+  imagen: "/Sudamericana/OctavosSudamericana.jpg",
   es: {
     titulo: "Definidos los cruces de octavos de final de la Sudamericana",
     subtitulo: "La Conmebol oficializó el cronograma para los duelos de octavos de final que se disputarán en julio.",
