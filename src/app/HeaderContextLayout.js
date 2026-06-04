@@ -54,7 +54,7 @@ export default function HeaderContextLayout({ children }) {
       menu: [
         { title: "WORLD CUP 2026", submenu: [{ name: "Schedule", url: "/mundial-2026/calendario" }, { name: "Results & Standings", url: "/mundial-2026/posiciones" }, { name: "News", url: "/mundial-2026/noticias" }] },
         { title: "WORLD CUP HISTORY", submenu: [{ name: "Editions", url: "/historia/ediciones" }, { name: "Notable Presidents", url: "/historia/presidentes" }, { name: "Iconic Stadiums", url: "/historia/estadios" }, { name: "Historical Players", url: "/historia/jugadores" }] },
-        { title: "COMPETITIONS", isMegaMenu: false, submenu: [{ name: "Liga Pro (Ecuador)", url: "/competiciones/liga-pro" }, { name: "UEFA Champions League", url: "/competiciones/champions" }, { name: "Copa Libertadores", url: "/competiciones/libertadores" }, { name: "Copa Sudamericana", url: "/competiciones/sudamericana" }, { name: "MLS", url: "/competiciones/mls" }, { name: "La Liga", url: "/competiciones/la-liga" }, { name: "Premier League", url: "/competiciones/premier-league" }] }
+        { title: "COMPETITIONS", isMegaMenu: false, submenu: [{ name: "Liga Pro (Ecuador)", url: "/competiciones/liga-pro" }, { name: "Copa Libertadores", url: "/competiciones/libertadores" }, { name: "Copa Sudamericana", url: "/competiciones/sudamericana" }, { name: "MLS", url: "/competiciones/mls" }, { name: "La Liga", url: "/competiciones/la-liga" }, { name: "Premier League", url: "/competiciones/premier-league" }] }
       ]
     }
   };

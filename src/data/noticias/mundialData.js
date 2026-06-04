@@ -1,5 +1,26 @@
 export const noticiasMundial = [
   {
+  id: "noticia-12",
+  categoria: "mundial",
+  logo: "/logo/mundial.png",
+  fechaISO: "2026-06-04",
+  imagen: "/Arrascaeta.jpg", 
+  es: {
+    titulo: "Giorgian de Arrascaeta en duda para participar en el mundial",
+    subtitulo: "El volante uruguayo sufrió un desgarro muscular en el gemelo que pone en riesgo su presencia en la cita mundialista.",
+    contenido: "El volante uruguayo sufrió un desgarro muscular en el gemelo que pone en duda su participación en el mundial. Se espera que en los próximos días la Asociación Uruguaya de Fútbol (AUF) confirme si se mantiene concentrado con la selección o si se designará un reemplazo para el jugador del Flamengo.",
+    fecha: "4 de junio de 2026",
+    tiempoLectura: "2 min"
+  },
+  en: {
+    titulo: "Giorgian de Arrascaeta in doubt for the World Cup",
+    subtitulo: "The Uruguayan midfielder suffered a calf muscle tear that puts his participation in the World Cup in jeopardy.",
+    contenido: "The Uruguayan midfielder suffered a calf muscle tear that puts his participation in the World Cup in doubt. It is expected that in the coming days the Uruguayan Football Association (AUF) will confirm whether he will remain in the squad or if a replacement will be called up for the Flamengo player.",
+    fecha: "June 4, 2026",
+    tiempoLectura: "2 min"
+  }
+  },
+    {
     id: "noticia-11",
     categoria: "mundial",
     logo: "/logo/mundial.png",
