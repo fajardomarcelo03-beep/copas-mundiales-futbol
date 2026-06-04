@@ -4,7 +4,7 @@ export const noticiasLigaPro = [
   categoria: "ligapro",
   logo: "/logo/ligapro.png",
   fechaISO: "2026-06-04",
-  imagen: "/ligaPro/JCleon.jpg",
+  imagen: "/LigaPro/JCleon.jpg",
   es: {
     titulo: "Juan Carlos León asume un nuevo reto con los cetáceos",
     subtitulo: "El estratega ecuatoriano llega al Delfín de Manta con el objetivo de revertir el momento deportivo del club.",
