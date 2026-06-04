@@ -49,16 +49,17 @@ export default function DetalleLibertadoresPage() {
         <h1 style={tituloStyle} className="noticia-titulo">{textoNoticia.titulo}</h1>
         <h2 style={subtituloStyle} className="noticia-subtitulo">{textoNoticia.subtitulo}</h2>
         
+        {/* Contenedor con posicion relativa para permitir el 'fill' de la imagen */}
         <div style={contenedorImagenStyle} className="contenedor-imagen-noticia">
           <Image 
-          src={objetoNoticia.imagen} 
-          alt={textoNoticia.titulo} 
-          width={820}   // Ajusta esto al ancho máximo de tu card
-          height={420}  // Ajusta esto a la altura que desees
-          priority={true} // ¡Esto es lo que mata el parpadeo!
-          style={{ ...imagenStyle }} 
+            src={objetoNoticia.imagen} 
+            alt={textoNoticia.titulo} 
+            fill
+            priority={true}
+            style={{ objectFit: 'cover' }} 
           />
         </div>
+
         <div style={lineaDecorativaStyle} className="linea-amarilla-decorativa"></div>
         
         {/* Renderizado de contenido */}
@@ -91,11 +92,11 @@ export default function DetalleLibertadoresPage() {
         </div>
       </div>
     </div>
-)
+  );
 }
 
 // =========================================================================
-// ESTILOS (Mantenidos del formato base)
+// ESTILOS AJUSTADOS PARA RESPONSIVIDAD Y CARGA FLUIDA
 // =========================================================================
 const containerStyle = { minHeight: '100vh', backgroundColor: '#f8fafc', padding: '12px 10px', display: 'flex', flexDirection: 'column', alignItems: 'center' };
 const cardStyle = { backgroundColor: '#ffffff', padding: '35px', borderRadius: '12px', maxWidth: '820px', width: '100%', boxShadow: '0 8px 24px rgba(0,0,0,0.02)', marginTop: '40px' };
@@ -104,8 +105,18 @@ const tagStyle = { color: '#e74c3c', fontWeight: 'bold', fontSize: '0.78rem' };
 const fechaStyle = { color: '#718096', fontSize: '0.78rem' };
 const tituloStyle = { color: '#0a192f', fontSize: '2.1rem', fontWeight: '800', marginBottom: '10px' };
 const subtituloStyle = { color: '#4a5568', fontSize: '1.08rem', marginBottom: '20px' };
-const contenedorImagenStyle = { width: '100%', borderRadius: '8px', overflow: 'hidden', marginBottom: '20px' };
-const imagenStyle = { width: '100%', height: 'auto', maxHeight: '420px', objectFit: 'cover' };
+
+// Ajuste clave: height definido y position relative para el Image con 'fill'
+const contenedorImagenStyle = { 
+  width: '100%', 
+  height: '420px', 
+  position: 'relative', 
+  borderRadius: '8px', 
+  overflow: 'hidden', 
+  marginBottom: '20px',
+  backgroundColor: '#e2e8f0' // Color de fondo gris para evitar parpadeo blanco
+};
+
 const lineaDecorativaStyle = { width: '50px', height: '4px', backgroundColor: '#f1c40f', marginBottom: '20px' };
 const contenidoTextoStyle = { fontSize: '1.05rem', color: '#2d3748', lineHeight: '1.75', marginBottom: '15px', textAlign: 'justify', whiteSpace: 'pre-line' };
 const btnVolverStyle = { display: 'inline-block', backgroundColor: '#0a192f', color: '#ffffff', padding: '10px 22px', borderRadius: '5px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.92rem' };
