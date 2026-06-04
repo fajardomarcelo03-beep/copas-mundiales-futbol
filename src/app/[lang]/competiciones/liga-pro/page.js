@@ -4,7 +4,7 @@ import { useIdioma } from '../../../HeaderContextLayout';
 import { noticiasLigaPro } from '@/data/noticias/ligaProData'; 
 import Image from 'next/image';
 
-export default function LibertadoresPage() {
+export default function LigaProPage() {
   const { idioma } = useIdioma();
   const noticia = noticiasLigaPro[0];
 
