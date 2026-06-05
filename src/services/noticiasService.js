@@ -6,6 +6,10 @@ import { noticiasMLS } from '@/data/noticias/mlsData';
 import { noticiasPremier } from '@/data/noticias/PremierData';
 import { noticiasSudamericana } from '@/data/noticias/sudamericanaData';
 
+/**
+ * MAPA DE COMPETICIONES
+ * Asegura que todas las competiciones estén correctamente mapeadas.
+ */
 const competicionesMap = {
   'la-liga': { noticias: noticiasLaLiga },
   'libertadores': { noticias: noticiasLibertadores },
@@ -16,6 +20,9 @@ const competicionesMap = {
   'mundial-2026': { noticias: noticiasMundial },
 };
 
+/**
+ * Servicio para obtener datos de competiciones
+ */
 export async function getCompeticionData(id) {
   const data = competicionesMap[id];
   
@@ -27,6 +34,9 @@ export async function getCompeticionData(id) {
   return data;
 }
 
+/**
+ * Servicio para obtener una noticia específica por ID
+ */
 export async function getNoticiaById(competicionId, noticiaId) {
   const data = await getCompeticionData(competicionId);
   if (!data.noticias) return null;
