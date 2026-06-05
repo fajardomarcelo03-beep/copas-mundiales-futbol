@@ -5,42 +5,60 @@ const TarjetaNoticia = ({ noticia, lang, rutaBase }) => {
 
   const content = noticia[lang] || noticia.es;
 
-  // Estilos en línea para asegurar que se vea bien
+  // Estilos base
   const cardStyle = {
+    display: 'flex',
+    flexDirection: 'row', // Imagen a la izquierda, texto a la derecha
+    gap: '20px',
     border: '1px solid #ddd',
-    borderRadius: '8px',
-    padding: '20px',
-    marginBottom: '30px',
-    boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-    maxWidth: '600px',
-    margin: '0 auto 30px auto',
-    backgroundColor: '#fff'
-  };
-
-  const imageStyle = {
-    width: '100%',
-    height: 'auto',
-    borderRadius: '4px',
-    marginBottom: '15px'
+    borderRadius: '12px',
+    padding: '15px',
+    marginBottom: '20px',
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    // Esto hace que en pantallas pequeñas (celular) se ponga uno sobre otro
+    '@media (max-width: 768px)': {
+      flexDirection: 'column',
+    }
   };
 
   return (
-    <div style={cardStyle}>
+    <div style={cardStyle} className="tarjeta-noticia">
+      {/* Estilos para que funcione la media query en JS */}
+      <style jsx>{`
+        .tarjeta-noticia {
+          display: flex;
+          flex-direction: row;
+        }
+        @media (max-width: 768px) {
+          .tarjeta-noticia {
+            flex-direction: column;
+          }
+        }
+      `}</style>
+
       {noticia.imagen && (
-        <img src={noticia.imagen} alt={content.titulo} style={imageStyle} />
+        <img 
+          src={noticia.imagen} 
+          alt={content.titulo} 
+          style={{ width: '40%', height: '150px', objectFit: 'cover', borderRadius: '8px' }}
+        />
       )}
-      <h2 style={{ fontSize: '24px', fontWeight: 'bold', margin: '0 0 10px 0' }}>
-        {content.titulo}
-      </h2>
-      <p style={{ color: '#666', fontSize: '14px', marginBottom: '15px' }}>
-        {noticia.fechaISO}
-      </p>
-      <p style={{ color: '#333', marginBottom: '20px' }}>
-        {content.subtitulo}
-      </p>
-      <a href={`/${lang}/${rutaBase}/${noticia.id}`} style={{ color: 'blue', textDecoration: 'underline' }}>
-        {lang === 'es' ? 'Leer más' : 'Read more'}
-      </a>
+      
+      <div style={{ flex: 1 }}>
+        <h2 style={{ fontSize: '18px', fontWeight: 'bold', margin: '0 0 8px 0' }}>
+          {content.titulo}
+        </h2>
+        <p style={{ color: '#666', fontSize: '12px', marginBottom: '8px' }}>
+          {noticia.fechaISO}
+        </p>
+        <p style={{ fontSize: '14px', marginBottom: '10px', color: '#444' }}>
+          {content.subtitulo}
+        </p>
+        <a href={`/${lang}/${rutaBase}/${noticia.id}`} style={{ color: '#0070f3', textDecoration: 'none', fontWeight: '600' }}>
+          {lang === 'es' ? 'Leer más →' : 'Read more →'}
+        </a>
+      </div>
     </div>
   );
 };
