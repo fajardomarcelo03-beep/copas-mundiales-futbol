@@ -5,16 +5,37 @@ export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const { id, lang } = resolvedParams;
   
-    const noticia = noticiasSudamericana.find(n => n.id === id);
+  const noticia = noticiasSudamericana.find(n => n.id === id);
   
   if (!noticia) return { title: "Noticia no encontrada" };
 
   const baseUrl = 'https://copas-mundiales-futbol.vercel.app';
   const urlNoticia = `${baseUrl}/${lang}/competiciones/sudamericana/${id}`;
   
-  // Extraemos textos dinámicos
   const titulo = noticia[lang]?.titulo || "Fútbol Fanátic | Sudamericana";
   const descripcion = noticia[lang]?.subtitulo || "La casa del verdadero fanático del fútbol.";
+
+  // Estructura JSON-LD
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    'headline': titulo,
+    'image': [`${baseUrl}${noticia.imagen}`],
+    'datePublished': noticia.fechaISO,
+    'author': {
+      '@type': 'Organization',
+      'name': 'Fútbol Fanátic',
+      'url': baseUrl
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'Fútbol Fanátic',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': `${baseUrl}/logo/logo.png`
+      }
+    }
+  };
 
   return {
     title: titulo,
@@ -36,6 +57,14 @@ export async function generateMetadata({ params }) {
       ],
       type: 'article',
       locale: lang === 'es' ? 'es_ES' : 'en_US',
+    },
+    other: {
+      'script': [
+        {
+          type: 'application/ld+json',
+          children: JSON.stringify(jsonLd),
+        },
+      ],
     },
   };
 }

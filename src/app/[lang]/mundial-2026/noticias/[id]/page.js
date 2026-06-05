@@ -1,22 +1,41 @@
 import DetalleNoticia from './DetalleNoticia';
-import { noticiasMundial } from '@/data/noticias/mundialData'; // 1. Importa tus datos
+import { noticiasMundial } from '@/data/noticias/mundialData';
 
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const { id, lang } = resolvedParams;
   
-  // 2. Busca la noticia exacta
   const noticia = noticiasMundial.find(n => n.id === id);
   
-  // Si no existe, manejamos un fallback básico
   if (!noticia) return { title: "Noticia no encontrada" };
 
   const baseUrl = 'https://copas-mundiales-futbol.vercel.app';
   const urlNoticia = `${baseUrl}/${lang}/mundial-2026/noticias/${id}`;
   
-  // 3. Extraemos textos dinámicos según el idioma (es/en)
   const titulo = noticia[lang]?.titulo || "Fútbol Fanátic";
   const descripcion = noticia[lang]?.subtitulo || "La casa del verdadero fanático del fútbol.";
+
+  // Definición de Estructura de Datos (JSON-LD)
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    'headline': titulo,
+    'image': [`${baseUrl}${noticia.imagen}`],
+    'datePublished': noticia.fechaISO,
+    'author': {
+      '@type': 'Organization',
+      'name': 'Fútbol Fanátic',
+      'url': baseUrl
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'Fútbol Fanátic',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': `${baseUrl}/logo/logo.png` // Ajusta esta ruta a tu logo real
+      }
+    }
+  };
 
   return {
     title: titulo,
@@ -24,7 +43,6 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: urlNoticia,
     },
-    // 4. Configuración de Open Graph para redes sociales
     openGraph: {
       title: titulo,
       description: descripcion,
@@ -32,13 +50,22 @@ export async function generateMetadata({ params }) {
       siteName: 'Fútbol Fanátic',
       images: [
         {
-          url: `${baseUrl}${noticia.imagen}`, // Asegura que sea una URL absoluta
+          url: `${baseUrl}${noticia.imagen}`,
           width: 1200,
           height: 630,
         },
       ],
       type: 'article',
       locale: lang === 'es' ? 'es_ES' : 'en_US',
+    },
+    // Inyección del JSON-LD en el head de la página
+    other: {
+      'script': [
+        {
+          type: 'application/ld+json',
+          children: JSON.stringify(jsonLd),
+        },
+      ],
     },
   };
 }

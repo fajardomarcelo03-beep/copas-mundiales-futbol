@@ -1,11 +1,10 @@
 import DetalleNoticia from './DetalleNoticia';
-import { noticiasLaLiga } from '@/data/noticias/laLigaData'; // Asegúrate de que esta ruta sea correcta
+import { noticiasLaLiga } from '@/data/noticias/laLigaData';
 
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const { id, lang } = resolvedParams;
   
-  // Buscamos la noticia de LaLiga
   const noticia = noticiasLaLiga.find(n => n.id === id);
   
   if (!noticia) return { title: "Noticia no encontrada" };
@@ -13,9 +12,30 @@ export async function generateMetadata({ params }) {
   const baseUrl = 'https://copas-mundiales-futbol.vercel.app';
   const urlNoticia = `${baseUrl}/${lang}/competiciones/la-liga/${id}`;
   
-  // Extraemos textos dinámicos
   const titulo = noticia[lang]?.titulo || "Fútbol Fanátic | LaLiga";
   const descripcion = noticia[lang]?.subtitulo || "La casa del verdadero fanático del fútbol.";
+
+  // Estructura JSON-LD para LaLiga
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    'headline': titulo,
+    'image': [`${baseUrl}${noticia.imagen}`],
+    'datePublished': noticia.fechaISO,
+    'author': {
+      '@type': 'Organization',
+      'name': 'Fútbol Fanátic',
+      'url': baseUrl
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'Fútbol Fanátic',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': `${baseUrl}/logo/logo.png` // Aquí usamos tu nuevo logo
+      }
+    }
+  };
 
   return {
     title: titulo,
@@ -30,13 +50,22 @@ export async function generateMetadata({ params }) {
       siteName: 'Fútbol Fanátic',
       images: [
         {
-          url: `${baseUrl}${noticia.imagen}`, // URL absoluta a la imagen
+          url: `${baseUrl}${noticia.imagen}`,
           width: 1200,
           height: 630,
         },
       ],
       type: 'article',
       locale: lang === 'es' ? 'es_ES' : 'en_US',
+    },
+    // Inyección del JSON-LD
+    other: {
+      'script': [
+        {
+          type: 'application/ld+json',
+          children: JSON.stringify(jsonLd),
+        },
+      ],
     },
   };
 }
