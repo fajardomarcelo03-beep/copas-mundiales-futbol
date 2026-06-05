@@ -37,7 +37,7 @@ export default function ListaMLSPage({ params }) {
             key={noticia.id} 
             noticia={noticia} 
             lang={lang} 
-            rutaBase="mls" 
+            rutaBase="competiciones/mls" 
           />
         ))}
       </div>

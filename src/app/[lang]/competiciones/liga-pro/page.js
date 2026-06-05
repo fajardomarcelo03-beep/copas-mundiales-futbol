@@ -37,7 +37,7 @@ export default function ListaLigaProPage({ params }) {
             key={noticia.id} 
             noticia={noticia} 
             lang={lang} 
-            rutaBase="liga-pro" 
+            rutaBase="competiciones/liga-pro" 
           />
         ))}
       </div>

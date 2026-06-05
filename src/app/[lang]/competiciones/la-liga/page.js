@@ -39,7 +39,7 @@ export default function ListaLaLigaPage({ params }) {
             key={noticia.id} 
             noticia={noticia} 
             lang={lang} 
-            rutaBase="la-liga" 
+            rutaBase="competiciones/la-liga" 
           />
         ))}
       </div>

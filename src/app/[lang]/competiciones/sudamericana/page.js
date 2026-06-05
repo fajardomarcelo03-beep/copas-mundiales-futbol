@@ -37,7 +37,7 @@ export default function ListaSudamericanaPage({ params }) {
             key={noticia.id} 
             noticia={noticia} 
             lang={lang} 
-            rutaBase="sudamericana" 
+            rutaBase="competiciones/sudamericana" 
           />
         ))}
       </div>

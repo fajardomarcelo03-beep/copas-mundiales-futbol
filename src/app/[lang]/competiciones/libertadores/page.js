@@ -37,7 +37,7 @@ export default function ListaLibertadoresPage({ params }) {
             key={noticia.id} 
             noticia={noticia} 
             lang={lang} 
-            rutaBase="libertadores" 
+            rutaBase="competiciones/libertadores" 
           />
         ))}
       </div>

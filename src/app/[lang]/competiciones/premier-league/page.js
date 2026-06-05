@@ -37,7 +37,7 @@ export default function ListaPremierPage({ params }) {
             key={noticia.id} 
             noticia={noticia} 
             lang={lang} 
-            rutaBase="premier-league" 
+            rutaBase="competiciones/premier-league" 
           />
         ))}
       </div>
