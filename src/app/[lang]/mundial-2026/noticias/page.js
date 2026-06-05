@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { use } from 'react';
-import { getNoticias } from '@/services/noticiasService';
+import { getCompeticionData } from '@/services/noticiasService';
 import TarjetaNoticia from '@/components/TarjetaNoticia';
 
 export default function ListaNoticiasPage({ params }) {
@@ -14,9 +14,16 @@ export default function ListaNoticiasPage({ params }) {
 
   useEffect(() => {
     async function cargarDatos() {
-      const datos = await getNoticias();
-      setNoticias(datos || []);
-      setCargando(false);
+      try {
+        // Usamos getCompeticionData con el ID correcto del mapa de competiciones
+        const data = await getCompeticionData('mundial-2026');
+        setNoticias(data?.noticias || []);
+      } catch (error) {
+        console.error("Error al cargar noticias:", error);
+        setNoticias([]);
+      } finally {
+        setCargando(false);
+      }
     }
     cargarDatos();
   }, []);
@@ -32,14 +39,20 @@ export default function ListaNoticiasPage({ params }) {
       </h1>
 
       <div style={{ display: 'grid', gap: '20px' }}>
-        {noticias.map((noticia) => (
-          <TarjetaNoticia 
-            key={noticia.id} 
-            noticia={noticia} 
-            lang={lang} 
-            rutaBase="mundial-2026/noticias" 
-          />
-        ))}
+        {noticias.length > 0 ? (
+          noticias.map((noticia) => (
+            <TarjetaNoticia 
+              key={noticia.id} 
+              noticia={noticia} 
+              lang={lang} 
+              rutaBase="mundial-2026/noticias" 
+            />
+          ))
+        ) : (
+          <p style={{ textAlign: 'center' }}>
+            {lang === 'es' ? 'No hay noticias disponibles.' : 'No news available.'}
+          </p>
+        )}
       </div>
     </div>
   );
