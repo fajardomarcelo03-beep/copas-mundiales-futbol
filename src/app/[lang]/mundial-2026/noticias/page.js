@@ -1,13 +1,30 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { use } from 'react';
-import { noticiasMundial } from '@/data/noticias/mundialData';
+import { getNoticias } from '@/services/noticiasService'; // Importamos el servicio
 
 export default function ListaNoticiasPage({ params }) {
   const resolvedParams = use(params);
   const lang = resolvedParams.lang || 'es';
   const idioma = lang === 'en' ? 'en' : 'es';
+
+  const [noticias, setNoticias] = useState([]);
+  const [cargando, setCargando] = useState(true);
+
+  useEffect(() => {
+    async function cargarDatos() {
+      const datos = await getNoticias();
+      setNoticias(datos);
+      setCargando(false);
+    }
+    cargarDatos();
+  }, []);
+
+  if (cargando) {
+    return <div style={{ padding: '20px', textAlign: 'center' }}>Cargando...</div>;
+  }
 
   return (
     <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto', fontFamily: 'sans-serif' }}>
@@ -16,11 +33,10 @@ export default function ListaNoticiasPage({ params }) {
       </h1>
 
       <div style={{ display: 'grid', gap: '20px' }}>
-        {noticiasMundial.map((noticia) => {
+        {noticias.map((noticia) => {
           const content = noticia[idioma];
           
-          // CORRECCIÓN: La ruta debe coincidir con la estructura de tus carpetas.
-          // Si tu carpeta de detalle es 'noticias/[id]', la ruta es /lang/noticias/id
+          // La ruta ahora apunta a la estructura que movimos: /lang/mundial-2026/noticias/id
           const ruta = `/${lang}/mundial-2026/noticias/${noticia.id}`;
 
           return (

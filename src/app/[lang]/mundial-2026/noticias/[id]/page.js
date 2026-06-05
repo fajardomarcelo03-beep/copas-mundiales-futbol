@@ -1,11 +1,13 @@
 import DetalleNoticia from './DetalleNoticia';
-import { noticiasMundial } from '@/data/noticias/mundialData';
+// Importamos tu servicio en lugar de la data directa
+import { getNoticiaById } from '@/services/noticiasService';
 
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const { id, lang } = resolvedParams;
   
-  const noticia = noticiasMundial.find(n => n.id === id);
+  // Usamos el servicio para buscar la noticia
+  const noticia = await getNoticiaById(id);
   
   if (!noticia) return { title: "Noticia no encontrada" };
 
@@ -32,7 +34,7 @@ export async function generateMetadata({ params }) {
       'name': 'Fútbol Fanátic',
       'logo': {
         '@type': 'ImageObject',
-        'url': `${baseUrl}/logo/logo.png` // Ajusta esta ruta a tu logo real
+        'url': `${baseUrl}/logo/logo.png`
       }
     }
   };
@@ -58,7 +60,6 @@ export async function generateMetadata({ params }) {
       type: 'article',
       locale: lang === 'es' ? 'es_ES' : 'en_US',
     },
-    // Inyección del JSON-LD en el head de la página
     other: {
       'script': [
         {
