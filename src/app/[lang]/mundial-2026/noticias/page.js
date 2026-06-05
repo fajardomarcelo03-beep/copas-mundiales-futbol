@@ -21,7 +21,7 @@ export default function ListaNoticiasPage({ params }) {
           
           // CORRECCIÓN: La ruta debe coincidir con la estructura de tus carpetas.
           // Si tu carpeta de detalle es 'noticias/[id]', la ruta es /lang/noticias/id
-          const ruta = `/${lang}/noticias/${noticia.id}`;
+          const ruta = `/${lang}/mundial-2026/noticias/${noticia.id}`;
 
           return (
             <Link 
