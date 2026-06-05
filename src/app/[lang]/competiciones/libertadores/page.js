@@ -1,13 +1,32 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { use } from 'react';
-import { noticiasLibertadores } from '@/data/noticias/libertadoresData'; // Cambiamos el origen de datos
+import { getCompeticionData } from '@/services/noticiasService'; // Usamos tu servicio
 
 export default function ListaLibertadoresPage({ params }) {
   const resolvedParams = use(params);
   const lang = resolvedParams.lang || 'es';
   const idioma = lang === 'en' ? 'en' : 'es';
+
+  const [noticias, setNoticias] = useState([]);
+  const [cargando, setCargando] = useState(true);
+
+  useEffect(() => {
+    async function cargarDatos() {
+      // Usamos el id 'libertadores' que configuraste en tu mapa del servicio
+      const datos = await getCompeticionData('libertadores');
+      // Asumiendo que tus datos devuelven un objeto con una propiedad 'noticias'
+      setNoticias(datos?.noticias || []); 
+      setCargando(false);
+    }
+    cargarDatos();
+  }, []);
+
+  if (cargando) {
+    return <div style={{ padding: '20px', textAlign: 'center' }}>Cargando...</div>;
+  }
 
   return (
     <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto', fontFamily: 'sans-serif' }}>
@@ -16,10 +35,8 @@ export default function ListaLibertadoresPage({ params }) {
       </h1>
 
       <div style={{ display: 'grid', gap: '20px' }}>
-        {noticiasLibertadores.map((noticia) => {
+        {noticias.map((noticia) => {
           const content = noticia[idioma];
-          
-          // La ruta apunta a la carpeta de detalle de la Libertadores
           const ruta = `/${lang}/competiciones/libertadores/${noticia.id}`;
 
           return (

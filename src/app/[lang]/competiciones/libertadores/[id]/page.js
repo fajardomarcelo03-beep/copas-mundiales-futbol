@@ -1,11 +1,15 @@
 import DetalleNoticia from './DetalleNoticia';
-import { noticiasLibertadores } from '@/data/noticias/libertadoresData'; 
+// Importamos tu servicio centralizado
+import { getCompeticionData } from '@/services/noticiasService'; 
 
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const { id, lang } = resolvedParams;
   
-  const noticia = noticiasLibertadores.find(n => n.id === id);
+  // Obtenemos los datos de la Libertadores a través del servicio
+  const data = await getCompeticionData('libertadores');
+  // Buscamos la noticia dentro del array de noticias de la competición
+  const noticia = data?.noticias?.find(n => n.id === id);
   
   if (!noticia) return { title: "Noticia no encontrada" };
 

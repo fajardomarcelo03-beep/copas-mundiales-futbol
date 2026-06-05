@@ -1,11 +1,14 @@
 import DetalleNoticia from './DetalleNoticia';
-import { noticiasLaLiga } from '@/data/noticias/laLigaData';
+import { getCompeticionData } from '@/services/noticiasService';
 
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const { id, lang } = resolvedParams;
   
-  const noticia = noticiasLaLiga.find(n => n.id === id);
+  // Obtenemos los datos a través del servicio
+  const data = await getCompeticionData('la-liga');
+  // Accedemos a las noticias (ajusta si tu estructura es diferente)
+  const noticia = data?.noticias?.find(n => n.id === id);
   
   if (!noticia) return { title: "Noticia no encontrada" };
 
@@ -32,7 +35,7 @@ export async function generateMetadata({ params }) {
       'name': 'Fútbol Fanátic',
       'logo': {
         '@type': 'ImageObject',
-        'url': `${baseUrl}/logo/logo.png` // Aquí usamos tu nuevo logo
+        'url': `${baseUrl}/logo/logo.png`
       }
     }
   };

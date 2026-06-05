@@ -1,24 +1,40 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { use } from 'react';
-import { noticiasPremier } from '@/data/noticias/PremierData'; 
+import { getCompeticionData } from '@/services/noticiasService';
 
 export default function ListaPremierPage({ params }) {
   const resolvedParams = use(params);
   const lang = resolvedParams.lang || 'es';
   const idioma = lang === 'en' ? 'en' : 'es';
+  
+  const [noticias, setNoticias] = useState([]);
+  const [cargando, setCargando] = useState(true);
+
+  useEffect(() => {
+    async function cargarDatos() {
+      const data = await getCompeticionData('premier-league');
+      setNoticias(data?.noticias || []);
+      setCargando(false);
+    }
+    cargarDatos();
+  }, []);
+
+  if (cargando) {
+    return <div style={{ padding: '20px', textAlign: 'center' }}>Cargando...</div>;
+  }
 
   return (
     <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto', fontFamily: 'sans-serif' }}>
       <h1 style={{ color: '#0a192f', marginBottom: '30px', textAlign: 'center' }}>
-        {idioma === 'es' ? 'Premier League' : 'Premier League'}
+        Premier League
       </h1>
 
       <div style={{ display: 'grid', gap: '20px' }}>
-        {noticiasPremier.map((noticia) => {
+        {noticias.map((noticia) => {
           const content = noticia[idioma];
-          
           const ruta = `/${lang}/competiciones/premier-league/${noticia.id}`;
 
           return (

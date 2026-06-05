@@ -1,11 +1,13 @@
 import DetalleNoticia from './DetalleNoticia';
-import { noticiasPremier } from '@/data/noticias/PremierData'; 
+import { getCompeticionData } from '@/services/noticiasService';
 
 export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const { id, lang } = resolvedParams;
   
-  const noticia = noticiasPremier.find(n => n.id === id);
+  // Obtenemos los datos a través del servicio
+  const data = await getCompeticionData('premier-league');
+  const noticia = data?.noticias?.find(n => n.id === id);
   
   if (!noticia) return { title: "Noticia no encontrada" };
 
