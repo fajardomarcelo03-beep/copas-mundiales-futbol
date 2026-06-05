@@ -5,40 +5,42 @@ const TarjetaNoticia = ({ noticia, lang, rutaBase }) => {
 
   const content = noticia[lang] || noticia.es;
 
-  return (
-    /* Contenedor de la tarjeta */
-    <div className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden mb-6">
-      
-      {/* Imagen con altura fija y objeto de cobertura */}
-      {noticia.imagen && (
-        <img 
-          src={noticia.imagen} 
-          alt={content.titulo} 
-          className="w-full h-56 object-cover"
-        />
-      )}
+  // Estilos en línea para asegurar que se vea bien
+  const cardStyle = {
+    border: '1px solid #ddd',
+    borderRadius: '8px',
+    padding: '20px',
+    marginBottom: '30px',
+    boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+    maxWidth: '600px',
+    margin: '0 auto 30px auto',
+    backgroundColor: '#fff'
+  };
 
-      {/* Contenido de texto */}
-      <div className="p-5">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
-          {content.titulo}
-        </h2>
-        
-        <p className="text-sm text-gray-500 mb-4 font-medium">
-          {noticia.fechaISO}
-        </p>
-        
-        <p className="text-gray-600 mb-6 leading-relaxed">
-          {content.subtitulo}
-        </p>
-        
-        <a 
-          href={`/${lang}/${rutaBase}/${noticia.id}`} 
-          className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-        >
-          {lang === 'es' ? 'Leer más' : 'Read more'}
-        </a>
-      </div>
+  const imageStyle = {
+    width: '100%',
+    height: 'auto',
+    borderRadius: '4px',
+    marginBottom: '15px'
+  };
+
+  return (
+    <div style={cardStyle}>
+      {noticia.imagen && (
+        <img src={noticia.imagen} alt={content.titulo} style={imageStyle} />
+      )}
+      <h2 style={{ fontSize: '24px', fontWeight: 'bold', margin: '0 0 10px 0' }}>
+        {content.titulo}
+      </h2>
+      <p style={{ color: '#666', fontSize: '14px', marginBottom: '15px' }}>
+        {noticia.fechaISO}
+      </p>
+      <p style={{ color: '#333', marginBottom: '20px' }}>
+        {content.subtitulo}
+      </p>
+      <a href={`/${lang}/${rutaBase}/${noticia.id}`} style={{ color: 'blue', textDecoration: 'underline' }}>
+        {lang === 'es' ? 'Leer más' : 'Read more'}
+      </a>
     </div>
   );
 };
