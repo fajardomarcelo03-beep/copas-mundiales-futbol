@@ -16,7 +16,6 @@ export default function ListaNoticiasPage({ params }) {
     async function cargarDatos() {
       try {
         const data = await getCompeticionData('mundial-2026');
-        console.log("DEBUG - Datos recibidos del servicio:", data);
         setNoticias(data?.noticias || []);
       } catch (error) {
         console.error("Error al cargar noticias:", error);
@@ -41,14 +40,12 @@ export default function ListaNoticiasPage({ params }) {
       <div style={{ display: 'grid', gap: '20px' }}>
         {noticias.length > 0 ? (
           noticias.map((noticia) => (
-            // He añadido este borde rojo temporalmente para verificar si el div se renderiza
-            <div key={noticia.id} style={{ border: '2px solid red', padding: '10px' }}>
-              <TarjetaNoticia 
-                noticia={noticia} 
-                lang={lang} 
-                rutaBase="mundial-2026/noticias" 
-              />
-            </div>
+            <TarjetaNoticia 
+              key={noticia.id} 
+              noticia={noticia} 
+              lang={lang} 
+              rutaBase="mundial-2026/noticias" 
+            />
           ))
         ) : (
           <p style={{ textAlign: 'center' }}>
