@@ -1,14 +1,46 @@
 import DetalleNoticia from './DetalleNoticia';
+import { noticiasMLS } from '@/data/noticias/mlsData'; 
+
 export async function generateMetadata({ params }) {
-  const { id } = params; 
+  const resolvedParams = await params;
+  const { id, lang } = resolvedParams;
+  
+    const noticia = noticiasMLS.find(n => n.id === id);
+  
+  if (!noticia) return { title: "Noticia no encontrada" };
+
   const baseUrl = 'https://copas-mundiales-futbol.vercel.app';
-  const canonicalUrl = `${baseUrl}/${params.lang}/competiciones/mls/${id}`;
+  const urlNoticia = `${baseUrl}/${lang}/competiciones/mls/${id}`;
+  
+  // Extraemos textos dinámicos
+  const titulo = noticia[lang]?.titulo || "Fútbol Fanátic | MLS";
+  const descripcion = noticia[lang]?.subtitulo || "La casa del verdadero fanático del fútbol.";
+
   return {
+    title: titulo,
+    description: descripcion,
     alternates: {
-      canonical: canonicalUrl,
+      canonical: urlNoticia,
+    },
+    openGraph: {
+      title: titulo,
+      description: descripcion,
+      url: urlNoticia,
+      siteName: 'Fútbol Fanátic',
+      images: [
+        {
+          url: `${baseUrl}${noticia.imagen}`, 
+          width: 1200,
+          height: 630,
+        },
+      ],
+      type: 'article',
+      locale: lang === 'es' ? 'es_ES' : 'en_US',
     },
   };
 }
-export default function Page({ params }) {
-  return <DetalleNoticia />;
+
+export default async function Page({ params }) {
+  const resolvedParams = await params;
+  return <DetalleNoticia params={resolvedParams} />;
 }
