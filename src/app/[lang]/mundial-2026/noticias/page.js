@@ -17,6 +17,7 @@ export default function ListaNoticiasPage({ params }) {
       try {
         // Usamos getCompeticionData con el ID correcto del mapa de competiciones
         const data = await getCompeticionData('mundial-2026');
+        console.log("DEBUG - Datos recibidos del servicio:", data);
         setNoticias(data?.noticias || []);
       } catch (error) {
         console.error("Error al cargar noticias:", error);
