@@ -6,34 +6,39 @@ const TarjetaNoticia = ({ noticia, lang, rutaBase }) => {
   const content = noticia[lang] || noticia.es;
 
   return (
-    <div className="border rounded-lg p-4 shadow-sm mb-4 bg-white">
-      {/* Añadimos la imagen aquí */}
+    /* Contenedor de la tarjeta */
+    <div className="bg-white border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden mb-6">
+      
+      {/* Imagen con altura fija y objeto de cobertura */}
       {noticia.imagen && (
         <img 
           src={noticia.imagen} 
           alt={content.titulo} 
-          className="w-full h-48 object-cover rounded-md mb-4"
+          className="w-full h-56 object-cover"
         />
       )}
 
-      <h2 className="text-xl font-bold mb-2">
-        {content.titulo || "Sin título"}
-      </h2>
-      
-      <p className="text-sm text-gray-500 mb-4">
-        {noticia.fechaISO || "Sin fecha"}
-      </p>
-      
-      <p className="text-gray-700 mb-4">
-        {content.subtitulo || "Sin resumen"}
-      </p>
-      
-      <a 
-        href={`/${lang}/${rutaBase}/${noticia.id}`} 
-        className="text-blue-500 hover:underline font-medium"
-      >
-        {lang === 'es' ? 'Leer más' : 'Read more'}
-      </a>
+      {/* Contenido de texto */}
+      <div className="p-5">
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+          {content.titulo}
+        </h2>
+        
+        <p className="text-sm text-gray-500 mb-4 font-medium">
+          {noticia.fechaISO}
+        </p>
+        
+        <p className="text-gray-600 mb-6 leading-relaxed">
+          {content.subtitulo}
+        </p>
+        
+        <a 
+          href={`/${lang}/${rutaBase}/${noticia.id}`} 
+          className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+        >
+          {lang === 'es' ? 'Leer más' : 'Read more'}
+        </a>
+      </div>
     </div>
   );
 };
