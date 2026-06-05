@@ -1,8 +1,8 @@
 export const noticiasLaLiga = [
  {
-  id: "liga-1",
+  id: "noticia-1",
   categoria: "la-liga",
-  logo: "/logos/la-liga.png",
+  logo: "/logo/laliga.png",
   fechaISO: "2026-06-04",
   imagen: "/LaLiga/Dumfries.jpg",
   es: {
