@@ -1,27 +1,32 @@
 // src/services/dataService.js
 import { noticiasMundial } from '@/data/noticias/mundialData';
+import { noticiasLaLiga } from '@/data/noticias/laLigaData';
+import { noticiasLibertadores } from '@/data/noticias/libertadoresData';
+import { noticiasLigaPro } from '@/data/noticias/ligaProData';
+import { noticiasMLS } from '@/data/noticias/mlsData';
+import { noticiasPremier } from '@/data/noticias/PremierData';
+import { noticiasSudamericana } from '@/data/noticias/sudamericanaData';
 
 /**
  * MAPA DE COMPETICIONES
- * Permite cargar los datos de forma dinámica y escalable.
+ * Mapea el ID de la competición con su objeto de datos correspondiente.
  */
 const competicionesMap = {
-  'la-liga': () => import('@/data/competiciones/la-liga'),
-  'libertadores': () => import('@/data/competiciones/libertadores'),
-  'liga-pro': () => import('@/data/competiciones/liga-pro'),
-  'mls': () => import('@/data/competiciones/mls'),
-  'premier-league': () => import('@/data/competiciones/premier-league'),
-  'sudamericana': () => import('@/data/competiciones/sudamericana'),
-  // Puedes añadir más aquí en el futuro sin cambiar la lógica principal
+  'la-liga': { noticias: noticiasLaLiga },
+  'libertadores': { noticias: noticiasLibertadores },
+  'liga-pro': { noticias: noticiasLigaPro },
+  'mls': { noticias: noticiasMLS },
+  'premier-league': { noticias: noticiasPremier },
+  'sudamericana': { noticias: noticiasSudamericana },
+  'mundial-2026': { noticias: noticiasMundial },
 };
 
 // --- SERVICIOS DE NOTICIAS ---
 
 export async function getNoticias() {
+  // Retornamos las noticias del mundial como base
   return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(noticiasMundial);
-    }, 100);
+    resolve(noticiasMundial);
   });
 }
 
@@ -33,21 +38,16 @@ export async function getNoticiaById(id) {
 // --- SERVICIOS DE COMPETICIONES ---
 
 /**
- * Carga los datos de una competición específica de forma dinámica.
+ * Carga los datos de una competición específica usando el mapa.
  * @param {string} id - El ID de la competición (ej: 'la-liga')
  */
 export async function getCompeticionData(id) {
-  try {
-    if (!competicionesMap[id]) {
-      console.warn(`Competición con ID '${id}' no encontrada en el mapa.`);
-      return null;
-    }
-    
-    // Cargamos el módulo dinámicamente (Lazy Loading)
-    const modulo = await competicionesMap[id]();
-    return modulo.default; // Retorna el export default del archivo correspondiente
-  } catch (error) {
-    console.error(`Error al cargar los datos de la competición '${id}':`, error);
-    return null;
+  const data = competicionesMap[id];
+  
+  if (!data) {
+    console.warn(`Competición con ID '${id}' no encontrada en el mapa.`);
+    return { noticias: [] };
   }
+
+  return data;
 }
