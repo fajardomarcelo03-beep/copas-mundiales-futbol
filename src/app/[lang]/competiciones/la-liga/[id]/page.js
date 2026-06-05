@@ -126,3 +126,14 @@ const miniCardSugerenciaStyle = { display: 'flex', gap: '12px', padding: '12px',
 const miniImgSugerenciaStyle = { width: '100px', height: '70px', objectFit: 'cover', borderRadius: '4px' };
 const miniTituloSugerenciaStyle = { fontSize: '0.88rem', color: '#0a192f', margin: '0 0 4px 0', fontWeight: '700' };
 const miniEnlaceTextoStyle = { fontSize: '0.8rem', color: '#f1c40f', fontWeight: '700' };
+
+export async function generateMetadata({ params }) {
+  const { id } = params; 
+  const baseUrl = 'https://copas-mundiales-futbol.vercel.app';
+  const canonicalUrl = `${baseUrl}/${params.lang}/competiciones/la-liga/${id}`;
+  return {
+    alternates: {
+      canonical: canonicalUrl,
+    },
+  };
+}
