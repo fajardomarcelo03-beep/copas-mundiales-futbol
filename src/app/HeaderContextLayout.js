@@ -21,13 +21,10 @@ export default function HeaderContextLayout({ children }) {
   const [submenuActivo, setSubmenuActivo] = useState(null);
   const [menuEscritorioAbierto, setMenuEscritorioAbierto] = useState(null);
 
-  // Efecto para inicializar tema y idioma
   useEffect(() => {
-    // Manejo de idioma por ruta
     const pathLang = pathname.split('/')[1];
     setIdioma(pathLang === 'en' ? 'en' : 'es');
     
-    // Manejo de tema desde localStorage
     const savedTheme = localStorage.getItem('app-theme') || 'light';
     setTema(savedTheme);
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -97,7 +94,7 @@ export default function HeaderContextLayout({ children }) {
           </nav>
 
           <div style={navStyle}>
-            <button onClick={toggleTema} style={themeButtonStyle}>{t.botonTheme}</button>
+            <button onClick={toggleTema} style={themeButtonStyle}>{t.themeThemeIcon}</button>
             <button onClick={cambiarIdioma} style={langButtonStyle}>{t.botonLang}</button>
           </div>
         </div>
@@ -106,24 +103,37 @@ export default function HeaderContextLayout({ children }) {
       <div className="main-content-wrapper" style={{ paddingTop: '56px' }}>{children}</div>
 
       <style jsx global>{`
-        :root[data-theme='light'] { --bg: #ffffff; --text: #0a192f; }
-        :root[data-theme='dark'] { --bg: #0a192f; --text: #ffffff; }
+        :root[data-theme='light'] { --bg: #ffffff; --text: #0a192f; --dropdown-bg: #ffffff; --dropdown-text: #0a192f; }
+        :root[data-theme='dark'] { --bg: #0a192f; --text: #ffffff; --dropdown-bg: #1e293b; --dropdown-text: #ffffff; }
         body { background-color: var(--bg); color: var(--text); transition: background 0.3s, color 0.3s; }
       `}</style>
     </IdiomaContext.Provider>
   );
 }
 
-// Estilos
+// Estilos CORREGIDOS
 const headerStyle = { position: 'fixed', top: 0, width: '100%', backgroundColor: '#0a192f', color: '#ffffff', height: '56px', display: 'flex', alignItems: 'center', zIndex: 10000 };
-const headerContainerStyle = { width: '100%', maxWidth: '1280px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 20px' };
+const headerContainerStyle = { width: '100%', maxWidth: '1280px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 20px', height: '100%' };
 const logoStyle = { fontWeight: '900', color: '#ffffff', display: 'flex', alignItems: 'center', gap: '6px' };
 const burgerButtonStyle = { background: 'none', border: 'none', color: '#ffffff', fontSize: '1.6rem', cursor: 'pointer', display: 'none' };
 const navLinksContainerStyle = { display: 'flex', height: '100%', alignItems: 'center' };
-const menuItemGroupStyle = { padding: '0 15px', cursor: 'pointer', height: '100%', display: 'flex', alignItems: 'center' };
+const menuItemGroupStyle = { padding: '0 15px', cursor: 'pointer', height: '100%', display: 'flex', alignItems: 'center', position: 'relative' }; // Añadido position relative
 const menuTitleStyle = { fontSize: '0.8rem', fontWeight: '700' };
-const dropdownPanelStyle = { position: 'absolute', top: '56px', backgroundColor: '#ffffff', borderRadius: '0 0 6px 6px', padding: '10px 0', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' };
-const dropdownLinkStyle = { display: 'block', padding: '8px 15px', color: '#0a192f', textDecoration: 'none', fontSize: '0.8rem' };
+
+// --- CORRECCIÓN CLAVE AQUÍ ---
+const dropdownPanelStyle = { 
+  position: 'absolute', 
+  top: '100%', // Se posiciona justo debajo del contenedor padre
+  marginTop: '-2px', // Micro-superposición para cerrar la brecha y evitar el parpadeo
+  left: 0, 
+  backgroundColor: 'var(--dropdown-bg)', // Usa variables CSS para el tema
+  borderRadius: '0 0 6px 6px', 
+  padding: '10px 0', 
+  boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+  minWidth: '200px' // Anchura mínima para evitar que se vea muy estrecho
+};
+
+const dropdownLinkStyle = { display: 'block', padding: '8px 15px', color: 'var(--dropdown-text)', textDecoration: 'none', fontSize: '0.8rem' };
 const navStyle = { display: 'flex', gap: '10px' };
 const langButtonStyle = { backgroundColor: '#f1c40f', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.7rem' };
 const themeButtonStyle = { backgroundColor: '#334155', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer', fontSize: '0.8rem' };
