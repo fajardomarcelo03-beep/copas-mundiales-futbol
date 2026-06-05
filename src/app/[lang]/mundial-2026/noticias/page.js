@@ -1,14 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { use } from 'react';
-import { getNoticias } from '@/services/noticiasService'; // Importamos el servicio
+import { getNoticias } from '@/services/noticiasService';
+import TarjetaNoticia from '@/components/TarjetaNoticia';
 
 export default function ListaNoticiasPage({ params }) {
   const resolvedParams = use(params);
   const lang = resolvedParams.lang || 'es';
-  const idioma = lang === 'en' ? 'en' : 'es';
 
   const [noticias, setNoticias] = useState([]);
   const [cargando, setCargando] = useState(true);
@@ -16,7 +15,7 @@ export default function ListaNoticiasPage({ params }) {
   useEffect(() => {
     async function cargarDatos() {
       const datos = await getNoticias();
-      setNoticias(datos);
+      setNoticias(datos || []);
       setCargando(false);
     }
     cargarDatos();
@@ -29,59 +28,18 @@ export default function ListaNoticiasPage({ params }) {
   return (
     <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto', fontFamily: 'sans-serif' }}>
       <h1 style={{ color: '#0a192f', marginBottom: '30px', textAlign: 'center' }}>
-        {idioma === 'es' ? 'Noticias Mundial 2026' : 'World Cup 2026 News'}
+        {lang === 'es' ? 'Noticias Mundial 2026' : 'World Cup 2026 News'}
       </h1>
 
       <div style={{ display: 'grid', gap: '20px' }}>
-        {noticias.map((noticia) => {
-          const content = noticia[idioma];
-          
-          // La ruta ahora apunta a la estructura que movimos: /lang/mundial-2026/noticias/id
-          const ruta = `/${lang}/mundial-2026/noticias/${noticia.id}`;
-
-          return (
-            <Link 
-              key={noticia.id} 
-              href={ruta} 
-              style={{ textDecoration: 'none', color: 'inherit' }}
-            >
-              <div style={{ 
-                display: 'flex', 
-                flexWrap: 'wrap', 
-                gap: '15px', 
-                padding: '12px', 
-                border: '1px solid #e2e8f0', 
-                borderRadius: '10px',
-                alignItems: 'center'
-              }}>
-                <img 
-                  src={noticia.imagen || '/placeholder.jpg'} 
-                  alt={content?.titulo || "Noticia"} 
-                  onError={(e) => { e.target.src = '/placeholder.jpg'; }}
-                  style={{ 
-                    width: '100%', 
-                    maxWidth: '160px', 
-                    height: '110px', 
-                    objectFit: 'cover', 
-                    borderRadius: '6px',
-                    flexShrink: 0
-                  }} 
-                />
-                <div style={{ flex: '1 1 300px', display: 'flex', flexDirection: 'column' }}>
-                  <h2 style={{ margin: '0 0 5px 0', fontSize: '1.1rem', color: '#0a192f' }}>
-                    {content?.titulo}
-                  </h2>
-                  <p style={{ margin: '0 0 8px 0', color: '#4a5568', fontSize: '0.85rem' }}>
-                    {content?.subtitulo}
-                  </p>
-                  <span style={{ fontSize: '0.7rem', color: '#718096' }}>
-                    ⏱️ {content?.tiempoLectura} | 📅 {content?.fecha}
-                  </span>
-                </div>
-              </div>
-            </Link>
-          );
-        })}
+        {noticias.map((noticia) => (
+          <TarjetaNoticia 
+            key={noticia.id} 
+            noticia={noticia} 
+            lang={lang} 
+            rutaBase="mundial-2026/noticias" 
+          />
+        ))}
       </div>
     </div>
   );
