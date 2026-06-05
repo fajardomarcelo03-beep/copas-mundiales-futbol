@@ -8,7 +8,7 @@ import { noticiasSudamericana } from '@/data/noticias/sudamericanaData';
 
 /**
  * MAPA DE COMPETICIONES
- * Asegura que todas las competiciones estén correctamente mapeadas.
+ * Mapea el ID de la competición con su objeto de datos correspondiente.
  */
 const competicionesMap = {
   'la-liga': { noticias: noticiasLaLiga },
@@ -20,8 +20,25 @@ const competicionesMap = {
   'mundial-2026': { noticias: noticiasMundial },
 };
 
+// --- SERVICIOS DE NOTICIAS ---
+
+export async function getNoticias() {
+  // Retornamos las noticias del mundial como base
+  return new Promise((resolve) => {
+    resolve(noticiasMundial);
+  });
+}
+
+export async function getNoticiaById(id) {
+  const noticias = await getNoticias();
+  return noticias.find(n => n.id === id);
+}
+
+// --- SERVICIOS DE COMPETICIONES ---
+
 /**
- * Servicio para obtener datos de competiciones
+ * Carga los datos de una competición específica usando el mapa.
+ * @param {string} id - El ID de la competición (ej: 'la-liga')
  */
 export async function getCompeticionData(id) {
   const data = competicionesMap[id];
@@ -32,13 +49,4 @@ export async function getCompeticionData(id) {
   }
 
   return data;
-}
-
-/**
- * Servicio para obtener una noticia específica por ID
- */
-export async function getNoticiaById(competicionId, noticiaId) {
-  const data = await getCompeticionData(competicionId);
-  if (!data.noticias) return null;
-  return data.noticias.find(n => n.id === noticiaId);
 }
