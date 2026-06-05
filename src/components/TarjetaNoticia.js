@@ -1,19 +1,32 @@
 import React from 'react';
 
-const TarjetaNoticia = ({ noticia, lang }) => {
+const TarjetaNoticia = ({ noticia, lang, rutaBase }) => {
   if (!noticia) return null;
 
-  // Imprimimos la noticia en la consola para ver los nombres exactos de los campos
-  console.log("Datos de la noticia:", noticia);
+  // Accedemos al objeto de idioma dinámicamente: noticia.es o noticia.en
+  const content = noticia[lang] || noticia.es;
 
   return (
-    <div className="border rounded-lg p-4 shadow-sm mb-4">
-      {/* Mostramos los nombres reales que encontremos en el objeto */}
-      <h2 className="text-xl font-bold mb-2">{noticia.titulo || noticia.title || "Sin título"}</h2>
-      <p className="text-sm text-gray-500 mb-4">{noticia.fecha || noticia.date || "Sin fecha"}</p>
-      <p className="text-gray-700">{noticia.resumen || noticia.summary || noticia.description || "Sin resumen"}</p>
+    <div className="border rounded-lg p-4 shadow-sm mb-4 bg-white">
+      {/* Usamos el título del idioma correspondiente */}
+      <h2 className="text-xl font-bold mb-2">
+        {content.titulo || "Sin título"}
+      </h2>
       
-      <a href={`/${lang}/mundial-2026/noticias/${noticia.id}`} className="text-blue-500 hover:underline">
+      {/* Usamos fechaISO que es la propiedad raíz */}
+      <p className="text-sm text-gray-500 mb-4">
+        {noticia.fechaISO || "Sin fecha"}
+      </p>
+      
+      {/* Usamos el subtítulo como resumen */}
+      <p className="text-gray-700 mb-4">
+        {content.subtitulo || "Sin resumen"}
+      </p>
+      
+      <a 
+        href={`/${lang}/${rutaBase}/${noticia.id}`} 
+        className="text-blue-500 hover:underline font-medium"
+      >
         {lang === 'es' ? 'Leer más' : 'Read more'}
       </a>
     </div>
