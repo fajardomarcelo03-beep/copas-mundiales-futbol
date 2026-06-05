@@ -2,11 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image'; // 1. Importamos el componente
 import { useIdioma } from '@/app/HeaderContextLayout';
 import { noticiasMundial } from '@/data/noticias/mundialData';
 
 export default function DetalleNoticia({ params }) {
-  // params llega desde el page.js como un objeto normal
   const { id } = params;
   const { idioma } = useIdioma();
   const [sugerenciasAleatorias, setSugerenciasAleatorias] = useState([]);
@@ -45,8 +45,16 @@ export default function DetalleNoticia({ params }) {
         <h1 style={tituloStyle}>{textoNoticia.titulo}</h1>
         <h2 style={subtituloStyle}>{textoNoticia.subtitulo}</h2>
         
+        {/* 2. Imagen Principal optimizada */}
         <div style={contenedorImagenStyle}>
-          <img src={objetoNoticia.imagen} alt="Noticia" style={imagenStyle} />
+          <Image 
+            src={objetoNoticia.imagen} 
+            alt={textoNoticia.titulo} 
+            width={820} 
+            height={420} 
+            priority
+            style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+          />
         </div>
         
         <div style={lineaDecorativaStyle}></div>
@@ -68,7 +76,14 @@ export default function DetalleNoticia({ params }) {
               {sugerenciasAleatorias.map((sug) => (
                 <Link key={sug.id} href={`/${idioma}/mundial-2026/noticias/${sug.id}`} style={enlaceSugerenciaStyle}>
                   <div style={miniCardSugerenciaStyle}>
-                    <img src={sug.imagen} alt="Mini" style={miniImgSugerenciaStyle} />
+                    {/* 3. Imágenes sugeridas con Lazy Loading nativo */}
+                    <Image 
+                      src={sug.imagen} 
+                      alt={sug[idioma].titulo} 
+                      width={100} 
+                      height={70} 
+                      style={{ objectFit: 'cover', borderRadius: '4px' }}
+                    />
                     <div style={{ minWidth: 0, flex: 1 }}>
                       <h4 style={miniTituloSugerenciaStyle}>{sug[idioma].titulo}</h4>
                       <span style={miniEnlaceTextoStyle}>{idioma === 'es' ? 'Leer artículo →' : 'Read article →'}</span>
@@ -90,7 +105,6 @@ export default function DetalleNoticia({ params }) {
   );
 }
 
-// Estilos (mantén los mismos que ya tenías)
 const containerStyle = { minHeight: '100vh', backgroundColor: '#f8fafc', padding: '12px 10px', display: 'flex', flexDirection: 'column', alignItems: 'center' };
 const cardStyle = { backgroundColor: '#ffffff', padding: '35px', borderRadius: '12px', maxWidth: '820px', width: '100%', boxShadow: '0 8px 24px rgba(0,0,0,0.02)', marginTop: '40px' };
 const headerNoticiaStyle = { display: 'flex', justifyContent: 'space-between', marginBottom: '12px' };

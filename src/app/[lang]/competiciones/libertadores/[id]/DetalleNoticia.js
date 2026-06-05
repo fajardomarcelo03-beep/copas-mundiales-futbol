@@ -56,6 +56,7 @@ export default function DetalleLibertadoresPage() {
             alt={textoNoticia.titulo} 
             fill
             priority={true}
+            sizes="(max-width: 820px) 100vw, 820px"
             style={{ objectFit: 'cover' }} 
           />
         </div>
@@ -73,7 +74,16 @@ export default function DetalleLibertadoresPage() {
               {sugerenciasAleatorias.map((sug) => (
                 <Link key={sug.id} href={`/${idioma}/competiciones/libertadores/${sug.id}`} style={enlaceSugerenciaStyle}>
                   <div style={miniCardSugerenciaStyle} className="mini-card-sugerencia">
-                    <img src={sug.imagen} alt="Mini" style={miniImgSugerenciaStyle} />
+                    {/* Contenedor con posición relativa para el Image optimizado */}
+                    <div style={{ position: 'relative', width: '100px', height: '70px', flexShrink: 0 }}>
+                      <Image 
+                        src={sug.imagen} 
+                        alt={sug[idioma].titulo} 
+                        fill
+                        sizes="100px"
+                        style={{ objectFit: 'cover', borderRadius: '4px' }} 
+                      />
+                    </div>
                     <div style={{ minWidth: 0, flex: 1 }}>
                       <h4 style={miniTituloSugerenciaStyle}>{sug[idioma].titulo}</h4>
                       <span style={miniEnlaceTextoStyle}>{idioma === 'es' ? 'Leer artículo →' : 'Read article →'}</span>
@@ -96,7 +106,7 @@ export default function DetalleLibertadoresPage() {
 }
 
 // =========================================================================
-// ESTILOS AJUSTADOS PARA RESPONSIVIDAD Y CARGA FLUIDA
+// ESTILOS CORREGIDOS PARA REEMPLAZAR miniImgSugerenciaStyle
 // =========================================================================
 const containerStyle = { minHeight: '100vh', backgroundColor: '#f8fafc', padding: '12px 10px', display: 'flex', flexDirection: 'column', alignItems: 'center' };
 const cardStyle = { backgroundColor: '#ffffff', padding: '35px', borderRadius: '12px', maxWidth: '820px', width: '100%', boxShadow: '0 8px 24px rgba(0,0,0,0.02)', marginTop: '40px' };
@@ -106,7 +116,6 @@ const fechaStyle = { color: '#718096', fontSize: '0.78rem' };
 const tituloStyle = { color: '#0a192f', fontSize: '2.1rem', fontWeight: '800', marginBottom: '10px' };
 const subtituloStyle = { color: '#4a5568', fontSize: '1.08rem', marginBottom: '20px' };
 
-// Ajuste clave: height definido y position relative para el Image con 'fill'
 const contenedorImagenStyle = { 
   width: '100%', 
   position: 'relative', 
@@ -125,6 +134,5 @@ const separadorSugerenciasStyle = { border: '0', height: '1px', backgroundColor:
 const gridSugerenciasStyle = { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '15px' };
 const enlaceSugerenciaStyle = { display: 'block', textDecoration: 'none', color: 'inherit' };
 const miniCardSugerenciaStyle = { display: 'flex', gap: '12px', padding: '12px', borderRadius: '6px', border: '1px solid #e2e8f0' };
-const miniImgSugerenciaStyle = { width: '100px', height: '70px', objectFit: 'cover', borderRadius: '4px' };
 const miniTituloSugerenciaStyle = { fontSize: '0.88rem', color: '#0a192f', margin: '0 0 4px 0', fontWeight: '700' };
 const miniEnlaceTextoStyle = { fontSize: '0.8rem', color: '#f1c40f', fontWeight: '700' };

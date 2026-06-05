@@ -55,6 +55,7 @@ export default function DetallePremierPage() {
             alt={textoNoticia.titulo} 
             fill
             priority={true}
+            sizes="(max-width: 820px) 100vw, 820px"
             style={{ objectFit: 'cover' }} 
           />
         </div>
@@ -72,7 +73,15 @@ export default function DetallePremierPage() {
               {sugerenciasAleatorias.map((sug) => (
                 <Link key={sug.id} href={`/${idioma}/competiciones/premier-league/${sug.id}`} style={enlaceSugerenciaStyle}>
                   <div style={miniCardSugerenciaStyle} className="mini-card-sugerencia">
-                    <img src={sug.imagen} alt="Mini" style={miniImgSugerenciaStyle} />
+                    <div style={{ position: 'relative', width: '100px', height: '70px', flexShrink: 0 }}>
+                      <Image 
+                        src={sug.imagen} 
+                        alt={sug[idioma].titulo} 
+                        fill
+                        sizes="100px"
+                        style={{ objectFit: 'cover', borderRadius: '4px' }} 
+                      />
+                    </div>
                     <div style={{ minWidth: 0, flex: 1 }}>
                       <h4 style={miniTituloSugerenciaStyle}>{sug[idioma].titulo}</h4>
                       <span style={miniEnlaceTextoStyle}>{idioma === 'es' ? 'Leer artículo →' : 'Read article →'}</span>
@@ -123,6 +132,5 @@ const separadorSugerenciasStyle = { border: '0', height: '1px', backgroundColor:
 const gridSugerenciasStyle = { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '15px' };
 const enlaceSugerenciaStyle = { display: 'block', textDecoration: 'none', color: 'inherit' };
 const miniCardSugerenciaStyle = { display: 'flex', gap: '12px', padding: '12px', borderRadius: '6px', border: '1px solid #e2e8f0' };
-const miniImgSugerenciaStyle = { width: '100px', height: '70px', objectFit: 'cover', borderRadius: '4px' };
 const miniTituloSugerenciaStyle = { fontSize: '0.88rem', color: '#0a192f', margin: '0 0 4px 0', fontWeight: '700' };
 const miniEnlaceTextoStyle = { fontSize: '0.8rem', color: '#f1c40f', fontWeight: '700' };
