@@ -5,31 +5,16 @@ import Link from 'next/link';
 import { useIdioma } from '@/app/HeaderContextLayout';
 import { noticiasMundial } from '@/data/noticias/mundialData';
 
-// =========================================================================
-// COMPONENTE DETALLE NOTICIA
-// =========================================================================
-export default function DetalleNoticiaPage({ params, searchParams }) {
-  const resolvedParams = React.use(params);
-  const resolvedSearchParams = React.use(searchParams);
-  
-  const id = resolvedParams.id;
-  const langQuery = resolvedSearchParams.lang;
-  
-  const { idioma, setIdioma } = useIdioma();
+export default function DetalleNoticia({ params }) {
+  // params llega desde el page.js como un objeto normal
+  const { id } = params;
+  const { idioma } = useIdioma();
   const [sugerenciasAleatorias, setSugerenciasAleatorias] = useState([]);
 
-  useEffect(() => {
-    if (langQuery && (langQuery === 'es' || langQuery === 'en') && langQuery !== idioma) {
-      setIdioma(langQuery);
-    }
-  }, [langQuery, idioma, setIdioma]);
-
-  // Lógica corregida para buscar el objeto notica y generar sugerencias
   const objetoNoticia = noticiasMundial.find(n => n.id === id);
 
   useEffect(() => {
     if (noticiasMundial && id) {
-      // Filtramos las que no son la actual y mezclamos aleatoriamente
       const otras = noticiasMundial.filter(n => n.id !== id);
       const mezcladas = [...otras].sort(() => 0.5 - Math.random());
       setSugerenciasAleatorias(mezcladas.slice(0, 4));
@@ -50,61 +35,39 @@ export default function DetalleNoticiaPage({ params, searchParams }) {
   const textoNoticia = objetoNoticia[idioma];
 
   return (
-    <div style={containerStyle} className="vista-detalle-noticia-raiz">
-      <div style={cardStyle} className="cuerpo-articulo-card">
-        <div style={headerNoticiaStyle} className="header-noticia">
+    <div style={containerStyle}>
+      <div style={cardStyle}>
+        <div style={headerNoticiaStyle}>
           <span style={tagStyle}>🔴 {idioma === 'es' ? 'MUNDIAL 2026' : 'WORLD CUP 2026'}</span>
           <span style={fechaStyle}>⏱️ {textoNoticia.tiempoLectura} | ✍️ {textoNoticia.fecha}</span>
         </div>
         
-        <h1 style={tituloStyle} className="noticia-titulo">{textoNoticia.titulo}</h1>
-        <h2 style={subtituloStyle} className="noticia-subtitulo">{textoNoticia.subtitulo}</h2>
+        <h1 style={tituloStyle}>{textoNoticia.titulo}</h1>
+        <h2 style={subtituloStyle}>{textoNoticia.subtitulo}</h2>
         
-        <div style={contenedorImagenStyle} className="contenedor-imagen-noticia">
+        <div style={contenedorImagenStyle}>
           <img src={objetoNoticia.imagen} alt="Noticia" style={imagenStyle} />
         </div>
         
-        <div style={lineaDecorativaStyle} className="linea-amarilla-decorativa"></div>
+        <div style={lineaDecorativaStyle}></div>
         
         {textoNoticia.intro ? (
-          <div className="contenido-estructurado">
+          <div>
             {textoNoticia.intro.map((parrafo, i) => (
               <p key={i} style={contenidoTextoStyle}>{parrafo}</p>
             ))}
-            {textoNoticia.tabla && (
-              <div style={{ overflowX: 'auto', margin: '20px 0' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                  <thead>
-                    <tr style={{ backgroundColor: '#0a192f', color: '#fff' }}>
-                      <th style={{ padding: '10px', textAlign: 'left' }}>{idioma === 'es' ? 'Fase' : 'Stage'}</th>
-                      <th style={{ padding: '10px', textAlign: 'left' }}>{idioma === 'es' ? 'Fecha' : 'Date'}</th>
-                      <th style={{ padding: '10px', textAlign: 'left' }}>{idioma === 'es' ? 'Detalle' : 'Detail'}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {textoNoticia.tabla.map((fila, i) => (
-                      <tr key={i} style={{ borderBottom: '1px solid #e2e8f0' }}>
-                        <td style={{ padding: '10px' }}>{fila.fase}</td>
-                        <td style={{ padding: '10px' }}>{fila.fecha}</td>
-                        <td style={{ padding: '10px' }}>{fila.detalle}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
           </div>
         ) : (
-          <p style={contenidoTextoStyle} className="contenido-texto">{textoNoticia.contenido}</p>
+          <p style={contenidoTextoStyle}>{textoNoticia.contenido}</p>
         )}
 
         {sugerenciasAleatorias.length > 0 && (
           <>
             <hr style={separadorSugerenciasStyle} />
-            <div style={gridSugerenciasStyle} className="grid-sugerencias">
+            <div style={gridSugerenciasStyle}>
               {sugerenciasAleatorias.map((sug) => (
                 <Link key={sug.id} href={`/${idioma}/mundial-2026/noticias/${sug.id}`} style={enlaceSugerenciaStyle}>
-                  <div style={miniCardSugerenciaStyle} className="mini-card-sugerencia">
+                  <div style={miniCardSugerenciaStyle}>
                     <img src={sug.imagen} alt="Mini" style={miniImgSugerenciaStyle} />
                     <div style={{ minWidth: 0, flex: 1 }}>
                       <h4 style={miniTituloSugerenciaStyle}>{sug[idioma].titulo}</h4>
@@ -118,16 +81,16 @@ export default function DetalleNoticiaPage({ params, searchParams }) {
         )}
 
         <div style={{ marginTop: '35px', textAlign: 'center' }}>
-          <Link href={`/${idioma}`} style={btnVolverStyle}>{idioma === 'es' ? '← Volver a la Portada' : '← Back to Home'}</Link>
+          <Link href={`/${idioma}`} style={btnVolverStyle}>
+            {idioma === 'es' ? '← Volver a la Portada' : '← Back to Home'}
+          </Link>
         </div>
       </div>
     </div>
   );
 }
 
-// =========================================================================
-// ESTILOS (Sin cambios)
-// =========================================================================
+// Estilos (mantén los mismos que ya tenías)
 const containerStyle = { minHeight: '100vh', backgroundColor: '#f8fafc', padding: '12px 10px', display: 'flex', flexDirection: 'column', alignItems: 'center' };
 const cardStyle = { backgroundColor: '#ffffff', padding: '35px', borderRadius: '12px', maxWidth: '820px', width: '100%', boxShadow: '0 8px 24px rgba(0,0,0,0.02)', marginTop: '40px' };
 const headerNoticiaStyle = { display: 'flex', justifyContent: 'space-between', marginBottom: '12px' };
