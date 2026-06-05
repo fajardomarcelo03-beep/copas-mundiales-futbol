@@ -10,5 +10,5 @@ export async function generateMetadata({ params }) {
   };
 }
 export default function Page({ params }) {
-  return <DetalleNoticia />;
+  return <DetalleNoticia params={params}/>;
 }
