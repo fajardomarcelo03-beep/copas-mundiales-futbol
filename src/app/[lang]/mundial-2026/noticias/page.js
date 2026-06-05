@@ -15,7 +15,6 @@ export default function ListaNoticiasPage({ params }) {
   useEffect(() => {
     async function cargarDatos() {
       try {
-        // Usamos getCompeticionData con el ID correcto del mapa de competiciones
         const data = await getCompeticionData('mundial-2026');
         console.log("DEBUG - Datos recibidos del servicio:", data);
         setNoticias(data?.noticias || []);
@@ -42,12 +41,14 @@ export default function ListaNoticiasPage({ params }) {
       <div style={{ display: 'grid', gap: '20px' }}>
         {noticias.length > 0 ? (
           noticias.map((noticia) => (
-            <TarjetaNoticia 
-              key={noticia.id} 
-              noticia={noticia} 
-              lang={lang} 
-              rutaBase="mundial-2026/noticias" 
-            />
+            // He añadido este borde rojo temporalmente para verificar si el div se renderiza
+            <div key={noticia.id} style={{ border: '2px solid red', padding: '10px' }}>
+              <TarjetaNoticia 
+                noticia={noticia} 
+                lang={lang} 
+                rutaBase="mundial-2026/noticias" 
+              />
+            </div>
           ))
         ) : (
           <p style={{ textAlign: 'center' }}>
