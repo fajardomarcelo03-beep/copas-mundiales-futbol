@@ -29,7 +29,7 @@ export default function DetalleLaLigaPage() {
     return (
       <div style={{ ...containerStyle, justifyContent: 'center' }}>
         <h2>{idioma === 'es' ? 'Artículo no encontrado' : 'Article not found'}</h2>
-        <Link href={`/${idioma}/competiciones/la-liga`} style={btnVolverStyle}>
+        <Link href={`/${idioma}`} style={btnVolverStyle}>
           {idioma === 'es' ? '← Volver a LaLiga' : '← Back to LaLiga'}
         </Link>
       </div>
@@ -49,7 +49,6 @@ export default function DetalleLaLigaPage() {
         <h1 style={tituloStyle} className="noticia-titulo">{textoNoticia.titulo}</h1>
         <h2 style={subtituloStyle} className="noticia-subtitulo">{textoNoticia.subtitulo}</h2>
         
-        {/* Imagen principal optimizada */}
         <div style={contenedorImagenStyle} className="contenedor-imagen-noticia">
           <Image 
             src={objetoNoticia.imagen} 
@@ -63,10 +62,8 @@ export default function DetalleLaLigaPage() {
         
         <div style={lineaDecorativaStyle} className="linea-amarilla-decorativa"></div>
         
-        {/* Contenido */}
         <p style={contenidoTextoStyle} className="contenido-texto">{textoNoticia.contenido}</p>
 
-        {/* Sugerencias */}
         {sugerenciasAleatorias.length > 0 && (
           <>
             <hr style={separadorSugerenciasStyle} />
@@ -74,7 +71,6 @@ export default function DetalleLaLigaPage() {
               {sugerenciasAleatorias.map((sug) => (
                 <Link key={sug.id} href={`/${idioma}/competiciones/la-liga/${sug.id}`} style={enlaceSugerenciaStyle}>
                   <div style={miniCardSugerenciaStyle} className="mini-card-sugerencia">
-                    {/* Imagen de sugerencia optimizada */}
                     <div style={{ position: 'relative', width: '100px', height: '70px', flexShrink: 0 }}>
                       <Image 
                         src={sug.imagen} 
