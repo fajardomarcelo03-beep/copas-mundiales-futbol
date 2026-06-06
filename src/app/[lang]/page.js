@@ -37,9 +37,9 @@ export default function HomePage() {
     case 'mundial': return `/${lang}/mundial-2026/noticias/${noticia.id}`;
     case 'libertadores': return `/${lang}/competiciones/libertadores/${noticia.id}`;
     case 'sudamericana': return `/${lang}/competiciones/sudamericana/${noticia.id}`;
-    case 'ligapro': return `/${lang}/competiciones/liga-pro/${noticia.id}`;
+    case 'liga-pro': return `/${lang}/competiciones/liga-pro/${noticia.id}`;
     case 'mls': return `/${lang}/competiciones/mls/${noticia.id}`;
-    case 'liga-espanola': return `/${lang}/competiciones/la-liga/${noticia.id}`;
+    case 'la-liga': return `/${lang}/competiciones/la-liga/${noticia.id}`;
     case 'premier-league': return `/${lang}/competiciones/premier-league/${noticia.id}`;
     default: return `/${lang}/noticias/${noticia.id}`;
   }
