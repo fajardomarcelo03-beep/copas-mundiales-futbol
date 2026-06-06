@@ -1,7 +1,8 @@
 // src/app/sitemap.js
 import { noticiasMundial } from '@/data/noticias/mundialData';
 import { noticiasLaLiga } from '@/data/noticias/laLigaData';
-import { noticiasLibertadores } from '@/data/noticias/libertadoresData'; 
+import { noticiasLibertadores } from '@/data/noticias/libertadoresData';
+ import { noticiasSudamericana } from '@/data/noticias/sudamericanaData';
 import { noticiasLigaPro } from '@/data/noticias/ligaProData';
 import { noticiasMLS } from '@/data/noticias/mlsData';
 import { noticiasPremier } from '@/data/noticias/PremierData';
@@ -49,6 +50,7 @@ export default async function sitemap() {
     ...generarRutasMundial(noticiasMundial),
     ...generarRutas(noticiasLaLiga, 'la-liga'),
     ...generarRutas(noticiasLibertadores, 'libertadores'),
+    ...generarRutas(noticiasSudamericana, 'sudamericana'),
     ...generarRutas(noticiasLigaPro, 'liga-pro'),
     ...generarRutas(noticiasMLS, 'mls'),
     ...generarRutas(noticiasPremier, 'premier-league'),

@@ -1,7 +1,7 @@
 export const noticiasLigaPro = [
   {
   id: "noticia-1",
-  categoria: "ligapro",
+  categoria: "liga-pro",
   logo: "/logo/ligapro.png",
   fechaISO: "2026-06-04",
   imagen: "/LigaPro/JCleon.jpg",
@@ -22,7 +22,7 @@ export const noticiasLigaPro = [
 },
 {
   id: "noticia-2",
-  categoria: "ligapro",
+  categoria: "liga-pro",
   logo: "/logo/ligapro.png",
   fechaISO: "2026-06-04",
   imagen: "/LigaPro/Oyola.jpg",

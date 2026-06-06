@@ -69,7 +69,7 @@ export default function DetalleLigaProPage() {
             <hr style={separadorSugerenciasStyle} />
             <div style={gridSugerenciasStyle} className="grid-sugerencias">
               {sugerenciasAleatorias.map((sug) => (
-                <Link key={sug.id} href={`/${idioma}/competiciones/ligapro/${sug.id}`} style={enlaceSugerenciaStyle}>
+                <Link key={sug.id} href={`/${idioma}/competiciones/liga-pro/${sug.id}`} style={enlaceSugerenciaStyle}>
                   <div style={miniCardSugerenciaStyle} className="mini-card-sugerencia">
                     <div style={{ position: 'relative', width: '100px', height: '70px', flexShrink: 0 }}>
                       <Image 
