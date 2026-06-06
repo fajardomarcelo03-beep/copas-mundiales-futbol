@@ -92,7 +92,7 @@ export default function DetalleLaLigaPage() {
         )}
 
         <div style={{ marginTop: '35px', textAlign: 'center' }}>
-          <Link href={`/${idioma}/competiciones/la-liga`} style={btnVolverStyle}>
+          <Link href={`/${idioma}`} style={btnVolverStyle}>
             {idioma === 'es' ? '← Volver a LaLiga' : '← Back to LaLiga'}
           </Link>
         </div>
