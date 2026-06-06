@@ -24,13 +24,9 @@ export default function HeaderContextLayout({ children }) {
   useEffect(() => {
     const pathLang = pathname.split('/')[1];
     setIdioma(pathLang === 'en' ? 'en' : 'es');
-    
     const savedTheme = localStorage.getItem('app-theme') || 'light';
     setTema(savedTheme);
     document.documentElement.setAttribute('data-theme', savedTheme);
-    
-    setMenuEscritorioAbierto(null);
-    setMenuMovilAbierto(false);
   }, [pathname]);
 
   const toggleTema = () => {
@@ -47,17 +43,15 @@ export default function HeaderContextLayout({ children }) {
     router.push(segments.join('/'));
   };
 
-  const toggleSubmenu = (index) => {
-    setSubmenuActivo(submenuActivo === index ? null : index);
-  };
+  const toggleSubmenu = (index) => setSubmenuActivo(submenuActivo === index ? null : index);
 
   const t = {
     titulo: "FÚTBOL FANÁTIC",
     botonLang: idioma === 'es' ? 'ES 🌐' : 'EN 🌐',
-    botonTheme: tema === 'light' ? '🌙' : '☀️',
+    themeIcon: tema === 'light' ? '🌙' : '☀️',
     menu: idioma === 'es' ? 
       [
-        { title: "MUNDIAL 2026", submenu: [{ name: "Calendario", url: "/mundial-2026/calendario" }, { name: "Resultados y Posiciones", url: "/mundial-2026/posiciones" }, { name: "Noticias", url: "/mundial-2026/noticias" }] },
+        { title: "MUNDIAL 2026", submenu: [{ name: "Calendario", url: "/mundial-2026/calendario" }, { name: "Resultados", url: "/mundial-2026/posiciones" }, { name: "Noticias", url: "/mundial-2026/noticias" }] },
         { title: "HISTORIA", submenu: [{ name: "Ediciones", url: "/historia/ediciones" }, { name: "Presidentes", url: "/historia/presidentes" }, { name: "Estadios", url: "/historia/estadios" }, { name: "Jugadores", url: "/historia/jugadores" }] },
         { title: "COMPETICIONES", submenu: [{ name: "Liga Pro", url: "/competiciones/liga-pro" }, { name: "Libertadores", url: "/competiciones/libertadores" }, { name: "Sudamericana", url: "/competiciones/sudamericana" }, { name: "MLS", url: "/competiciones/mls" }, { name: "La Liga", url: "/competiciones/la-liga" }, { name: "Premier League", url: "/competiciones/premier-league" }] }
       ] : 
@@ -76,64 +70,68 @@ export default function HeaderContextLayout({ children }) {
             {menuMovilAbierto ? '✕' : '☰'}
           </button>
           
-          <Link href={`/${idioma}`} style={{...logoStyle, textDecoration: 'none'}}>
-            <span>⚽</span> {t.titulo}
-          </Link>
+          <Link href={`/${idioma}`} style={{...logoStyle, textDecoration: 'none'}}><span>⚽</span><span className="logo-text">{t.titulo}</span></Link>
 
           <nav style={navLinksContainerStyle} className="nav-desktop">
             {t.menu.map((item, index) => (
               <div key={index} style={menuItemGroupStyle} onMouseEnter={() => setMenuEscritorioAbierto(index)} onMouseLeave={() => setMenuEscritorioAbierto(null)}>
                 <span style={menuTitleStyle}>{item.title} ▼</span>
                 <div style={{...dropdownPanelStyle, display: menuEscritorioAbierto === index ? 'block' : 'none'}}>
-                  {item.submenu.map((sub, sIdx) => (
-                    <Link key={sIdx} href={`/${idioma}${sub.url}`} style={dropdownLinkStyle}>{sub.name}</Link>
-                  ))}
+                  {item.submenu.map((sub, sIdx) => <Link key={sIdx} href={`/${idioma}${sub.url}`} style={dropdownLinkStyle}>{sub.name}</Link>)}
                 </div>
               </div>
             ))}
           </nav>
 
           <div style={navStyle}>
-            <button onClick={toggleTema} style={themeButtonStyle}>{t.themeThemeIcon}</button>
+            <button onClick={toggleTema} style={themeButtonStyle}>{t.themeIcon}</button>
             <button onClick={cambiarIdioma} style={langButtonStyle}>{t.botonLang}</button>
           </div>
         </div>
+
+        {/* MENÚ LATERAL MÓVIL */}
+        {menuMovilAbierto && (
+          <div style={mobileMenuPanelStyle}>
+            {t.menu.map((item, index) => (
+              <div key={index}>
+                <div style={mobileMenuTitleStyle} onClick={() => toggleSubmenu(index)}>{item.title} {submenuActivo === index ? '▲' : '▼'}</div>
+                {submenuActivo === index && (
+                  <div style={{backgroundColor: '#162033'}}>
+                    {item.submenu.map((sub, sIdx) => <Link key={sIdx} href={`/${idioma}${sub.url}`} style={mobileDropdownLinkStyle} onClick={() => setMenuMovilAbierto(false)}>{sub.name}</Link>)}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
       </header>
 
-      <div className="main-content-wrapper" style={{ paddingTop: '56px' }}>{children}</div>
+      <div style={{ paddingTop: '56px' }}>{children}</div>
 
       <style jsx global>{`
         :root[data-theme='light'] { --bg: #ffffff; --text: #0a192f; --dropdown-bg: #ffffff; --dropdown-text: #0a192f; }
         :root[data-theme='dark'] { --bg: #0a192f; --text: #ffffff; --dropdown-bg: #1e293b; --dropdown-text: #ffffff; }
         body { background-color: var(--bg); color: var(--text); transition: background 0.3s, color 0.3s; }
+        @media (max-width: 900px) { .nav-desktop { display: none !important; } .mobile-burger-btn { display: block !important; } }
+        @media (min-width: 901px) { .mobile-burger-btn { display: none !important; } }
+        @media (max-width: 400px) { .logo-text { display: none !important; } }
       `}</style>
     </IdiomaContext.Provider>
   );
 }
 
-// Estilos CORREGIDOS
 const headerStyle = { position: 'fixed', top: 0, width: '100%', backgroundColor: '#0a192f', color: '#ffffff', height: '56px', display: 'flex', alignItems: 'center', zIndex: 10000 };
-const headerContainerStyle = { width: '100%', maxWidth: '1280px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 20px', height: '100%' };
+const headerContainerStyle = { width: '100%', maxWidth: '1280px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 15px', height: '100%' };
 const logoStyle = { fontWeight: '900', color: '#ffffff', display: 'flex', alignItems: 'center', gap: '6px' };
-const burgerButtonStyle = { background: 'none', border: 'none', color: '#ffffff', fontSize: '1.6rem', cursor: 'pointer', display: 'none' };
+const burgerButtonStyle = { background: 'none', border: 'none', color: '#ffffff', fontSize: '1.6rem', cursor: 'pointer' };
 const navLinksContainerStyle = { display: 'flex', height: '100%', alignItems: 'center' };
-const menuItemGroupStyle = { padding: '0 15px', cursor: 'pointer', height: '100%', display: 'flex', alignItems: 'center', position: 'relative' }; // Añadido position relative
+const menuItemGroupStyle = { padding: '0 15px', cursor: 'pointer', height: '100%', display: 'flex', alignItems: 'center', position: 'relative' };
 const menuTitleStyle = { fontSize: '0.8rem', fontWeight: '700' };
-
-// --- CORRECCIÓN CLAVE AQUÍ ---
-const dropdownPanelStyle = { 
-  position: 'absolute', 
-  top: '100%', // Se posiciona justo debajo del contenedor padre
-  marginTop: '-2px', // Micro-superposición para cerrar la brecha y evitar el parpadeo
-  left: 0, 
-  backgroundColor: 'var(--dropdown-bg)', // Usa variables CSS para el tema
-  borderRadius: '0 0 6px 6px', 
-  padding: '10px 0', 
-  boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-  minWidth: '200px' // Anchura mínima para evitar que se vea muy estrecho
-};
-
+const dropdownPanelStyle = { position: 'absolute', top: '100%', left: 0, backgroundColor: 'var(--dropdown-bg)', borderRadius: '0 0 6px 6px', padding: '10px 0', boxShadow: '0 4px 6px rgba(0,0,0,0.1)', minWidth: '200px' };
 const dropdownLinkStyle = { display: 'block', padding: '8px 15px', color: 'var(--dropdown-text)', textDecoration: 'none', fontSize: '0.8rem' };
-const navStyle = { display: 'flex', gap: '10px' };
-const langButtonStyle = { backgroundColor: '#f1c40f', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.7rem' };
-const themeButtonStyle = { backgroundColor: '#334155', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer', fontSize: '0.8rem' };
+const navStyle = { display: 'flex', gap: '8px', marginLeft: 'auto' };
+const langButtonStyle = { backgroundColor: '#f1c40f', border: 'none', padding: '5px 8px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.7rem' };
+const themeButtonStyle = { backgroundColor: '#334155', border: 'none', padding: '5px 8px', borderRadius: '4px', cursor: 'pointer', fontSize: '0.8rem' };
+const mobileMenuPanelStyle = { position: 'fixed', top: '56px', left: 0, height: '100vh', width: '260px', backgroundColor: '#0a192f', boxShadow: '2px 0 10px rgba(0,0,0,0.5)', zIndex: 9999, overflowY: 'auto' };
+const mobileMenuTitleStyle = { padding: '15px', borderBottom: '1px solid #1e293b', fontWeight: 'bold', cursor: 'pointer', fontSize: '0.9rem' };
+const mobileDropdownLinkStyle = { display: 'block', padding: '10px 20px', color: '#cbd5e1', textDecoration: 'none', fontSize: '0.85rem' };
