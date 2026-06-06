@@ -1,5 +1,26 @@
 export const noticiasMundial = [
   {
+  "id": "noticia-14",
+  "categoria": "mundial",
+  "logo": "/logo/mundial.png",
+  "fechaISO": "2026-06-06",
+  "imagen": "/Mundial/PortugalChile.jpg",
+  "es": {
+    "titulo": "Cristiano Ronaldo comanda a Portugal en la victoria ante Chile 2-1",
+    "subtitulo": "Los lusos se imponen con autoridad en su penúltimo amistoso antes del debut mundialista.",
+    "contenido": "Portugal se perfila como un firme candidato al título. En un duelo vibrante, los 'Lusos' superaron 2-1 a Chile en su penúltimo examen previo al Mundial. Liderados por un Cristiano Ronaldo que partió desde el pitazo inicial, el conjunto europeo exhibió un despliegue ofensivo constante y un dominio táctico que sofocó las aspiraciones de 'La Roja'. Aunque el marcador se mantuvo cerrado durante la primera mitad, la intensidad se desbordó tras el descanso con los goles que sentenciaron el encuentro y momentos de alta tensión que derivaron en expulsiones en ambos bandos. A pesar de las ausencias destacadas de Vitinha y Neves, figuras del PSG, Portugal demostró una profundidad de plantilla envidiable. El equipo ahora pone la mira en su último amistoso frente a Nigeria, este miércoles 10 de junio, antes de iniciar su aventura mundialista.",
+    "fecha": "6 de junio de 2026",
+    "tiempoLectura": "2 min"
+  },
+  "en": {
+    "titulo": "Cristiano Ronaldo leads Portugal to a 2-1 victory over Chile",
+    "subtitulo": "The Portuguese squad triumphs with authority in their penultimate friendly before the World Cup debut.",
+    "contenido": "Portugal is shaping up to be a strong title contender. In a thrilling match, the 'Lusos' defeated Chile 2-1 in their penultimate test before the World Cup. Led by Cristiano Ronaldo, who started from the opening whistle, the European side displayed constant offensive pressure and tactical dominance that stifled 'La Roja's' aspirations. While the scoreboard remained tight in the first half, intensity boiled over after the break, resulting in the goals that decided the match and heated moments that led to red cards for both sides. Despite the notable absences of PSG stars Vitinha and Neves, Portugal showcased enviable squad depth. The team now turns its attention to their final friendly against Nigeria on Wednesday, June 10, before embarking on their World Cup journey.",
+    "fecha": "June 6, 2026",
+    "tiempoLectura": "2 min"
+  }
+},
+{
   id: "noticia-13",
   categoria: "mundial",
   logo: "/logo/mundial.png",
