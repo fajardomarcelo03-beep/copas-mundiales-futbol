@@ -141,4 +141,29 @@ a {
     display: block !important;
   }
 }
+/* =========================================================================
+   INTEGRACIÓN KLARO! (Gestión de Cookies)
+   ========================================================================= */
+@import 'klaro/dist/klaro.min.css';
+
+/* Personalización para Fútbol Fanátic */
+#klaro {
+  --klaro-primary-color: #0a192f; /* Tu azul de marca */
+  --klaro-link-color: #0a192f;
+  --klaro-button-success-color: #f1c40f; /* Tu amarillo de marca para el botón principal */
+  --klaro-button-success-text-color: #0a192f;
+}
+
+/* Asegurar que el banner no se solape con elementos críticos */
+.klaro {
+  z-index: 10002 !important; 
+}
+
+/* Mejora de legibilidad en móviles para el banner */
+@media (max-width: 768px) {
+  .klaro .cookie-modal {
+    width: 95% !important;
+    margin: auto !important;
+  }
+}
 }

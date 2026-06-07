@@ -1,7 +1,7 @@
 import './globals.css';
 import HeaderContextLayout from './HeaderContextLayout';
 import { Analytics } from '@vercel/analytics/react';
-import CookieBanner from '../components/CookieBanner';
+import KlaroInitializer from '../components/KlaroInitializer';
 
 export const metadata = {
   title: "Fútbol Fanátic | Noticias, Resultados y la Historia del Fútbol",
@@ -21,11 +21,13 @@ export default async function RootLayout({ children, params }) {
         backgroundColor: '#ffffff', 
         fontFamily: 'system-ui, -apple-system, sans-serif'
       }}>
+        {/* Inicializador de Klaro para la gestión profesional de cookies */}
+        <KlaroInitializer />
+        
         <HeaderContextLayout>
           {children}
         </HeaderContextLayout>
         <Analytics />
-        <CookieBanner />
       </body>
     </html>
   );
