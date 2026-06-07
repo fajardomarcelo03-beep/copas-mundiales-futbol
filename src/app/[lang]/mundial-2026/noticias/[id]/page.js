@@ -6,11 +6,8 @@ export async function generateMetadata({ params }) {
   const resolvedParams = await params;
   const { id, lang } = resolvedParams;
   
-  // Usamos el servicio para buscar la noticia
-  const noticia = await getNoticiaById(id);
-
-  console.log("Servidor - ID:", id, "Idioma:", lang, "Noticia encontrada:", !!noticia);
-  
+  const noticia = await getNoticiaById('mundial-2026', id);
+ 
   if (!noticia) return { title: "Noticia no encontrada" };
 
   const baseUrl = 'https://copas-mundiales-futbol.vercel.app';
