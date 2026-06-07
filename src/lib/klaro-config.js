@@ -42,7 +42,7 @@ export const klaroConfig = {
       },
     },
   },
-  apps: [
+  services: [
     {
       name: 'google-analytics',
       title: 'Google Analytics',
