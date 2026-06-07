@@ -1,7 +1,7 @@
 import './globals.css';
 import HeaderContextLayout from './HeaderContextLayout';
 import { Analytics } from '@vercel/analytics/react';
-import CookieBanner from './components/CookieBanner';
+import CookieBanner from '../components/CookieBanner';
 
 export const metadata = {
   title: "Fútbol Fanátic | Noticias, Resultados y la Historia del Fútbol",
