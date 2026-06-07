@@ -9,9 +9,7 @@ export async function generateMetadata({ params }) {
   // Usamos el servicio para buscar la noticia
   const noticia = await getNoticiaById(id);
 
-  console.log("ID recibido:", id);
-  console.log("Noticia encontrada:", !!noticia);
-  console.log("Idioma:", lang);
+  console.log("Servidor - ID:", id, "Idioma:", lang, "Noticia encontrada:", !!noticia);
   
   if (!noticia) return { title: "Noticia no encontrada" };
 
