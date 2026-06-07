@@ -1,6 +1,7 @@
 import './globals.css';
 import HeaderContextLayout from './HeaderContextLayout';
 import { Analytics } from '@vercel/analytics/react';
+import CookieBanner from './components/CookieBanner';
 
 export const metadata = {
   title: "Fútbol Fanátic | Noticias, Resultados y la Historia del Fútbol",
@@ -24,6 +25,7 @@ export default async function RootLayout({ children, params }) {
           {children}
         </HeaderContextLayout>
         <Analytics />
+        <CookieBanner />
       </body>
     </html>
   );
