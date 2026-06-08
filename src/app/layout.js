@@ -6,8 +6,8 @@ import KlaroInitializer from '../components/KlaroInitializer';
 export const metadata = {
   title: "Fútbol Fanatic | Noticias, Resultados y la Historia del Fútbol",
   description: "La casa del verdadero fanático del fútbol.",
-  verification: {
-    google: "L_Tf8Rw3rUKttglqFdrGJI0A_ysbMuvy_sqEuc6p8",
+  other: {
+    "google-site-verification": "L_Tf8Rw3rUKttglqFdrGJI0A_ysbMuvy_sqEuc6p8",
   },
 };
 
