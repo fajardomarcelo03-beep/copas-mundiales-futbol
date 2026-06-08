@@ -1,5 +1,26 @@
 export const noticiasMundial = [
   {
+  "id": "noticia-15",
+  "categoria": "mundial",
+  "logo": "/logo/mundial.png",
+  "fechaISO": "2026-06-08",
+  "imagen": "/Mundial/Ecuador.jpg",
+  "es": {
+    "titulo": "Ecuador sueña en grande: una generación de oro lista para la historia",
+    "subtitulo": "La 'Tri' llega al Mundial con su mejor plantilla de todos los tiempos y una solidez defensiva que intimida al mundo.",
+    "contenido": "La ilusión de todo un país se ha trasladado al césped. La selección ecuatoriana afronta este Mundial con la convicción de que es su momento de hacer historia, respaldada por la que, sin duda, es la mejor generación de futbolistas que ha visto nacer el país. El talento tricolor ha cruzado fronteras, consolidándose en la élite europea con nombres que hoy marcan el ritmo en grandes clubes: la potencia de William Pacho en el PSG, la jerarquía de Piero Hincapié en el Arsenal y el dominio absoluto de Moisés Caicedo en el Chelsea. Pero más allá de los nombres propios, el verdadero sello de este equipo es su impecable equilibrio. Ecuador llega con una racha asombrosa de 19 partidos sin conocer la derrota —su último tropiezo fue ante Brasil en septiembre de 2024—, un periodo en el que apenas ha encajado seis goles. Esta muralla defensiva, combinada con un talento joven y ambicioso, convierte a la 'Tri' en uno de los conjuntos más sólidos y respetados de esta cita mundialista.",
+    "fecha": "8 de junio de 2026",
+    "tiempoLectura": "2 min"
+  },
+  "en": {
+    "titulo": "Ecuador dreams big: A golden generation ready to make history",
+    "subtitulo": "‘La Tri’ arrives at the World Cup with their best squad ever and defensive solidity that intimidates the world.",
+    "contenido": "The hope of an entire nation has hit the pitch. The Ecuadorian national team heads into this World Cup with the conviction that it is their time to make history, backed by what is undoubtedly the greatest generation of players the country has ever produced. The 'Tricolor' talent has crossed borders, cementing itself in European football's elite with names now setting the pace at top clubs: William Pacho's power at PSG, Piero Hincapié's presence at Arsenal, and the absolute dominance of Moisés Caicedo at Chelsea. But beyond individual stars, the team’s true identity is its impeccable balance. Ecuador arrives on an astonishing 19-match unbeaten streak—their last defeat coming against Brazil in September 2024—during which they have conceded just six goals. This defensive wall, combined with a young and hungry squad, makes ‘La Tri’ one of the most solid and respected teams in this World Cup.",
+    "fecha": "June 8, 2026",
+    "tiempoLectura": "2 min"
+  }
+},
+{
   "id": "noticia-14",
   "categoria": "mundial",
   "logo": "/logo/mundial.png",
