@@ -1,5 +1,26 @@
 export const noticiasMundial = [
   {
+  "id": "noticia-16",
+  "categoria": "mundial",
+  "logo": "/logo/mundial.png",
+  "fechaISO": "2026-06-08",
+  "imagen": "/Mundial/CristianoMessi.jpg",
+  "es": {
+    "titulo": "Messi y Cristiano Ronaldo, listos para su despedida mundialista",
+    "subtitulo": "Las dos máximas leyendas del fútbol contemporáneo se preparan para su último acto en el escenario más grande del mundo.",
+    "contenido": "Llega el momento que ningún aficionado quería ver, pero que todos sabían que estaba destinado a suceder: el adiós de los dos gigantes. Lionel Messi (38 años) y Cristiano Ronaldo (41 años) están preparados para su debut en lo que será su última gran aventura mundialista. Messi, quien alcanzó la gloria eterna levantando el trofeo en Qatar 2022, llega con una ambición intacta: quiere revalidar la corona y llevar a la 'Scaloneta' a conquistar un histórico y primer bi-campeonato consecutivo. Por otro lado, Cristiano Ronaldo mantiene la mirada fija en el único eslabón que falta en su legendaria trayectoria. El astro portugués se ha preparado con una determinación inquebrantable, liderando un plantel plagado de estrellas jóvenes y experimentadas, todas comprometidas con una misión sagrada: ayudar a su capitán a cumplir el sueño definitivo. El telón está por levantarse para el capítulo final de una rivalidad que definió toda una época del balompié mundial.",
+    "fecha": "8 de junio de 2026",
+    "tiempoLectura": "2 min"
+  },
+  "en": {
+    "titulo": "Messi and Cristiano Ronaldo ready for their World Cup farewell",
+    "subtitulo": "The two greatest legends of contemporary soccer prepare for their final act on the world's biggest stage.",
+    "contenido": "The moment no fan wanted to see, yet all knew was destined to arrive, is here: the farewell of the two giants. Lionel Messi (38) and Cristiano Ronaldo (41) are ready for their debut in what will be their final World Cup adventure. Messi, having reached eternal glory in Qatar 2022, arrives with his ambition untouched: he aims to defend the crown and lead his team to a historic first back-to-back championship. On the other side, Cristiano Ronaldo remains focused on the only missing piece of his legendary career. The Portuguese star has prepared with unbreakable determination, leading a squad packed with both young and veteran stars, all committed to a sacred mission: helping their captain fulfill his ultimate goal. The curtain is about to rise for the final chapter of a rivalry that defined an entire era of world soccer.",
+    "fecha": "June 8, 2026",
+    "tiempoLectura": "2 min"
+  }
+},
+{
   "id": "noticia-15",
   "categoria": "mundial",
   "logo": "/logo/mundial.png",
@@ -15,7 +36,7 @@ export const noticiasMundial = [
   "en": {
     "titulo": "Ecuador dreams big: A golden generation ready to make history",
     "subtitulo": "‘La Tri’ arrives at the World Cup with their best squad ever and defensive solidity that intimidates the world.",
-    "contenido": "The hope of an entire nation has hit the pitch. The Ecuadorian national team heads into this World Cup with the conviction that it is their time to make history, backed by what is undoubtedly the greatest generation of players the country has ever produced. The 'Tricolor' talent has crossed borders, cementing itself in European football's elite with names now setting the pace at top clubs: William Pacho's power at PSG, Piero Hincapié's presence at Arsenal, and the absolute dominance of Moisés Caicedo at Chelsea. But beyond individual stars, the team’s true identity is its impeccable balance. Ecuador arrives on an astonishing 19-match unbeaten streak—their last defeat coming against Brazil in September 2024—during which they have conceded just six goals. This defensive wall, combined with a young and hungry squad, makes ‘La Tri’ one of the most solid and respected teams in this World Cup.",
+    "contenido": "The hope of an entire nation has hit the pitch. The Ecuadorian national team heads into this World Cup with the conviction that it is their time to make history, backed by what is undoubtedly the greatest generation of players the country has ever produced. The 'Tricolor' talent has crossed borders, cementing itself in European soccer's elite with names now setting the pace at top clubs: William Pacho's power at PSG, Piero Hincapié's presence at Arsenal, and the absolute dominance of Moisés Caicedo at Chelsea. But beyond individual stars, the team’s true identity is its impeccable balance. Ecuador arrives on an astonishing 19-match unbeaten streak—their last defeat coming against Brazil in September 2024—during which they have conceded just six goals. This defensive wall, combined with a young and hungry squad, makes ‘La Tri’ one of the most solid and respected teams in this World Cup.",
     "fecha": "June 8, 2026",
     "tiempoLectura": "2 min"
   }
