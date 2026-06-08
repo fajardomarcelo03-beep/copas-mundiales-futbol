@@ -4,8 +4,11 @@ import { Analytics } from '@vercel/analytics/react';
 import KlaroInitializer from '../components/KlaroInitializer';
 
 export const metadata = {
-  title: "Fútbol Fanátic | Noticias, Resultados y la Historia del Fútbol",
+  title: "Fútbol Fanatic | Noticias, Resultados y la Historia del Fútbol",
   description: "La casa del verdadero fanático del fútbol.",
+  verification: {
+    google: "L_Tf8Rw3rUKttglqFdrGJI0A_ysbMuvy_sqEuc6p8",
+  },
 };
 
 // Next.js pasa los params de la ruta dinámica [lang] automáticamente a este componente
