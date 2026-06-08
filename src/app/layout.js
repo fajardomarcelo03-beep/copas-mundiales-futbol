@@ -6,9 +6,9 @@ import KlaroInitializer from '../components/KlaroInitializer';
 export const metadata = {
   title: "Fútbol Fanatic | Noticias, Resultados y la Historia del Fútbol",
   description: "La casa del verdadero fanático del fútbol.",
-  other: {
-    "google-site-verification": "L_Tf8Rw3rUKttglqFdrGJI0A_ysbMuvy_sqEuc6p8",
-  },
+  verification: {
+  google: "L_Tf8Rw3rUKttglqFdrGJI0A_ysbMuvy_sqEuc6p8",
+},
 };
 
 // Next.js pasa los params de la ruta dinámica [lang] automáticamente a este componente
