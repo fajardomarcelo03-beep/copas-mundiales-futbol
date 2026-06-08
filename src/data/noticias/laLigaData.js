@@ -1,5 +1,26 @@
 export const noticiasLaLiga = [
  {
+  "id": "noticia-3",
+  "categoria": "la-liga",
+  "logo": "/logo/laliga.png",
+  "fechaISO": "2026-06-08",
+  "imagen": "/LaLiga/Florentino.jpg",
+  "es": {
+    "titulo": "Florentino Pérez, reelegido: al mando del Real Madrid hasta 2030",
+    "subtitulo": "El actual presidente se impone con contundencia en las elecciones y asegura su continuidad al frente de la entidad blanca.",
+    "contenido": "La cúpula del Real Madrid mantiene su rumbo. Tras una jornada electoral celebrada el pasado domingo, Florentino Pérez ha sido ratificado como presidente del club tras imponerse por un amplio margen a su rival, Enrique Riquelme. Con este respaldo mayoritario de los socios, Pérez extenderá su mandato hasta el año 2030, consolidando un proyecto que busca redefinir la era moderna del madridismo. Durante su discurso de victoria, el máximo dirigente no perdió tiempo en mirar hacia el futuro: confirmó el regreso de José Mourinho al banquillo blanco para liderar el nuevo ciclo técnico. Asimismo, la hoja de ruta deportiva se acelera, pues se espera que en las próximas horas se anuncien oficialmente las incorporaciones del central francés Ibrahima Konaté y del lateral neerlandés Denzel Dumfries, piezas clave para reforzar la estructura defensiva del equipo.",
+    "fecha": "8 de junio de 2026",
+    "tiempoLectura": "2 min"
+  },
+  "en": {
+    "titulo": "Florentino Pérez re-elected: at the helm of Real Madrid until 2030",
+    "subtitulo": "The current president wins the elections against Enrique Riquelme and secures his mandate.",
+    "contenido": "The path for Real Madrid is clear. Following the elections held last Sunday, Florentino Pérez has been re-elected as president after a landslide victory over challenger Enrique Riquelme. With this strong mandate from the club members, Pérez will continue his leadership until 2030, cementing a project that aims to define a new era for the club. In his victory speech, the president wasted no time in looking toward the future, announcing the return of José Mourinho to the coaching staff. Additionally, the club's sporting strategy is moving fast, with the official arrivals of French center-back Ibrahima Konaté and Dutch fullback Denzel Dumfries expected to be confirmed in the coming hours to bolster the team's defensive line.",
+    "fecha": "June 8, 2026",
+    "tiempoLectura": "2 min"
+  }
+},
+{
   "id": "noticia-2",
   "categoria": "la-liga",
   "logo": "/logo/laliga.png",
