@@ -1,5 +1,27 @@
 export const noticiasMundial = [
   {
+    "id": "noticia-18",
+    "categoria": "mundial",
+    "logo": "/logo/mundial.png",
+    "fechaISO": "2026-06-09",
+    "imagen": "/Mundial/Shakira.jpg",
+    "video": "https://www.youtube.com/embed/fcnDmrtj6Sk",
+    "es": {
+      "titulo": "Shakira llega a México: lista para encender la fiesta inaugural del Mundial 2026",
+      "subtitulo": "La superestrella barranquillera iluminará el Estadio Azteca junto a Burna Boy en un espectáculo histórico.",
+      "contenido": "¡La cuenta regresiva ha terminado! Shakira ya respira el aire del territorio azteca. La reina de las ceremonias mundialistas aterriza en México para protagonizar lo que será su cuarta participación en una inauguración de Copa del Mundo, consolidando un legado que trasciende fronteras. En esta ocasión, la artista barranquillera promete hacer vibrar al planeta al interpretar su éxito 'Dai Dai', uniendo fuerzas con el talento del cantante nigeriano Burna Boy. La cita está marcada en el calendario deportivo global: este jueves 11 de junio, a las 13h30 (hora del este), el icónico Estadio Azteca será testigo del inicio de esta gran fiesta. Pero el espectáculo será un auténtico derroche de estrellas; además de Shakira y Burna Boy, el escenario contará con la presencia estelar de Alejandro Fernández, J Balvin, Maná, Belinda, Los Ángeles Azules, Danny Ocean y Lila Downs. México tiene el honor de albergar la primera de las tres ceremonias de apertura planificadas por la FIFA, asegurando un despliegue artístico que promete quedar grabado para siempre en la memoria de los aficionados al fútbol.",
+      "fecha": "9 de junio de 2026",
+      "tiempoLectura": "3 min"
+    },
+    "en": {
+      "titulo": "Shakira arrives in Mexico: Ready to ignite the 2026 World Cup opening ceremony",
+      "subtitulo": "The Colombian superstar will light up the Azteca Stadium alongside Burna Boy in a historic show.",
+      "contenido": "The countdown is officially over! Shakira is already soaking up the atmosphere in Aztec territory. The queen of World Cup ceremonies touches down in Mexico to headline what will be her fourth appearance at a World Cup opening, cementing a legacy that knows no borders. On this occasion, the Barranquilla-born artist promises to shake the planet as she performs her hit 'Dai Dai,' joining forces with the electrifying Nigerian singer Burna Boy. The date is set on the global sporting calendar: this Thursday, June 11, at 1:30 PM (ET), the iconic Estadio Azteca will witness the kick-off of this massive celebration. But the spectacle promises to be a true star-studded affair; alongside Shakira and Burna Boy, the stage will feature stellar performances by Alejandro Fernández, J Balvin, Maná, Belinda, Los Ángeles Azules, Danny Ocean, and Lila Downs. Mexico has the honor of hosting the first of the three opening ceremonies planned by FIFA, ensuring a performance that promises to be etched forever in the memories of soccer fans worldwide.",
+      "fecha": "June 9, 2026",
+      "tiempoLectura": "3 min"
+    }
+  },
+  {
     "id": "noticia-17",
     "categoria": "mundial",
     "logo": "/logo/mundial.png",

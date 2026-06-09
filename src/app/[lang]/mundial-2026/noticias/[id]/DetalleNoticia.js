@@ -68,7 +68,17 @@ export default function DetalleNoticia({ params }) {
         ) : (
           <p style={contenidoTextoStyle}>{textoNoticia.contenido}</p>
         )}
-
+        {objetoNoticia.video && (
+  <div style={videoContainerStyle}>
+    <iframe 
+      src={objetoNoticia.video} 
+      title="Video relacionado"
+      style={iframeStyle}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+    />
+  </div>
+)}
         {sugerenciasAleatorias.length > 0 && (
           <>
             <hr style={separadorSugerenciasStyle} />
@@ -124,3 +134,21 @@ const miniCardSugerenciaStyle = { display: 'flex', gap: '12px', padding: '12px',
 const miniImgSugerenciaStyle = { width: '100px', height: '70px', objectFit: 'cover', borderRadius: '4px' };
 const miniTituloSugerenciaStyle = { fontSize: '0.88rem', color: '#0a192f', margin: '0 0 4px 0', fontWeight: '700' };
 const miniEnlaceTextoStyle = { fontSize: '0.8rem', color: '#f1c40f', fontWeight: '700' };
+const videoContainerStyle = {
+  position: 'relative',
+  width: '100%',
+  paddingBottom: '56.25%', // Relación de aspecto 16:9
+  height: 0,
+  overflow: 'hidden',
+  marginBottom: '20px',
+  borderRadius: '8px'
+};
+
+const iframeStyle = {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  border: 0
+};
