@@ -1,5 +1,26 @@
 export const noticiasLaLiga = [
  {
+  "id": "noticia-4",
+  "categoria": "la-liga",
+  "logo": "/logo/laliga.png",
+  "fechaISO": "2026-06-09",
+  "imagen": "/LaLiga/JulianAlvarez.jpg",
+  "es": {
+    "titulo": "El Atlético de Madrid rechaza una oferta récord de 150 millones por Julián Álvarez",
+    "subtitulo": "El Real Madrid intentó romper el mercado con una cifra astronómica por el atacante argentino.",
+    "contenido": "Un terremoto en los despachos de la capital española. El Atlético de Madrid ha desestimado de manera contundente una propuesta formal del Real Madrid, que puso sobre la mesa 150 millones de euros para hacerse con los derechos deportivos de Julián Álvarez. El delantero argentino, convertido en uno de los referentes ofensivos más cotizados del panorama internacional tras sus brillantes actuaciones en las últimas temporadas, se ha consolidado como un pilar fundamental para el esquema 'colchonero'. Pese al poderío económico de la oferta merengue, la directiva rojiblanca ha mantenido una postura inamovible, dejando claro que el 'Araña' no está en venta. Este movimiento del Real Madrid subraya el alto interés que despierta el punta en los gigantes europeos, aunque, por ahora, el Atlético cierra filas y blinda a su estrella ante la amenaza de una de las operaciones más ambiciosas del mercado de verano.",
+    "fecha": "9 de junio de 2026",
+    "tiempoLectura": "2 min"
+  },
+  "en": {
+    "titulo": "Atlético de Madrid rejects record 150 million euro bid for Julián Álvarez",
+    "subtitulo": "Real Madrid attempted to shake the transfer market with an astronomical offer for the Argentine forward.",
+    "contenido": "A major shake-up in Spain's capital. Atlético de Madrid has decisively turned down a formal bid from Real Madrid, who offered 150 million euros to secure the sporting rights of Julián Álvarez. The Argentine forward, who has become one of the most sought-after offensive talents in world football following his stellar performances over recent seasons, has established himself as a cornerstone of the 'Colchonero' squad. Despite the financial muscle behind Madrid's approach, the Atlético board has held firm, signaling that 'La Araña' is not for sale. This move by Real Madrid highlights the intense interest surrounding the striker among Europe's elite clubs, yet for now, Atlético is closing ranks to protect their star from what would have been one of the most ambitious transfers of the summer market.",
+    "fecha": "June 9, 2026",
+    "tiempoLectura": "2 min"
+  }
+},
+  {
   "id": "noticia-3",
   "categoria": "la-liga",
   "logo": "/logo/laliga.png",
