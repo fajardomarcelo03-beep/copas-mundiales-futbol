@@ -12,6 +12,7 @@ export default function ListaLaLigaPage({ params }) {
 
   const [noticias, setNoticias] = useState([]);
   const [cargando, setCargando] = useState(true);
+  const [visibles, setVisibles] = useState(8); // Estado para mostrar 8 noticias iniciales
 
   useEffect(() => {
     async function cargarDatos() {
@@ -34,14 +35,44 @@ export default function ListaLaLigaPage({ params }) {
       </h1>
 
       <div style={{ display: 'grid', gap: '20px' }}>
-        {noticias.map((noticia) => (
-          <TarjetaNoticia 
-            key={noticia.id} 
-            noticia={noticia} 
-            lang={lang} 
-            rutaBase="competiciones/la-liga" 
-          />
-        ))}
+        {noticias.length > 0 ? (
+          <>
+            {/* Renderizamos solo el segmento definido por 'visibles' */}
+            {noticias.slice(0, visibles).map((noticia) => (
+              <TarjetaNoticia 
+                key={noticia.id} 
+                noticia={noticia} 
+                lang={lang} 
+                rutaBase="competiciones/la-liga" 
+              />
+            ))}
+
+            {/* Botón de 'Cargar más' si quedan noticias ocultas */}
+            {visibles < noticias.length && (
+              <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                <button 
+                  onClick={() => setVisibles(visibles + 8)}
+                  style={{ 
+                    padding: '12px 24px', 
+                    cursor: 'pointer',
+                    backgroundColor: '#0a192f',
+                    color: '#ffffff',
+                    border: 'none',
+                    borderRadius: '5px',
+                    fontWeight: 'bold',
+                    fontSize: '0.9rem'
+                  }}
+                >
+                  {lang === 'es' ? 'Ver más noticias' : 'Load more news'}
+                </button>
+              </div>
+            )}
+          </>
+        ) : (
+          <p style={{ textAlign: 'center' }}>
+            {lang === 'es' ? 'No hay noticias disponibles.' : 'No news available.'}
+          </p>
+        )}
       </div>
     </div>
   );
