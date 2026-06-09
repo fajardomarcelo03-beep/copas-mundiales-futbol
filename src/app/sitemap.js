@@ -8,7 +8,7 @@ import { noticiasMLS } from '@/data/noticias/mlsData';
 import { noticiasPremier } from '@/data/noticias/PremierData';
 
 export default async function sitemap() {
-  const baseUrl = 'https://copas-mundiales-futbol.vercel.app';
+  const baseUrl = 'https://www.futbolfanatic.com';
 
   // 1. Rutas estáticas
   const rutasEstaticas = ['', '/es', '/en'].map((ruta) => ({

@@ -13,7 +13,7 @@ export async function generateMetadata({ params }) {
   
   if (!noticia) return { title: "Noticia no encontrada" };
 
-  const baseUrl = 'https://copas-mundiales-futbol.vercel.app';
+  const baseUrl = 'https://www.futbolfanatic.com';
   const urlNoticia = `${baseUrl}/${lang}/competiciones/libertadores/${id}`;
   
   const titulo = noticia[lang]?.titulo || "Fútbol Fanátic | Libertadores";
