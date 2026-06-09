@@ -1,6 +1,7 @@
 import './globals.css';
 import HeaderContextLayout from './HeaderContextLayout';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import KlaroInitializer from '../components/KlaroInitializer';
 
 export const metadata = {
@@ -28,6 +29,7 @@ export default async function RootLayout({ children, params }) {
           {children}
         </HeaderContextLayout>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
