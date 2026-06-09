@@ -1,5 +1,26 @@
 export const noticiasMundial = [
   {
+    "id": "noticia-17",
+    "categoria": "mundial",
+    "logo": "/logo/mundial.png",
+    "fechaISO": "2026-06-09",
+    "imagen": "/Mundial/Messi.jpg",
+    "es": {
+      "titulo": "¡Buenas noticias para la Scaloneta! Messi está recuperado",
+      "subtitulo": "El DT argentino Lionel Scaloni confirmó que el 10 de la Albiceleste está listo para volver al campo de juego.",
+      "contenido": "¡El corazón de la hinchada argentina vuelve a latir con fuerza! Lionel Messi ha dejado atrás la dolencia muscular que lo mantuvo en vilo durante los últimos días y ya está listo para saltar al ruedo. El estratega Lionel Scaloni, con la tranquilidad de quien recupera a su pieza más vital, confirmó que el capitán de la Albiceleste ya está disponible para ser tomado en cuenta. Pero eso no es todo: el propio Scaloni adelantó que el astro rosarino tendrá minutos de acción en el último amistoso de preparación antes del esperado debut mundialista frente a Argelia, el próximo 16 de junio. Con el '10' de vuelta, Argentina ajusta sus piezas y recupera su mayor jerarquía para el desafío máximo.",
+      "fecha": "9 de junio de 2026",
+      "tiempoLectura": "2 min"
+    },
+    "en": {
+      "titulo": "Great news for the 'Scaloneta'! Messi is recovered",
+      "subtitulo": "Head coach Lionel Scaloni confirmed that the Albiceleste's number 10 is ready to return to the pitch.",
+      "contenido": "The hearts of Argentine fans are beating strong again! Lionel Messi has put behind the muscle injury that kept everyone in suspense over the last few days and is now ready to get back to action. Head coach Lionel Scaloni, with the confidence of someone who has recovered their most vital piece, confirmed that the Albiceleste captain is available to be selected. But that's not all: Scaloni himself announced that the Rosario-born star will get minutes in the final friendly match before the highly anticipated World Cup debut against Algeria on June 16. With the '10' back on board, Argentina fine-tunes its squad and recovers its greatest talent for the ultimate challenge.",
+      "fecha": "June 9, 2026",
+      "tiempoLectura": "2 min"
+    }
+  },
+  {
   "id": "noticia-16",
   "categoria": "mundial",
   "logo": "/logo/mundial.png",
