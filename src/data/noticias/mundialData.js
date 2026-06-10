@@ -1,5 +1,26 @@
 export const noticiasMundial = [
   {
+  "id": "noticia-19",
+  "categoria": "mundial",
+  "logo": "/logo/mundial.png",
+  "fechaISO": "2026-06-10",
+  "imagen": "/Mundial/BotaOro.jpeg",
+    "es": {
+    "titulo": "Quiénes son los máximos aspirantes a la Bota de Oro del Mundial 2026",
+    "subtitulo": "Varias figuras del fútbol mundial se disputarán este premio en la cita norteamericana.",
+    "contenido": "La carrera por la Bota de Oro del Mundial 2026 está oficialmente abierta. Con el inicio del torneo a la vuelta de la esquina, el planeta fútbol se prepara para ver a los artilleros más letales enfrentarse por la gloria individual. La lista de candidatos es imponente: Lionel Messi lidera el camino con su magia inagotable, sumando 116 goles en 198 partidos internacionales y 13 tantos en citas mundialistas. De cerca le sigue Cristiano Ronaldo, quien acumula 143 goles en 226 encuentros con su selección y 8 en Mundiales. A ellos se suman referentes como Harry Kane, siempre clínico (79 goles en 113 partidos y 8 mundialistas), y Kylian Mbappé, cuya velocidad y potencia (56 goles en 98 partidos y 12 mundialistas) lo convierten en una amenaza constante. No podemos olvidar a la gran novedad, Erling Haaland, la máquina noruega que, pese a su debut en el torneo, llega tras registrar 55 goles en apenas 50 compromisos internacionales. Además, talentos desequilibrantes como Vinícius Jr., Raphinha, Neymar Jr., Lamine Yamal y Ousmane Dembélé están listos para aprovechar cada oportunidad y sorprender al mundo entero. La batalla por ser el máximo artillero promete ser, como nunca antes, una lucha épica por la historia.",
+    "fecha": "10 de junio de 2026",
+    "tiempoLectura": "3 min"
+  },
+  "en": {
+    "titulo": "Who are the top contenders for the 2026 World Cup Golden Boot?",
+    "subtitulo": "Several football superstars will battle for this prestigious award in North America.",
+    "contenido": "The race for the 2026 World Cup Golden Boot is officially underway. As the tournament kicks off, the footballing world braces itself to see the most lethal marksmen clash for individual glory. The list of candidates is formidable: Lionel Messi leads the charge with his inexhaustible magic, boasting 116 goals in 198 international caps and 13 in World Cup matches. He is closely followed by Cristiano Ronaldo, with 143 goals in 226 appearances and 8 in World Cup play. Joining them are key figures such as Harry Kane, always clinical (79 goals in 113 caps, 8 in World Cups), and Kylian Mbappé, whose pace and power (56 goals in 98 caps, 12 in World Cups) make him a nightmare for any defense. We cannot overlook Erling Haaland, the Norwegian machine who arrives for his tournament debut with an impressive tally of 55 goals in 50 international matches. Furthermore, dynamic talents such as Vinícius Jr., Raphinha, Neymar Jr., Lamine Yamal, and Ousmane Dembélé are primed to seize every opportunity and stun the world. The battle for the top scorer title promises to be an epic struggle like never before.",
+    "fecha": "June 10, 2026",
+    "tiempoLectura": "3 min"
+  }
+},
+{
     "id": "noticia-18",
     "categoria": "mundial",
     "logo": "/logo/mundial.png",
