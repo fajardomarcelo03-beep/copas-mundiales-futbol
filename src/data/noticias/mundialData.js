@@ -9,14 +9,30 @@ export const noticiasMundial = [
   "es": {
     "titulo": "México inicia con el pie derecho y se posiciona en la cima del Grupo A",
     "subtitulo": "El 'Tri' impuso condiciones ante Sudáfrica con una victoria sólida de 2-0 en el Estadio Azteca.",
-    "contenido": "Ante un Estadio Azteca que vibró como en las grandes noches, la selección mexicana hizo valer su condición de local y firmó un debut soñado en la Copa Mundial 2026. El conjunto dirigido por Javier Aguirre mostró una superioridad táctica evidente, dominando los hilos del encuentro de principio a fin y proyectando una imagen de solidez que ilusiona a la afición.\n\nEl marcador se abrió tempranamente cuando Julián Quiñones, con una lectura de juego impecable, marcó el 1-0 apenas a los 9 minutos. Tras el tanto inicial, México mantuvo la posesión y el orden defensivo, logrando sentenciar el encuentro al minuto 67 gracias a una gran definición de Raúl Jiménez, quien ratificó su jerarquía en el área.\n\nEl complemento se tornó un desafío de fricción y temperamento. El compromiso se complicó para el cuadro sudafricano, que vio cómo su planteamiento se desmoronaba tras las expulsiones de Sithole (50') y Zwane (84'). México, sin embargo, también cerró con una nota de amargura al sufrir la expulsión de Montes en el minuto 92, una baja que Aguirre deberá gestionar para los próximos duelos.\n\nCon este triunfo, México se coloca momentáneamente en lo más alto del Grupo A. Ahora, el 'Tri' observa con atención el desenlace del choque entre la República de Corea y la República Checa, esperando consolidar su posición privilegiada en la tabla.",
+    "contenido": `Ante un Estadio Azteca que vibró como en las grandes noches, la selección mexicana hizo valer su condición de local y firmó un debut soñado en la Copa Mundial 2026. 
+    
+    El conjunto dirigido por Javier Aguirre mostró una superioridad táctica evidente, dominando los hilos del encuentro de principio a fin y proyectando una imagen de solidez que ilusiona a la afición.
+    
+    El marcador se abrió tempranamente cuando Julián Quiñones, con una lectura de juego impecable, marcó el 1-0 apenas a los 9 minutos. Tras el tanto inicial, México mantuvo la posesión y el orden defensivo, logrando sentenciar el encuentro al minuto 67 gracias a una gran definición de Raúl Jiménez, quien ratificó su jerarquía en el área.
+    
+    El complemento se tornó un desafío de fricción y temperamento. El compromiso se complicó para el cuadro sudafricano, que vio cómo su planteamiento se desmoronaba tras las expulsiones de Sithole (50') y Zwane (84'). México, sin embargo, también cerró con una nota de amargura al sufrir la expulsión de Montes en el minuto 92, una baja que Aguirre deberá gestionar para los próximos duelos.
+    
+    Con este triunfo, México se coloca momentáneamente en lo más alto del Grupo A. Ahora, el 'Tri' observa con atención el desenlace del choque entre la República de Corea y la República Checa, esperando consolidar su posición privilegiada en la tabla.`,
     "fecha": "11 de junio de 2026",
     "tiempoLectura": "3 min"
   },
   "en": {
     "titulo": "Mexico starts strong and takes the lead in Group A",
     "subtitulo": "‘El Tri’ imposed its authority over South Africa with a solid 2-0 victory at the Estadio Azteca.",
-    "contenido": "Before an Estadio Azteca buzzing like it does on the biggest of nights, the Mexican national team asserted its home-field advantage and secured a dream start to the 2026 World Cup. Javier Aguirre's side demonstrated clear tactical superiority, controlling the match from start to finish and projecting an image of strength that has galvanized the home fans.\n\nThe deadlock was broken early when Julián Quiñones, with impeccable positional awareness, netted the opener in the 9th minute. After the goal, Mexico maintained possession and defensive composure, ultimately sealing the win in the 67th minute through a clinical finish from Raúl Jiménez, who once again proved his predatory instincts in the box.\n\nThe second half turned into a physical and testy affair. Things spiraled for the South African side as their game plan crumbled following the sendings-off of Sithole (50') and Zwane (84'). Mexico, however, ended the night on a sour note, losing Montes to a red card in the 92nd minute—a loss that Aguirre will have to manage for the upcoming fixtures.\n\nWith this victory, Mexico sits atop Group A for the time being. Now, 'El Tri' awaits the outcome of the clash between South Korea and the Czech Republic, looking to cement their position at the top of the standings.",
+    "contenido": `Before an Estadio Azteca buzzing like it does on the biggest of nights, the Mexican national team asserted its home-field advantage and secured a dream start to the 2026 World Cup.
+    
+    Javier Aguirre's side demonstrated clear tactical superiority, controlling the match from start to finish and projecting an image of strength that has galvanized the home fans.
+    
+    The deadlock was broken early when Julián Quiñones, with impeccable positional awareness, netted the opener in the 9th minute. After the goal, Mexico maintained possession and defensive composure, ultimately sealing the win in the 67th minute through a clinical finish from Raúl Jiménez, who once again proved his predatory instincts in the box.
+    
+    The second half turned into a physical and testy affair. Things spiraled for the South African side as their game plan crumbled following the sendings-off of Sithole (50') and Zwane (84'). Mexico, however, ended the night on a sour note, losing Montes to a red card in the 92nd minute—a loss that Aguirre will have to manage for the upcoming fixtures.
+    
+    With this victory, Mexico sits atop Group A for the time being. Now, 'El Tri' awaits the outcome of the clash between South Korea and the Czech Republic, looking to cement their position at the top of the standings.`,
     "fecha": "June 11, 2026",
     "tiempoLectura": "3 min"
   }
