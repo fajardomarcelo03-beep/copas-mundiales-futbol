@@ -1,5 +1,26 @@
 export const noticiasMundial = [
   {
+  "id": "noticia-20",
+  "categoria": "mundial",
+  "logo": "/logo/mundial.png",
+  "fechaISO": "2026-06-10",
+  "imagen": "/Mundial/Mundial2026.jpg",
+  "es": {
+    "titulo": "Récords a batirse en el Mundial 2026",
+    "subtitulo": "Goleadores, participaciones y más hitos que pueden quedar para la historia en esta Copa del Mundo.",
+    "contenido": "El Mundial 2026 no solo será recordado por su magnitud, sino por ser el escenario donde leyendas vivientes buscarán reescribir los libros de historia del fútbol. Entre los hitos más esperados, destaca la marca de longevidad: Lionel Messi, Cristiano Ronaldo y Guillermo Ochoa se convertirán en los primeros futbolistas en disputar seis ediciones de la Copa del Mundo, superando el récord anterior de cinco. En el caso de Messi, el argentino continuará extendiendo su registro como el jugador con más partidos disputados en la historia del torneo con cada encuentro que dispute. En el apartado goleador, la persecución es frenética: Miroslav Klose ostenta el récord histórico con 16 tantos, pero Lionel Messi (13) y Kylian Mbappé (12) llegan a Norteamérica como los principales aspirantes a asaltar esa cima. Finalmente, Cristiano Ronaldo encara un doble desafío histórico: tiene la oportunidad de convertirse en el primer jugador en marcar en seis Mundiales diferentes, además de buscar ser el futbolista de mayor edad en anotar un gol en la historia de la competición.",
+    "fecha": "10 de junio de 2026",
+    "tiempoLectura": "3 min"
+  },
+  "en": {
+    "titulo": "Records to be broken in the 2026 World Cup",
+    "subtitulo": "Top scorers, appearances, and more milestones that could be set in this World Cup.",
+    "contenido": "The 2026 World Cup will not only be remembered for its scale, but as the stage where living legends look to rewrite football history. Among the most anticipated milestones is the longevity record: Lionel Messi, Cristiano Ronaldo, and Guillermo Ochoa will become the first players to participate in six editions of the World Cup, surpassing the previous record of five. In Messi's case, he will continue to extend his record as the player with the most appearances in tournament history with every match he plays. Regarding scoring, the chase is intense: Miroslav Klose holds the all-time record with 16 goals, but Lionel Messi (13) and Kylian Mbappé (12) arrive in North America as the primary contenders to reach or surpass that figure. Finally, Cristiano Ronaldo faces a historic double challenge: he has the opportunity to become the first player to score in six different World Cups, as well as the oldest player to score a goal in tournament history.",
+    "fecha": "June 10, 2026",
+    "tiempoLectura": "3 min"
+  }
+},
+  {
   "id": "noticia-19",
   "categoria": "mundial",
   "logo": "/logo/mundial.png",
