@@ -1,5 +1,68 @@
 export const noticiasMundial = [
   {
+  "id": "noticia-23",
+  "categoria": "mundial",
+  "logo": "/logo/mundial.png",
+  "fechaISO": "2026-06-11",
+  "imagen": "/Mundial/Horario1106.jpg",
+  "es": {
+    "titulo": "Partidos programados para el jueves 11 de junio",
+    "subtitulo": "Con dos encuentros de alto voltaje en el Grupo A, el Mundial 2026 levanta el telón oficialmente.",
+    "contenido": "La espera ha terminado. Hoy, el planeta fútbol se detiene para dar inicio a la Copa Mundial 2026, y el Grupo A protagoniza una jornada inaugural que promete emociones intensas desde el primer minuto.\n\n### 15:00 - México vs. Sudáfrica – Estadio Azteca\nEl torneo abre sus puertas en el mítico Estadio Azteca, donde México se mide ante Sudáfrica. Para el 'Tri', dirigido por Javier Aguirre, este encuentro trasciende lo deportivo: es la oportunidad de reafirmar su estatus de local ante una afición que sueña con el título. La presión es máxima, pero la experiencia de Aguirre al mando busca equilibrar el ímpetu con una estrategia que aproveche el aliento ensordecedor de las gradas. México sabe que sumar de a tres en el debut es imperativo para encaminar su clasificación en un grupo que se perfila como una verdadera batalla táctica.\n\n### 22:00 - República de Corea vs. Chequia – Estadio Guadalajara\nEl cierre de la jornada nos traslada al Estadio Guadalajara, escenario de un duelo estratégico vital. Corea del Sur, un equipo que ha hecho de la regularidad su sello al disputar su undécima edición consecutiva, llega con la ambición de dar el golpe sobre la mesa. Enfrente, la República Checa protagoniza un regreso cinematográfico a la gran cita mundialista tras dos décadas de ausencia, cargando con la expectativa de una generación que busca recuperar el prestigio histórico de su fútbol. Al ser el primer enfrentamiento oficial entre ambas naciones en un Mundial, el factor sorpresa jugará un papel decisivo en un partido donde el margen de error será mínimo.",
+    "fecha": "11 de junio de 2026",
+    "tiempoLectura": "4 min"
+  },
+  "en": {
+    "titulo": "Matches scheduled for Thursday, June 11",
+    "subtitulo": "With two Group A matches, the 2026 World Cup officially kicks off.",
+    "contenido": "The wait is over. Today, the football world stops to begin the 2026 World Cup, and Group A features an opening day that promises intense emotions from the very first whistle.\n\n### 3:00 PM - Mexico vs. South Africa – Estadio Azteca\nThe tournament opens at the iconic Estadio Azteca, where Mexico faces South Africa. For 'El Tri', led by Javier Aguirre, this match goes beyond sports: it is a chance to reaffirm their status as hosts before fans dreaming of a championship. The pressure is immense, but Aguirre's experience is aimed at balancing passion with a strategy that leverages the deafening support from the stands. Mexico knows that securing three points in the opener is mandatory to pave their way in a group shaping up to be a tactical battle.\n\n### 10:00 PM - South Korea vs. Czech Republic – Estadio Guadalajara\nThe day's finale takes us to Estadio Guadalajara for a crucial strategic clash. South Korea, known for their consistency after qualifying for their eleventh consecutive tournament, arrives with the ambition of making a statement. On the other side, the Czech Republic makes a cinematic return to the World Cup stage after a 20-year absence, carrying the weight of a generation looking to restore their nation's football prestige. Since this is the first official meeting between both nations in a World Cup, the element of surprise will be decisive in a match where the margin for error will be minimal.",
+    "fecha": "June 11, 2026",
+    "tiempoLectura": "4 min"
+  }
+},
+  {
+  "id": "noticia-22",
+  "categoria": "mundial",
+  "logo": "/logo/mundial.png",
+  "fechaISO": "2026-06-11",
+  "imagen": "/Mundial/Sampaio.jpg",
+  "es": {
+    "titulo": "¿Quiénes son los árbitros designados para el partido inaugural?",
+    "subtitulo": "El experimentado colegiado brasileño Wilton Sampaio ha sido el elegido por la FIFA para impartir justicia en el debut mundialista.",
+    "contenido": "Con la tensión previa al pitazo inicial, la FIFA ha revelado los nombres de los encargados de conducir el destino del México vs. Sudáfrica. La responsabilidad recae en una terna brasileña de amplia trayectoria liderada por Wilton Sampaio.\n\n### Equipo Arbitral y Tecnológico\n* **Árbitro central:** Wilton Sampaio (Brasil)\n* **Asistente 1:** Bruno Pires (Brasil)\n* **Asistente 2:** Bruno Boschilia (Brasil)\n* **Cuarto árbitro:** Juan Gabriel Benítez (Paraguay)\n* **Árbitro VAR:** Nicolás Gallo (Colombia)\n* **Asistente del VAR:** Juan Lara (Chile)\n* **Soporte del VAR:** Jerome Brisard (Francia)\n\n### Un perfil de garantías\nWilton Sampaio, conocido en el ámbito sudamericano por su temple y autoridad, inició su camino en la élite del fútbol brasileño en 2009. Tras recibir su insignia FIFA en 2013, su carrera ha sido un ascenso meteórico. \n\nSampaio llega a este Mundial tras haber consolidado su prestigio en las competencias de clubes más exigentes, como la Copa Libertadores y la Copa Sudamericana. Su experiencia internacional es vasta, incluyendo su participación destacada en la Copa Mundial de Clubes 2018, múltiples ediciones de la Copa América y una presencia constante en las Copas Mundiales de 2018 y 2022. La FIFA apuesta así por un árbitro veterano para llevar las riendas del duelo que abre el telón en el Estadio Azteca.",
+    "fecha": "11 de junio de 2026",
+    "tiempoLectura": "3 min"
+  },
+  "en": {
+    "titulo": "Who are the referees designated for the opening match?",
+    "subtitulo": "The experienced Brazilian official Wilton Sampaio has been selected by FIFA to oversee the World Cup debut.",
+    "contenido": "As anticipation reaches its peak before kickoff, FIFA has revealed the team responsible for managing the fate of the Mexico vs. South Africa clash. The responsibility rests on a highly experienced Brazilian crew led by Wilton Sampaio.\n\n### Arbitral and Technical Team\n* **Center Referee:** Wilton Sampaio (Brazil)\n* **Assistant 1:** Bruno Pires (Brazil)\n* **Assistant 2:** Bruno Boschilia (Brazil)\n* **Fourth Official:** Juan Gabriel Benítez (Paraguay)\n* **VAR Referee:** Nicolás Gallo (Colombia)\n* **Assistant VAR:** Juan Lara (Chile)\n* **VAR Support:** Jerome Brisard (France)\n\n### A Profile of Excellence\nWilton Sampaio, widely respected in South American football for his composure and authority, began his top-flight career in Brazil in 2009. Since earning his FIFA badge in 2013, his career has been a meteoric rise.\n\nSampaio arrives at this World Cup having cemented his reputation in the most demanding club competitions, including the Copa Libertadores and Copa Sudamericana. His international portfolio is extensive, featuring appearances at the 2018 FIFA Club World Cup, numerous Copa América tournaments, and consistent officiating roles at the 2018 and 2022 World Cups. FIFA has opted for a seasoned veteran to steer the match that raises the curtain at the Estadio Azteca.",
+    "fecha": "June 11, 2026",
+    "tiempoLectura": "3 min"
+  }
+},
+  {
+  "id": "noticia-21",
+  "categoria": "mundial",
+  "logo": "/logo/mundial.png",
+  "fechaISO": "2026-06-11",
+  "imagen": "/Mundial/Azteca.jpg",
+  "es": {
+    "titulo": "Hoy empieza a rodar el balón en el Mundial 2026",
+    "subtitulo": "Con una ceremonia inaugural de lujo, el planeta fútbol centra sus ojos en el evento deportivo más importante del año.",
+    "contenido": "La espera ha terminado. Hoy, el Estadio Azteca se viste de gala para marcar un hito sin precedentes: México se consolida como el único país en la historia en albergar tres Copas del Mundo. El coloso de Santa Úrsula será el epicentro de una ceremonia de inauguración que promete ser deslumbrante, con un despliegue artístico de primer nivel encabezado por la superestrella barranquillera Shakira, quien pondrá a vibrar a todo el planeta con su tema 'DAI-DAI'. Tras el espectáculo, la emoción dará paso a la acción pura cuando, a las 15:00 (hora del este), el colegiado dé el pitazo inicial. El duelo de apertura nos regala un guiño nostálgico del destino: México se medirá ante Sudáfrica, reviviendo el emblemático enfrentamiento inaugural que protagonizaron ambas selecciones en la edición de 2010. Todo está listo para que comience la búsqueda de la gloria eterna.",
+    "fecha": "11 de junio de 2026",
+    "tiempoLectura": "2 min"
+  },
+  "en": {
+    "titulo": "The ball starts rolling today at the 2026 World Cup",
+    "subtitulo": "With a luxurious opening ceremony, the world's eyes are set on the biggest sporting event of the year.",
+    "contenido": "The wait is over. Today, the Estadio Azteca sets the stage for an unprecedented milestone: Mexico cements its place in history as the only nation to host three World Cups. The iconic stadium will be the epicenter of an opening ceremony promising to be dazzling, featuring world-class performances led by Colombian superstar Shakira, who will electrify the globe with her track 'DAI-DAI'. Following the spectacle, the focus shifts to pure action at 3:00 PM (ET) when the referee blows the opening whistle. The inaugural clash offers a nostalgic twist of fate: Mexico faces South Africa, recreating the historic opening match that both nations played during the 2010 tournament. Everything is set for the journey toward eternal glory to begin.",
+    "fecha": "June 11, 2026",
+    "tiempoLectura": "2 min"
+  }
+},
+{
   "id": "noticia-20",
   "categoria": "mundial",
   "logo": "/logo/mundial.png",
