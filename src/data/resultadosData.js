@@ -2,7 +2,7 @@
 export const resultados = {
   grupos: {
     "A": [
-      { id: 1, local: { es: "México", en: "Mexico" }, visita: { es: "Sudáfrica", en: "South Africa" }, golesLocal: 0, golesVisita: 0, jugado: false },
+      { id: 1, local: { es: "México", en: "Mexico" }, visita: { es: "Sudáfrica", en: "South Africa" }, golesLocal: 2, golesVisita: 0, jugado: false },
       { id: 2, local: { es: "Corea del Sur", en: "South Korea" }, visita: { es: "República Checa", en: "Czech Republic" }, golesLocal: 0, golesVisita: 0, jugado: false },
       { id: 3, local: { es: "República Checa", en: "Czech Republic" }, visita: { es: "Sudáfrica", en: "South Africa" }, golesLocal: 0, golesVisita: 0, jugado: false },
       { id: 4, local: { es: "México", en: "Mexico" }, visita: { es: "Corea del Sur", en: "South Korea" }, golesLocal: 0, golesVisita: 0, jugado: false },
