@@ -1,5 +1,46 @@
 export const noticiasMundial = [
-  
+  {
+  "id": "noticia-26",
+  "categoria": "mundial",
+  "logo": "/logo/mundial.png",
+  "fechaISO": "2026-06-12",
+  "imagen": "/Mundial/Horario1206.jpg",
+  "es": {
+    "titulo": "Doble cartelera mundialista: El Grupo B y D entran en acción",
+    "subtitulo": "Canadá y Bosnia debutan en el Grupo B, mientras que Estados Unidos y Paraguay prometen un choque electrizante en el Grupo D.",
+    "contenido": "La emoción del Mundial 2026 no se detiene. Tras una jornada inaugural que dejó los primeros tres puntos en manos de México y Corea del Sur, el calendario nos presenta hoy viernes 12 de junio dos enfrentamientos que prometen definir las aspiraciones tempranas de cuatro selecciones nacionales.\n\n### 15:00 - Canadá vs. Bosnia y Herzegovina – Estadio BC Place (Grupo B)\nCanadá llega a este torneo con la etiqueta de 'caballo negro'. Bajo la tutela de su cuerpo técnico, el conjunto de la hoja de maple ha preparado un esquema de presión alta y transiciones rápidas, buscando aprovechar la velocidad de sus atacantes. El objetivo es claro: hacer valer la localía frente a una Bosnia y Herzegovina que, tras un proceso de reconstrucción sólido, confía en su disciplina táctica y en la jerarquía individual de sus referentes para dar la sorpresa y controlar el ritmo del encuentro en suelo norteamericano.\n\n### 21:00 - Estados Unidos vs. Paraguay – SoFi Stadium (Grupo D)\nEl cierre de la jornada nos traslada a Los Ángeles para un enfrentamiento de alto perfil. Estados Unidos, uno de los anfitriones, ha centrado su preparación en la cohesión de un plantel joven pero experimentado en Europa, esperando imponer su estilo de juego dinámico ante una afición que exige resultados desde el pitazo inicial. Enfrente, la selección de Paraguay aterriza con la garra guaraní como estandarte; el equipo sudamericano ha trabajado específicamente en el bloque defensivo y en la táctica fija, herramientas con las que buscan neutralizar el ímpetu estadounidense y capitalizar cualquier error en la salida para sumar puntos vitales en un grupo altamente competitivo.",
+    "fecha": "12 de junio de 2026",
+    "tiempoLectura": "4 min"
+  },
+  "en": {
+    "titulo": "Double World Cup header: Groups B and D take the stage",
+    "subtitulo": "Canada and Bosnia open the action in Group B, while the United States and Paraguay promise an electric clash in Group D.",
+    "contenido": "The excitement of the 2026 World Cup continues. Following an opening day that saw Mexico and South Korea claim the first three points of the tournament, today, Friday, June 12, features two matchups that promise to define the early ambitions of four national teams.\n\n### 3:00 PM - Canada vs. Bosnia and Herzegovina – BC Place Stadium (Group B)\nCanada enters this tournament with a 'dark horse' label. Under their coaching staff's guidance, the Maple Leafs have prepared a high-pressing, fast-transition scheme, looking to exploit their attackers' speed. The objective is clear: capitalize on home-field advantage against a Bosnia and Herzegovina side that, following a solid rebuilding process, trusts in their tactical discipline and the individual brilliance of their stars to pull off an upset and control the match's tempo on North American soil.\n\n### 9:00 PM - United States vs. Paraguay – SoFi Stadium (Group D)\nThe day's finale takes us to Los Angeles for a high-profile showdown. The United States, one of the co-hosts, has focused its preparation on the cohesion of a squad that, while young, features significant European experience, aiming to impose their dynamic style of play before fans expecting results from the opening whistle. Across from them, the Paraguayan national team lands with the 'Guaraní' grit as their trademark; the South American side has worked specifically on defensive blocks and set-pieces, tools they hope to use to neutralize American momentum and capitalize on any errors in the build-up to secure vital points in a highly competitive group.",
+    "fecha": "June 12, 2026",
+    "tiempoLectura": "4 min"
+  }
+},
+  {
+  "id": "noticia-25",
+  "categoria": "mundial",
+  "logo": "/logo/mundial.png",
+  "fechaISO": "2026-06-11",
+  "imagen": "/Mundial/Korea.jpg",
+  "es": {
+    "titulo": "Remontada heroica: Corea del Sur doblega a la República Checa en un duelo vibrante",
+    "subtitulo": "El seleccionado asiático mostró carácter para revertir un marcador adverso y cerrar la jornada del Grupo A con autoridad.",
+    "contenido": "En un encuentro que cumplió con las altas expectativas, la selección de Corea del Sur demostró por qué es un habitual protagonista en las citas mundialistas al imponerse 2-1 ante una aguerrida República Checa. El Estadio Guadalajara fue testigo de un despliegue de ida y vuelta donde la estrategia y la resiliencia fueron las protagonistas.\n\nEl conjunto europeo pegó primero. Tras un saque lateral ejecutado con precisión quirúrgica, Ladislav Krejčí se elevó por encima de la defensa para clavar el 1-0, capitalizando la pelota parada como su arma principal. Sin embargo, el golpe, lejos de hundir a los surcoreanos, encendió su ambición ofensiva.\n\nLa respuesta asiática fue un monólogo de intensidad. Hwang In-beom niveló las acciones tras una jugada colectiva magistral, desatando el júbilo en las gradas. El partido se convirtió entonces en un asedio constante sobre el arco checo, donde el guardameta Matěj Kovář se erigió como la figura indiscutible, negando hasta en tres ocasiones claras de gol el grito sagrado de los 'Guerreros Taeguk'.\n\nNo obstante, la insistencia tuvo premio. En el tramo final, Oh Hyeon-gyu encontró el espacio necesario para definir con frialdad y sellar el 2-1 definitivo. Fue un triunfo merecido para una Corea que dominó la posesión y el ritmo, frente a una República Checa que supo sufrir pero que terminó cediendo ante el dinamismo rival. Con este resultado, Corea del Sur se planta con fuerza en el Grupo A, enviando un mensaje claro de que su candidatura está lejos de ser una sorpresa.",
+    "fecha": "11 de junio de 2026",
+    "tiempoLectura": "3 min"
+  },
+  "en": {
+    "titulo": "Heroic comeback: South Korea edges past Czech Republic in a thriller",
+    "subtitulo": "The Asian side showcased great character to overturn a deficit and close out the Group A matchday with authority.",
+    "contenido": "In a match that lived up to the high expectations, the South Korean national team demonstrated why they are a staple on the World Cup stage, pulling off a 2-1 victory against a tough Czech Republic side. The Estadio Guadalajara witnessed a back-and-forth battle where strategy and resilience took center stage.\n\nThe European squad struck first. Following a surgically executed throw-in, Ladislav Krejčí rose above the defense to head home the opener, capitalizing on set-pieces as their primary weapon. However, the setback, far from discouraging the South Koreans, ignited their attacking ambition.\n\nThe Asian response was a monologue of intensity. Hwang In-beom leveled the score after a masterful collective buildup, sparking wild celebrations in the stands. The game then turned into a constant siege on the Czech goal, where goalkeeper Matěj Kovář stood tall as the undeniable man of the match, denying three clear-cut scoring opportunities.\n\nNevertheless, the pressure eventually told. In the dying minutes, Oh Hyeon-gyu found the necessary space to finish with ice-cold precision, sealing the 2-1 victory. It was a well-deserved win for a South Korean side that dominated possession and tempo, against a Czech team that knew how to absorb pressure but ultimately succumbed to the rival's relentless dynamism. With this result, South Korea establishes itself as a force in Group A, sending a clear message that their campaign is set to be one to watch.",
+    "fecha": "June 11, 2026",
+    "tiempoLectura": "3 min"
+  }
+},
   {
   "id": "noticia-24",
   "categoria": "mundial",
