@@ -93,6 +93,7 @@ export default function DetalleNoticia({ params }) {
         title="Newsletter FutbolFanatic"
         ></iframe>
         </div>
+        </div> {/* <-- Este div cierra el contenedor azul del newsletter */}
         {/* --- FIN DEL BLOQUE --- */}
 
         <div style={lineaDecorativaStyle}></div>
