@@ -168,6 +168,7 @@ export const noticiasMundial = [
     Durante la etapa inicial, Ecuador fue absoluto dueño del mediocampo y del ritmo del juego. Con una propuesta de control, la 'Tri' logró generar grietas en la estructura marfileña y contabilizó varias ocasiones claras de gol que, lamentablemente, no lograron capitalizarse. La falta de frialdad en los metros finales se convirtió en el principal enemigo de un equipo que, pese a dominar, no pudo traducir esa superioridad en el marcador.
     
     El guion del partido dio un vuelco drástico tras el descanso. Costa de Marfil ajustó sus líneas y, amparándose en un estado físico impecable, comenzó a ganar los duelos individuales y a imponer condiciones en velocidad. El cuadro africano cerró filas y esperó pacientemente el momento del contragolpe. Cuando el reloj marcaba los minutos finales, una desconcentración defensiva permitió que los 'Elefantes' se adelantaran, silenciando las aspiraciones ecuatorianas de rescatar al menos un punto.
+    
     El cierre del encuentro dejó en evidencia puntos críticos: rendimientos individuales por debajo de lo esperado y un banco de suplentes que no logró ofrecer el revulsivo necesario para cambiar la inercia del juego. Con la urgencia instalada, Ecuador deberá realizar una autocrítica profunda, ajustando tanto el planteamiento táctico como la intensidad competitiva si desea mantener intactas sus posibilidades de acceder a los dieciseisavos de final.`,
     "fecha": "16 de junio de 2026",
     "tiempoLectura": "3 min"

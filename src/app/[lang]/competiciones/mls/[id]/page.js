@@ -44,6 +44,10 @@ export async function generateMetadata({ params }) {
     description: descripcion,
     alternates: {
       canonical: urlNoticia,
+       languages: {
+        'es': `${baseUrl}/es/mundial-2026/noticias/${id}`,
+        'en': `${baseUrl}/en/mundial-2026/noticias/${id}`,
+    },
     },
     openGraph: {
       title: titulo,

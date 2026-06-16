@@ -35,14 +35,17 @@ export async function generateMetadata({ params }) {
         '@type': 'ImageObject',
         'url': `${baseUrl}/logo/logo.png`
       }
-    }
+    },
   };
-
   return {
     title: titulo,
     description: descripcion,
     alternates: {
       canonical: urlNoticia,
+      languages: {
+        'es': `${baseUrl}/es/mundial-2026/noticias/${id}`,
+        'en': `${baseUrl}/en/mundial-2026/noticias/${id}`,
+    },
     },
     openGraph: {
       title: titulo,
