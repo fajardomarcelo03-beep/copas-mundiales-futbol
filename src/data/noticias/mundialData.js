@@ -1,8 +1,7 @@
 export const noticiasMundial = [
 {
   "id": "noticia-32",
-  "partidoId": "49",
-  "categoria": "mundial",
+   "categoria": "mundial",
   "logo": "/logo/mundial.png",
   "fechaISO": "2026-06-16",
   "imagen": "/Mundial/FranciaSE.jpg",
@@ -35,7 +34,6 @@ export const noticiasMundial = [
 },
   {
   "id": "noticia-31",
-  "partidoId": "55",
   "categoria": "mundial",
   "logo": "/logo/mundial.png",
   "fechaISO": "2026-06-16",

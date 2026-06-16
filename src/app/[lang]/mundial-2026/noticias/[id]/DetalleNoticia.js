@@ -57,13 +57,7 @@ export default function DetalleNoticia({ params }) {
             style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
           />
         </div>
-        {/* Aquí insertamos el widget de predicción */}
-{objetoNoticia.partidoId && (
-  <PrediccionWidget 
-    lang={idioma} 
-    partidoId={objetoNoticia.partidoId} 
-  />
-)}
+       
         <div style={lineaDecorativaStyle}></div>
         
         {textoNoticia.intro ? (
