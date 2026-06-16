@@ -56,7 +56,40 @@ export default function DetalleNoticia({ params }) {
             style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
           />
         </div>
-       
+       {/* --- BLOQUE DE MARKETING: NEWSLETTER --- */}
+        <div style={{
+          backgroundColor: '#0a192f',
+          padding: '25px',
+          borderRadius: '8px',
+          margin: '0 0 25px 0',
+          textAlign: 'center',
+          color: '#ffffff'
+        }}>
+          <h3 style={{ margin: '0 0 10px 0', fontSize: '1.2rem' }}>
+            {idioma === 'es' ? '¿Quieres las noticias del Mundial 2026 en tu email?' : 'Want World Cup 2026 news in your email?'}
+          </h3>
+          <p style={{ fontSize: '0.9rem', marginBottom: '15px', opacity: 0.9 }}>
+            {idioma === 'es' ? 'Recibe resúmenes y datos exclusivos gratis.' : 'Get exclusive summaries and data for free.'}
+          </p> {/* <--- Aquí cerramos el párrafo correctamente */}
+          <a 
+            href="https://forms.gle/H2uP5j4st3oLRQFm7" 
+            target="_blank" 
+            style={{
+            display: 'inline-block',
+            padding: '12px 25px',
+            backgroundColor: '#f1c40f',
+            color: '#0a192f',
+            textDecoration: 'none',
+            borderRadius: '5px',
+            fontWeight: 'bold',
+            fontSize: '0.95rem'
+            }}
+            >
+            {idioma === 'es' ? 'SUSCRIBIRME AHORA' : 'SUBSCRIBE NOW'}
+          </a>
+        </div>
+        {/* --- FIN DEL BLOQUE --- */}
+
         <div style={lineaDecorativaStyle}></div>
         
         {textoNoticia.intro ? (
