@@ -1,4 +1,193 @@
 export const noticiasMundial = [
+{
+  "id": "noticia-32",
+  "categoria": "mundial",
+  "logo": "/logo/mundial.png",
+  "fechaISO": "2026-06-16",
+  "imagen": "/Mundial/FranciaSE.jpg",
+  "es": {
+    "titulo": "Francia, con Mbappé y Dembélé, lista para su debut en el MetLife Stadium",
+    "subtitulo": "El conjunto galo busca imponer su jerarquía en su estreno mundialista ante un combinado senegalés que promete dar batalla en New Jersey.",
+    "contenido": `La selección francesa, una de las grandes favoritas al título, está preparada para su estreno en la Copa del Mundo 2026 hoy, 16 de junio, en el emblemático MetLife Stadium de New Jersey. Con Kylian Mbappé como estandarte ofensivo y la velocidad desequilibrante de Ousmane Dembélé por los extremos, el equipo de Didier Deschamps llega al certamen con una plantilla que combina madurez competitiva y una explosividad física envidiable.
+    
+    La preparación de 'Les Bleus' ha estado centrada en optimizar la transición defensa-ataque, buscando explotar la verticalidad que ofrecen sus atacantes de élite. Mbappé, en un estado de forma óptimo, ha liderado las sesiones tácticas con la mira puesta en desarticular el bloque compacto que se espera plantee Senegal. Por su parte, Dembélé ha trabajado intensamente en la asociación con el resto del frente de ataque para garantizar que Francia mantenga la fluidez necesaria ante un rival africano que destaca por su despliegue físico y su orden táctico.
+    
+    El cuerpo técnico francés ha sido enfático en la necesidad de no subestimar a Senegal, un equipo que ha crecido notablemente en su estructura táctica y que cuenta con individualidades capaces de marcar la diferencia en jugadas aisladas. La disciplina defensiva será un factor crítico para Deschamps, quien confía en el equilibrio que aporta el mediocampo para contener las embestidas senegalesas y liberar a sus estrellas en el último tercio del campo.
+    
+    Con un ambiente de alta expectación, la selección gala está lista para saltar al césped de New Jersey y desplegar su fútbol de alto nivel. El objetivo es claro: iniciar el torneo con un triunfo contundente que reafirme sus aspiraciones de conquistar el trofeo, mostrando desde el primer minuto la jerarquía que convierte a Francia en un equipo temible para cualquier rival.`,
+    "fecha": "16 de junio de 2026",
+    "tiempoLectura": "3 min"
+  },
+  "en": {
+    "titulo": "France, led by Mbappé and Dembélé, ready for their debut at MetLife Stadium",
+    "subtitulo": "Les Bleus seek to assert their dominance in their World Cup opener against a Senegal side ready for the challenge in New Jersey.",
+    "contenido": `The French national team, one of the heavy favorites to win the tournament, is set for their 2026 World Cup debut today, June 16, at the iconic MetLife Stadium in New Jersey. With Kylian Mbappé as their attacking focal point and Ousmane Dembélé's game-changing speed on the wings, Didier Deschamps' side arrives at the competition with a roster that balances competitive maturity with enviable physical explosiveness.
+    
+    'Les Bleus' preparation has focused on optimizing their defense-to-attack transitions, aiming to exploit the verticality offered by their elite forwards. Mbappé, in peak form, has led the tactical sessions with a focus on breaking down the compact block expected from Senegal. Meanwhile, Dembélé has been working hard on his link-up play with the rest of the attacking unit to ensure France maintains the necessary fluidity against an African side known for their physical presence and tactical organization.
+    
+    The French coaching staff has stressed the importance of not underestimating Senegal, a team that has significantly improved its tactical structure and possesses individuals capable of making a difference in isolated moments. Defensive discipline will be a critical factor for Deschamps, who relies on the balance provided by the midfield to contain Senegalese surges and unleash his stars in the final third.
+    
+    Amidst high expectations, the French side is ready to take the pitch in New Jersey and display their high-level football. The goal is clear: start the tournament with a statement victory that reaffirms their ambition to lift the trophy, showcasing from the very first minute the pedigree that makes France a feared opponent for any side.`,
+    "fecha": "June 16, 2026",
+    "tiempoLectura": "3 min"
+  }
+},
+  {
+  "id": "noticia-31",
+  "categoria": "mundial",
+  "logo": "/logo/mundial.png",
+  "fechaISO": "2026-06-16",
+  "imagen": "/Mundial/Messi1.jpg",
+  "es": {
+    "titulo": "Argentina está lista para su debut frente a Argelia en Kansas City",
+    "subtitulo": "La 'Albiceleste' cierra filas en el Kansas City Stadium con la misión de defender su corona mundialista ante un complejo rival africano.",
+    "contenido": `La espera terminó. La selección argentina, vigente campeona del mundo, está preparada para saltar al campo de juego hoy, 16 de junio de 2026, en su estreno en la Copa del Mundo ante Argelia. El escenario será el imponente Kansas City Stadium (conocido habitualmente como Arrowhead Stadium), donde el equipo dirigido por Lionel Scaloni llega con la ambición intacta y una nómina que mezcla la jerarquía experimentada con savia nueva, buscando consolidar desde el minuto uno su estatus como máximo favorito al título.
+    
+    Durante la semana de preparación, el cuerpo técnico hizo énfasis en la presión alta y la transición rápida, factores que consideran claves para vulnerar el orden defensivo argelino. Lionel Messi, quien comanda este proyecto, se ha mostrado en óptimas condiciones físicas, liderando las prácticas con su habitual liderazgo y una conexión notable con los jóvenes valores que se han sumado al proceso. El equipo ha mostrado variantes tácticas interesantes, consolidando un mediocampo equilibrado que busca ser el motor del equipo frente a un rival que suele cerrar espacios y apostar por el contragolpe.
+    
+    Por su parte, Argelia llega con la convicción de dar la sorpresa, respaldada por un bloque compacto y jugadores con gran capacidad física. Sin embargo, la 'Scaloneta' ha trabajado específicamente para evitar distracciones en los retrocesos defensivos, un aspecto que Scaloni ha calificado como fundamental para no ceder terreno ante los 'Zorros del Desierto'. El Kansas City Stadium se vestirá de gala para recibir al conjunto argentino, que cuenta con el apoyo masivo de su hinchada, la cual promete convertir las gradas en una extensión del aliento que caracteriza a los campeones.
+    
+    Todo está listo en el campamento argentino. Con la táctica definida y el once inicial prácticamente confirmado, la Albiceleste busca enviar un mensaje de autoridad al resto del mundo, marcando el inicio de lo que esperan sea un camino exitoso hacia la defensa de su cetro mundial.`,
+    "fecha": "16 de junio de 2026",
+    "tiempoLectura": "3 min"
+  },
+  "en": {
+    "titulo": "Argentina ready for their debut against Algeria in Kansas City",
+    "subtitulo": "The 'Albiceleste' closes ranks at Kansas City Stadium with the mission of defending their World Cup crown against a complex African opponent.",
+    "contenido": `The wait is over. The Argentine national team, the reigning world champions, is ready to take the pitch today, June 16, 2026, for their 2026 World Cup opener against Algeria. The match will take place at the imposing Kansas City Stadium (commonly known as Arrowhead Stadium), where the team managed by Lionel Scaloni arrives for this debut with their ambition intact and a squad that blends experienced hierarchy with fresh talent, looking to solidify their status as the top title favorite from minute one.
+    
+    During the training week, the coaching staff emphasized high pressing and rapid transitions, factors deemed key to breaking down the Algerian defensive structure. Lionel Messi, spearheading this project, has shown to be in peak physical condition, leading practices with his characteristic leadership and a notable connection with the young players integrated into the system. The team has displayed interesting tactical variations, solidifying a balanced midfield that aims to be the team's engine against an opponent known for closing spaces and relying on counter-attacks.
+    
+    Meanwhile, Algeria arrives with the conviction of pulling off an upset, backed by a compact block and players with great physical capabilities. However, 'La Scaloneta' has worked specifically to avoid lapses in defensive transition, an aspect Scaloni has identified as fundamental to avoid giving ground to the 'Desert Foxes.' Kansas City Stadium is set to host the Argentine squad, which has the massive support of their fans, promising to turn the stands into an extension of the encouragement that characterizes the champions.
+    
+    Everything is set in the Argentine camp. With tactics defined and the starting eleven virtually confirmed, the Albiceleste seeks to send a message of authority to the rest of the world, marking the beginning of what they hope will be a successful path toward defending their world crown.`,
+    "fecha": "June 16, 2026",
+    "tiempoLectura": "3 min"
+  }
+},
+  {
+  "id": "noticia-30",
+  "categoria": "mundial",
+  "logo": "/logo/mundial.png",
+  "fechaISO": "2026-06-16",
+  "imagen": "/Mundial/IranNZ.jpg",
+  "es": {
+    "titulo": "Irán y Nueva Zelanda empatan en un duelo de alta intensidad",
+    "subtitulo": "En un vibrante 2-2 en el SoFi Stadium, Elijah Just brilló con un doblete para los 'All Whites' ante una aguerrida selección iraní.",
+    "contenido": `El SoFi Stadium de California fue el escenario de uno de los encuentros más electrizantes en lo que va de la Copa del Mundo 2026. Irán y Nueva Zelanda protagonizaron un empate 2-2 en su debut por el Grupo G, en un partido que osciló entre el dominio táctico y el desenfreno ofensivo de ambos conjuntos.
+    
+    La selección de Nueva Zelanda, que retornaba a una cita mundialista tras 16 años, sorprendió desde el amanecer del compromiso. Apenas al minuto 7, Elijah Just abrió el marcador tras una excelente conexión con Chris Wood. Aunque Irán logró nivelar las acciones al 31' a través de Ramin Rezaeian, el conjunto oceánico se mantuvo firme en su plan de juego. En la segunda parte, Just volvió a aparecer al 54' para firmar un doblete histórico, convirtiéndose en el primer neozelandés en anotar dos goles en un mismo partido de la Copa del Mundo.
+    
+    La respuesta persa no se hizo esperar. El equipo dirigido tácticamente desde la banda no bajó los brazos y, al minuto 63, Mohammad Mohebbi selló la paridad definitiva con un certero cabezazo tras un centro preciso de Rezaeian. Los minutos finales fueron de infarto, con un asedio iraní que buscó la victoria hasta el suspiro final, encontrándose con una defensa neozelandesa que resistió heroicamente sobre la línea de gol.
+    
+    Este punto reparte las unidades en un Grupo G que promete ser uno de los más cerrados del torneo. Mientras que Nueva Zelanda se marcha con la moral en alto tras una actuación histórica, Irán deberá ajustar detalles defensivos de cara a su próximo compromiso ante Egipto, donde ambos buscarán dar un paso crucial hacia los dieciseisavos de final.`,
+    "fecha": "16 de junio de 2026",
+    "tiempoLectura": "3 min"
+  },
+  "en": {
+    "titulo": "Iran and New Zealand draw in high-intensity thriller",
+    "subtitulo": "In a vibrant 2-2 match at SoFi Stadium, Elijah Just shone with a brace for the 'All Whites' against a gritty Iranian side.",
+    "contenido": `SoFi Stadium in California set the stage for one of the most electrifying matches of the 2026 World Cup so far. Iran and New Zealand played out a 2-2 draw in their Group G debut, in a match that oscillated between tactical discipline and offensive flair from both sides.
+    
+    New Zealand, returning to the World Cup stage after a 16-year absence, struck early. Just seven minutes in, Elijah Just opened the scoring following a superb link-up with Chris Wood. Although Iran managed to level the score in the 31st minute through Ramin Rezaeian, the Oceania side held firm to their game plan. In the second half, Just struck again in the 54th minute to secure a historic brace, becoming the first-ever New Zealander to score twice in a single World Cup match.
+    
+    The Persian response was immediate. Iran maintained their attacking intensity, and in the 63rd minute, Mohammad Mohebbi equalized with a clinical header off a precise cross from Rezaeian. The final minutes were dramatic, with an Iranian onslaught seeking a late winner, only to be met by a New Zealand defense that resisted heroically on the goal line.
+    
+    This result sees the points shared in a Group G that promises to be one of the tightest in the tournament. While New Zealand leaves with high spirits following a historic performance, Iran will need to refine their defensive work ahead of their next clash against Egypt, where both teams will look to take a crucial step toward the Round of 32.`,
+    "fecha": "June 16, 2026",
+    "tiempoLectura": "3 min"
+  }
+},
+  {
+  "id": "noticia-29",
+  "categoria": "mundial",
+  "logo": "/logo/mundial.png",
+  "fechaISO": "2026-06-16",
+  "imagen": "/Mundial/UruguayAS.jpg",
+  "es": {
+    "titulo": "Charrúas y Árabes se dividen los puntos en un estreno intenso",
+    "subtitulo": "Uruguay rescató un empate ante Arabia Saudita en Miami, en un duelo que dejó al Grupo H completamente equilibrado.",
+    "contenido": `En un encuentro marcado por la intensidad y la búsqueda constante del arco rival, la selección de Uruguay y su similar de Arabia Saudita firmaron un empate 1-1 en su debut por el Grupo H del Mundial 2026. El Miami Stadium fue testigo de una disputa táctica donde los 'Halcones Verdes' sorprendieron a la 'Celeste' en la primera mitad, obligando al equipo de Marcelo Bielsa a remar contra la corriente durante gran parte del compromiso.
+    
+    Arabia Saudita tomó la ventaja al minuto 41 mediante Abdulelah Al-Amri, quien aprovechó un balón suelto en el área tras una intervención de Fernando Muslera. El conjunto asiático demostró una gran disciplina defensiva y un orden táctico que complicó los circuitos de juego de los sudamericanos, frustrando los intentos ofensivos liderados por Darwin Núñez y Federico Viñas.
+    
+    Tras el descanso, el técnico uruguayo movió el banco en busca de mayor profundidad, logrando que su equipo se adueñara de la posesión y generara un asedio constante sobre el arco defendido por Mohammed Al-Owais. La insistencia charrúa tuvo su premio a los 80 minutos: Maximiliano Araújo capitalizó un rebote tras un cabezazo de Viñas, sellando el 1-1 definitivo que premió la perseverancia charrúa ante una férrea resistencia saudí.
+    
+    Este resultado, sumado al empate entre España y Cabo Verde, deja al Grupo H en un escenario de absoluta paridad. Con un punto para cada selección, el camino hacia los dieciseisavos de final se mantiene abierto, exigiendo una mayor efectividad tanto para Uruguay como para sus rivales en las próximas fechas de la fase de grupos.`,
+    "fecha": "16 de junio de 2026",
+    "tiempoLectura": "3 min"
+  },
+  "en": {
+    "titulo": "Charrúas and Saudis share the spoils in an intense opener",
+    "subtitulo": "Uruguay salvaged a draw against Saudi Arabia in Miami, leaving Group H wide open after the first matchday.",
+    "contenido": `In a match defined by intensity and relentless attacking intent, Uruguay and Saudi Arabia played out a 1-1 draw in their 2026 World Cup Group H opener. The Miami Stadium hosted a tactical battle where the 'Green Falcons' surprised the 'Celeste' in the first half, forcing Marcelo Bielsa's squad to play from behind for much of the contest.
+    
+    Saudi Arabia took the lead in the 41st minute through Abdulelah Al-Amri, who pounced on a loose ball in the box after a save by Fernando Muslera. The Asian side displayed disciplined defense and tactical order that disrupted Uruguay's creative play, frustrating offensive efforts led by Darwin Núñez and Federico Viñas.
+    
+    After halftime, the Uruguayan manager made tactical adjustments, allowing his team to dominate possession and maintain constant pressure on goalkeeper Mohammed Al-Owais. The breakthrough finally arrived in the 80th minute: Maximiliano Araújo capitalized on a rebound from a Viñas header to secure the 1-1 equalizer, rewarding Uruguay's persistence against a resilient Saudi defense.
+    
+    This result, coupled with the scoreless draw between Spain and Cape Verde, leaves Group H in a state of complete parity. With one point for every team, the race for the Round of 32 remains wide open, requiring improved clinical efficiency from all participants in the upcoming group stage matches.`,
+    "fecha": "June 16, 2026",
+    "tiempoLectura": "3 min"
+  }
+},
+  {
+  "id": "noticia-28",
+  "categoria": "mundial",
+  "logo": "/logo/mundial.png",
+  "fechaISO": "2026-06-16",
+  "imagen": "/Mundial/EspañaCV.jpg",
+  "es": {
+    "titulo": "España no pudo con Cabo Verde: debut gris en el Mundial",
+    "subtitulo": "La 'Roja' dominó la posesión pero fue incapaz de romper el muro defensivo caboverdiano en un 0-0 que sabe a poco.",
+    "contenido": "En un debut mundialista que dejó un sabor amargo para el equipo de Luis de la Fuente, la selección española se estrelló ante una rocosa Cabo Verde, firmando un empate sin goles en el Estadio Atlanta. A pesar de monopolizar la posesión y generar diversas situaciones de peligro, el conjunto español careció de la contundencia necesaria para reflejar su superioridad en el marcador frente a una selección africana que celebró este punto como una auténtica victoria histórica.\n\nEl guion fue claro desde el pitazo inicial: España buscó filtrar pases a través de un bloque bajo bien estructurado por los dirigidos por 'Bubista', quienes mantuvieron el orden táctico durante los 90 minutos. El portero caboverdiano, Vozinha, fue el héroe de la jornada al desactivar cada intento español, destacando especialmente una parada providencial ante un cabezazo de Aymeric Laporte y un disparo de Ferran Torres que se estrelló contra el poste antes del descanso.\n\nEn la segunda parte, la insistencia de España resultó infructuosa ante el agotamiento de ideas y la disciplina defensiva del rival. Pese a las variantes tácticas que introdujo De la Fuente —incluyendo el ingreso de jugadores como Lamine Yamal y Nico Williams para buscar desequilibrio por las bandas—, el bloque defensivo de Cabo Verde se mantuvo infranqueable. Este resultado obliga a España a buscar una victoria obligatoria en sus próximos encuentros para asegurar su liderato en el Grupo H, mientras que Cabo Verde confirma su capacidad competitiva en su primera incursión mundialista.",
+    "fecha": "16 de junio de 2026",
+    "tiempoLectura": "3 min"
+  },
+  "en": {
+    "titulo": "Spain held by Cape Verde: A lackluster World Cup debut",
+    "subtitulo": "La 'Roja' controlled possession but was unable to break down Cape Verde's defensive wall in a scoreless draw.",
+    "contenido": "In a World Cup debut that left a bitter taste for Luis de la Fuente’s side, the Spanish national team was held to a 0-0 draw by a resilient Cape Verde at the Atlanta Stadium. Despite monopolizing possession and creating several dangerous opportunities, Spain lacked the clinical finishing needed to translate their dominance into goals against an African side that celebrated this point as a historic achievement.\n\nFrom the opening whistle, the script was clear: Spain sought to break through a well-organized low block managed by 'Bubista,' who maintained tactical discipline throughout the 90 minutes. Cape Verde goalkeeper Vozinha was the hero of the day, neutralizing every Spanish attempt, most notably a crucial save on an Aymeric Laporte header and a Ferran Torres shot that struck the post just before halftime.\n\nIn the second half, Spain’s persistence proved futile as they ran out of ideas against the opponent’s stubborn defense. Despite tactical changes by De la Fuente—including the introduction of players like Lamine Yamal and Nico Williams to spark creativity on the wings—Cape Verde’s defensive line remained impenetrable. This result puts pressure on Spain to secure a win in their upcoming matches to solidify their lead in Group H, while Cape Verde cements their status as a competitive force in their first-ever World Cup appearance.",
+    "fecha": "June 16, 2026",
+    "tiempoLectura": "3 min"
+  }
+},
+  {
+  "id": "noticia-27",
+  "categoria": "mundial",
+  "logo": "/logo/mundial.png",
+  "fechaISO": "2026-06-15",
+  "imagen": "/Mundial/Ecuador1.jpg",
+  "es": {
+    "titulo": "Decepción tricolor: Ecuador tropieza ante una física Costa de Marfil en su debut",
+    "subtitulo": "La 'Tri' dominó el trámite inicial, pero la falta de contundencia y el despliegue físico de los africanos terminaron por sentenciar el 1-0.",
+    "contenido": `En un estreno que dejó sensaciones agridulces, la selección ecuatoriana, bajo la dirección técnica de Sebastián Beccacece, cayó derrotada por la mínima diferencia frente a Costa de Marfil en su debut en la Copa del Mundo 2026. 
+    
+    El encuentro, que prometía un inicio sólido para el elenco sudamericano, terminó convirtiéndose en una lección de eficacia y gestión física por parte del conjunto africano.
+    
+    Durante la etapa inicial, Ecuador fue absoluto dueño del mediocampo y del ritmo del juego. Con una propuesta de control, la 'Tri' logró generar grietas en la estructura marfileña y contabilizó varias ocasiones claras de gol que, lamentablemente, no lograron capitalizarse. La falta de frialdad en los metros finales se convirtió en el principal enemigo de un equipo que, pese a dominar, no pudo traducir esa superioridad en el marcador.
+    
+    El guion del partido dio un vuelco drástico tras el descanso. Costa de Marfil ajustó sus líneas y, amparándose en un estado físico impecable, comenzó a ganar los duelos individuales y a imponer condiciones en velocidad. El cuadro africano cerró filas y esperó pacientemente el momento del contragolpe. Cuando el reloj marcaba los minutos finales, una desconcentración defensiva permitió que los 'Elefantes' se adelantaran, silenciando las aspiraciones ecuatorianas de rescatar al menos un punto.
+    El cierre del encuentro dejó en evidencia puntos críticos: rendimientos individuales por debajo de lo esperado y un banco de suplentes que no logró ofrecer el revulsivo necesario para cambiar la inercia del juego. Con la urgencia instalada, Ecuador deberá realizar una autocrítica profunda, ajustando tanto el planteamiento táctico como la intensidad competitiva si desea mantener intactas sus posibilidades de acceder a los dieciseisavos de final.`,
+    "fecha": "16 de junio de 2026",
+    "tiempoLectura": "3 min"
+  },
+  "en": {
+    "titulo": "Tricolor disappointment: Ecuador stumbles against a physical Ivory Coast side in their debut",
+    "subtitulo": "La 'Tri' controlled the opening stages, but a lack of clinical finishing and Ivory Coast's physical prowess resulted in a 1-0 defeat.",
+    "contenido": `In an opening match that left a bittersweet taste, the Ecuadorian national team, managed by Argentine coach Sebastián Beccacece, fell to a narrow 1-0 defeat against Ivory Coast in their 2026 World Cup debut. 
+    
+    The match, which held the promise of a strong start for the South American side, turned into a harsh lesson in efficiency and physical management from the African outfit.
+    
+    During the first half, Ecuador dominated the midfield and the tempo of the game. With a controlled approach, 'La Tri' found gaps in the Ivorian defensive structure, carving out several clear-cut scoring opportunities that went begging. A lack of clinical precision in the final third became their greatest enemy, as the team failed to capitalize on their clear superiority.
+    
+    The script flipped dramatically after the break. Ivory Coast tightened their lines and, relying on their superior physical conditioning, began to win individual duels and impose their pace. The African side held firm and patiently waited for a counter-attacking opportunity. With time running out, a defensive lapse allowed the 'Elephants' to break the deadlock, dealing a crushing blow to Ecuador's hopes of salvaging a point.
+    
+    The final whistle highlighted critical concerns: individual performances below expectations and a bench that failed to provide the necessary spark to change the game's momentum. With the pressure now on, Ecuador faces an urgent need for deep self-reflection, requiring adjustments in both tactical strategy and competitive intensity if they are to keep their Round of 32 qualification hopes alive.`,
+    "fecha": "June 16, 2026",
+    "tiempoLectura": "3 min"
+  }
+},
   {
   "id": "noticia-26",
   "categoria": "mundial",
