@@ -4,10 +4,13 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import KlaroInitializer from '../components/KlaroInitializer';
 
-export const metadata = {
-  title: "Fútbol Fanatic | Noticias, Resultados y la Historia del Fútbol",
-  description: "La casa del verdadero fanático del fútbol.",
+export async function generateMetadata({ params }) {
+  const { lang } = await params;
+  return {
+    title: lang === 'es' ? "Fútbol Fanatic | Noticias y Resultados" : "Fútbol Fanatic | News and Results",
+    description: "La casa del verdadero fanático del fútbol.",
 };
+}
 
 // Next.js pasa los params de la ruta dinámica [lang] automáticamente a este componente
 export default async function RootLayout({ children, params }) {
