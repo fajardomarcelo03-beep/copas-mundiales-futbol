@@ -71,28 +71,29 @@ export default function DetalleNoticia({ params }) {
           <p style={{ fontSize: '0.9rem', marginBottom: '15px', opacity: 0.9 }}>
             {idioma === 'es' ? 'Recibe resúmenes y datos exclusivos gratis.' : 'Get exclusive summaries and data for free.'}
           </p> {/* <--- Aquí cerramos el párrafo correctamente */}
+          
           {/* --- BLOQUE DE NEWSLETTER INCORPORADO --- */}
-<div style={{ 
-  margin: '30px 0', 
-  padding: '10px', 
-  border: '1px solid #e2e8f0', 
-  borderRadius: '8px',
-  overflow: 'hidden',
-  display: 'flex',
-  justifyContent: 'center'
-}}>
-  <iframe 
-    src="https://1568a985.sibforms.com/v2/serve/MUIFAMRARQ4TjyxYl6qUGpUCM_F-Cb6OIXo2tK-t7pXIUDkoojjGdsppS_U3C563k6VSZpxliftoK2dcYTx-fcgStHOTO64n0OYPut6EU6f7S3-Fj9lpObYG7taqPmHii_CWN1RI-MURHh5x5oWT1OuecDpjscdFN3RU_Lnd5ubOSe2itor42eLgiQv3VWy55iKpsiEm3Zlis0X_2g==" 
-    width="540" 
-    height="305" 
-    frameBorder="0" 
-    scrolling="auto" 
-    allowFullScreen 
-    style={{ display: 'block', maxWidth: '100%' }}
-    title="Newsletter FutbolFanatic"
-  ></iframe>
-</div>
-{/* --- FIN DEL BLOQUE --- */}
+        <div style={{ 
+        margin: '30px 0', 
+        padding: '10px', 
+        border: '1px solid #e2e8f0', 
+        borderRadius: '8px',
+        overflow: 'hidden',
+        display: 'flex',
+        justifyContent: 'center'
+        }}>
+        <iframe 
+        src="https://1568a985.sibforms.com/v2/serve/MUIFAMRARQ4TjyxYl6qUGpUCM_F-Cb6OIXo2tK-t7pXIUDkoojjGdsppS_U3C563k6VSZpxliftoK2dcYTx-fcgStHOTO64n0OYPut6EU6f7S3-Fj9lpObYG7taqPmHii_CWN1RI-MURHh5x5oWT1OuecDpjscdFN3RU_Lnd5ubOSe2itor42eLgiQv3VWy55iKpsiEm3Zlis0X_2g==" 
+        width="540" 
+        height="305" 
+        frameBorder="0" 
+        scrolling="auto" 
+        allowFullScreen 
+        style={{ display: 'block', maxWidth: '100%' }}
+        title="Newsletter FutbolFanatic"
+        ></iframe>
+        </div>
+        {/* --- FIN DEL BLOQUE --- */}
 
         <div style={lineaDecorativaStyle}></div>
         
