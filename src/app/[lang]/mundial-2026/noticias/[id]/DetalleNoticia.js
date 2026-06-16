@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image'; // 1. Importamos el componente
 import { useIdioma } from '@/app/HeaderContextLayout';
 import { noticiasMundial } from '@/data/noticias/mundialData';
-import PrediccionWidget from '@/components/PrediccionWidget/PrediccionWidget';
 
 export default function DetalleNoticia({ params }) {
   const { id } = params;
