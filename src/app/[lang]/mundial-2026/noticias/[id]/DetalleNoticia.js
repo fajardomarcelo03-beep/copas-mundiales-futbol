@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image'; // 1. Importamos el componente
 import { useIdioma } from '@/app/HeaderContextLayout';
 import { noticiasMundial } from '@/data/noticias/mundialData';
+import PrediccionWidget from '@/components/PrediccionWidget/PrediccionWidget';
 
 export default function DetalleNoticia({ params }) {
   const { id } = params;
@@ -56,7 +57,13 @@ export default function DetalleNoticia({ params }) {
             style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
           />
         </div>
-        
+        {/* Aquí insertamos el widget de predicción */}
+{objetoNoticia.partidoId && (
+  <PrediccionWidget 
+    lang={idioma} 
+    partidoId={objetoNoticia.partidoId} 
+  />
+)}
         <div style={lineaDecorativaStyle}></div>
         
         {textoNoticia.intro ? (

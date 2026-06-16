@@ -65,8 +65,8 @@ export const partidos = {
       { id: 48, fecha: "2026-06-26", hora: "20:00", estadio: "Estadio Akron", pais: "México", local: { es: "Uruguay", en: "Uruguay" }, visita: { es: "España", en: "Spain" } }
     ],
     "I": [
-      { id: 49, fecha: "2026-06-16", hora: "15:00", estadio: "MetLife Stadium", pais: "Estados Unidos", local: { es: "Francia", en: "France" }, visita: { es: "Irak", en: "Iraq" } },
-      { id: 50, fecha: "2026-06-16", hora: "18:00", estadio: "Boston Stadium", pais: "Estados Unidos", local: { es: "Senegal", en: "Senegal" }, visita: { es: "Noruega", en: "Norway" } },
+      { id: 49, fecha: "2026-06-16", hora: "15:00", estadio: "MetLife Stadium", pais: "Estados Unidos", local: { es: "Francia", en: "France" }, visita: { es: "Senegal", en: "Senegal" } },
+      { id: 50, fecha: "2026-06-16", hora: "18:00", estadio: "Boston Stadium", pais: "Estados Unidos", local: { es: "Irak", en: "Iraq" }, visita: { es: "Noruega", en: "Norway" } },
       { id: 51, fecha: "2026-06-22", hora: "17:00", estadio: "Lincoln Financial Field", pais: "Estados Unidos", local: { es: "Francia", en: "France" }, visita: { es: "Irak", en: "Iraq" } },
       { id: 52, fecha: "2026-06-22", hora: "20:00", estadio: "MetLife Stadium", pais: "Estados Unidos", local: { es: "Noruega", en: "Norway" }, visita: { es: "Senegal", en: "Senegal" } },
       { id: 53, fecha: "2026-06-26", hora: "15:00", estadio: "Boston Stadium", pais: "Estados Unidos", local: { es: "Noruega", en: "Norway" }, visita: { es: "Francia", en: "France" } },
