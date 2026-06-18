@@ -4,7 +4,7 @@ export const resultados = {
     "A": [
       { id: 1, local: { es: "México", en: "Mexico" }, visita: { es: "Sudáfrica", en: "South Africa" }, golesLocal: 2, golesVisita: 0, jugado: true },
       { id: 2, local: { es: "Corea del Sur", en: "South Korea" }, visita: { es: "República Checa", en: "Czech Republic" }, golesLocal: 2, golesVisita: 1, jugado: true },
-      { id: 3, local: { es: "República Checa", en: "Czech Republic" }, visita: { es: "Sudáfrica", en: "South Africa" }, golesLocal: 0, golesVisita: 0, jugado: false },
+      { id: 3, local: { es: "República Checa", en: "Czech Republic" }, visita: { es: "Sudáfrica", en: "South Africa" }, golesLocal: 1, golesVisita: 1, jugado: true },
       { id: 4, local: { es: "México", en: "Mexico" }, visita: { es: "Corea del Sur", en: "South Korea" }, golesLocal: 0, golesVisita: 0, jugado: false },
       { id: 5, local: { es: "República Checa", en: "Czech Republic" }, visita: { es: "México", en: "Mexico" }, golesLocal: 0, golesVisita: 0, jugado: false },
       { id: 6, local: { es: "Sudáfrica", en: "South Africa" }, visita: { es: "Corea del Sur", en: "South Korea" }, golesLocal: 0, golesVisita: 0, jugado: false }
@@ -12,7 +12,7 @@ export const resultados = {
     "B": [
       { id: 7, local: { es: "Canadá", en: "Canada" }, visita: { es: "Bosnia y Herzegovina", en: "Bosnia and Herzegovina" }, golesLocal: 1, golesVisita: 1, jugado: true },
       { id: 8, local: { es: "Catar", en: "Qatar" }, visita: { es: "Suiza", en: "Switzerland" }, golesLocal: 1, golesVisita: 1, jugado: true },
-      { id: 9, local: { es: "Suiza", en: "Switzerland" }, visita: { es: "Bosnia y Herzegovina", en: "Bosnia and Herzegovina" }, golesLocal: 0, golesVisita: 0, jugado: false },
+      { id: 9, local: { es: "Suiza", en: "Switzerland" }, visita: { es: "Bosnia y Herzegovina", en: "Bosnia and Herzegovina" }, golesLocal: 4, golesVisita: 1, jugado: true },
       { id: 10, local: { es: "Canadá", en: "Canada" }, visita: { es: "Catar", en: "Qatar" }, golesLocal: 0, golesVisita: 0, jugado: false },
       { id: 11, local: { es: "Suiza", en: "Switzerland" }, visita: { es: "Canadá", en: "Canada" }, golesLocal: 0, golesVisita: 0, jugado: false },
       { id: 12, local: { es: "Bosnia y Herzegovina", en: "Bosnia and Herzegovina" }, visita: { es: "Catar", en: "Qatar" }, golesLocal: 0, golesVisita: 0, jugado: false }
@@ -66,32 +66,32 @@ export const resultados = {
       { id: 48, local: { es: "Uruguay", en: "Uruguay" }, visita: { es: "España", en: "Spain" }, golesLocal: 0, golesVisita: 0, jugado: false }
     ],
     "I": [
-      { id: 49, local: { es: "Francia", en: "France" }, visita: { es: "Irak", en: "Iraq" }, golesLocal: 0, golesVisita: 0, jugado: false },
-      { id: 50, local: { es: "Senegal", en: "Senegal" }, visita: { es: "Noruega", en: "Norway" }, golesLocal: 0, golesVisita: 0, jugado: false },
+      { id: 49, local: { es: "Francia", en: "France" }, visita: { es: "Senegal", en: "Senegal" }, golesLocal: 3, golesVisita: 1, jugado: true },
+      { id: 50, local: { es: "Irak", en: "Iraq" }, visita: { es: "Noruega", en: "Norway" }, golesLocal: 1, golesVisita: 4, jugado: true },
       { id: 51, local: { es: "Francia", en: "France" }, visita: { es: "Irak", en: "Iraq" }, golesLocal: 0, golesVisita: 0, jugado: false },
       { id: 52, local: { es: "Noruega", en: "Norway" }, visita: { es: "Senegal", en: "Senegal" }, golesLocal: 0, golesVisita: 0, jugado: false },
       { id: 53, local: { es: "Noruega", en: "Norway" }, visita: { es: "Francia", en: "France" }, golesLocal: 0, golesVisita: 0, jugado: false },
       { id: 54, local: { es: "Senegal", en: "Senegal" }, visita: { es: "Irak", en: "Iraq" }, golesLocal: 0, golesVisita: 0, jugado: false }
     ],
     "J": [
-      { id: 55, local: { es: "Argentina", en: "Argentina" }, visita: { es: "Argelia", en: "Algeria" }, golesLocal: 0, golesVisita: 0, jugado: false },
-      { id: 56, local: { es: "Austria", en: "Austria" }, visita: { es: "Jordania", en: "Jordan" }, golesLocal: 0, golesVisita: 0, jugado: false },
+      { id: 55, local: { es: "Argentina", en: "Argentina" }, visita: { es: "Argelia", en: "Algeria" }, golesLocal: 3, golesVisita: 0, jugado: true },
+      { id: 56, local: { es: "Austria", en: "Austria" }, visita: { es: "Jordania", en: "Jordan" }, golesLocal: 3, golesVisita: 1, jugado: true },
       { id: 57, local: { es: "Argentina", en: "Argentina" }, visita: { es: "Austria", en: "Austria" }, golesLocal: 0, golesVisita: 0, jugado: false },
       { id: 58, local: { es: "Jordania", en: "Jordan" }, visita: { es: "Argelia", en: "Algeria" }, golesLocal: 0, golesVisita: 0, jugado: false },
       { id: 59, local: { es: "Argelia", en: "Algeria" }, visita: { es: "Austria", en: "Austria" }, golesLocal: 0, golesVisita: 0, jugado: false },
       { id: 60, local: { es: "Jordania", en: "Jordan" }, visita: { es: "Argentina", en: "Argentina" }, golesLocal: 0, golesVisita: 0, jugado: false }
     ],
     "K": [
-      { id: 61, local: { es: "Portugal", en: "Portugal" }, visita: { es: "República Democrática del Congo", en: "Democratic Republic of the Congo" }, golesLocal: 0, golesVisita: 0, jugado: false },
-      { id: 62, local: { es: "Uzbekistán", en: "Uzbekistan" }, visita: { es: "Colombia", en: "Colombia" }, golesLocal: 0, golesVisita: 0, jugado: false },
+      { id: 61, local: { es: "Portugal", en: "Portugal" }, visita: { es: "República Democrática del Congo", en: "Democratic Republic of the Congo" }, golesLocal: 1, golesVisita: 1, jugado: true },
+      { id: 62, local: { es: "Uzbekistán", en: "Uzbekistan" }, visita: { es: "Colombia", en: "Colombia" }, golesLocal: 1, golesVisita: 3, jugado: true },
       { id: 63, local: { es: "Portugal", en: "Portugal" }, visita: { es: "Uzbekistán", en: "Uzbekistan" }, golesLocal: 0, golesVisita: 0, jugado: false },
       { id: 64, local: { es: "Colombia", en: "Colombia" }, visita: { es: "República Democrática del Congo", en: "Democratic Republic of the Congo" }, golesLocal: 0, golesVisita: 0, jugado: false },
       { id: 65, local: { es: "Colombia", en: "Colombia" }, visita: { es: "Portugal", en: "Portugal" }, golesLocal: 0, golesVisita: 0, jugado: false },
       { id: 66, local: { es: "República Democrática del Congo", en: "Democratic Republic of the Congo" }, visita: { es: "Uzbekistán", en: "Uzbekistan" }, golesLocal: 0, golesVisita: 0, jugado: false }
     ],
     "L": [
-      { id: 67, local: { es: "Inglaterra", en: "England" }, visita: { es: "Croacia", en: "Croatia" }, golesLocal: 0, golesVisita: 0, jugado: false },
-      { id: 68, local: { es: "Ghana", en: "Ghana" }, visita: { es: "Panamá", en: "Panama" }, golesLocal: 0, golesVisita: 0, jugado: false },
+      { id: 67, local: { es: "Inglaterra", en: "England" }, visita: { es: "Croacia", en: "Croatia" }, golesLocal: 4, golesVisita: 2, jugado: true },
+      { id: 68, local: { es: "Ghana", en: "Ghana" }, visita: { es: "Panamá", en: "Panama" }, golesLocal: 1, golesVisita: 0, jugado: true },
       { id: 69, local: { es: "Inglaterra", en: "England" }, visita: { es: "Ghana", en: "Ghana" }, golesLocal: 0, golesVisita: 0, jugado: false },
       { id: 70, local: { es: "Panamá", en: "Panama" }, visita: { es: "Croacia", en: "Croatia" }, golesLocal: 0, golesVisita: 0, jugado: false },
       { id: 71, local: { es: "Panamá", en: "Panama" }, visita: { es: "Inglaterra", en: "England" }, golesLocal: 0, golesVisita: 0, jugado: false },
